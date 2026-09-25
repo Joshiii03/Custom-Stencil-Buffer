@@ -3,7 +3,8 @@ render_mode unshaded;
 uniform sampler2D screen_texture : hint_screen_texture;
 uniform sampler2D stencil_texture : source_color;
 
-
+uniform sampler2D my_texture;
+uniform bool use_texture = false;
 
 uniform vec3 match_color : source_color ;
 uniform vec3 show_color : source_color;
@@ -21,12 +22,21 @@ void fragment() {
 	{
 		discard;
 	}
-	float fragment_depth = (PROJECTION_MATRIX[2].z * VERTEX.z + PROJECTION_MATRIX[3].z) -VERTEX.z;
-	if(fragment_depth < stencil_map.b )
+	float fragment_depth = 1./((PROJECTION_MATRIX[2].z * VERTEX.z + PROJECTION_MATRIX[3].z) -VERTEX.z);
+	if(fragment_depth  > stencil_map.b )
 	{
 		discard;
 	}
-	ALBEDO = show_color;
+	if (use_texture)
+	{
+	    vec4 tex = texture(my_texture, UV);
+	    ALBEDO = tex.rgb;
+	}
+	else
+	{
+	    ALBEDO = show_color;
+	}
+	
 }
 
 void light() {
