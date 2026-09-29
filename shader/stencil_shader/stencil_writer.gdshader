@@ -17,7 +17,10 @@ void vertex() {
 }
 
 void fragment() {
-	float fragment_depth = 1./((PROJECTION_MATRIX[2].z * VERTEX.z + PROJECTION_MATRIX[3].z) -VERTEX.z);
+	//float fragment_depth = 1./((PROJECTION_MATRIX[2].z * VERTEX.z + PROJECTION_MATRIX[3].z) -VERTEX.z);
+	vec4 clip_pos = PROJECTION_MATRIX * vec4(VERTEX, 1.0);
+	float fragment_depth = clip_pos.z / clip_pos.w;
+	
 	vec3 show_color = match_color1;
 	if (checker)
 	{

@@ -14,7 +14,10 @@ void vertex() {
 
 void fragment() {
 	float depth = texture(depth_texture, SCREEN_UV).r;
-	float fragment_depth = (1./((PROJECTION_MATRIX[2].z * VERTEX.z + PROJECTION_MATRIX[3].z) -VERTEX.z));
+	//float fragment_depth = (1./((PROJECTION_MATRIX[2].z * VERTEX.z + PROJECTION_MATRIX[3].z) -VERTEX.z));
+	vec4 clip_pos = PROJECTION_MATRIX * vec4(VERTEX, 1.0);
+	float fragment_depth = clip_pos.z / clip_pos.w;
+	
 	float test_depth = 0.0;
 	if (test){test_depth = depth;}else{test_depth = fragment_depth;}
 	ALBEDO = vec3(test_depth);
@@ -23,7 +26,7 @@ void fragment() {
 	{
 		ALBEDO = end_color;
 	}
-	if (fragment_depth == depth)
+	if (abs(fragment_depth - depth) < -0.00001)
 	{
 		ALBEDO = green;
 	}
