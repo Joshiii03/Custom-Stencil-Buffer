@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://inj7uj1ocdsu"]
 
-[ext_resource type="Shader" uid="uid://c2m0ryu75xvp7" path="res://shader/stencil_shader/stencil_writer.gdshader" id="1_tipki"]
-[ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="2_85g3d"]
-[ext_resource type="Script" uid="uid://iaanhr127i8v" path="res://test_stuff/Tweener.gd" id="3_tipki"]
-[ext_resource type="Texture2D" uid="uid://brxbqfeshim4" path="res://assets/b20ks0.jpg" id="4_ya4ey"]
-[ext_resource type="Shader" uid="uid://cieltlaejobcs" path="res://shader/test_shader/test_screen.gdshader" id="5_choun"]
-[ext_resource type="Shader" uid="uid://3u5r1dup0sor" path="res://shader/test_shader/Depth.gdshader" id="6_ya4ey"]
-[ext_resource type="Shader" uid="uid://cnr6xdh7c74am" path="res://shader/swirl_shader/SwirlPortal.gdshader" id="7_eb6dy"]
-[ext_resource type="Shader" uid="uid://b3cknt0ulboo0" path="res://shader/swirl_shader/swirl_portal2.gdshader" id="8_trceg"]
+[ext_resource type="Shader" uid="uid://c2m0ryu75xvp7" path="res://shader/stencil_shader/stencil_writer.gdshader" id="1_dra30"]
+[ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="2_72mss"]
+[ext_resource type="Script" uid="uid://iaanhr127i8v" path="res://test_stuff/Tweener.gd" id="3_lmgc4"]
+[ext_resource type="Texture2D" uid="uid://brxbqfeshim4" path="res://Assets/b20ks0.jpg" id="4_i8wmo"]
+[ext_resource type="Shader" uid="uid://cieltlaejobcs" path="res://shader/test_shader/test_screen.gdshader" id="5_4bf6m"]
+[ext_resource type="Shader" uid="uid://3u5r1dup0sor" path="res://shader/test_shader/Depth.gdshader" id="6_r0fjb"]
+[ext_resource type="Shader" uid="uid://cnr6xdh7c74am" path="res://shader/swirl_shader/SwirlPortal.gdshader" id="7_egp3b"]
+[ext_resource type="Shader" uid="uid://b3cknt0ulboo0" path="res://shader/swirl_shader/swirl_portal2.gdshader" id="8_g60tn"]
 
 [sub_resource type="Environment" id="Environment_wp5od"]
 background_mode = 1
@@ -15,7 +15,7 @@ background_mode = 1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("1_tipki")
+shader = ExtResource("1_dra30")
 shader_parameter/match_color1 = Color(1, 0.84313726, 0.9529412, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
@@ -24,7 +24,7 @@ orientation = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7mycd"]
 render_priority = 0
-shader = ExtResource("1_tipki")
+shader = ExtResource("1_dra30")
 shader_parameter/match_color1 = Color(0.39215687, 1, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k56px"]
@@ -37,7 +37,7 @@ viewport_path = NodePath("StencilViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c4dyq"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_85g3d")
+shader = ExtResource("2_72mss")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_h2yge")
 shader_parameter/alpha_from_G = true
 shader_parameter/use_texture = false
@@ -120,10 +120,10 @@ viewport_path = NodePath("StencilViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dagrs"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_85g3d")
+shader = ExtResource("2_72mss")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_kvh76")
 shader_parameter/alpha_from_G = false
-shader_parameter/my_texture = ExtResource("4_ya4ey")
+shader_parameter/my_texture = ExtResource("4_i8wmo")
 shader_parameter/use_texture = true
 shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
@@ -151,7 +151,7 @@ viewport_path = NodePath("StencilViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4em5d"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("5_choun")
+shader = ExtResource("5_4bf6m")
 shader_parameter/filter_r = true
 shader_parameter/filter_b = false
 shader_parameter/filter_g = true
@@ -167,7 +167,7 @@ viewport_path = NodePath("StencilViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_530h6"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("5_choun")
+shader = ExtResource("5_4bf6m")
 shader_parameter/filter_r = false
 shader_parameter/filter_b = true
 shader_parameter/filter_g = true
@@ -183,7 +183,7 @@ viewport_path = NodePath("StencilViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yyqgc"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("5_choun")
+shader = ExtResource("5_4bf6m")
 shader_parameter/filter_r = true
 shader_parameter/filter_b = true
 shader_parameter/filter_g = false
@@ -195,7 +195,7 @@ orientation = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vkdpk"]
 render_priority = 0
-shader = ExtResource("6_ya4ey")
+shader = ExtResource("6_r0fjb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k56px"]
 next_pass = SubResource("ShaderMaterial_vkdpk")
@@ -209,9 +209,9 @@ orientation = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kvh76"]
 render_priority = 0
-shader = ExtResource("7_eb6dy")
+shader = ExtResource("7_egp3b")
 shader_parameter/strength = 20.0
-shader_parameter/base_texture = ExtResource("4_ya4ey")
+shader_parameter/base_texture = ExtResource("4_i8wmo")
 shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yyqgc"]
@@ -226,12 +226,12 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bhuw3"]
 render_priority = 0
-shader = ExtResource("8_trceg")
+shader = ExtResource("8_g60tn")
 shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
 shader_parameter/portal_noise_texture = SubResource("NoiseTexture2D_fp4ru")
 shader_parameter/speed = 0.005
 shader_parameter/power_stregth = 0.3
-shader_parameter/twist_strength = 1.4901199918426755e-07
+shader_parameter/twist_strength = 1.4901199918426758e-07
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kvh76"]
 size = Vector2(3, 3)
@@ -281,7 +281,7 @@ mesh = SubResource("PlaneMesh_k56px")
 transform = Transform3D(-0.12448033, -0.64693385, -0.752316, 0.24213398, 0.71548474, -0.6553251, 0.96222365, -0.2637367, 0.067580916, 1.7200384, 1.0178905, -5.1678333)
 material_override = SubResource("ShaderMaterial_c4dyq")
 mesh = SubResource("BoxMesh_ahg1b")
-script = ExtResource("3_tipki")
+script = ExtResource("3_lmgc4")
 move = false
 
 [node name="StencilReader2" type="MeshInstance3D" parent="." unique_id=905359249]

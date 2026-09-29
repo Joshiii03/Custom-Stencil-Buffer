@@ -5,5 +5,5 @@ extends MeshInstance3D
 	set(value):
 		value = clamp(value, 0, 25)
 		stencil_layer = value
-		var red : float  = stencil_layer/255.0 * 10
+		var red : float  = stencil_layer/25.5
 		material_override.set_shader_parameter("match_color1", Vector3(red,1,0))

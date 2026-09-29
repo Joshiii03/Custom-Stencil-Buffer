@@ -15,4 +15,4 @@ layers = 2
 material_override = SubResource("ShaderMaterial_k56px")
 mesh = SubResource("BoxMesh_wp5od")
 script = ExtResource("2_a8aec")
-stencil_layer = 17
+stencil_layer = 25

@@ -1,7 +1,8 @@
 shader_type spatial;
 //render_mode unshaded;
-uniform sampler2D screen_texture : hint_screen_texture;
+
 uniform sampler2D stencil_texture : source_color;
+//uniform sampler2D screen_texture : hint_screen_texture;
 uniform bool alpha_from_G = false;
 
 uniform sampler2D my_texture;
