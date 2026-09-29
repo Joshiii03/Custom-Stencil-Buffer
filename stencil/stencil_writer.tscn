@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://deqrdnmbcmcwv"]
+
+[ext_resource type="Shader" uid="uid://c2m0ryu75xvp7" path="res://shader/stencil_shader/stencil_writer.gdshader" id="1_3lnty"]
+[ext_resource type="Script" uid="uid://c1v67hmjyub8i" path="res://stencil/stencil_writer.gd" id="2_a8aec"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k56px"]
+render_priority = 0
+shader = ExtResource("1_3lnty")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wp5od"]
+
+[node name="StencilWriter" type="MeshInstance3D" unique_id=1860981665]
+layers = 2
+material_override = SubResource("ShaderMaterial_k56px")
+mesh = SubResource("BoxMesh_wp5od")
+script = ExtResource("2_a8aec")
+stencil_layer = 17

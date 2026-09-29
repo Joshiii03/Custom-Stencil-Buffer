@@ -26,7 +26,7 @@ void fragment() {
 	{
 		ALBEDO = end_color;
 	}
-	if (abs(fragment_depth - depth) < -0.00001)
+	if (abs(fragment_depth - depth) < 0.0000001)
 	{
 		ALBEDO = green;
 	}
