@@ -1,4 +1,5 @@
 @tool
+class_name StencilWriter
 extends MeshInstance3D
 
 @export var stencil_layer : int = 0 :

@@ -3,6 +3,7 @@ extends Node3D
 
 @export var stencil_camera : StencilCamera:
 	set(value):
+		print("Hello?")
 		stencil_camera = value
 		stencil_viewport_path = stencil_camera.stencil_viewport.get_path()
 		screen_viewport_path = stencil_camera.screen_viewport.get_path()

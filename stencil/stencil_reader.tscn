@@ -3,9 +3,13 @@
 [ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="1_bxrqx"]
 [ext_resource type="Script" uid="uid://ba2csny7mcpbx" path="res://stencil/stencil_reader.gd" id="1_vlrf8"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_uio6t"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vlrf8"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_bxrqx")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_uio6t")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
 shader_parameter/match_color = Color(0, 0, 0, 1)
