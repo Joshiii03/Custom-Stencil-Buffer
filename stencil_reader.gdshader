@@ -2,6 +2,7 @@ shader_type spatial;
 render_mode unshaded;
 uniform sampler2D screen_texture : hint_screen_texture;
 uniform sampler2D stencil_texture : source_color;
+uniform bool alpha_from_G = false;
 
 uniform sampler2D my_texture;
 uniform bool use_texture = false;
@@ -27,6 +28,7 @@ void fragment() {
 	{
 		discard;
 	}
+	
 	if (use_texture)
 	{
 	    vec4 tex = texture(my_texture, UV);
@@ -36,7 +38,7 @@ void fragment() {
 	{
 	    ALBEDO = show_color;
 	}
-	
+	if (alpha_from_G){ALPHA = stencil_map.g;}
 }
 
 void light() {

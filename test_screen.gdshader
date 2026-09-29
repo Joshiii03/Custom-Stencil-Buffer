@@ -1,6 +1,10 @@
 shader_type spatial;
 render_mode unshaded;
 
+uniform bool filter_r = false;
+uniform bool filter_b = false;
+uniform bool filter_g = false;
+
 uniform sampler2D texture_screen: source_color;
 
 void vertex() {
@@ -9,6 +13,18 @@ void vertex() {
 
 void fragment() {
 	vec3 color = texture(texture_screen, UV).rgb;
+	if (filter_r)
+	{
+		color.r = 0.;
+	}
+	if (filter_g)
+	{
+		color.g = 0.;
+	}
+	if (filter_b)
+	{
+		color.b = 0.;
+	}
 	ALBEDO = color.rgb;
 }
 

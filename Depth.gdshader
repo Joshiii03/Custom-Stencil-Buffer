@@ -3,7 +3,7 @@ render_mode unshaded;
 
 const vec3 green = vec3(0.2,1,0);
 const vec3 end_color = vec3(1,0,1);
-const bool test = true;
+const bool test = false;
 
 uniform sampler2D depth_texture : hint_depth_texture;
 
