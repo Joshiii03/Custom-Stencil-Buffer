@@ -3,33 +3,69 @@
 [ext_resource type="PackedScene" uid="uid://drcnq82wi1vr8" path="res://player/player.tscn" id="1_a8yly"]
 [ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="2_f88j1"]
 [ext_resource type="Script" uid="uid://ba2csny7mcpbx" path="res://stencil/stencil_reader.gd" id="3_wkcix"]
+[ext_resource type="Script" uid="uid://c1v67hmjyub8i" path="res://stencil/stencil_writer.gd" id="4_wkcix"]
+[ext_resource type="Shader" uid="uid://c2m0ryu75xvp7" path="res://shader/stencil_shader/stencil_writer.gdshader" id="4_yl0qk"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ahg1b"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f88j1"]
+viewport_path = NodePath("Player/CameraPivot/StencilCamera/StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yl0qk"]
 render_priority = 0
 shader = ExtResource("2_f88j1")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_f88j1")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
 shader_parameter/match_color = Color(0, 0, 0, 1)
-shader_parameter/show_color = Color(0, 0, 0, 1)
-shader_parameter/tolerance = 3e-05
+shader_parameter/show_color = Color(0.7647059, 0.5019608, 0, 1)
+shader_parameter/tolerance = 0.01
 
 [sub_resource type="BoxMesh" id="BoxMesh_ahg1b"]
 
-[node name="test_main3" type="Node3D" unique_id=1793067457]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ahg1b"]
 
-[node name="Player" parent="." unique_id=605510932 instance=ExtResource("1_a8yly")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4bqwx"]
+render_priority = 0
+shader = ExtResource("4_yl0qk")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c4dyq"]
+orientation = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ahg1b"]
+
+[node name="test_main3" type="Node3D" unique_id=1793067457]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1527342063]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=51375266]
 shape = SubResource("WorldBoundaryShape3D_ahg1b")
 
-[node name="StencilReader" type="MeshInstance3D" parent="." unique_id=1283633949 node_paths=PackedStringArray("player")]
+[node name="StencilReader" type="MeshInstance3D" parent="." unique_id=1283633949 node_paths=PackedStringArray("player", "stencil_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4.0090623)
 material_override = SubResource("ShaderMaterial_yl0qk")
 mesh = SubResource("BoxMesh_ahg1b")
 script = ExtResource("3_wkcix")
 player = NodePath("../Player")
+stencil_camera = NodePath("../Player/CameraPivot/StencilCamera")
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StencilReader" unique_id=1911991177]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StencilReader/StaticBody3D" unique_id=1918606151]
+shape = SubResource("BoxShape3D_ahg1b")
+
+[node name="StencilWriter" type="MeshInstance3D" parent="." unique_id=1120654058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96954226, -2.5750146)
+layers = 2
+material_override = SubResource("ShaderMaterial_4bqwx")
+mesh = SubResource("PlaneMesh_c4dyq")
+script = ExtResource("4_wkcix")
+metadata/_custom_type_script = "uid://c1v67hmjyub8i"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1436990397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+mesh = SubResource("CylinderMesh_ahg1b")
+
+[node name="Player" parent="." unique_id=605510932 instance=ExtResource("1_a8yly")]

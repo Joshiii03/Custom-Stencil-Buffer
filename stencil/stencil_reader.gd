@@ -32,6 +32,13 @@ func _init():
 		material_override.shader = load("res://shader/stencil_shader/stencil_reader.gdshader")
 
 
+func ready():
+	set_screen()
+
+
 func set_screen() -> void:
-	var stencil_viewport_texture = stencil_camera.stencil_viewport.get_texture()
-	material_override.set_shader_parameter("stencil_texture", stencil_viewport_texture)
+	if is_instance_valid(stencil_camera) and stencil_camera.is_inside_tree():
+		var stencil_viewport_texture = stencil_camera.stencil_viewport.get_texture()
+		material_override.set_shader_parameter("stencil_texture", stencil_viewport_texture)
+	else:
+		push_warning("StencilCamera not found")
