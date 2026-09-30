@@ -11,6 +11,6 @@ extends MeshInstance3D
 
 
 func _init():
-	if not material_override:
+	if true and not material_override:
 		material_override = ShaderMaterial.new()
 		material_override.shader = load("res://shader/stencil_shader/stencil_writer.gdshader")

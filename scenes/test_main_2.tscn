@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://drkb23xqyf8p6" path="res://stencil/stencil_camera.tscn" id="1_lqxih"]
 [ext_resource type="PackedScene" uid="uid://dqr0cwoadwtn" path="res://stencil/stencil_debug_screen.tscn" id="2_t0igb"]
 [ext_resource type="PackedScene" uid="uid://deqrdnmbcmcwv" path="res://stencil/stencil_writer.tscn" id="3_kp3ea"]
-[ext_resource type="PackedScene" uid="uid://dqhej3eysvfvq" path="res://stencil/stencil_reader.tscn" id="4_rp0gj"]
 [ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="5_uio6t"]
 [ext_resource type="Script" uid="uid://ba2csny7mcpbx" path="res://stencil/stencil_reader.gd" id="6_k0xu2"]
 
@@ -14,21 +13,8 @@ orientation = 2
 [sub_resource type="ViewportTexture" id="ViewportTexture_k0xu2"]
 viewport_path = NodePath("StencilCamera/StencilViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4ger"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("5_uio6t")
-shader_parameter/stencil_texture = SubResource("ViewportTexture_k0xu2")
-shader_parameter/alpha_from_G = false
-shader_parameter/use_texture = false
-shader_parameter/match_color = Color(0, 0, 0, 1)
-shader_parameter/show_color = Color(0.7990759, 0.54120326, 0, 1)
-shader_parameter/tolerance = 3e-05
-
-[sub_resource type="BoxMesh" id="BoxMesh_bxrqx"]
-size = Vector3(1, 2.9941406, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hg732"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_uio6t")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_k0xu2")
@@ -42,6 +28,7 @@ shader_parameter/tolerance = 3e-05
 size = Vector2(5, 5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5rgn"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_uio6t")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_k0xu2")
@@ -68,6 +55,7 @@ noise = SubResource("FastNoiseLite_pwxi0")
 color_ramp = SubResource("Gradient_fk365")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g6cv0"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_uio6t")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_k0xu2")
@@ -82,7 +70,22 @@ shader_parameter/tolerance = 3e-05
 radius = 1.0
 height = 2.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uio6t"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_uio6t")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_k0xu2")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/match_color = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(1, 0.67058825, 0, 1)
+shader_parameter/tolerance = 3e-05
+
+[sub_resource type="BoxMesh" id="BoxMesh_ahg1b"]
+size = Vector3(1, 3, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lbfim"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_uio6t")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_k0xu2")
@@ -93,6 +96,7 @@ shader_parameter/show_color = Color(1, 0.54901963, 0.45882353, 1)
 shader_parameter/tolerance = 0.01
 
 [sub_resource type="TorusMesh" id="TorusMesh_ahg1b"]
+resource_local_to_scene = true
 inner_radius = 0.2
 
 [node name="testMain2" type="Node3D" unique_id=1811265960]
@@ -105,7 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -1.0489197)
 stencil_camera = NodePath("../StencilCamera")
 
 [node name="StencilWriter" parent="." unique_id=1860981665 instance=ExtResource("3_kp3ea")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.5725212, 0.1078248, -0.71449566)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 4.1202765, 0.1078248, -0.71449566)
 mesh = SubResource("PlaneMesh_i21em")
 stencil_layer = 1
 
@@ -118,12 +122,6 @@ layers = 3
 light_color = Color(0.9999997, 0.926267, 0.46921927, 1)
 light_energy = 2.737
 light_indirect_energy = 4.591
-
-[node name="StencilReader" parent="Layer0" unique_id=1370487389 node_paths=PackedStringArray("stencil_camera") instance=ExtResource("4_rp0gj")]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.9063077, -0.4226183, 0, 0.42261824, 0.9063078, 0.6079278, -0.7375159, -4.113803)
-material_override = SubResource("ShaderMaterial_y4ger")
-mesh = SubResource("BoxMesh_bxrqx")
-stencil_camera = NodePath("../../StencilCamera")
 
 [node name="Grass" type="MeshInstance3D" parent="Layer0" unique_id=2036472280 node_paths=PackedStringArray("stencil_camera")]
 transform = Transform3D(1, 0, 0, 0, 0.90271914, -0.4302303, 0, 0.4302303, 0.90271914, 1.5049262, 0.02403976, -4.3777757)
@@ -145,6 +143,14 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7508125, 1.9182234, -3.9053857)
 material_override = SubResource("ShaderMaterial_g6cv0")
 mesh = SubResource("SphereMesh_g6cv0")
+script = ExtResource("6_k0xu2")
+stencil_camera = NodePath("../../StencilCamera")
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="StencilReader" type="MeshInstance3D" parent="Layer0" unique_id=2099324378 node_paths=PackedStringArray("stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 0.9063112, -0.42262012, 0, 0.42262012, 0.9063112, 0, -0.6372239, -4.067066)
+material_override = SubResource("ShaderMaterial_uio6t")
+mesh = SubResource("BoxMesh_ahg1b")
 script = ExtResource("6_k0xu2")
 stencil_camera = NodePath("../../StencilCamera")
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
