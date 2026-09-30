@@ -10,7 +10,7 @@
 orientation = 2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_uio6t"]
-viewport_path = NodePath("/root/@EditorNode@19513/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/testMain2/StencilCamera/StencilSubViewport/StencilViewport")
+viewport_path = NodePath("/root/@EditorNode@19513/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/testMain2/StencilCamera/StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k0xu2"]
 resource_local_to_scene = true
@@ -20,27 +20,33 @@ shader_parameter/stencil_texture = SubResource("ViewportTexture_uio6t")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
 shader_parameter/match_color = Color(0, 0, 0, 1)
-shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.77254903, 1, 0.47843137, 1)
 shader_parameter/tolerance = 3e-05
+
+[sub_resource type="BoxMesh" id="BoxMesh_wp5od"]
 
 [node name="testMain2" type="Node3D" unique_id=1811265960]
 
 [node name="StencilCamera" parent="." unique_id=1225835657 instance=ExtResource("1_lqxih")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0.99077463)
 
 [node name="StencilDebugScreen" parent="." unique_id=1237292318 node_paths=PackedStringArray("stencil_camera") instance=ExtResource("2_t0igb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.670048, 0, -1.9552059)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.431938, -0.9337263, -15.787634)
 stencil_camera = NodePath("../StencilCamera")
-stencil_viewport_path = "/root/@EditorNode@19513/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/testMain2/StencilCamera/StencilSubViewport/StencilViewport"
-screen_viewport_path = "/root/@EditorNode@19513/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/testMain2/StencilCamera/ScreenViewport"
+stencil_viewport_path = "/root/@EditorNode@19513/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/testMain2/StencilCamera/StencilViewport"
+screen_viewport_path = "/root/@EditorNode@19513/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/testMain2/StencilCamera/StencilSubViewport/ScreenViewport"
 
 [node name="StencilWriter" parent="." unique_id=1860981665 instance=ExtResource("3_kp3ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.170494)
+transform = Transform3D(0.8818596, 0, 0.47151202, 0, 1, 0, -0.47151202, 0, 0.8818596, 1.195054, 0.3327732, -1.9106808)
 mesh = SubResource("PlaneMesh_i21em")
-stencil_layer = 0
 
 [node name="StencilReader" parent="." unique_id=1370487389 node_paths=PackedStringArray("stencil_camera") instance=ExtResource("4_rp0gj")]
-transform = Transform3D(0.724397, 0, -0.68938303, -0.3870971, 0.8274684, -0.40675786, 0.5704427, 0.56151235, 0.5994156, 0.3827753, 0.5618386, -2.6298192)
+transform = Transform3D(0.724397, 1.6734372e-08, -0.68938303, -0.3870971, 0.8274685, -0.40675792, 0.5704426, 0.56151235, 0.5994156, 1.1052203, -0.16896236, -3.8839254)
 material_override = SubResource("ShaderMaterial_k0xu2")
 stencil_camera = NodePath("../StencilCamera")
-stencil_viewport_path = "/root/@EditorNode@19513/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/testMain2/StencilCamera/StencilSubViewport/StencilViewport"
+stencil_viewport_path = "/root/@EditorNode@19513/@Panel@14/@VBoxContainer@15/DockVSplitMain/DockHSplitMain/@VBoxContainer@37/DockVSplitCenter/@VSplitContainer@101/@VBoxContainer@102/@EditorMainScreen@160/MainScreen/@CanvasItemEditor@10138/@VSplitContainer@9897/@HSplitContainer@9899/@HSplitContainer@9901/@Control@9902/@SubViewportContainer@9903/@SubViewport@9904/testMain2/StencilCamera/StencilViewport"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1190097857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.027237)
+visible = false
+mesh = SubResource("BoxMesh_wp5od")

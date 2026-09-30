@@ -5,13 +5,11 @@ extends MeshInstance3D
 
 @export var stencil_camera : StencilCamera:
 	set(value):
-		print("Hello?")
 		stencil_camera = value
-		stencil_viewport_path = stencil_camera.stencil_viewport.get_path()
+		update_stencil_camera()
 
 @export var stencil_viewport_path : String:
 	set(value):
-		print("set stencil_viewport_path")
 		stencil_viewport_path = value
 		set_screen()
 
@@ -20,7 +18,7 @@ extends MeshInstance3D
 		value = clamp(value, 0, 25)
 		stencil_layer = value
 		var red : float  = stencil_layer/25.5
-		material_override.set_shader_parameter("match_color1", Vector3(red,0,0))
+		material_override.set_shader_parameter("match_color", Vector3(red,0,0))
 
 @export var stencil_texture : Texture2D:
 	set(value):
@@ -28,10 +26,17 @@ extends MeshInstance3D
 		material_override.set_shader_parameter("stencil_texture", value)
 
 
+func _ready() -> void:
+	update_stencil_camera()
+
+
+func update_stencil_camera() -> void:
+	await RenderingServer.frame_post_draw
+	if stencil_camera.is_inside_tree():
+		stencil_viewport_path = stencil_camera.stencil_viewport.get_path()
+
+
 func set_screen() -> void:
-	
 	var stencil_viewport_texture : ViewportTexture = ViewportTexture.new()
 	stencil_viewport_texture.viewport_path = stencil_viewport_path
-	print("set stencil_viewport_texture")
-	
 	material_override.set_shader_parameter("stencil_texture", stencil_viewport_texture)

@@ -3,10 +3,8 @@ extends Node3D
 
 @export var stencil_camera : StencilCamera:
 	set(value):
-		print("Hello?")
 		stencil_camera = value
-		stencil_viewport_path = stencil_camera.stencil_viewport.get_path()
-		screen_viewport_path = stencil_camera.screen_viewport.get_path()
+		update_stencil_camera()
 
 @export var stencil_viewport_path : String:
 	set(value):
@@ -26,6 +24,10 @@ extends Node3D
 @export var test_screen_green: MeshInstance3D
 
 
+func _ready() -> void:
+	update_stencil_camera()
+
+
 func set_screens() -> void:
 	var stencil_viewport_texture : ViewportTexture = ViewportTexture.new()
 	stencil_viewport_texture.viewport_path = stencil_viewport_path
@@ -39,10 +41,14 @@ func set_screens() -> void:
 	test_screen_red.material_override.set_shader_parameter("texture_screen", stencil_viewport_texture)
 	test_screen_green.material_override.set_shader_parameter("texture_screen", stencil_viewport_texture)
 
-func _ready() -> void:
-	pass 
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		update_stencil_camera()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func update_stencil_camera() -> void:
+	await RenderingServer.frame_post_draw
+	if stencil_camera.is_inside_tree():
+		stencil_viewport_path = stencil_camera.stencil_viewport.get_path()
+		screen_viewport_path = stencil_camera.screen_viewport.get_path()
