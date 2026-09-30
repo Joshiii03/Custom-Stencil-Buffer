@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://c2m0ryu75xvp7" path="res://shader/stencil_shader/stencil_writer.gdshader" id="1_dra30"]
 [ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="2_72mss"]
 [ext_resource type="Script" uid="uid://iaanhr127i8v" path="res://test_stuff/Tweener.gd" id="3_lmgc4"]
-[ext_resource type="Texture2D" uid="uid://brxbqfeshim4" path="res://Assets/b20ks0.jpg" id="4_i8wmo"]
+[ext_resource type="Texture2D" uid="uid://brxbqfeshim4" path="res://assets/b20ks0.jpg" id="4_i8wmo"]
 [ext_resource type="Shader" uid="uid://cieltlaejobcs" path="res://shader/test_shader/test_screen.gdshader" id="5_4bf6m"]
 [ext_resource type="Shader" uid="uid://3u5r1dup0sor" path="res://shader/test_shader/Depth.gdshader" id="6_r0fjb"]
 [ext_resource type="Shader" uid="uid://cnr6xdh7c74am" path="res://shader/swirl_shader/SwirlPortal.gdshader" id="7_egp3b"]
@@ -231,7 +231,7 @@ shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
 shader_parameter/portal_noise_texture = SubResource("NoiseTexture2D_fp4ru")
 shader_parameter/speed = 0.005
 shader_parameter/power_stregth = 0.3
-shader_parameter/twist_strength = 1.4901199918426758e-07
+shader_parameter/twist_strength = 1.490119991842676e-07
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kvh76"]
 size = Vector2(3, 3)

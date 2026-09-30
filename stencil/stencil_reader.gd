@@ -3,6 +3,11 @@ class_name StencilReader
 extends MeshInstance3D
 
 
+@export var player : Player:
+	set(value):
+		player = value
+		stencil_camera = player.stencil_camera
+
 @export var stencil_camera : StencilCamera:
 	set(value):
 		stencil_camera = value
@@ -22,8 +27,9 @@ extends MeshInstance3D
 
 
 func _init():
-	material_override = ShaderMaterial.new()
-	material_override.shader = load("res://shader/stencil_shader/stencil_reader.gdshader")
+	if not material_override:
+		material_override = ShaderMaterial.new()
+		material_override.shader = load("res://shader/stencil_shader/stencil_reader.gdshader")
 
 
 func set_screen() -> void:

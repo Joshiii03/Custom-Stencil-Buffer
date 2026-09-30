@@ -10,6 +10,8 @@ volumetric_fog_density = 0.2193
 volumetric_fog_emission = Color(0.92794496, 0.68204314, 0.731245, 1)
 
 [sub_resource type="Environment" id="Environment_hg732"]
+background_mode = 1
+background_color = Color(0, 0, 1, 1)
 
 [node name="StencilCamera" type="Node3D" unique_id=1225835657 node_paths=PackedStringArray("stencil_viewport", "screen_viewport", "stencil_camera", "screen_camera")]
 script = ExtResource("1_apmh8")

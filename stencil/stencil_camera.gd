@@ -17,9 +17,9 @@ func _notification(what: int) -> void:
 
 func set_camera_transform() -> void:
 	if is_instance_valid(stencil_camera):
-		stencil_camera.transform = transform
+		stencil_camera.transform = global_transform
 	if is_instance_valid(screen_camera):
-		screen_camera.transform = transform
+		screen_camera.transform = global_transform
 
 
 func _ready() -> void:

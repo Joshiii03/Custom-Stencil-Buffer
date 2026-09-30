@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://qivs412tla8q"]
+
+[ext_resource type="PackedScene" uid="uid://drcnq82wi1vr8" path="res://player/player.tscn" id="1_a8yly"]
+[ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="2_f88j1"]
+[ext_resource type="Script" uid="uid://ba2csny7mcpbx" path="res://stencil/stencil_reader.gd" id="3_wkcix"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ahg1b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yl0qk"]
+render_priority = 0
+shader = ExtResource("2_f88j1")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/match_color = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 3e-05
+
+[sub_resource type="BoxMesh" id="BoxMesh_ahg1b"]
+
+[node name="test_main3" type="Node3D" unique_id=1793067457]
+
+[node name="Player" parent="." unique_id=605510932 instance=ExtResource("1_a8yly")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1527342063]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=51375266]
+shape = SubResource("WorldBoundaryShape3D_ahg1b")
+
+[node name="StencilReader" type="MeshInstance3D" parent="." unique_id=1283633949 node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4.0090623)
+material_override = SubResource("ShaderMaterial_yl0qk")
+mesh = SubResource("BoxMesh_ahg1b")
+script = ExtResource("3_wkcix")
+player = NodePath("../Player")
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"

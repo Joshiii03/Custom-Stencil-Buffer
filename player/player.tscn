@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://drcnq82wi1vr8"]
+
+[ext_resource type="Script" uid="uid://bhq0yd0dpjth2" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="PackedScene" uid="uid://drkb23xqyf8p6" path="res://stencil/stencil_camera.tscn" id="2_rkbax"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ahg1b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ahg1b"]
+
+[node name="Player" type="CharacterBody3D" unique_id=605510932]
+script = ExtResource("1_oul6g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1692421949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ahg1b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2112086151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ahg1b")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=972969820]
+
+[node name="StencilCamera" parent="CameraPivot" unique_id=1225835657 instance=ExtResource("2_rkbax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4108727, 0)
