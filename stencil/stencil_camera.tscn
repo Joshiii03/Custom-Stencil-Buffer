@@ -2,22 +2,34 @@
 
 [ext_resource type="Script" uid="uid://ldqun124cyr4" path="res://stencil/stencil_camera.gd" id="1_apmh8"]
 
+[sub_resource type="Environment" id="Environment_k0xu2"]
+background_mode = 1
+background_color = Color(0.63396597, 0.75490177, 1, 1)
+ambient_light_color = Color(0.97398084, 0.96558636, 0, 1)
+volumetric_fog_density = 0.2193
+volumetric_fog_emission = Color(0.92794496, 0.68204314, 0.731245, 1)
+
+[sub_resource type="Environment" id="Environment_hg732"]
+
 [node name="StencilCamera" type="Node3D" unique_id=1225835657 node_paths=PackedStringArray("stencil_viewport", "screen_viewport", "stencil_camera", "screen_camera")]
 script = ExtResource("1_apmh8")
 stencil_viewport = NodePath("StencilViewport")
-screen_viewport = NodePath("StencilSubViewport/ScreenViewport")
+screen_viewport = NodePath("ScrrenSubViewport/ScreenViewport")
 stencil_camera = NodePath("StencilViewport/Camera3D")
-screen_camera = NodePath("StencilSubViewport/ScreenViewport/Camera3D")
+screen_camera = NodePath("ScrrenSubViewport/ScreenViewport/Camera3D")
 
-[node name="StencilSubViewport" type="SubViewportContainer" parent="." unique_id=1191746610]
+[node name="ScrrenSubViewport" type="SubViewportContainer" parent="." unique_id=1191746610]
 offset_right = 1024.0
 offset_bottom = 512.0
 
-[node name="ScreenViewport" type="SubViewport" parent="StencilSubViewport" unique_id=2147221177]
+[node name="ScreenViewport" type="SubViewport" parent="ScrrenSubViewport" unique_id=2147221177]
+handle_input_locally = false
 size = Vector2i(1024, 512)
+render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="StencilSubViewport/ScreenViewport" unique_id=1493909745]
+[node name="Camera3D" type="Camera3D" parent="ScrrenSubViewport/ScreenViewport" unique_id=1493909745]
 cull_mask = 1047553
+environment = SubResource("Environment_k0xu2")
 
 [node name="StencilViewport" type="SubViewport" parent="." unique_id=200876042]
 handle_input_locally = false
@@ -26,4 +38,5 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="StencilViewport" unique_id=1839586270]
 cull_mask = 1047554
+environment = SubResource("Environment_hg732")
 current = true

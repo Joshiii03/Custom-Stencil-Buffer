@@ -6,11 +6,6 @@ extends MeshInstance3D
 @export var stencil_camera : StencilCamera:
 	set(value):
 		stencil_camera = value
-		update_stencil_camera()
-
-@export var stencil_viewport_path : String:
-	set(value):
-		stencil_viewport_path = value
 		set_screen()
 
 @export var stencil_layer : int = 0 :
@@ -26,17 +21,11 @@ extends MeshInstance3D
 		material_override.set_shader_parameter("stencil_texture", value)
 
 
-func _ready() -> void:
-	update_stencil_camera()
-
-
-func update_stencil_camera() -> void:
-	await RenderingServer.frame_post_draw
-	if stencil_camera.is_inside_tree():
-		stencil_viewport_path = stencil_camera.stencil_viewport.get_path()
+func _init():
+	material_override = ShaderMaterial.new()
+	material_override.shader = load("res://shader/stencil_shader/stencil_reader.gdshader")
 
 
 func set_screen() -> void:
-	var stencil_viewport_texture : ViewportTexture = ViewportTexture.new()
-	stencil_viewport_texture.viewport_path = stencil_viewport_path
+	var stencil_viewport_texture = stencil_camera.stencil_viewport.get_texture()
 	material_override.set_shader_parameter("stencil_texture", stencil_viewport_texture)

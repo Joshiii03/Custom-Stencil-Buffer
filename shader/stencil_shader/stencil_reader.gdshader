@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode depth_draw_always;
 //render_mode unshaded;
 
 uniform sampler2D stencil_texture : source_color;
@@ -42,7 +43,7 @@ void fragment() {
 	
 }
 
-void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-}
+//void light() {
+	//// Called for every pixel for every light affecting the material.
+	//// Uncomment to replace the default light processing function with this one.
+//}
