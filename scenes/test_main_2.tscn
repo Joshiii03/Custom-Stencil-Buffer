@@ -109,7 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -1.0489197)
 stencil_camera = NodePath("../StencilCamera")
 
 [node name="StencilWriter" parent="." unique_id=1860981665 instance=ExtResource("3_kp3ea")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 4.1202765, 0.1078248, -0.71449566)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.44452, 0.1078248, -1.2852211)
 mesh = SubResource("PlaneMesh_i21em")
 stencil_layer = 1
 
