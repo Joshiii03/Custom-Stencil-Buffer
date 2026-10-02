@@ -3,12 +3,11 @@
 [ext_resource type="Shader" uid="uid://c2m0ryu75xvp7" path="res://shader/stencil_shader/stencil_writer.gdshader" id="1_tipki"]
 [ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="2_85g3d"]
 [ext_resource type="Script" uid="uid://iaanhr127i8v" path="res://test_stuff/Tweener.gd" id="3_tipki"]
-[ext_resource type="Texture2D" path="res://assets/b20ks0.jpg" id="4_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://brxbqfeshim4" path="res://assets/b20ks0.jpg" id="4_ya4ey"]
 [ext_resource type="Shader" uid="uid://cieltlaejobcs" path="res://shader/test_shader/test_screen.gdshader" id="5_choun"]
 [ext_resource type="Shader" uid="uid://3u5r1dup0sor" path="res://shader/test_shader/Depth.gdshader" id="6_ya4ey"]
 [ext_resource type="Shader" uid="uid://cnr6xdh7c74am" path="res://shader/swirl_shader/SwirlPortal.gdshader" id="7_eb6dy"]
 [ext_resource type="Shader" uid="uid://b3cknt0ulboo0" path="res://shader/swirl_shader/swirl_portal2.gdshader" id="8_trceg"]
-
 
 [sub_resource type="Environment" id="Environment_wp5od"]
 background_mode = 1
@@ -221,7 +220,7 @@ orientation = 2
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qiv51"]
 frequency = 0.0217
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fp4ru"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tipki"]
 noise = SubResource("FastNoiseLite_qiv51")
 seamless = true
 
@@ -229,10 +228,10 @@ seamless = true
 render_priority = 0
 shader = ExtResource("8_trceg")
 shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
-shader_parameter/portal_noise_texture = SubResource("NoiseTexture2D_fp4ru")
+shader_parameter/portal_noise_texture = SubResource("NoiseTexture2D_tipki")
 shader_parameter/speed = 0.05
 shader_parameter/power_stregth = 0.3
-shader_parameter/twist_strength = 1.3000001683835603
+shader_parameter/twist_strength = 1.3000001683835605
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kvh76"]
 size = Vector2(3, 3)
@@ -279,7 +278,7 @@ material_override = SubResource("ShaderMaterial_7mycd")
 mesh = SubResource("PlaneMesh_k56px")
 
 [node name="StencilReader" type="MeshInstance3D" parent="." unique_id=1436633940]
-transform = Transform3D(-0.43904123, -0.46523684, -0.76863223, 0.41180328, 0.65614337, -0.6323701, 0.7985357, -0.59416264, -0.096487954, 2.263939, 1.0178905, 0.35790777)
+transform = Transform3D(-0.43904123, -0.46523684, -0.76863223, 0.41180328, 0.65614337, -0.6323701, 0.7985357, -0.59416264, -0.096487954, 0.47716713, 1.1072917, 0.35790777)
 material_override = SubResource("ShaderMaterial_c4dyq")
 mesh = SubResource("BoxMesh_ahg1b")
 script = ExtResource("3_tipki")

@@ -11,7 +11,7 @@ uniform bool use_texture = false;
 
 uniform vec3 match_color : source_color ;
 uniform vec3 show_color : source_color;
-uniform float tolerance = .00003 ;
+const float tolerance = .001 ;
 
 void vertex() {
 	// Called for every vertex the material is visible on.

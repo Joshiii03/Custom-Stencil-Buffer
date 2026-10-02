@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://7npp3npm1iaq"]
+
+[ext_resource type="Script" uid="uid://cwg77of5udtlt" path="res://test_stuff/debug_screen_2d.gd" id="1_2wxdk"]
+[ext_resource type="Shader" uid="uid://b2m7xgbyi52f1" path="res://test_stuff/debug_screen_2d.gdshader" id="1_71tww"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_71tww"]
+viewport_path = NodePath("Player/CameraPivot/StencilCamera/StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hfw1c"]
+resource_local_to_scene = true
+shader = ExtResource("1_71tww")
+shader_parameter/filter_r = true
+shader_parameter/filter_b = false
+shader_parameter/filter_g = true
+shader_parameter/texture_screen = SubResource("ViewportTexture_71tww")
+
+[node name="DebugScreen2D" type="ColorRect" unique_id=2034007952]
+material = SubResource("ShaderMaterial_hfw1c")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2wxdk")
+filter_r = null
+filter_g = null
+filter_b = null

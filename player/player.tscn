@@ -13,6 +13,7 @@ script = ExtResource("1_oul6g")
 
 [node name="StencilDebugScreen" parent="." unique_id=1237292318 node_paths=PackedStringArray("stencil_camera") instance=ExtResource("2_g1dw6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.486893)
+visible = false
 stencil_camera = NodePath("../CameraPivot/StencilCamera")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1692421949]
@@ -27,3 +28,5 @@ mesh = SubResource("CapsuleMesh_ahg1b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3116101, 0)
 
 [node name="StencilCamera" parent="CameraPivot" unique_id=1225835657 instance=ExtResource("2_rkbax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.092310905)
+debug_screen = false

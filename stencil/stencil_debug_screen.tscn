@@ -22,7 +22,7 @@ orientation = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kp3ea"]
 resource_local_to_scene = true
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_dn3fr")
 shader_parameter/filter_r = false
 shader_parameter/filter_b = false
@@ -38,7 +38,7 @@ viewport_path = NodePath("StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jsmj3"]
 resource_local_to_scene = true
-render_priority = 0
+render_priority = -1
 shader = ExtResource("1_dn3fr")
 shader_parameter/filter_r = true
 shader_parameter/filter_b = false

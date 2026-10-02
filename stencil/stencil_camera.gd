@@ -7,12 +7,13 @@ extends Node3D
 
 @export var stencil_camera : Camera3D 
 @export var screen_camera : Camera3D
+@onready var stencil_debug_screen = $ScrrenSubViewport/ScreenViewport/Camera3D/StencilDebugScreen
 
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_TRANSFORM_CHANGED:
-		print("moved")
-		set_camera_transform()
+@export var debug_screen : bool = false:
+	set(value) :
+		debug_screen = value
+		update_debugscreen()
 
 
 func set_camera_transform() -> void:
@@ -23,7 +24,11 @@ func set_camera_transform() -> void:
 
 
 func _ready() -> void:
-	pass
+	update_debugscreen()
+
+func update_debugscreen() -> void:
+	if stencil_debug_screen:
+		stencil_debug_screen.visible = debug_screen
 
 
 func _process(_delta: float) -> void:

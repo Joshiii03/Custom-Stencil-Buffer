@@ -20,10 +20,10 @@ void fragment() {
 	vec2 polar_uv = vec2(angle_remap + distance_from_centered_uv * twist_strength, distance_from_centered_uv);
 	float noise_value = texture(portal_noise_texture, vec2(polar_uv.x + TIME * speed, polar_uv.y + TIME * speed)).r;
 	float mask_circle = smoothstep(0.5, 0.65, 1.0 - distance_from_centered_uv);
-	float rim_falling = smoothstep(0.5, 0.2, distance_from_centered_uv);
+	float rim_falling = smoothstep(0.4, 0.2, distance_from_centered_uv);
 	
 	float fragment_depth = 1./((PROJECTION_MATRIX[2].z * VERTEX.z + PROJECTION_MATRIX[3].z) -VERTEX.z);
-	if (min(match_color.r * max(mask_circle * noise_value, rim_falling) , .1) < .1)
+	if (min(match_color.g * max(mask_circle * noise_value, rim_falling) , .1) < .1)
 	{
 		discard;
 	}
