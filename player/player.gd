@@ -10,7 +10,21 @@ const GRAVITY = 9.8
 @onready var stencil_camera: StencilCamera = $CameraPivot/StencilCamera
 @onready var camera_pivot: Node3D = $CameraPivot
 
+@export var stencil_layer : int = 0 :
+	set(value):
+		value = clamp(value, 0, 25)
+		stencil_layer = value
+		if stencil_camera:
+			stencil_camera.backround_stencil_layer = stencil_layer
+		for stencil_reader in get_tree().get_nodes_in_group("Stencil_Reader"):
+			print(stencil_reader)
+			stencil_reader.current_stencil_layer = stencil_layer
+
+
 var vertical_look_angle = 0.0
+
+func _ready():
+	stencil_layer = stencil_layer
 
 
 func _physics_process(delta):
@@ -54,3 +68,13 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		elif event.is_action_pressed("close"):
 			get_tree().quit()
+	if event.is_action_pressed("ui_accept"):
+		change_stencil_layer()
+
+
+func change_stencil_layer() -> int:
+	if stencil_layer == 0:
+		stencil_layer = 1
+	else:
+		stencil_layer = 0
+	return stencil_layer

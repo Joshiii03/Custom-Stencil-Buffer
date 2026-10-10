@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c1v67hmjyub8i" path="res://stencil/stencil_writer.gd" id="4_wkcix"]
 [ext_resource type="Shader" uid="uid://c2m0ryu75xvp7" path="res://shader/stencil_shader/stencil_writer.gdshader" id="4_yl0qk"]
 [ext_resource type="Shader" uid="uid://b3cknt0ulboo0" path="res://shader/swirl_shader/swirl_portal2.gdshader" id="6_4bqwx"]
+[ext_resource type="PackedScene" uid="uid://bdkw601nx6xc2" path="res://portal/portal.tscn" id="7_cnkb6"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ahg1b"]
 
@@ -15,15 +16,6 @@ shader = ExtResource("4_yl0qk")
 shader_parameter/match_color1 = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pwxi0"]
-size = Vector2(3, 3)
-orientation = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k56px"]
-render_priority = 1
-transparency = 1
-albedo_color = Color(0.6815419, 1, 0.5475193, 0.3647059)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_wp5od"]
 size = Vector2(3, 3)
 orientation = 2
 
@@ -41,6 +33,7 @@ shader = ExtResource("2_f88j1")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_yl0qk")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
 shader_parameter/match_color = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.1764706, 0.49019608, 0, 1)
 
@@ -54,6 +47,7 @@ shader = ExtResource("2_f88j1")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_yl0qk")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
 shader_parameter/match_color = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.3449721, 0.18252558, 0, 1)
 
@@ -84,6 +78,7 @@ shader_parameter/stencil_texture = SubResource("ViewportTexture_cnkb6")
 shader_parameter/alpha_from_G = false
 shader_parameter/my_texture = SubResource("NoiseTexture2D_apmh8")
 shader_parameter/use_texture = true
+shader_parameter/current_stencil_infront = true
 shader_parameter/match_color = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.2439923, 0.32341403, 0, 1)
 
@@ -98,6 +93,7 @@ shader = ExtResource("2_f88j1")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_yl0qk")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
 shader_parameter/match_color = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(1, 0.67058825, 0, 1)
 
@@ -111,6 +107,7 @@ shader = ExtResource("2_f88j1")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_yl0qk")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
 shader_parameter/match_color = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0.35724884, 0, 1)
 
@@ -127,6 +124,7 @@ shader = ExtResource("2_f88j1")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_4bqwx")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
 shader_parameter/match_color = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.5019608, 0.29411766, 1, 1)
 
@@ -142,6 +140,7 @@ shader = ExtResource("2_f88j1")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_yl0qk")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
 shader_parameter/match_color = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7647059, 0.5019608, 0, 1)
 
@@ -156,6 +155,7 @@ shader = ExtResource("2_f88j1")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_yl0qk")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
 shader_parameter/match_color = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(1, 0.4657846, 0.3638697, 1)
 
@@ -170,6 +170,7 @@ shader = ExtResource("2_f88j1")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_yl0qk")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
 shader_parameter/match_color = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0.36578715, 0.4241338, 1)
 
@@ -183,6 +184,7 @@ shader = ExtResource("2_f88j1")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_4bqwx")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
 shader_parameter/match_color = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.41062337, 0.94258463, 0.8060055, 1)
 
@@ -231,11 +233,6 @@ script = ExtResource("4_wkcix")
 stencil_layer = 1
 metadata/_custom_type_script = "uid://c1v67hmjyub8i"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StencilWriter2" unique_id=1352864438]
-visible = false
-material_override = SubResource("StandardMaterial3D_k56px")
-mesh = SubResource("PlaneMesh_wp5od")
-
 [node name="StencilWriter" type="MeshInstance3D" parent="." unique_id=1120654058]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.6, -2.5)
 layers = 2
@@ -244,11 +241,6 @@ mesh = SubResource("PlaneMesh_c4dyq")
 script = ExtResource("4_wkcix")
 stencil_layer = 1
 metadata/_custom_type_script = "uid://c1v67hmjyub8i"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StencilWriter" unique_id=83746634]
-visible = false
-material_override = SubResource("StandardMaterial3D_k56px")
-mesh = SubResource("PlaneMesh_wp5od")
 
 [node name="Player" parent="." unique_id=605510932 instance=ExtResource("1_a8yly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7655532, 0, 0)
@@ -270,6 +262,7 @@ transform = Transform3D(1, 0, 0, 0, 0.90271914, -0.43023032, 0, 0.43023032, 0.90
 material_override = SubResource("ShaderMaterial_cnkb6")
 mesh = SubResource("PlaneMesh_h2xqh")
 script = ExtResource("3_wkcix")
+current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
@@ -279,6 +272,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9063078, -0.4226183, 0, 0.4226183, 0.90630
 material_override = SubResource("ShaderMaterial_xu0eh")
 mesh = SubResource("CylinderMesh_18ncc")
 script = ExtResource("3_wkcix")
+current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
@@ -288,6 +282,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7508125, 3.271211, -6.49220
 material_override = SubResource("ShaderMaterial_owaoo")
 mesh = SubResource("SphereMesh_edspq")
 script = ExtResource("3_wkcix")
+current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
@@ -297,6 +292,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9063113, -0.42262015, 0, 0.42262015, 0.906
 material_override = SubResource("ShaderMaterial_878kf")
 mesh = SubResource("BoxMesh_axvq2")
 script = ExtResource("3_wkcix")
+current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
@@ -305,6 +301,7 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 material_override = SubResource("ShaderMaterial_18ncc")
 mesh = SubResource("PlaneMesh_owaoo")
 script = ExtResource("3_wkcix")
+current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
@@ -313,6 +310,7 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 material_override = SubResource("ShaderMaterial_823po")
 mesh = SubResource("SphereMesh_k56px")
 script = ExtResource("3_wkcix")
+current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer = 1
@@ -321,10 +319,11 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 [node name="Layer1" type="Node3D" parent="." unique_id=1102688025]
 
 [node name="StencilReader2" type="MeshInstance3D" parent="Layer1" unique_id=1283633949 node_paths=PackedStringArray("player", "stencil_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053246737, 1, -3.3484385)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053246737, 1, -0.7013533)
 material_override = SubResource("ShaderMaterial_yl0qk")
 mesh = SubResource("BoxMesh_ahg1b")
 script = ExtResource("3_wkcix")
+current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer = 1
@@ -340,6 +339,7 @@ transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49
 material_override = SubResource("ShaderMaterial_h2xqh")
 mesh = SubResource("TorusMesh_xu0eh")
 script = ExtResource("3_wkcix")
+current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer = 1
@@ -349,6 +349,7 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 material_override = SubResource("ShaderMaterial_edspq")
 mesh = SubResource("PlaneMesh_k56px")
 script = ExtResource("3_wkcix")
+current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer = 1
@@ -358,12 +359,17 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 material_override = SubResource("ShaderMaterial_gjnwl")
 mesh = SubResource("SphereMesh_wp5od")
 script = ExtResource("3_wkcix")
+current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Swirl2" type="MeshInstance3D" parent="." unique_id=1478211787]
-transform = Transform3D(0.98768795, 0, 0.15643734, 0, 1, 0, -0.15643734, 0, 0.98768795, 2.3357944, 1.2255559, -2.3433175)
+transform = Transform3D(0.83008236, 0, 0.557641, 0, 1, 0, -0.557641, 0, 0.83008236, 5.6042953, 1.2255559, -2.7667737)
 layers = 2
 material_override = SubResource("ShaderMaterial_axvq2")
 mesh = SubResource("PlaneMesh_gjnwl")
+
+[node name="Portal" parent="." unique_id=644974500 node_paths=PackedStringArray("player") instance=ExtResource("7_cnkb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6318998, 1.4142134, -0.7474203)
+player = NodePath("../Player")

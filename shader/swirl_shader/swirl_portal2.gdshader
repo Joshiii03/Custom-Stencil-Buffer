@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded, depth_draw_always;
 
 uniform vec3 match_color : source_color ;
 
@@ -28,6 +28,8 @@ void fragment() {
 		discard;
 	}
 	ALBEDO = vec3(match_color.r,max(mask_circle * noise_value, rim_falling) ,fragment_depth);
+	ALPHA = 1.;
+	
 }
 
 //void light() {

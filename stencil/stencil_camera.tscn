@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://7npp3npm1iaq" path="res://test_stuff/debug_screen_2d.tscn" id="2_fk365"]
 [ext_resource type="PackedScene" uid="uid://dqr0cwoadwtn" path="res://stencil/stencil_debug_screen.tscn" id="2_pwxi0"]
 [ext_resource type="Shader" uid="uid://b2m7xgbyi52f1" path="res://test_stuff/debug_screen_2d.gdshader" id="4_lghiy"]
+[ext_resource type="Shader" uid="uid://whmbn0jacgnb" path="res://stencil/backround_stencil.gdshader" id="5_og5cu"]
+[ext_resource type="Script" uid="uid://cg5ql60p7dtnm" path="res://stencil/backround_stencil.gd" id="6_nxc3u"]
 
 [sub_resource type="Environment" id="Environment_k0xu2"]
 background_mode = 1
@@ -12,44 +14,53 @@ ambient_light_color = Color(0.972549, 1, 0, 1)
 volumetric_fog_density = 0.2193
 volumetric_fog_emission = Color(0.92794496, 0.68204314, 0.731245, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_og5cu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nxc3u"]
 viewport_path = NodePath("StencilViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxc3u"]
-resource_local_to_scene = true
-shader = ExtResource("4_lghiy")
-shader_parameter/filter_r = false
-shader_parameter/filter_b = false
-shader_parameter/filter_g = false
-shader_parameter/texture_screen = SubResource("ViewportTexture_og5cu")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gnwtb"]
 resource_local_to_scene = true
 shader = ExtResource("4_lghiy")
 shader_parameter/filter_r = false
-shader_parameter/filter_b = true
-shader_parameter/filter_g = true
-shader_parameter/texture_screen = SubResource("ViewportTexture_og5cu")
+shader_parameter/filter_b = false
+shader_parameter/filter_g = false
+shader_parameter/texture_screen = SubResource("ViewportTexture_nxc3u")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mlomn"]
 resource_local_to_scene = true
 shader = ExtResource("4_lghiy")
-shader_parameter/filter_r = true
+shader_parameter/filter_r = false
 shader_parameter/filter_b = true
-shader_parameter/filter_g = false
-shader_parameter/texture_screen = SubResource("ViewportTexture_og5cu")
+shader_parameter/filter_g = true
+shader_parameter/texture_screen = SubResource("ViewportTexture_nxc3u")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_phq4y"]
 resource_local_to_scene = true
 shader = ExtResource("4_lghiy")
 shader_parameter/filter_r = true
+shader_parameter/filter_b = true
+shader_parameter/filter_g = false
+shader_parameter/texture_screen = SubResource("ViewportTexture_nxc3u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71ns5"]
+resource_local_to_scene = true
+shader = ExtResource("4_lghiy")
+shader_parameter/filter_r = true
 shader_parameter/filter_b = false
 shader_parameter/filter_g = true
-shader_parameter/texture_screen = SubResource("ViewportTexture_og5cu")
+shader_parameter/texture_screen = SubResource("ViewportTexture_nxc3u")
 
 [sub_resource type="Environment" id="Environment_hg732"]
 background_mode = 1
 background_color = Color(0, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lghiy"]
+render_priority = -2
+shader = ExtResource("5_og5cu")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k56px"]
+flip_faces = true
+orientation = 2
 
 [node name="StencilCamera" type="Node3D" unique_id=1225835657 node_paths=PackedStringArray("stencil_viewport", "screen_viewport", "stencil_camera", "screen_camera")]
 script = ExtResource("1_apmh8")
@@ -78,11 +89,11 @@ stencil_camera = NodePath("../../../..")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrrenSubViewport/ScreenViewport" unique_id=174703118]
 custom_minimum_size = Vector2(128, 256)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 160.0
+offset_bottom = 295.0
 
 [node name="DebugScreen2D4" parent="ScrrenSubViewport/ScreenViewport/VBoxContainer" unique_id=2034007952 node_paths=PackedStringArray("viewport") instance=ExtResource("2_fk365")]
-material = SubResource("ShaderMaterial_nxc3u")
+material = SubResource("ShaderMaterial_gnwtb")
 layout_mode = 2
 size_flags_vertical = 3
 viewport = NodePath("../../../../StencilViewport")
@@ -91,7 +102,7 @@ filter_g = false
 filter_b = false
 
 [node name="DebugScreen2D3" parent="ScrrenSubViewport/ScreenViewport/VBoxContainer" unique_id=148876606 node_paths=PackedStringArray("viewport") instance=ExtResource("2_fk365")]
-material = SubResource("ShaderMaterial_gnwtb")
+material = SubResource("ShaderMaterial_mlomn")
 layout_mode = 2
 size_flags_vertical = 3
 viewport = NodePath("../../../../StencilViewport")
@@ -100,7 +111,7 @@ filter_g = true
 filter_b = true
 
 [node name="DebugScreen2D2" parent="ScrrenSubViewport/ScreenViewport/VBoxContainer" unique_id=1252589453 node_paths=PackedStringArray("viewport") instance=ExtResource("2_fk365")]
-material = SubResource("ShaderMaterial_mlomn")
+material = SubResource("ShaderMaterial_phq4y")
 layout_mode = 2
 size_flags_vertical = 3
 viewport = NodePath("../../../../StencilViewport")
@@ -109,7 +120,7 @@ filter_g = false
 filter_b = true
 
 [node name="DebugScreen2D" parent="ScrrenSubViewport/ScreenViewport/VBoxContainer" unique_id=384009483 node_paths=PackedStringArray("viewport") instance=ExtResource("2_fk365")]
-material = SubResource("ShaderMaterial_phq4y")
+material = SubResource("ShaderMaterial_71ns5")
 layout_mode = 2
 size_flags_vertical = 3
 viewport = NodePath("../../../../StencilViewport")
@@ -126,3 +137,10 @@ render_target_update_mode = 4
 cull_mask = 1047554
 environment = SubResource("Environment_hg732")
 current = true
+
+[node name="BackroundStencil" type="MeshInstance3D" parent="." unique_id=1543779115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52139956)
+layers = 2
+material_override = SubResource("ShaderMaterial_lghiy")
+mesh = SubResource("PlaneMesh_k56px")
+script = ExtResource("6_nxc3u")

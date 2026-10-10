@@ -1,9 +1,9 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded, depth_draw_never;
 
 const vec3 green = vec3(0.2,1,0);
 const vec3 end_color = vec3(1,0,1);
-const bool test = false;
+const bool test = true;
 
 uniform sampler2D depth_texture : hint_depth_texture;
 
@@ -20,30 +20,18 @@ void fragment() {
 	
 	float test_depth = 0.0;
 	if (test){test_depth = depth;}else{test_depth = fragment_depth;}
-	ALBEDO = vec3(test_depth);
-	//test_depth = 21. ;
+	//ALBEDO = vec3(test_depth);
 	if (abs(test_depth - .5) > 1.)
 	{
 		ALBEDO = end_color;
 	}
-	if (abs(fragment_depth - depth) < 0.0000001)
+	ALBEDO= vec3(abs(fragment_depth - depth) * 100.);
+	if (abs(fragment_depth - depth) < 0.0000000000001)
 	{
 		ALBEDO = green;
 	}
-	
-	
-	/*
-	if ( test){ALBEDO = vec3(-(depth- fragment_depth));}
-	else{
-		ALBEDO = vec3(fragment_depth);}
-	if (fragment_depth > 1.)
-	{
-		ALBEDO = end_color;
-	}
-	if (fragment_depth == depth)
-	{
-		ALBEDO = green;
-	}*/
+	ALPHA = 1.0;
+	//ALBEDO = vec3(depth);
 }
 
 void light() {

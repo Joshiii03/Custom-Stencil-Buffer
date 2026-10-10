@@ -9,6 +9,9 @@ uniform bool alpha_from_G = false;
 uniform sampler2D my_texture;
 uniform bool use_texture = false;
 
+// inverts the depth test
+uniform bool current_stencil_infront = false;
+
 uniform vec3 match_color : source_color ;
 uniform vec3 show_color : source_color;
 const float tolerance = .001 ;
@@ -29,7 +32,7 @@ void fragment() {
 	//float fragment_depth = 1./((PROJECTION_MATRIX[2].z * VERTEX.z + PROJECTION_MATRIX[3].z) -VERTEX.z);
 	vec4 clip_pos = PROJECTION_MATRIX * vec4(VERTEX, 1.0);
 	float fragment_depth = clip_pos.z / clip_pos.w;
-	if(fragment_depth  > stencil_map.b ){
+	if(fragment_depth  > stencil_map.b && !current_stencil_infront){
 		discard;
 		}
 	

@@ -9,6 +9,8 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ahg1b"]
 
 [node name="Player" type="CharacterBody3D" unique_id=605510932]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_oul6g")
 
 [node name="StencilDebugScreen" parent="." unique_id=1237292318 node_paths=PackedStringArray("stencil_camera") instance=ExtResource("2_g1dw6")]
@@ -29,4 +31,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3116101, 0)
 
 [node name="StencilCamera" parent="CameraPivot" unique_id=1225835657 instance=ExtResource("2_rkbax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.092310905)
-debug_screen = false

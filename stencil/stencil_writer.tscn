@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://c1v67hmjyub8i" path="res://stencil/stencil_writer.gd" id="2_a8aec"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k56px"]
-render_priority = 0
+resource_local_to_scene = true
+render_priority = 1
 shader = ExtResource("1_3lnty")
 shader_parameter/match_color1 = Color(0, 0, 0, 1)
 

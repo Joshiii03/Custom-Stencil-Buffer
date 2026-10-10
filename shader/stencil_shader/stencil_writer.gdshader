@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded, depth_draw_always;
 
 uniform vec3 match_color1 : source_color ;
 
@@ -12,7 +12,8 @@ void fragment() {
 	vec3 show_color = match_color1;
 	show_color.b = fragment_depth;
 	ALBEDO = show_color;
+	ALPHA = 1.;
 }
 
-void light() {
-}
+//void light() {
+//}

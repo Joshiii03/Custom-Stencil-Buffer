@@ -2,6 +2,11 @@
 class_name StencilReader
 extends MeshInstance3D
 
+@export var current_stencil_layer : int = -1:
+	set(value) : 
+		current_stencil_layer = value
+		material_override.set_shader_parameter("current_stencil_infront", current_stencil_layer == stencil_layer)
+		print(current_stencil_layer == stencil_layer)
 
 @export var player : Player:
 	set(value):
@@ -32,10 +37,11 @@ func _init():
 		material_override = ShaderMaterial.new()
 		material_override.resource_local_to_scene = true
 		material_override.shader = load("res://shader/stencil_shader/stencil_reader.gdshader")
-
+	add_to_group("Stencil_Reader")
 
 func ready():
 	set_screen()
+	add_to_group("Stencil_Reader")
 
 
 func set_screen() -> void:
