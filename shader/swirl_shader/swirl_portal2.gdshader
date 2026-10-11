@@ -22,7 +22,10 @@ void fragment() {
 	float mask_circle = smoothstep(0.5, 0.65, 1.0 - distance_from_centered_uv);
 	float rim_falling = smoothstep(0.4, 0.2, distance_from_centered_uv);
 	
-	float fragment_depth = 1./((PROJECTION_MATRIX[2].z * VERTEX.z + PROJECTION_MATRIX[3].z) -VERTEX.z);
+	//float fragment_depth = 1./((PROJECTION_MATRIX[2].z * VERTEX.z + PROJECTION_MATRIX[3].z) -VERTEX.z);
+	vec4 clip_pos = PROJECTION_MATRIX * vec4(VERTEX, 1.0);
+	float fragment_depth = clip_pos.z / clip_pos.w;
+	
 	if (min(match_color.g * max(mask_circle * noise_value, rim_falling) , .1) < .1)
 	{
 		discard;

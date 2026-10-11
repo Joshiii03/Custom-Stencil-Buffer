@@ -17,7 +17,6 @@ const GRAVITY = 9.8
 		if stencil_camera:
 			stencil_camera.backround_stencil_layer = stencil_layer
 		for stencil_reader in get_tree().get_nodes_in_group("Stencil_Reader"):
-			print(stencil_reader)
 			stencil_reader.current_stencil_layer = stencil_layer
 
 

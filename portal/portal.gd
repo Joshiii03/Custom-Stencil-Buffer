@@ -2,7 +2,7 @@
 class_name Portal
 extends Node3D
 
-@onready var portal_frame = $StencilReader
+@export var portal_frame : StencilReader
 @onready var stencil_writer_1 : StencilWriter = $StencilWriter
 @onready var stencil_writer_2 : StencilWriter = $StencilWriter2
 

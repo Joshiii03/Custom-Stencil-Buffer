@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://drcnq82wi1vr8"]
 
 [ext_resource type="Script" uid="uid://bhq0yd0dpjth2" path="res://player/player.gd" id="1_oul6g"]
-[ext_resource type="PackedScene" uid="uid://dqr0cwoadwtn" path="res://stencil/stencil_debug_screen.tscn" id="2_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://drkb23xqyf8p6" path="res://stencil/stencil_camera.tscn" id="2_rkbax"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ahg1b"]
@@ -12,11 +11,6 @@
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("1_oul6g")
-
-[node name="StencilDebugScreen" parent="." unique_id=1237292318 node_paths=PackedStringArray("stencil_camera") instance=ExtResource("2_g1dw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.486893)
-visible = false
-stencil_camera = NodePath("../CameraPivot/StencilCamera")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1692421949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

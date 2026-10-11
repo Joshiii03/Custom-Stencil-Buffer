@@ -79,6 +79,7 @@ size = Vector2i(1024, 512)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="ScrrenSubViewport/ScreenViewport" unique_id=1493909745]
+transform = Transform3D(0.97091705, 0.096033394, -0.21931192, 0, 0.9160278, 0.40111482, 0.23941624, -0.3894492, 0.889387, -0.6448033, 1.1793255, 2.6149042)
 cull_mask = 1047553
 environment = SubResource("Environment_k0xu2")
 
@@ -134,6 +135,7 @@ size = Vector2i(1024, 512)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="StencilViewport" unique_id=1839586270]
+transform = Transform3D(0.97851664, -0.17570126, 0.10786246, 0, 0.5231775, 0.85222375, -0.206168, -0.8339151, 0.5119379, 1.9671965, 15.542864, 9.336728)
 cull_mask = 1047554
 environment = SubResource("Environment_hg732")
 current = true

@@ -13,12 +13,14 @@ shader_parameter/stencil_texture = SubResource("ViewportTexture_uio6t")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
 shader_parameter/current_stencil_infront = false
-shader_parameter/match_color = Color(0, 0, 0, 1)
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a8aec"]
 
-[node name="StencilReader" type="MeshInstance3D" unique_id=1370487389 groups=["Stencil_Reader"]]
+[node name="StencilReader" type="MeshInstance3D" unique_id=1370487389]
 material_override = SubResource("ShaderMaterial_vlrf8")
 mesh = SubResource("BoxMesh_a8aec")
 script = ExtResource("1_vlrf8")

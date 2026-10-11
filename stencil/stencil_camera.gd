@@ -24,10 +24,16 @@ extends Node3D
 
 
 func set_camera_transform() -> void:
-	if is_instance_valid(stencil_camera):
-		stencil_camera.transform = global_transform
-	if is_instance_valid(screen_camera):
-		screen_camera.transform = global_transform
+	if Engine.is_editor_hint():
+		if is_instance_valid(stencil_camera):
+			stencil_camera.transform = EditorInterface.get_editor_viewport_3d(0).get_camera_3d().global_transform
+		#if is_instance_valid(screen_camera):
+			#screen_camera.transform = EditorInterface.get_editor_viewport_3d(0).get_camera_3d().global_transform
+	else:
+		if is_instance_valid(stencil_camera):
+			stencil_camera.transform = global_transform
+		if is_instance_valid(screen_camera):
+			screen_camera.transform = global_transform
 
 
 func _ready() -> void:
