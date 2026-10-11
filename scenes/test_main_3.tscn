@@ -200,18 +200,21 @@ shader_parameter/show_color = Color(1, 0.4657846, 0.3638697, 1)
 resource_local_to_scene = true
 inner_radius = 0.2
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_18ncc"]
+viewport_path = NodePath("Player/CameraPivot/StencilCamera/StencilViewport")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_edspq"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_f88j1")
-shader_parameter/stencil_texture = SubResource("ViewportTexture_yl0qk")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_18ncc")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
 shader_parameter/current_stencil_infront = false
 shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
-shader_parameter/show_color = Color(0, 0.36578715, 0.4241338, 1)
+shader_parameter/show_color = Color(0, 0.3618853, 0.43956885, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k56px"]
 size = Vector2(20, 20)
@@ -250,7 +253,7 @@ shader = ExtResource("2_f88j1")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_h2xqh")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
-shader_parameter/current_stencil_infront = false
+shader_parameter/current_stencil_infront = true
 shader_parameter/use_second_stencil_layer = true
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
@@ -258,6 +261,8 @@ shader_parameter/show_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_ahg1b"]
 inner_radius = 0.6
+rings = 4
+ring_segments = 4
 
 [node name="test_main3" type="Node3D" unique_id=1793067457]
 
@@ -367,7 +372,7 @@ script = ExtResource("3_wkcix")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 2
+stencil_layer = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="YellowCube" type="MeshInstance3D" parent="Layer1" unique_id=1283633949 node_paths=PackedStringArray("player", "stencil_camera")]

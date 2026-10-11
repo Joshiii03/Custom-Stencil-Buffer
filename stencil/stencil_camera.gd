@@ -38,7 +38,7 @@ func set_camera_transform() -> void:
 
 func _ready() -> void:
 	update_debugscreen()
-	backround_stencil.visible = true
+	backround_stencil.visible = !Engine.is_editor_hint()
 
 func update_debugscreen() -> void:
 	if stencil_debug_screen:
