@@ -376,7 +376,7 @@ stencil_layer = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="YellowCube" type="MeshInstance3D" parent="Layer1" unique_id=1283633949 node_paths=PackedStringArray("player", "stencil_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053246737, 1, -0.7013533)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053246737, 1, -6.887188)
 material_override = SubResource("ShaderMaterial_yl0qk")
 mesh = SubResource("BoxMesh_ahg1b")
 script = ExtResource("3_wkcix")
@@ -421,6 +421,8 @@ mesh = SubResource("PlaneMesh_gjnwl")
 [node name="Portal" parent="." unique_id=644974500 node_paths=PackedStringArray("portal_frame", "player") instance=ExtResource("7_cnkb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6318998, 1.4142134, -0.7474203)
 portal_frame = NodePath("StencilReader")
+stencil_layer_1 = 1
+stencil_layer_2 = 0
 player = NodePath("../Player")
 
 [node name="StencilReader" type="MeshInstance3D" parent="Portal" unique_id=1004005014 node_paths=PackedStringArray("player", "stencil_camera")]

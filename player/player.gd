@@ -18,6 +18,8 @@ const GRAVITY = 9.8
 			stencil_camera.backround_stencil_layer = stencil_layer
 		for stencil_reader in get_tree().get_nodes_in_group("Stencil_Reader"):
 			stencil_reader.current_stencil_layer = stencil_layer
+		for portal in get_tree().get_nodes_in_group("Portal"):
+			portal.update_portal_layer()
 
 
 var vertical_look_angle = 0.0
@@ -34,10 +36,11 @@ func _physics_process(delta):
 		).normalized()
 		
 		var direction = (camera_pivot.global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		var speed_factor = max(1 - Input.get_action_strength("shift"), 0.2)
 		
 		if direction != Vector3.ZERO:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
+			velocity.x = direction.x * SPEED * speed_factor
+			velocity.z = direction.z * SPEED * speed_factor
 		else:
 			velocity.x = lerp(velocity.x, 0.0, 0.1)
 			velocity.z = lerp(velocity.z, 0.0, 0.1)

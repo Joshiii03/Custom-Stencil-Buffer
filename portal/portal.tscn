@@ -22,11 +22,11 @@ orientation = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_wp5od"]
 size = Vector3(1, 1, 0.1)
 
-[node name="Portal" type="Node3D" unique_id=644974500]
+[node name="Portal" type="Node3D" unique_id=644974500 groups=["Portal"]]
 script = ExtResource("1_sfjos")
 
 [node name="StencilWriter" type="MeshInstance3D" parent="." unique_id=1394330875]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 layers = 2
 material_override = SubResource("ShaderMaterial_vrfwa")
 mesh = SubResource("PlaneMesh_x3c8y")
@@ -34,7 +34,7 @@ script = ExtResource("3_mjjvg")
 metadata/_custom_type_script = "uid://c1v67hmjyub8i"
 
 [node name="StencilWriter2" type="MeshInstance3D" parent="." unique_id=833851500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
 layers = 2
 material_override = SubResource("ShaderMaterial_vrfwa")
 mesh = SubResource("PlaneMesh_k56px")
@@ -48,3 +48,4 @@ collision_mask = 5
 shape = SubResource("BoxShape3D_wp5od")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

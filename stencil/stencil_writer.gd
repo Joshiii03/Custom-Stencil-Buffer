@@ -14,5 +14,5 @@ func _init():
 	if true and not material_override:
 		material_override = ShaderMaterial.new()
 		material_override.resource_local_to_scene = true
-		material_override.render_priority = 1
+		material_override.render_priority = -1
 		material_override.shader = load("res://shader/stencil_shader/stencil_writer.gdshader")

@@ -135,7 +135,7 @@ size = Vector2i(1024, 512)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="StencilViewport" unique_id=1839586270]
-transform = Transform3D(0.97851664, -0.17570126, 0.10786246, 0, 0.5231775, 0.85222375, -0.206168, -0.8339151, 0.5119379, 1.9671965, 15.542864, 9.336728)
+transform = Transform3D(0.97851664, -0.17570126, 0.10786246, 0, 0.5231775, 0.85222375, -0.206168, -0.8339151, 0.5119379, 7.8609595, 62.109623, 37.30977)
 cull_mask = 1047554
 environment = SubResource("Environment_hg732")
 current = true

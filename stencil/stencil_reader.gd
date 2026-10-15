@@ -6,8 +6,6 @@ extends MeshInstance3D
 	set(value) : 
 		current_stencil_layer = value
 		material_override.set_shader_parameter("current_stencil_infront", current_stencil_layer == stencil_layer)
-		print(material_override.get_shader_parameter("current_stencil_infront"))
-		print(current_stencil_layer == stencil_layer)
 
 @export var player : Player:
 	set(value):
