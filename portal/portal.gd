@@ -3,7 +3,7 @@ class_name Portal
 extends Node3D
 
 @export var portal_frame : StencilReader
-@onready var stencil_writer_1 : StencilWriter = $StencilWriter
+@onready var stencil_writer_1 : StencilWriter = $StencilWriter1
 @onready var stencil_writer_2 : StencilWriter = $StencilWriter2
 
 @export var stencil_layer_1 : int = -1
@@ -39,7 +39,7 @@ var player_inside : bool = false :
 
 var last_player_side : bool = true :
 	set(new_value):
-		if last_player_side == null:
+		if last_player_side == null :
 			last_player_side = new_value
 		elif last_player_side != new_value:
 			player_changed_side()
@@ -57,11 +57,13 @@ func _process(_delta: float) -> void:
 func _on_area_3d_body_entered(body):
 	if body is Player:
 		player_inside = true
+		update_portal_layer()
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body is Player:
 		player_inside = false
+		update_portal_layer()
 
 
 var last_update : int = 0 
@@ -75,7 +77,7 @@ func update_portal_layer() -> void:
 		if player_inside:
 			match active_layer:
 				stencil_layer_1:
-					if player_side:
+					if !player_side:
 						print("Case 1")
 						stencil_writer_1.stencil_layer = stencil_layer_1
 						stencil_writer_2.stencil_layer = stencil_layer_2
@@ -84,7 +86,7 @@ func update_portal_layer() -> void:
 						stencil_writer_1.stencil_layer = stencil_layer_2
 						stencil_writer_2.stencil_layer = stencil_layer_1
 				stencil_layer_2:
-					if player_side:
+					if !player_side:
 						print("Case 3")
 						stencil_writer_1.stencil_layer = stencil_layer_2
 						stencil_writer_2.stencil_layer = stencil_layer_1
