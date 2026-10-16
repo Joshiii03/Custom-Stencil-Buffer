@@ -5,7 +5,7 @@ extends MeshInstance3D
 @export var current_stencil_layer : int = -1:
 	set(value) : 
 		current_stencil_layer = value
-		material_override.set_shader_parameter("current_stencil_infront", current_stencil_layer == stencil_layer)
+		material_override.set_shader_parameter("current_stencil_infront", current_stencil_layer == stencil_layer or current_stencil_layer == stencil_layer_2)
 
 @export var player : Player:
 	set(value):
@@ -18,6 +18,7 @@ extends MeshInstance3D
 		stencil_camera = value
 		set_screen()
 
+#TODO: rename to stencil_layer_1
 @export var stencil_layer : int = 0 :
 	set(value):
 		value = clamp(value, 0, 25)

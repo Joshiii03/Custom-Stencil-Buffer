@@ -2,12 +2,25 @@
 class_name Portal
 extends Node3D
 
-@export var portal_frame : StencilReader
+@export var portal_frame : StencilReader:
+	set(new_value):
+		portal_frame = new_value
+		portal_frame.use_stencil_layer_2 = true
+
 @onready var stencil_writer_1 : StencilWriter = $StencilWriter1
 @onready var stencil_writer_2 : StencilWriter = $StencilWriter2
 
-@export var stencil_layer_1 : int = -1
-@export var stencil_layer_2 : int = -1
+@export var stencil_layer_1 : int = -1 :
+	set(new_value):
+		stencil_layer_1 = new_value
+		if portal_frame:
+			portal_frame.stencil_layer = stencil_layer_1
+
+@export var stencil_layer_2 : int = -1:
+	set(new_value):
+		stencil_layer_2 = new_value
+		if portal_frame:
+			portal_frame.stencil_layer_2 = stencil_layer_2
 
 @export var player : Player:
 	set(value):
@@ -69,29 +82,30 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 var last_update : int = 0 
 
 func update_portal_layer() -> void:
+	if not player:
+		push_warning("No Player at Portal: ", self)
+		return
+	if player.stencil_layer != stencil_layer_1 and player.stencil_layer != stencil_layer_2:
+		visible = false
+		return 
+	visible = true
 	var active_layer : int =  player.stencil_layer
-	print("###########################")
-	print("active: ", active_layer)
 	if stencil_writer_1 and stencil_writer_2 and last_update < Time.get_ticks_msec() + 10:
 		last_update = Time.get_ticks_msec()
 		if player_inside:
 			match active_layer:
 				stencil_layer_1:
 					if !player_side:
-						print("Case 1")
 						stencil_writer_1.stencil_layer = stencil_layer_1
 						stencil_writer_2.stencil_layer = stencil_layer_2
 					else:
-						print("Case 2")
 						stencil_writer_1.stencil_layer = stencil_layer_2
 						stencil_writer_2.stencil_layer = stencil_layer_1
 				stencil_layer_2:
 					if !player_side:
-						print("Case 3")
 						stencil_writer_1.stencil_layer = stencil_layer_2
 						stencil_writer_2.stencil_layer = stencil_layer_1
 					else:
-						print("Case 4")
 						stencil_writer_1.stencil_layer = stencil_layer_1
 						stencil_writer_2.stencil_layer = stencil_layer_2
 		else:

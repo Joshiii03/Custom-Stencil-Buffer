@@ -1,0 +1,529 @@
+[gd_scene format=3 uid="uid://c26wpn4puqq0f"]
+
+[ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="1_a1hx2"]
+[ext_resource type="PackedScene" uid="uid://drcnq82wi1vr8" path="res://player/player.tscn" id="1_ogsab"]
+[ext_resource type="Script" uid="uid://ba2csny7mcpbx" path="res://stencil/stencil_reader.gd" id="2_ogsab"]
+[ext_resource type="PackedScene" uid="uid://bdkw601nx6xc2" path="res://portal/portal.tscn" id="4_vgx7l"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vgx7l"]
+viewport_path = NodePath("Player/CameraPivot/StencilCamera/StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7hesn"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_vgx7l")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.7529412, 0, 0.13725491, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ahg1b"]
+size = Vector2(20, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6vx0"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_vgx7l")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.5081921, 1.8674731e-05, 0.38519135, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ahg1b"]
+top_radius = 5.0
+bottom_radius = 5.0
+height = 20.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kjygs"]
+viewport_path = NodePath("Player/CameraPivot/StencilCamera/StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4otw"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_kjygs")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.12127263, 0.0001573635, 0.21196896, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ahg1b"]
+flip_faces = true
+radius = 25.0
+height = 50.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ogsab"]
+viewport_path = NodePath("Player/CameraPivot/StencilCamera/StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vgx7l"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ogsab")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.5019608, 0.29411766, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h8sr3"]
+flip_faces = true
+radius = 25.0
+height = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kjygs"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ogsab")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.7647059, 0.5019608, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7hesn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6vx0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqg6k"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ogsab")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(1, 0.4657846, 0.3638697, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_jl76v"]
+resource_local_to_scene = true
+inner_radius = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5o3rq"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ogsab")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0.3618853, 0.43956885, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6cby8"]
+size = Vector2(20, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kibfe"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_kjygs")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.41062337, 0.94258463, 0.8060055, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_f4otw"]
+flip_faces = true
+radius = 25.0
+height = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yk4ej"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ogsab")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.1764706, 0.49019608, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pwxus"]
+size = Vector2(5, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwgo2"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ogsab")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.3449721, 0.18252558, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bvcgq"]
+top_radius = 0.2
+bottom_radius = 0.4
+
+[sub_resource type="Gradient" id="Gradient_fk365"]
+offsets = PackedFloat32Array(0.44235924, 0.6461126)
+colors = PackedColorArray(0.08771419, 0.16337338, 2.4065375e-08, 1, 0.19967338, 0.30966923, 9.62615e-08, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pwxi0"]
+noise_type = 2
+frequency = 0.0444
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_apmh8"]
+noise = SubResource("FastNoiseLite_pwxi0")
+color_ramp = SubResource("Gradient_fk365")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5sem3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ogsab")
+shader_parameter/alpha_from_G = false
+shader_parameter/my_texture = SubResource("NoiseTexture2D_apmh8")
+shader_parameter/use_texture = true
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.2439923, 0.32341403, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_mst4p"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awh0u"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ogsab")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(1, 0.67058825, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_25mgg"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_172dq"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ogsab")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0.35724884, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lc4lb"]
+size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ogsab"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8sr3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_vgx7l")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = true
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_kjygs"]
+inner_radius = 0.8
+outer_radius = 1.2
+rings = 4
+ring_segments = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jl76v"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_vgx7l")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = true
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ahg1b"]
+inner_radius = 0.8
+outer_radius = 1.2
+rings = 4
+ring_segments = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cby8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a1hx2")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_kjygs")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = true
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_4owis"]
+inner_radius = 0.8
+outer_radius = 1.2
+rings = 4
+ring_segments = 4
+
+[node name="test_main_4" type="Node3D" unique_id=738966731]
+
+[node name="Player" parent="." unique_id=605510932 instance=ExtResource("1_ogsab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9812088, 0, 3.068708)
+
+[node name="Layer2" type="Node3D" parent="." unique_id=1917884939]
+
+[node name="Floor" type="MeshInstance3D" parent="Layer2" unique_id=299480569 node_paths=PackedStringArray("player", "stencil_camera")]
+material_override = SubResource("ShaderMaterial_7hesn")
+mesh = SubResource("PlaneMesh_ahg1b")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer = 2
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="GiantMonolyth" type="MeshInstance3D" parent="Layer2" unique_id=830967126 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.643321, 10.263548, -12.393953)
+material_override = SubResource("ShaderMaterial_f6vx0")
+mesh = SubResource("CylinderMesh_ahg1b")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer = 2
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="Sky" type="MeshInstance3D" parent="Layer2" unique_id=1623228785 node_paths=PackedStringArray("player", "stencil_camera")]
+material_override = SubResource("ShaderMaterial_f4otw")
+mesh = SubResource("SphereMesh_ahg1b")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer = 2
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="Layer1" type="Node3D" parent="." unique_id=552412647]
+
+[node name="PurpleSky" type="MeshInstance3D" parent="Layer1" unique_id=132059228 node_paths=PackedStringArray("player", "stencil_camera")]
+material_override = SubResource("ShaderMaterial_vgx7l")
+mesh = SubResource("SphereMesh_h8sr3")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer = 1
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="YellowCube" type="MeshInstance3D" parent="Layer1" unique_id=1728531646 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3273478, 1, -5.796022)
+material_override = SubResource("ShaderMaterial_kjygs")
+mesh = SubResource("BoxMesh_7hesn")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer = 1
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Layer1/YellowCube" unique_id=718804460]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layer1/YellowCube/StaticBody3D" unique_id=821986858]
+shape = SubResource("BoxShape3D_f6vx0")
+
+[node name="StencilReader" type="MeshInstance3D" parent="Layer1" unique_id=783358919 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, -2.9637837, 0, -4)
+material_override = SubResource("ShaderMaterial_rqg6k")
+mesh = SubResource("TorusMesh_jl76v")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer = 1
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="OliveFloor" type="MeshInstance3D" parent="Layer1" unique_id=1730115706 node_paths=PackedStringArray("player", "stencil_camera")]
+material_override = SubResource("ShaderMaterial_5o3rq")
+mesh = SubResource("PlaneMesh_6cby8")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer = 1
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="Layer0" type="Node3D" parent="." unique_id=1607130785]
+
+[node name="OliveSky" type="MeshInstance3D" parent="Layer0" unique_id=1025420834 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3841858e-07)
+material_override = SubResource("ShaderMaterial_kibfe")
+mesh = SubResource("SphereMesh_f4otw")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Layer0" unique_id=1010381666]
+transform = Transform3D(1, 0, 0, 0, 0.041239917, 0.9991493, 0, -0.9991493, 0.041239917, -0.26754475, 6.9852915, 0.24230027)
+layers = 3
+light_color = Color(0.9999997, 0.926267, 0.46921927, 1)
+light_energy = 2.737
+light_indirect_energy = 4.591
+
+[node name="Grass" type="MeshInstance3D" parent="Layer0" unique_id=956539650 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 0.90271914, -0.43023032, 0, 0.43023032, 0.90271914, 1.5049262, 1.3770267, -6.9645934)
+material_override = SubResource("ShaderMaterial_yk4ej")
+mesh = SubResource("PlaneMesh_pwxus")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="TreeTrunk" type="MeshInstance3D" parent="Layer0" unique_id=1873573315 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 0.9063078, -0.4226183, 0, 0.4226183, 0.9063078, 2.6301346, 1.9688541, -7.098717)
+material_override = SubResource("ShaderMaterial_lwgo2")
+mesh = SubResource("CylinderMesh_bvcgq")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="TreeCrown" type="MeshInstance3D" parent="Layer0" unique_id=1247263788 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7508125, 3.271211, -6.492203)
+material_override = SubResource("ShaderMaterial_5sem3")
+mesh = SubResource("SphereMesh_mst4p")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="YellowMonolith" type="MeshInstance3D" parent="Layer0" unique_id=1991698838 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 0.9063113, -0.42262015, 0, 0.42262015, 0.9063113, 0.4188347, 0.7157631, -6.077617)
+material_override = SubResource("ShaderMaterial_awh0u")
+mesh = SubResource("BoxMesh_25mgg")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="GreenFloow" type="MeshInstance3D" parent="Layer0" unique_id=1622766948 node_paths=PackedStringArray("player", "stencil_camera")]
+material_override = SubResource("ShaderMaterial_172dq")
+mesh = SubResource("PlaneMesh_lc4lb")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=380345395]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1769297697]
+shape = SubResource("WorldBoundaryShape3D_ogsab")
+
+[node name="Portal" parent="." unique_id=644974500 node_paths=PackedStringArray("portal_frame", "player") instance=ExtResource("4_vgx7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6318998, 1.4142134, 0.44851542)
+portal_frame = NodePath("StencilReader")
+stencil_layer_1 = 1
+stencil_layer_2 = 0
+player = NodePath("../Player")
+metadata/_edit_group_ = true
+
+[node name="StencilReader" type="MeshInstance3D" parent="Portal" unique_id=1190034297 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(0.7071068, -1.7923876e-08, -0.7071067, -0.7071067, -4.3272063e-08, -0.7071068, -1.2802769e-08, 1.4, -3.0908616e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_h8sr3")
+mesh = SubResource("TorusMesh_kjygs")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer = 1
+use_stencil_layer_2 = true
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="Portal2" parent="." unique_id=694321710 node_paths=PackedStringArray("portal_frame", "player") instance=ExtResource("4_vgx7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.4589033, 0)
+portal_frame = NodePath("StencilReader")
+stencil_layer_1 = 0
+stencil_layer_2 = 2
+player = NodePath("../Player")
+metadata/_edit_group_ = true
+
+[node name="StencilReader" type="MeshInstance3D" parent="Portal2" unique_id=947739061 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(0.70710677, -1.7923876e-08, -0.70710677, -0.70710677, -4.3272067e-08, -0.70710677, -1.2802769e-08, 1.4, -3.090862e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_jl76v")
+mesh = SubResource("TorusMesh_ahg1b")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer_2 = 2
+use_stencil_layer_2 = true
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="Portal3" parent="." unique_id=2105707855 node_paths=PackedStringArray("portal_frame", "player") instance=ExtResource("4_vgx7l")]
+transform = Transform3D(-0.9960621, 0, 0.088658914, 0, 1, 0, -0.088658914, 0, -0.9960621, 0.3058802, 1.450391, 0.02069807)
+visible = false
+portal_frame = NodePath("StencilReader")
+stencil_layer_1 = 1
+stencil_layer_2 = 2
+player = NodePath("../Player")
+metadata/_edit_group_ = true
+
+[node name="StencilReader" type="MeshInstance3D" parent="Portal3" unique_id=455782379 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(0.70710677, -1.2802769e-08, -0.70710677, -0.70710677, -3.090862e-08, -0.70710677, -1.2802769e-08, 1, -3.090862e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_6cby8")
+mesh = SubResource("TorusMesh_4owis")
+script = ExtResource("2_ogsab")
+current_stencil_layer = 0
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer = 1
+stencil_layer_2 = 2
+use_stencil_layer_2 = true
+metadata/_custom_type_script = "uid://ba2csny7mcpbx"
