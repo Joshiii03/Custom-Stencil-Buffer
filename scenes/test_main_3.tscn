@@ -377,7 +377,7 @@ stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="YellowCube" type="MeshInstance3D" parent="Layer1" unique_id=1283633949 node_paths=PackedStringArray("player", "stencil_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053246737, 1, -3.2820547)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053246737, 1, -3.2345474)
 material_override = SubResource("ShaderMaterial_yl0qk")
 mesh = SubResource("BoxMesh_ahg1b")
 script = ExtResource("3_wkcix")

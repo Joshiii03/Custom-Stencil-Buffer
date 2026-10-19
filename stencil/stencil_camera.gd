@@ -8,7 +8,7 @@ extends Node3D
 @export var stencil_camera : Camera3D 
 @export var screen_camera : Camera3D
 @onready var backround_stencil = $BackroundStencil
-@onready var debug_screen = $ScrrenSubViewport/ScreenViewport/DebugScreen
+@onready var debug_screen : Control = $ScrrenSubViewport/ScreenViewport/DebugScreen
 
 @export var backround_stencil_layer : int = 0:
 	set(value):
@@ -44,4 +44,5 @@ func set_camera_transform() -> void:
 
 func update_debugscreen() -> void:
 	if debug_screen:
+		print(debug_screen)
 		debug_screen.visible = use_debug_screen

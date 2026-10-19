@@ -28,7 +28,7 @@ void fragment() {
 	//depth test , when infornt 
 	vec4 clip_pos = PROJECTION_MATRIX * vec4(VERTEX, 1.0);
 	float fragment_depth = clip_pos.z / clip_pos.w;
-	float stencil_depth = stencil_map.b - mod(stencil_map.b, 0.01) + (stencil_map.g / 100.);
+	float stencil_depth = stencil_map.b  + (stencil_map.g / 100.);
 	bool depth_test = fragment_depth  < stencil_depth;
 	
 	if (use_second_stencil_layer)
