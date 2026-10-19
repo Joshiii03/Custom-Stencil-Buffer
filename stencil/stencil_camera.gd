@@ -44,5 +44,4 @@ func set_camera_transform() -> void:
 
 func update_debugscreen() -> void:
 	if debug_screen:
-		print(debug_screen)
 		debug_screen.visible = use_debug_screen
