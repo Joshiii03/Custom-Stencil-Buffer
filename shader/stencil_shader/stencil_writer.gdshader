@@ -11,6 +11,7 @@ void fragment() {
 	float fragment_depth = clip_pos.z / clip_pos.w;
 	vec3 show_color = match_color1;
 	show_color.b = fragment_depth;
+	show_color.g = mod(fragment_depth, .01) * 100.;
 	ALBEDO = show_color;
 	ALPHA = 1.;
 }
