@@ -77,6 +77,8 @@ func _input(event: InputEvent) -> void:
 func change_stencil_layer() -> int:
 	if stencil_layer == 0:
 		stencil_layer = 1
-	else:
+	elif stencil_layer == 1:
+		stencil_layer = 2
+	elif stencil_layer == 2:
 		stencil_layer = 0
 	return stencil_layer

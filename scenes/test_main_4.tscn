@@ -249,11 +249,14 @@ size = Vector2(20, 20)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ogsab"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_h8sr3"]
+viewport_path = NodePath("Player/CameraPivot/StencilCamera/StencilViewport")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h8sr3"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_a1hx2")
-shader_parameter/stencil_texture = SubResource("ViewportTexture_vgx7l")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_h8sr3")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
 shader_parameter/current_stencil_infront = true
@@ -263,7 +266,7 @@ shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_kjygs"]
-inner_radius = 0.8
+inner_radius = 0.7
 outer_radius = 1.2
 rings = 4
 ring_segments = 4
@@ -282,7 +285,7 @@ shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_ahg1b"]
-inner_radius = 0.8
+inner_radius = 0.7
 outer_radius = 1.2
 rings = 4
 ring_segments = 4
@@ -291,7 +294,7 @@ ring_segments = 4
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_a1hx2")
-shader_parameter/stencil_texture = SubResource("ViewportTexture_kjygs")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_h8sr3")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
 shader_parameter/current_stencil_infront = false
@@ -301,7 +304,7 @@ shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_4owis"]
-inner_radius = 0.8
+inner_radius = 0.7
 outer_radius = 1.2
 rings = 4
 ring_segments = 4
@@ -467,7 +470,7 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 shape = SubResource("WorldBoundaryShape3D_ogsab")
 
 [node name="Portal" parent="." unique_id=644974500 node_paths=PackedStringArray("portal_frame", "player") instance=ExtResource("4_vgx7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6318998, 1.4142134, 0.44851542)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.9569082, 1.4142134, 0.44851542)
 portal_frame = NodePath("StencilReader")
 stencil_layer_1 = 1
 stencil_layer_2 = 0
@@ -487,7 +490,7 @@ use_stencil_layer_2 = true
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Portal2" parent="." unique_id=694321710 node_paths=PackedStringArray("portal_frame", "player") instance=ExtResource("4_vgx7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.4589033, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.9656444, 1.4589033, 0)
 portal_frame = NodePath("StencilReader")
 stencil_layer_1 = 0
 stencil_layer_2 = 2
@@ -507,7 +510,7 @@ use_stencil_layer_2 = true
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Portal3" parent="." unique_id=2105707855 node_paths=PackedStringArray("portal_frame", "player") instance=ExtResource("4_vgx7l")]
-transform = Transform3D(-0.9960621, 0, 0.088658914, 0, 1, 0, -0.088658914, 0, -0.9960621, 0.3058802, 1.450391, 0.02069807)
+transform = Transform3D(-1.9921241, 0, 0.17731798, 0, 2, 0, -0.17731798, 0, -1.9921241, 0.3058802, 1.450391, 0.02069807)
 visible = false
 portal_frame = NodePath("StencilReader")
 stencil_layer_1 = 1

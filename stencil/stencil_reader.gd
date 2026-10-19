@@ -5,7 +5,8 @@ extends MeshInstance3D
 @export var current_stencil_layer : int = -1:
 	set(value) : 
 		current_stencil_layer = value
-		material_override.set_shader_parameter("current_stencil_infront", current_stencil_layer == stencil_layer or current_stencil_layer == stencil_layer_2)
+		var currently =  current_stencil_layer == stencil_layer or (current_stencil_layer == stencil_layer_2 and use_stencil_layer_2)
+		material_override.set_shader_parameter("current_stencil_infront", currently)
 
 @export var player : Player:
 	set(value):
@@ -51,17 +52,15 @@ func _init():
 		material_override.shader = load("res://shader/stencil_shader/stencil_reader.gdshader")
 	add_to_group("Stencil_Reader")
 
+
 func ready():
-	set_screen()
 	add_to_group("Stencil_Reader")
+	set_screen()
 	stencil_layer = stencil_layer
 	stencil_layer_2 = stencil_layer_2
 
 
 func set_screen() -> void:
-	if true and is_instance_valid(stencil_camera) and stencil_camera.is_inside_tree():
+	if is_instance_valid(stencil_camera) and stencil_camera.is_inside_tree():
 		var stencil_viewport_texture = stencil_camera.stencil_viewport.get_texture()
 		material_override.set_shader_parameter("stencil_texture", stencil_viewport_texture)
-	else:
-		pass
-		#push_warning("StencilCamera not found")
