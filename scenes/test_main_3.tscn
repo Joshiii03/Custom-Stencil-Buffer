@@ -370,21 +370,20 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 material_override = SubResource("ShaderMaterial_823po")
 mesh = SubResource("SphereMesh_k56px")
 script = ExtResource("3_wkcix")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 1
+stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="YellowCube" type="MeshInstance3D" parent="Layer1" unique_id=1283633949 node_paths=PackedStringArray("player", "stencil_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053246737, 1, -6.887188)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053246737, 1, -3.2820547)
 material_override = SubResource("ShaderMaterial_yl0qk")
 mesh = SubResource("BoxMesh_ahg1b")
 script = ExtResource("3_wkcix")
-current_stencil_layer = 0
+current_stencil_layer = 1
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 1
+stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Layer1/YellowCube" unique_id=1911991177]
@@ -397,20 +396,20 @@ transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49
 material_override = SubResource("ShaderMaterial_h2xqh")
 mesh = SubResource("TorusMesh_xu0eh")
 script = ExtResource("3_wkcix")
-current_stencil_layer = 0
+current_stencil_layer = 1
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 1
+stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="OliveFloor" type="MeshInstance3D" parent="Layer1" unique_id=648502116 node_paths=PackedStringArray("player", "stencil_camera")]
 material_override = SubResource("ShaderMaterial_edspq")
 mesh = SubResource("PlaneMesh_k56px")
 script = ExtResource("3_wkcix")
-current_stencil_layer = 0
+current_stencil_layer = 1
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 1
+stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Swirl2" type="MeshInstance3D" parent="." unique_id=1478211787]
@@ -434,6 +433,6 @@ script = ExtResource("3_wkcix")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer_2 = 1
+stencil_layer_1 = 1
 use_stencil_layer_2 = true
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
