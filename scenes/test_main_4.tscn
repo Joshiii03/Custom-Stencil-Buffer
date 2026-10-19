@@ -15,7 +15,7 @@ shader = ExtResource("1_a1hx2")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_vgx7l")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
-shader_parameter/current_stencil_infront = true
+shader_parameter/current_stencil_infront = false
 shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
@@ -297,7 +297,7 @@ shader = ExtResource("1_a1hx2")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_h8sr3")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
-shader_parameter/current_stencil_infront = false
+shader_parameter/current_stencil_infront = true
 shader_parameter/use_second_stencil_layer = true
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
@@ -323,7 +323,7 @@ script = ExtResource("2_ogsab")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 2
+stencil_layer_1 = 2
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="GiantMonolyth" type="MeshInstance3D" parent="Layer2" unique_id=830967126 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -334,7 +334,7 @@ script = ExtResource("2_ogsab")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 2
+stencil_layer_1 = 2
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Sky" type="MeshInstance3D" parent="Layer2" unique_id=1623228785 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -344,7 +344,7 @@ script = ExtResource("2_ogsab")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 2
+stencil_layer_1 = 2
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Layer1" type="Node3D" parent="." unique_id=552412647]
@@ -356,7 +356,7 @@ script = ExtResource("2_ogsab")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 1
+stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="YellowCube" type="MeshInstance3D" parent="Layer1" unique_id=1728531646 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -367,7 +367,7 @@ script = ExtResource("2_ogsab")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 1
+stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Layer1/YellowCube" unique_id=718804460]
@@ -383,7 +383,7 @@ script = ExtResource("2_ogsab")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 1
+stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="OliveFloor" type="MeshInstance3D" parent="Layer1" unique_id=1730115706 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -393,7 +393,7 @@ script = ExtResource("2_ogsab")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 1
+stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Layer0" type="Node3D" parent="." unique_id=1607130785]
@@ -485,7 +485,7 @@ script = ExtResource("2_ogsab")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 1
+stencil_layer_1 = 1
 use_stencil_layer_2 = true
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
@@ -526,7 +526,7 @@ script = ExtResource("2_ogsab")
 current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
-stencil_layer = 1
+stencil_layer_1 = 1
 stencil_layer_2 = 2
 use_stencil_layer_2 = true
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"

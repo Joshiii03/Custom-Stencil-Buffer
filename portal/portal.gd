@@ -14,7 +14,7 @@ extends Node3D
 	set(new_value):
 		stencil_layer_1 = new_value
 		if portal_frame:
-			portal_frame.stencil_layer = stencil_layer_1
+			portal_frame.stencil_layer_1 = stencil_layer_1
 
 @export var stencil_layer_2 : int = -1:
 	set(new_value):
