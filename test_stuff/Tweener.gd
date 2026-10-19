@@ -8,7 +8,3 @@ func _process(_delta):
 		rotation.x += min(0.01 * (abs(sin(Time.get_ticks_usec())) + .001), 0.02)
 		rotation.y += min(0.01 * (abs(cos(Time.get_ticks_usec())) + .001), 0.02)
 		rotation.z += min(0.01 * (abs(tan(Time.get_ticks_usec())) + .001), 0.02)
-
-#func _ready():
-	#tween.tween_property(self, "rotation", 1, 5)
-	#pass

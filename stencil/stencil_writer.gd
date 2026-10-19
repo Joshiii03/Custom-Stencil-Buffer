@@ -4,6 +4,7 @@ extends MeshInstance3D
 
 @export var debug : bool = false
 
+## Stencil that is written on the Stencil Viewport.
 @export var stencil_layer : int = 0 :
 	set(value):
 		value = clamp(value, 0, 25)
