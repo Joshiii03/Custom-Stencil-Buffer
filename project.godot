@@ -70,7 +70,8 @@ shift={
 
 3d_render/layer_1="Screen Layer"
 3d_render/layer_2="Stencil Layer"
-3d_physics/layer_3="Player"
+3d_physics/layer_3="Lyer 3"
+3d_physics/layer_26="Player"
 
 [physics]
 

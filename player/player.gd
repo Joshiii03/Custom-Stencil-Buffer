@@ -76,6 +76,17 @@ func update_stencil() -> void:
 		stencil_reader.current_stencil_layer = stencil_layer
 	for portal in get_tree().get_nodes_in_group("Portal"):
 		portal.update_portal_layer()
+	update_colision()
+
+
+## changes the colision-layer and -mask of every direct child
+func update_colision() -> void:
+	collision_layer = get_stencil_mask()
+	collision_mask = get_stencil_mask()
+
+
+func get_stencil_mask() -> int:
+	return int(pow(2, stencil_layer))
 
 
 ## Cycles the Stencil Layer

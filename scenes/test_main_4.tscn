@@ -391,6 +391,8 @@ ring_segments = 4
 
 [node name="Player" parent="." unique_id=605510932 instance=ExtResource("1_ogsab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9812088, 0, 3.068708)
+collision_layer = 1
+collision_mask = 1
 
 [node name="Layer2" type="Node3D" parent="." unique_id=1917884939]
 
@@ -471,9 +473,12 @@ stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_1 = 1
 current_stencil_layer = 0
 color = Color(0.7647059, 0.5019608, 0, 1)
+match_colision = true
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Layer1/YellowCube" unique_id=718804460]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layer1/YellowCube/StaticBody3D" unique_id=821986858]
 shape = SubResource("BoxShape3D_f6vx0")
@@ -612,6 +617,7 @@ visible = false
 mesh = SubResource("ArrayMesh_vgx7l")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=380345395]
+collision_layer = 67108863
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1769297697]
 shape = SubResource("WorldBoundaryShape3D_ogsab")

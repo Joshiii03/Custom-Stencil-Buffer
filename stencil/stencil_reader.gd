@@ -52,6 +52,12 @@ extends GeometryInstance3D
 		color = new_value
 		material_override.set_shader_parameter("show_color", color)
 
+## matches childrens colision mask to stencil
+@export var match_colision : bool :
+	set(new_value):
+		match_colision = new_value
+		update_colision()
+
 
 func _init():
 	if not material_override:
@@ -73,12 +79,24 @@ func update_stencil() -> void:
 	material_override.set_shader_parameter("match_color_1", Vector3(red_1,0,0))
 	var red_2 : float  = stencil_layer_2/25.5
 	material_override.set_shader_parameter("match_color_2", Vector3(red_2,0,0))
-	
+	layers = get_stencil_mask()
+	update_colision()
+
+
+## changes the colision-layer and -mask of every direct child
+func update_colision() -> void:
+	if match_colision:
+		for child in get_children():
+			if child is CollisionObject3D:
+				child.collision_layer = get_stencil_mask()
+				child.collision_mask = get_stencil_mask()
+
+
+func get_stencil_mask() -> int:
 	if use_stencil_layer_2:
-		
-		layers = int(pow(2, stencil_layer_1)) |  int(pow(2, stencil_layer_2))
+		return int(pow(2, stencil_layer_1)) |  int(pow(2, stencil_layer_2))
 	else:
-		layers = int(pow(2, stencil_layer_1))
+		return int(pow(2, stencil_layer_1))
 
 
 ## Gets the Stencil_Texture reference from the Stencil Viewport.
