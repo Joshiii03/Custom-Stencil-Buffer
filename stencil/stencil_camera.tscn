@@ -72,11 +72,11 @@ use_debug_screen = true
 
 [node name="StencilViewport" type="SubViewport" parent="." unique_id=200876042]
 handle_input_locally = false
-size = Vector2i(1428, 750)
+size = Vector2i(1183, 750)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="StencilViewport" unique_id=1839586270]
-transform = Transform3D(-0.10195881, 0.3435703, -0.93357587, 0, 0.93846655, 0.34537014, 0.99478865, 0.03521353, -0.09568493, -933.5782, 345.371, -96.20657)
+transform = Transform3D(-0.9070585, 0.30004674, -0.29532495, 0, 0.7014768, 0.71269226, 0.42100462, 0.64645356, -0.6362805, -295.3257, 712.69403, -636.80347)
 cull_mask = 67108864
 environment = SubResource("Environment_hg732")
 current = true
@@ -87,7 +87,7 @@ offset_bottom = 512.0
 
 [node name="ScreenViewport" type="SubViewport" parent="ScrrenSubViewport" unique_id=2147221177]
 handle_input_locally = false
-size = Vector2i(1428, 750)
+size = Vector2i(1183, 750)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="ScrrenSubViewport/ScreenViewport" unique_id=1493909745]
@@ -133,7 +133,7 @@ filter_g = true
 [node name="BackroundStencil" type="MeshInstance3D" parent="." unique_id=1543779115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52139956)
 visible = false
-layers = 2
+layers = 67108864
 material_override = SubResource("ShaderMaterial_lghiy")
 mesh = SubResource("PlaneMesh_k56px")
 script = ExtResource("6_nxc3u")

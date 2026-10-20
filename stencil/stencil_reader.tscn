@@ -17,6 +17,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_a8aec"]
 

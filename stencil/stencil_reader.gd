@@ -47,6 +47,11 @@ extends GeometryInstance3D
 		stencil_texture = mew_value
 		material_override.set_shader_parameter("stencil_texture", mew_value)
 
+@export var color : Color :
+	set(new_value):
+		color = new_value
+		material_override.set_shader_parameter("show_color", color)
+
 
 func _init():
 	if not material_override:
@@ -56,7 +61,7 @@ func _init():
 	add_to_group("Stencil_Reader")
 
 
-func ready():
+func _ready():
 	add_to_group("Stencil_Reader")
 	set_screen()
 	update_stencil()
@@ -72,7 +77,6 @@ func update_stencil() -> void:
 	if use_stencil_layer_2:
 		
 		layers = int(pow(2, stencil_layer_1)) |  int(pow(2, stencil_layer_2))
-		print(layers)
 	else:
 		layers = int(pow(2, stencil_layer_1))
 
