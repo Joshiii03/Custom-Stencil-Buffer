@@ -11,21 +11,16 @@ const GRAVITY = 9.8
 @onready var camera_pivot: Node3D = $CameraPivot
 
 @export var stencil_layer : int = 0 :
-	set(value):
-		value = clamp(value, 0, 25)
-		stencil_layer = value
-		if stencil_camera:
-			stencil_camera.backround_stencil_layer = stencil_layer
-		for stencil_reader in get_tree().get_nodes_in_group("Stencil_Reader"):
-			stencil_reader.current_stencil_layer = stencil_layer
-		for portal in get_tree().get_nodes_in_group("Portal"):
-			portal.update_portal_layer()
-
+	set(new_value):
+		new_value = clamp(new_value, 0, 25)
+		stencil_layer = new_value
+		update_stencil()
 
 var vertical_look_angle = 0.0
 
+
 func _ready():
-	stencil_layer = stencil_layer
+	update_stencil()
 
 
 func _physics_process(delta):
@@ -74,11 +69,16 @@ func _input(event: InputEvent) -> void:
 		change_stencil_layer()
 
 
+func update_stencil() -> void:
+	if stencil_camera:
+		stencil_camera.backround_stencil_layer = stencil_layer
+	for stencil_reader in get_tree().get_nodes_in_group("Stencil_Reader"):
+		stencil_reader.current_stencil_layer = stencil_layer
+	for portal in get_tree().get_nodes_in_group("Portal"):
+		portal.update_portal_layer()
+
+
+## Cycles the Stencil Layer
 func change_stencil_layer() -> int:
-	if stencil_layer == 0:
-		stencil_layer = 1
-	elif stencil_layer == 1:
-		stencil_layer = 2
-	elif stencil_layer == 2:
-		stencil_layer = 0
+	stencil_layer = (stencil_layer + 1) % 3
 	return stencil_layer

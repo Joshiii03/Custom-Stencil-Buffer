@@ -317,6 +317,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9812088, 0, 3.068708)
 [node name="Layer2" type="Node3D" parent="." unique_id=1917884939]
 
 [node name="Floor" type="MeshInstance3D" parent="Layer2" unique_id=299480569 node_paths=PackedStringArray("player", "stencil_camera")]
+layers = 4
 material_override = SubResource("ShaderMaterial_7hesn")
 mesh = SubResource("PlaneMesh_ahg1b")
 script = ExtResource("2_ogsab")
@@ -328,6 +329,7 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="GiantMonolyth" type="MeshInstance3D" parent="Layer2" unique_id=830967126 node_paths=PackedStringArray("player", "stencil_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.643321, 10.263548, -12.393953)
+layers = 4
 material_override = SubResource("ShaderMaterial_f6vx0")
 mesh = SubResource("CylinderMesh_ahg1b")
 script = ExtResource("2_ogsab")
@@ -338,6 +340,7 @@ stencil_layer_1 = 2
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Sky" type="MeshInstance3D" parent="Layer2" unique_id=1623228785 node_paths=PackedStringArray("player", "stencil_camera")]
+layers = 4
 material_override = SubResource("ShaderMaterial_f4otw")
 mesh = SubResource("SphereMesh_ahg1b")
 script = ExtResource("2_ogsab")
@@ -350,6 +353,7 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 [node name="Layer1" type="Node3D" parent="." unique_id=552412647]
 
 [node name="PurpleSky" type="MeshInstance3D" parent="Layer1" unique_id=132059228 node_paths=PackedStringArray("player", "stencil_camera")]
+layers = 2
 material_override = SubResource("ShaderMaterial_vgx7l")
 mesh = SubResource("SphereMesh_h8sr3")
 script = ExtResource("2_ogsab")
@@ -361,6 +365,7 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="YellowCube" type="MeshInstance3D" parent="Layer1" unique_id=1728531646 node_paths=PackedStringArray("player", "stencil_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3273478, 1, -5.796022)
+layers = 2
 material_override = SubResource("ShaderMaterial_kjygs")
 mesh = SubResource("BoxMesh_7hesn")
 script = ExtResource("2_ogsab")
@@ -377,6 +382,7 @@ shape = SubResource("BoxShape3D_f6vx0")
 
 [node name="StencilReader" type="MeshInstance3D" parent="Layer1" unique_id=783358919 node_paths=PackedStringArray("player", "stencil_camera")]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, -2.9637837, 0, -4)
+layers = 2
 material_override = SubResource("ShaderMaterial_rqg6k")
 mesh = SubResource("TorusMesh_jl76v")
 script = ExtResource("2_ogsab")
@@ -387,6 +393,7 @@ stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="OliveFloor" type="MeshInstance3D" parent="Layer1" unique_id=1730115706 node_paths=PackedStringArray("player", "stencil_camera")]
+layers = 2
 material_override = SubResource("ShaderMaterial_5o3rq")
 mesh = SubResource("PlaneMesh_6cby8")
 script = ExtResource("2_ogsab")
@@ -479,6 +486,7 @@ metadata/_edit_group_ = true
 
 [node name="StencilReader" type="MeshInstance3D" parent="Portal" unique_id=1190034297 node_paths=PackedStringArray("player", "stencil_camera")]
 transform = Transform3D(0.7071068, -1.7923876e-08, -0.7071067, -0.7071067, -4.3272063e-08, -0.7071068, -1.2802769e-08, 1.4, -3.0908616e-08, 0, 0, 0)
+layers = 3
 material_override = SubResource("ShaderMaterial_h8sr3")
 mesh = SubResource("TorusMesh_kjygs")
 script = ExtResource("2_ogsab")
@@ -499,6 +507,7 @@ metadata/_edit_group_ = true
 
 [node name="StencilReader" type="MeshInstance3D" parent="Portal2" unique_id=947739061 node_paths=PackedStringArray("player", "stencil_camera")]
 transform = Transform3D(0.70710677, -1.7923876e-08, -0.70710677, -0.70710677, -4.3272067e-08, -0.70710677, -1.2802769e-08, 1.4, -3.090862e-08, 0, 0, 0)
+layers = 5
 material_override = SubResource("ShaderMaterial_jl76v")
 mesh = SubResource("TorusMesh_ahg1b")
 script = ExtResource("2_ogsab")
@@ -520,6 +529,7 @@ metadata/_edit_group_ = true
 
 [node name="StencilReader" type="MeshInstance3D" parent="Portal3" unique_id=455782379 node_paths=PackedStringArray("player", "stencil_camera")]
 transform = Transform3D(0.70710677, -1.2802769e-08, -0.70710677, -0.70710677, -3.090862e-08, -0.70710677, -1.2802769e-08, 1, -3.090862e-08, 0, 0, 0)
+layers = 6
 material_override = SubResource("ShaderMaterial_6cby8")
 mesh = SubResource("TorusMesh_4owis")
 script = ExtResource("2_ogsab")

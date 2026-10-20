@@ -23,25 +23,28 @@ extends Node3D
 			portal_frame.stencil_layer_2 = stencil_layer_2
 
 @export var player : Player:
-	set(value):
-		player = value
+	set(mew_value):
+		player = mew_value
 		if player and portal_frame:
 			portal_frame.player = player
+
 
 # The Normal of the Portal plane.
 var normal : Vector3 :
 	get():
 		return -transform.basis.z
 
+
 # Returns on which side the Player is.
 # Main use is to detect if the Player switched the side.
 var player_side : bool = false:
 	get():
-		if player != null:
+		if player:
 			var player_coords : Vector3 = player.global_position
 			var  z_coord : float = normal.dot(player_coords - global_position)  #dot(player_coords - global_position, normal );
 			return z_coord < 0
 		return false
+
 
 # If the Player is insdie the Area3D
 var player_inside : bool = false :
@@ -49,6 +52,7 @@ var player_inside : bool = false :
 		if new_value:
 			last_player_side = player_side
 		player_inside = new_value
+
 
 var last_player_side : bool = true :
 	set(new_value):
