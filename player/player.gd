@@ -81,8 +81,8 @@ func update_stencil() -> void:
 
 ## changes the colision-layer and -mask of every direct child
 func update_colision() -> void:
-	collision_layer = get_stencil_mask()
-	collision_mask = get_stencil_mask()
+	collision_layer = get_stencil_mask() | int(pow(2, 25))
+	collision_mask = get_stencil_mask() | int(pow(2, 25))
 
 
 func get_stencil_mask() -> int:
