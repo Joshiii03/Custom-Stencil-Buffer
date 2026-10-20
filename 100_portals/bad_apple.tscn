@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b0uw874h6ilwt"]
+
+[ext_resource type="Texture2D" uid="uid://4je6574ktk72" path="res://portal/bad-apple-spritesheet.png" id="1_s7pi0"]
+[ext_resource type="Shader" uid="uid://ikj0nqcsdx7l" path="res://100_portals/sprite_sheet_portal.gdshader" id="2_28a5w"]
+[ext_resource type="Texture2D" uid="uid://fnlre35leaim" path="res://assets/bad-apple-spritesheet.png" id="3_huv0x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huv0x"]
+render_priority = 0
+shader = ExtResource("2_28a5w")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+shader_parameter/sprite_sheet = ExtResource("3_huv0x")
+shader_parameter/h_frames = 1
+shader_parameter/v_frames = 14
+shader_parameter/animation_speed = 10.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ahg1b"]
+size = Vector2(2.2, 1.6)
+orientation = 2
+
+[node name="BadApple" type="Node3D" unique_id=503041004]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=518526098]
+visible = false
+texture = ExtResource("1_s7pi0")
+vframes = 14
+frame = 13
+
+[node name="BadApple" type="MeshInstance3D" parent="." unique_id=1926736878]
+material_override = SubResource("ShaderMaterial_huv0x")
+mesh = SubResource("PlaneMesh_ahg1b")

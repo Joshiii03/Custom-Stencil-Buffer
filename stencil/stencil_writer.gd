@@ -16,7 +16,8 @@ extends MeshInstance3D
 
 
 func _init():
-	if true and not material_override:
+	if not material_override:
+		if debug: print("reset material")
 		material_override = ShaderMaterial.new()
 		material_override.resource_local_to_scene = true
 		material_override.render_priority = -1
@@ -25,3 +26,5 @@ func _init():
 
 func _ready():
 	layers = 67108864 # int(pow(2, 26))
+	if debug:
+		print(layers)
