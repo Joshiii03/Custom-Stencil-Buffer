@@ -15,6 +15,8 @@ uniform bool use_second_stencil_layer = false;
 uniform vec3 match_color_1 : source_color ;
 uniform vec3 match_color_2 : source_color ;
 uniform vec3 show_color : source_color;
+
+uniform bool disable_lighting = false;
 const float tolerance = .001 ;
 
 
@@ -50,12 +52,19 @@ void fragment() {
 		{discard;}
 	}
 	
+	
 	//Rendering Color || Texture
+	
 	if (use_texture){
 	    ALBEDO = texture(my_texture, UV).rgb;
 		}
 	else{
 	    ALBEDO = show_color;}
 	if (alpha_from_G){ALPHA = stencil_map.g;
+	}
+	if (disable_lighting)
+	{
+		EMISSION = show_color;
+		ALBEDO = vec3(0.0);
 	}
 }

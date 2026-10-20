@@ -20,6 +20,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7529412, 0, 0.13725491, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ahg1b"]
 size = Vector2(20, 20)
@@ -36,6 +37,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.5081921, 1.8674731e-05, 0.38519135, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ahg1b"]
 top_radius = 5.0
@@ -56,7 +58,8 @@ shader_parameter/current_stencil_infront = false
 shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
-shader_parameter/show_color = Color(0.12127263, 0.0001573635, 0.21196896, 1)
+shader_parameter/show_color = Color(0.07058824, 0, 0.06666667, 1)
+shader_parameter/disable_lighting = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_ahg1b"]
 flip_faces = true
@@ -77,7 +80,8 @@ shader_parameter/current_stencil_infront = false
 shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
-shader_parameter/show_color = Color(0.5019608, 0.29411766, 1, 1)
+shader_parameter/show_color = Color(0.11240917, 0.23256838, 0.09342968, 1)
+shader_parameter/disable_lighting = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_h8sr3"]
 flip_faces = true
@@ -96,6 +100,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7647059, 0.5019608, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_7hesn"]
 
@@ -113,6 +118,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(1, 0.4657846, 0.3638697, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="TorusMesh" id="TorusMesh_jl76v"]
 resource_local_to_scene = true
@@ -130,9 +136,21 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0.3618853, 0.43956885, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6cby8"]
 size = Vector2(20, 20)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wp5od"]
+top_radius = 0.05517578
+bottom_radius = 0.05517578
+height = 0.9165039
+
+[sub_resource type="MultiMesh" id="MultiMesh_vgx7l"]
+transform_format = 1
+instance_count = 128
+mesh = SubResource("CylinderMesh_wp5od")
+buffer = PackedFloat32Array(-0.99982136, 0.13627435, 0, -0.086645365, 0.11142011, 0.81747013, 0.58098334, 1.3762982, 0.078461826, 0.57566077, -0.8250283, -6.963065, -0.9711814, 0.1586488, 0, 0.41178054, 0.13353693, 0.81745714, 0.53131396, 2.023005, 0.085658215, 0.5243636, -0.8282923, -8.320001, -0.9666216, 0.10148159, 0, -0.64184535, 0.092510365, 0.8811699, 0.3995462, 2.0376084, 0.04171742, 0.39736238, -0.88601273, -8.350641, -0.94942415, -0.09058139, -3.552941e-09, 0.83818203, -0.07379718, 0.77350134, 0.5530468, 1.2919481, -0.052525833, 0.5505469, -0.7770138, -6.7860794, -0.9897895, 0.011182272, 0, 0.042796254, 0.0103330305, 0.9146196, 0.37838122, 0.7881959, 0.004274537, 0.37835708, -0.91467804, -5.7290955, -0.95839643, -0.07095129, 1.7900377e-09, -0.5894705, -0.06498475, 0.87780136, 0.38574544, 1.5526971, -0.028479286, 0.38469267, -0.88020355, -7.3331895, -0.98132807, 0.18849894, 0, -0.6567427, 0.17322856, 0.9018302, 0.39399344, 1.7222329, 0.074321754, 0.38692003, -0.91831684, -7.6889133, -1.0270182, 0.2014695, 0, 3.2497404, 0.18410255, 0.93848777, 0.4250921, 2.3440094, 0.0818304, 0.41714156, -0.95637494, -8.993539, -0.98798406, 0.14443897, 0, 1.5656228, 0.13799578, 0.94391185, 0.2948947, 1.8970878, 0.042658847, 0.2917929, -0.9539456, -8.055798, -0.99366003, 0.038644932, 0, -0.78547883, 0.032117087, 0.82581246, 0.55304235, 1.2576818, 0.0214924, 0.5526245, -0.8264368, -6.7141814, -0.98936296, 0.13514338, 0, 0.4030342, 0.12477047, 0.9134245, 0.38365456, 1.5889962, 0.051923644, 0.38012466, -0.92190677, -7.4093533, 0.004737681, 0.11199819, -1.0175089, 1.0874021, -0.40119806, 0.93631744, 0.101193324, 0.8909483, 0.9417579, 0.39831698, 0.048228104, -5.9446926, -0.93683577, -0.17471148, 0, 1.9768667, -0.17000495, 0.91159856, 0.21970865, 1.9794948, -0.040279247, 0.21598493, -0.9273153, -8.228706, -0.9622778, -0.120951936, 0, -0.031093836, -0.09528171, 0.75804883, 0.5974038, 1.6950399, -0.074503474, 0.5927399, -0.7640135, -7.6318564, -1.0061014, 0.020387877, 0, 0.1947059, 0.017595345, 0.86829543, 0.5083393, 1.6409131, 0.010298995, 0.508235, -0.8684737, -7.518286, -1.0342177, 0.07304394, 1.9311792e-09, 1.1445804, 0.061639532, 0.8727445, 0.5562908, 2.26785, 0.039191652, 0.5549086, -0.87491846, -8.83374, -0.012407925, -0.07026881, -1.0113552, 2.6460776, -0.2707977, 0.9749105, -0.06441432, 1.298324, 0.9769573, 0.26933786, -0.030699464, -6.7994576, -0.94998825, -0.15544981, 0, 2.282898, -0.14685145, 0.89744186, 0.31571367, 2.173498, -0.05098325, 0.31157, -0.9093775, -8.635768, -0.035496164, 0.18152465, -0.97279596, 1.532454, -0.5866335, 0.78008056, 0.16696931, 0.45409483, 0.7969595, 0.58229405, 0.07957652, -5.028077, -0.04396424, -0.2027178, -1.0171623, 1.2083306, -0.2418621, 0.9920113, -0.18725137, 0.9753901, 1.0085716, 0.22905424, -0.08924283, -6.1218705, -1.0001009, -0.1412901, 0, 3.0104504, -0.13645536, 0.9658788, 0.2619593, 2.138354, -0.03664464, 0.2593836, -0.9754701, -8.562028, -0.018575476, -0.10118323, -0.9841793, 3.0229461, -0.2583122, 0.9507064, -0.09286647, 0.64317465, 0.95505077, 0.25516924, -0.04425958, -5.4248085, -1.0202621, -0.19560309, -7.7399855e-09, 1.6696267, -0.18273386, 0.95313644, 0.37058672, 1.7004119, -0.06977752, 0.3639583, -0.97049516, -7.643128, -0.04354734, -0.20392029, -0.9971941, 3.8572598, -0.24064097, 0.97187245, -0.1882334, 2.028956, 0.9889751, 0.22750032, -0.08971087, -8.332487, 0.019424718, -0.09917393, -1.0217571, 3.6906707, -0.6107883, 0.82025343, -0.0912273, 0.67721653, 0.8250822, 0.6095484, -0.043478362, -5.496236, -0.96466804, 0.16365908, 0, -0.97546685, 0.13631701, 0.80350363, 0.54145014, 1.386653, 0.0905647, 0.53382236, -0.814985, -6.9847918, -0.95534396, -0.12260904, 3.588124e-09, -0.4907738, -0.10669154, 0.83131814, 0.47459686, 1.3960967, -0.06041434, 0.4707359, -0.8381367, -7.0046067, -1.035296, -0.1028163, 0, 1.2985389, -0.099749565, 1.004416, 0.25220558, 2.410368, -0.024924181, 0.25097096, -1.0093569, -9.132774, -1.0178452, 0.1507015, 0, 1.5422682, 0.13445501, 0.90811574, 0.46472287, 1.7630031, 0.068064556, 0.4597114, -0.91801554, -7.7744584, -0.98614734, 0.08435202, 0, -0.11793625, 0.07811568, 0.9132392, 0.37348887, 0.90231407, 0.031830855, 0.37213, -0.91657406, -5.968541, 0.021136105, 0.10505988, -0.9535976, 3.4222724, -0.23495822, 0.9253479, 0.09673979, 1.9007475, 0.93015087, 0.23135766, 0.046105582, -8.063477, -0.96525365, -0.1145128, 0, 2.1938522, -0.10401102, 0.87673193, 0.40663326, 2.2148895, -0.047904972, 0.4038016, -0.88288003, -8.722616, -0.96973056, -0.017158257, -4.5163667e-10, 2.4101686, -0.015233161, 0.86093014, 0.44636187, 1.9556977, -0.007896619, 0.446292, -0.861065, -8.178774, -0.0089833, -0.19521245, -1.0080417, 2.7603908, -0.39946616, 0.92932427, -0.17640851, 0.8836476, 0.9458768, 0.3906216, -0.08407519, -5.929374, -0.9823731, 0.17674707, 0, 3.9729114, 0.16748078, 0.9308705, 0.31894645, 2.4488304, 0.056477524, 0.31390622, -0.94581693, -9.213478, 0.024638783, -0.12793852, -1.0217919, 3.1871347, -0.60960054, 0.8219417, -0.11761475, 1.9278648, 0.8299484, 0.6075177, -0.056054454, -8.120375, -0.96020013, -0.18369289, 7.283785e-09, 2.1903455, -0.16377532, 0.85608697, 0.4427416, 1.6796559, -0.08319088, 0.4348556, -0.87161183, -7.5995774, 0.0035349522, 0.08032239, -0.9950075, 2.180484, -0.3895707, 0.9162267, 0.07257874, 0.36804003, 0.91909003, 0.3880481, 0.034590576, -4.8475146, -0.010101317, 0.077191606, -0.9641663, 2.8720987, -0.52557963, 0.80901456, 0.07027644, 1.6040229, 0.81199837, 0.5246086, 0.033493314, -7.4408827, -1.0340871, 0.14021537, 0, -0.9018709, 0.136392, 1.0058898, 0.24203178, 1.2052487, 0.03252032, 0.23983711, -1.0150946, -6.604165, -0.951388, 0.0849877, 0, 1.2151811, 0.07001386, 0.78376454, 0.54145473, 2.448534, 0.04817643, 0.5393072, -0.7868854, -9.212855, 0.00011632251, -0.023263935, -0.9508951, 3.0814714, -0.4135132, 0.85633427, -0.021001061, 1.6204066, 0.8565918, 0.4133921, -0.010008975, -7.475259, -0.9978793, -0.007920216, 0, 2.2789063, -0.006954345, 0.87618786, 0.47756937, 2.1403146, -0.0037903718, 0.47755435, -0.8762154, -8.566142, 0.0044153496, 0.09549291, -0.9997919, -0.03362155, -0.38995516, 0.92152613, 0.086295374, 0.71130395, 0.92554736, 0.3878054, 0.04112783, -5.5677586, -0.96070945, 0.13396688, 0, 0.5813326, 0.12701954, 0.91088843, 0.30831507, 1.0026796, 0.042581223, 0.3053604, -0.91970193, -6.1791306, -1.0223942, 0.07999315, 1.9101776e-09, -0.14747441, 0.069587074, 0.88939404, 0.50579125, 1.7606509, 0.039453037, 0.5042502, -0.8921121, -7.769523, 0.028223597, -0.152458, -1.0155339, 2.7679057, -0.60146755, 0.8209725, -0.13996516, 0.43944806, 0.83233976, 0.598423, -0.066706516, -4.9973445, -0.98377323, 0.19884162, 0, -0.5069052, 0.1663594, 0.8230667, 0.5497577, 0.530131, 0.1089153, 0.5388608, -0.8397108, -5.1876173, -0.025653427, 0.13503814, -0.9690496, 3.5095563, -0.5769525, 0.7808202, 0.12408167, 1.699234, 0.79020154, 0.57448685, 0.05913655, -7.640657, -1.0183058, 0.12604041, 0, 0.46541917, 0.11744877, 0.94889224, 0.37234706, 1.2264622, 0.045738082, 0.36952716, -0.9561331, -6.648676, -0.00055577414, -0.017462052, -0.9520692, 2.7995534, -0.3821303, 0.8720486, -0.01577131, 0.93032384, 0.872191, 0.38205674, -0.0075165085, -6.0273113, 0.041115075, -0.19293152, -1.0143564, 0.5309444, -0.62567073, 0.8029059, -0.17807384, 0.83181363, 0.8213876, 0.6212501, -0.08486888, -5.820615, -1.0136089, -0.20143092, 0, 1.8112315, -0.16789734, 0.8448667, 0.57095397, 1.992852, -0.11128743, 0.5600031, -0.86138797, -8.256733, -0.97818196, 0.100992434, 3.663382e-09, 0.19979638, 0.08531725, 0.8263569, 0.5262078, 1.0556769, 0.054041076, 0.5234255, -0.8307496, -6.29033, -1.0176244, 0.18013903, 0, 2.6129966, 0.14977768, 0.84610987, 0.5741726, 1.9142789, 0.10008356, 0.56538254, -0.8592644, -8.091868, -0.005480125, 0.047387592, -0.98496807, 2.2205207, -0.5235957, 0.8345244, 0.04306278, 1.5399681, 0.8356167, 0.523222, 0.020523451, -7.3064814, 0.0025447141, -0.08895302, -0.9810402, 1.8977174, -0.44895723, 0.8731227, -0.080332436, 1.4208446, 0.8768067, 0.44732904, -0.038285937, -7.056533, -0.9699121, 0.1369722, -3.6490562e-09, -0.111071646, 0.1283558, 0.9088988, 0.3419338, 1.4567163, 0.04781388, 0.33857432, -0.9179173, -7.1318007, 0.0020647252, 0.11818806, -1.0319663, 3.948053, -0.43054616, 0.9392395, 0.10670691, 0.3967288, 0.94527924, 0.42753705, 0.050855845, -4.90771, 0.01852924, 0.17723703, -0.9888592, 3.5955622, -0.33712953, 0.93277234, 0.16086723, 1.4893285, 0.94636106, 0.32881853, 0.076668315, -7.2002277, -0.98220974, -0.11746102, 0, -0.015432715, -0.11415238, 0.954543, 0.233131, 1.1828815, -0.027682545, 0.2314816, -0.9613444, -6.5572333, -0.043453198, -0.21002392, -1.0268044, 1.7474637, -0.2541382, 0.99912727, -0.19360796, 1.4713179, 1.0167848, 0.24074927, -0.09227234, -7.1624374, -0.9890793, 0.18812265, 0, -0.22594416, 0.15618305, 0.8211527, 0.5612336, 2.2114675, 0.10486651, 0.55134934, -0.8358737, -8.715438, -0.0040376, 0.032766, -1.0203508, 2.430411, -0.548568, 0.86045957, 0.029802216, 0.95238394, 0.8609661, 0.548399, 0.014203549, -6.073599, -0.9669281, -0.055156134, 0, 1.2274827, -0.047923226, 0.8401299, 0.47945526, 1.7622929, -0.027305005, 0.4786771, -0.84149563, -7.7729683, 0.032826014, 0.20349889, -0.9345032, 3.9993777, -0.27212, 0.898394, 0.18607698, 1.572003, 0.9168744, 0.25934944, 0.08868313, -7.3736978, -0.005155233, -0.19783208, -0.9777126, 2.1582127, -0.4060348, 0.8934802, -0.17864741, 1.0247264, 0.9111506, 0.39704108, -0.08514224, -6.2253895, -0.9754835, 0.023662487, 9.08757e-10, 0.8678593, 0.020021917, 0.8254015, 0.52003795, 2.229656, 0.012610949, 0.519885, -0.82564425, -8.7536, -0.013041459, -0.1475923, -0.99610806, 1.307477, -0.3524426, 0.9338517, -0.13375351, 0.8030725, 0.94329154, 0.34687504, -0.06374609, -5.76031, -1.001923, 0.019362139, 4.6664383e-10, -0.2654429, 0.018106505, 0.9369483, 0.35499948, 1.7289329, 0.0068590757, 0.35493317, -0.9371232, -7.702972, -0.022695452, 0.14025763, -0.97407305, 2.9057953, -0.5585298, 0.80037457, 0.1282601, 1.8095711, 0.8102686, 0.55563843, 0.06112796, -7.872169, -0.99767363, -0.11387931, 0, 2.852633, -0.11040393, 0.96722656, 0.24618076, 2.2993684, -0.027918976, 0.2445925, -0.97350717, -8.899873, -0.98637843, 0.10486064, 0, 2.6922388, 0.09496636, 0.89330727, 0.4206208, 2.1187391, 0.044465106, 0.4182639, -0.8983409, -8.520872, -0.0113359615, -0.07263186, -1.0090158, 1.317235, -0.28959236, 0.9670829, -0.06635993, 0.48009223, 0.9692907, 0.28808329, -0.031626724, -5.0826254, 0.015302527, -0.08023659, -0.979664, 3.9000628, -0.58113253, 0.7894692, -0.073736615, 1.8993618, 0.7927576, 0.5802708, -0.03514241, -8.06057, 0.007330203, -0.12765105, -0.9762117, 1.613584, -0.47340763, 0.85551196, -0.115422875, 1.1920375, 0.86323196, 0.47025782, -0.05500982, -6.5764446, -0.9811637, 0.15354615, -3.6996064e-09, -0.19371378, 0.13277112, 0.84841084, 0.49882817, 2.1335413, 0.07712488, 0.4928299, -0.85873693, -8.55193, -1.0129024, 0.2067035, -7.702249e-09, 1.1362193, 0.17797016, 0.87210137, 0.5257979, 1.2772752, 0.10513304, 0.51518, -0.89007545, -6.755293, -0.028262446, 0.1422926, -1.0191982, 1.1230309, -0.61366415, 0.81613535, 0.13095948, 1.029374, 0.82609224, 0.6111357, 0.062414464, -6.235141, -0.98701984, 0.07143521, 0, 0.5047194, 0.06626983, 0.9156499, 0.3694656, 1.702949, 0.026670178, 0.36850172, -0.9180448, -7.648452, -1.017267, 0.15514117, 0, -0.7558544, 0.14933388, 0.9791884, 0.2789093, 0.41616, 0.042049654, 0.27572134, -0.9905102, -4.9484806, -1.0255346, -0.14406273, 0, 1.678282, -0.13220064, 0.94109243, 0.41151345, 1.5855826, -0.057245586, 0.40751228, -0.95033264, -7.4021907, -0.94742554, 0.17514466, 7.1784743e-09, 3.6433766, 0.15130492, 0.8184672, 0.48529276, 2.3866858, 0.0882183, 0.4772071, -0.8323351, -9.083084, 0.011642632, -0.2019558, -0.9941332, 1.5570027, -0.4873979, 0.8708149, -0.18261203, 0.89437264, 0.8896798, 0.47970584, -0.08703175, -5.9518776, 0.0031633559, 0.1635218, -0.9523599, 2.7631161, -0.3990263, 0.86759365, 0.14764187, 1.3964639, 0.88006073, 0.39278588, 0.07036519, -7.005377, -0.9918345, 0.043147843, 0, 0.81475425, 0.03532815, 0.8120841, 0.5699725, 2.1853583, 0.024772126, 0.569434, -0.81285226, -8.660654, -0.9884135, 0.20499727, 7.520973e-09, 0.3102948, 0.19564182, 0.9433054, 0.3014705, 2.3570642, 0.061222203, 0.29518852, -0.96337974, -9.020931, 0.019202054, -0.20559616, -0.97636366, 3.1024861, -0.50945395, 0.8376366, -0.1864033, 1.7515182, 0.85791177, 0.50201565, -0.08883865, -7.7503605, -0.98159915, -0.12548354, 0, 1.2153072, -0.105891384, 0.82833886, 0.5309659, 1.8020676, -0.06732857, 0.52667993, -0.8350797, -7.8564243, -0.9463422, -0.189832, 0, -0.020584643, -0.15198019, 0.75764495, 0.57833886, 2.2916603, -0.11374625, 0.5670428, -0.7727379, -8.883699, 0.0033380839, 0.052092806, -1.0278198, 1.2541173, -0.38252947, 0.9542479, 0.04712162, 0.79226506, 0.9554049, 0.38188428, 0.02245787, -5.737633, 0.014838826, 0.06786822, -1.0123482, 3.1440616, -0.23129402, 0.986025, 0.06271323, 1.9311632, 0.98790586, 0.2298342, 0.02988873, -8.127296, -0.0048140436, 0.07308489, -0.96534675, 0.33669567, -0.47289127, 0.84217656, 0.0661181, 0.76530993, 0.8447542, 0.47186473, 0.031511474, -5.6810756, -0.0021149404, 0.0316744, -0.9517814, 3.8916488, -0.4660445, 0.8299861, 0.028656758, 1.2601244, 0.83047795, 0.46584913, 0.013657631, -6.719307, -0.0058076344, 0.123172306, -0.9816158, 1.3414496, -0.4669024, 0.86509323, 0.11131352, 0.60092545, 0.872206, 0.463915, 0.053051326, -5.33616, -0.014721861, 0.12316373, -0.9823922, 2.5703568, -0.52825314, 0.82999456, 0.11197372, 1.1611615, 0.8373842, 0.5257568, 0.053365972, -6.5116606, -0.9683017, 0.057739563, 0, 0.56205636, 0.05544923, 0.9298925, 0.27049473, 1.3238926, 0.016100926, 0.27001512, -0.9315442, -6.853107, -0.026490718, 0.20584352, -0.9961373, 2.987949, -0.54896927, 0.8359994, 0.18735133, 0.9433496, 0.85632586, 0.5423064, 0.08929046, -6.054642, -0.013572371, -0.071043305, -1.0350004, 2.7721786, -0.26312107, 1.0014797, -0.06529199, 0.9316517, 1.003514, 0.26162678, -0.031117758, -6.0300975, -0.94507015, -0.16475663, 0, -0.07428253, -0.13290973, 0.76239127, 0.56691873, 1.5426505, -0.09736401, 0.5584954, -0.7738899, -7.3121095, 0.034092627, -0.160166, -1.014493, 3.5247676, -0.6230917, 0.80368924, -0.14782408, 1.2777925, 0.8164596, 0.6200339, -0.070452034, -6.756378, -1.4233707e-06, 1.1593624e-05, -0.9765779, 3.3042133, -0.5244484, 0.8238072, 1.0544365e-05, 0.73500496, 0.8238072, 0.5244484, 5.025379e-06, -5.617489, 0.0017713496, -0.07803317, -1.040309, 2.5079136, -0.47002706, 0.9286791, -0.070460185, 1.0149548, 0.93134654, 0.46882924, -0.03358088, -6.2048864, -0.040598404, 0.19901106, -0.9443361, 1.8349035, -0.5775818, 0.7522007, 0.18335119, 1.0442078, 0.7731594, 0.57237494, 0.08738402, -6.2662654, 0.0063725277, 0.17805457, -0.93663085, 3.7475004, -0.37968892, 0.85964483, 0.16083618, 1.8725944, 0.8745383, 0.37192544, 0.07665351, -8.004405, -0.00024247776, -0.0011134653, -0.95846564, 1.802841, -0.2188141, 0.93315434, -0.001028704, 0.5120578, 0.933155, 0.21881369, -0.0004902739, -5.149696, -1.0139302, 0.0234732, 0, 0.8711348, 0.020847756, 0.90052366, 0.46607715, 1.1461608, 0.010787126, 0.46595234, -0.90076494, -6.4801855, -0.98762137, -0.105689324, 0, 2.2485971, -0.09941006, 0.92894435, 0.337263, 2.1861532, -0.03588696, 0.33534825, -0.9342484, -8.662322, -0.9459735, -0.20270787, 0, 2.161036, -0.17929481, 0.8367123, 0.45135617, 2.0809903, -0.09457192, 0.44133726, -0.85570675, -8.441667, -0.99850225, 0.043374334, 0, 3.2306068, 0.039978012, 0.9203169, 0.38769415, 2.3173263, 0.016825331, 0.38732886, -0.9211848, -8.937552, 0.007371184, -0.19560377, -1.0219643, 2.0060468, -0.48209566, 0.9050342, -0.17670059, 1.0308026, 0.9220931, 0.4747405, -0.0842144, -6.238138, -0.0008251742, 0.21546355, -0.9681917, 1.9587455, -0.43007967, 0.87236446, 0.19450448, 0.9241646, 0.8937848, 0.41997147, 0.092699625, -6.014388, -0.9685066, 0.08482873, 0, -0.70886064, 0.06956848, 0.79427725, 0.5563136, 0.68495136, 0.048540097, 0.55419195, -0.79731804, -5.5124655, -1.0397266, 0.064497404, 0, 2.619315, 0.05413044, 0.87260664, 0.56640893, 2.1557288, 0.035068657, 0.5653223, -0.87428385, -8.598484, 0.022232778, 0.15508835, -1.0111239, 0.85014117, -0.30622756, 0.9659917, 0.14143248, 0.3977306, 0.9760373, 0.29954308, 0.06740583, -4.909812, 0.028027207, -0.16918665, -0.99583036, 2.8172894, -0.57581496, 0.815818, -0.15480949, 1.7517471, 0.82990336, 0.5717559, -0.07378122, -7.7508407, -0.0024064605, 0.1179631, -1.0006062, 1.2667935, -0.45180643, 0.89423746, 0.10650971, 1.172369, 0.9005549, 0.44895214, 0.05076186, -6.5351763, -0.9532429, 0.035914272, 0, -0.5761369, 0.030138416, 0.7999393, 0.51879746, 1.2156278, 0.019532295, 0.51842964, -0.80050683, -6.625943, -0.010039448, -0.054937746, -0.9616488, 2.4305649, -0.2516223, 0.92845684, -0.050414637, 0.58155525, 0.92977035, 0.2506736, -0.024027301, -5.295517, -1.0245377, -0.06065352, 0, -0.33112687, -0.058899797, 0.9949146, 0.24501494, 1.0044198, -0.014479743, 0.24458669, -0.9966565, -6.182781, -0.014450341, -0.13570823, -0.9810393, 3.121613, -0.32997212, 0.92574525, -0.123198956, 1.990467, 0.93379515, 0.3250275, -0.05871585, -8.251728, 0.0011273889, -0.050689105, -0.9915988, 3.2810583, -0.4469715, 0.8854154, -0.045769338, 1.9818418, 0.8865968, 0.44644037, -0.021813381, -8.23363, -1.0278795, 0.18134774, -7.776576e-09, -0.7184522, 0.15682955, 0.88891035, 0.524086, 0.5789741, 0.09105764, 0.51611495, -0.9026389, -5.2901015, -0.97374177, -0.06870097, 0, 0.44096816, -0.060502343, 0.85753745, 0.462452, 1.7336073, -0.032546744, 0.46130532, -0.8596692, -7.7127795, 0.0030351433, 0.2063452, -0.92857486, 3.0321658, -0.39687535, 0.84417075, 0.1862919, 0.41322455, 0.8644765, 0.38682863, 0.08878556, -4.9423213, 0.014255221, 0.17630781, -0.9865658, 2.9819126, -0.35804218, 0.92244744, 0.1596758, 1.3194041, 0.936057, 0.35015157, 0.0761005, -6.843689, -1.0287008, -0.009948142, -4.790485e-10, 1.0431774, -0.009338626, 0.96567297, 0.3545601, 1.6976402, -0.0034286443, 0.35454354, -0.9657181, -7.6373124, -0.9840259, -0.12778875, 3.6965637e-09, -0.058964968, -0.11113909, 0.8558166, 0.48975807, 1.0734814, -0.06307194, 0.4856798, -0.86300284, -6.327688)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kibfe"]
 resource_local_to_scene = true
@@ -146,6 +164,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.41062337, 0.94258463, 0.8060055, 1)
+shader_parameter/disable_lighting = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_f4otw"]
 flip_faces = true
@@ -164,6 +183,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.1764706, 0.49019608, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pwxus"]
 size = Vector2(5, 5)
@@ -180,6 +200,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.3449721, 0.18252558, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bvcgq"]
 top_radius = 0.2
@@ -210,6 +231,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.2439923, 0.32341403, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="SphereMesh" id="SphereMesh_mst4p"]
 radius = 1.0
@@ -227,6 +249,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(1, 0.67058825, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_25mgg"]
 size = Vector3(1, 3, 1)
@@ -243,6 +266,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0.35724884, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lc4lb"]
 size = Vector2(20, 20)
@@ -264,6 +288,7 @@ shader_parameter/use_second_stencil_layer = true
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="TorusMesh" id="TorusMesh_kjygs"]
 inner_radius = 0.7
@@ -283,6 +308,7 @@ shader_parameter/use_second_stencil_layer = true
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="TorusMesh" id="TorusMesh_ahg1b"]
 inner_radius = 0.7
@@ -302,6 +328,7 @@ shader_parameter/use_second_stencil_layer = true
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="TorusMesh" id="TorusMesh_4owis"]
 inner_radius = 0.7
@@ -321,10 +348,10 @@ layers = 4
 material_override = SubResource("ShaderMaterial_7hesn")
 mesh = SubResource("PlaneMesh_ahg1b")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_1 = 2
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="GiantMonolyth" type="MeshInstance3D" parent="Layer2" unique_id=830967126 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -333,10 +360,10 @@ layers = 4
 material_override = SubResource("ShaderMaterial_f6vx0")
 mesh = SubResource("CylinderMesh_ahg1b")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_1 = 2
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Sky" type="MeshInstance3D" parent="Layer2" unique_id=1623228785 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -344,11 +371,26 @@ layers = 4
 material_override = SubResource("ShaderMaterial_f4otw")
 mesh = SubResource("SphereMesh_ahg1b")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_1 = 2
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Layer2" unique_id=166323240]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, -0.0005862823, 0, 0.0005862823, 0.9999998, 5.077901, 1.6518824, 0.29281044)
+layers = 4
+light_energy = 0.6
+light_volumetric_fog_energy = 4.147
+light_cull_mask = 4293918724
+omni_range = 6.524551
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Layer2" unique_id=2054343485]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, -0.0005862823, 0, 0.0005862823, 0.9999998, 0.5151968, 1.6518824, 0.29281044)
+layers = 4
+light_energy = 0.2
+light_cull_mask = 4293918724
+omni_range = 5.102708
 
 [node name="Layer1" type="Node3D" parent="." unique_id=552412647]
 
@@ -357,10 +399,10 @@ layers = 2
 material_override = SubResource("ShaderMaterial_vgx7l")
 mesh = SubResource("SphereMesh_h8sr3")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_1 = 1
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="YellowCube" type="MeshInstance3D" parent="Layer1" unique_id=1728531646 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -369,10 +411,10 @@ layers = 2
 material_override = SubResource("ShaderMaterial_kjygs")
 mesh = SubResource("BoxMesh_7hesn")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_1 = 1
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Layer1/YellowCube" unique_id=718804460]
@@ -386,10 +428,10 @@ layers = 2
 material_override = SubResource("ShaderMaterial_rqg6k")
 mesh = SubResource("TorusMesh_jl76v")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_1 = 1
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="OliveFloor" type="MeshInstance3D" parent="Layer1" unique_id=1730115706 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -397,39 +439,57 @@ layers = 2
 material_override = SubResource("ShaderMaterial_5o3rq")
 mesh = SubResource("PlaneMesh_6cby8")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_1 = 1
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Layer1" unique_id=1037165462]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, -0.0005862823, 0, 0.0005862823, 0.9999998, -4.2262716, 1.6518824, 0.29281044)
+layers = 2
+light_cull_mask = 4293918722
+omni_range = 5.102708
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Layer1" unique_id=1957390129]
+transform = Transform3D(0.4228377, -0.33123717, 0.8434988, 0, 0.9308031, 0.36552104, -0.9062055, -0.15455608, 0.39357862, 39.19883, 12.011772, 31.040901)
+layers = 2
+light_color = Color(0.7764706, 1, 0.7882353, 1)
+light_energy = 0.2
+light_cull_mask = 4293918722
+
 [node name="Layer0" type="Node3D" parent="." unique_id=1607130785]
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Layer0" unique_id=1721413341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.437953, 0)
+multimesh = SubResource("MultiMesh_vgx7l")
 
 [node name="OliveSky" type="MeshInstance3D" parent="Layer0" unique_id=1025420834 node_paths=PackedStringArray("player", "stencil_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3841858e-07)
 material_override = SubResource("ShaderMaterial_kibfe")
 mesh = SubResource("SphereMesh_f4otw")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Layer0" unique_id=1010381666]
-transform = Transform3D(1, 0, 0, 0, 0.041239917, 0.9991493, 0, -0.9991493, 0.041239917, -0.26754475, 6.9852915, 0.24230027)
+transform = Transform3D(1, 0, 0, 0, 0.32044035, 0.9472687, 0, -0.9472687, 0.32044035, -0.26754475, 6.9852915, 2.689072)
 layers = 3
 light_color = Color(0.9999997, 0.926267, 0.46921927, 1)
 light_energy = 2.737
 light_indirect_energy = 4.591
+light_cull_mask = 4294966273
 
 [node name="Grass" type="MeshInstance3D" parent="Layer0" unique_id=956539650 node_paths=PackedStringArray("player", "stencil_camera")]
 transform = Transform3D(1, 0, 0, 0, 0.90271914, -0.43023032, 0, 0.43023032, 0.90271914, 1.5049262, 1.3770267, -6.9645934)
 material_override = SubResource("ShaderMaterial_yk4ej")
 mesh = SubResource("PlaneMesh_pwxus")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="TreeTrunk" type="MeshInstance3D" parent="Layer0" unique_id=1873573315 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -437,9 +497,9 @@ transform = Transform3D(1, 0, 0, 0, 0.9063078, -0.4226183, 0, 0.4226183, 0.90630
 material_override = SubResource("ShaderMaterial_lwgo2")
 mesh = SubResource("CylinderMesh_bvcgq")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="TreeCrown" type="MeshInstance3D" parent="Layer0" unique_id=1247263788 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -447,9 +507,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7508125, 3.271211, -6.49220
 material_override = SubResource("ShaderMaterial_5sem3")
 mesh = SubResource("SphereMesh_mst4p")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="YellowMonolith" type="MeshInstance3D" parent="Layer0" unique_id=1991698838 node_paths=PackedStringArray("player", "stencil_camera")]
@@ -457,19 +517,28 @@ transform = Transform3D(1, 0, 0, 0, 0.9063113, -0.42262015, 0, 0.42262015, 0.906
 material_override = SubResource("ShaderMaterial_awh0u")
 mesh = SubResource("BoxMesh_25mgg")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="GreenFloow" type="MeshInstance3D" parent="Layer0" unique_id=1622766948 node_paths=PackedStringArray("player", "stencil_camera")]
 material_override = SubResource("ShaderMaterial_172dq")
 mesh = SubResource("PlaneMesh_lc4lb")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Layer0" unique_id=899824455]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, -0.0005862823, 0, 0.0005862823, 0.9999998, 0, 4.047493, 0)
+light_cull_mask = 4293918721
+omni_range = 16.019308
+
+[node name="Halm" type="MeshInstance3D" parent="Layer0" unique_id=1559625278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41027898, 0)
+mesh = SubResource("CylinderMesh_wp5od")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=380345395]
 
@@ -490,11 +559,11 @@ layers = 3
 material_override = SubResource("ShaderMaterial_h8sr3")
 mesh = SubResource("TorusMesh_kjygs")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_1 = 1
 use_stencil_layer_2 = true
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Portal2" parent="." unique_id=694321710 node_paths=PackedStringArray("portal_frame", "player") instance=ExtResource("4_vgx7l")]
@@ -511,11 +580,11 @@ layers = 5
 material_override = SubResource("ShaderMaterial_jl76v")
 mesh = SubResource("TorusMesh_ahg1b")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_2 = 2
 use_stencil_layer_2 = true
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="Portal3" parent="." unique_id=2105707855 node_paths=PackedStringArray("portal_frame", "player") instance=ExtResource("4_vgx7l")]
@@ -533,10 +602,10 @@ layers = 6
 material_override = SubResource("ShaderMaterial_6cby8")
 mesh = SubResource("TorusMesh_4owis")
 script = ExtResource("2_ogsab")
-current_stencil_layer = 0
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
 stencil_layer_1 = 1
 stencil_layer_2 = 2
 use_stencil_layer_2 = true
+current_stencil_layer = 0
 metadata/_custom_type_script = "uid://ba2csny7mcpbx"

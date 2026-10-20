@@ -13,6 +13,7 @@ background_color = Color(0, 1, 1, 1)
 [sub_resource type="Environment" id="Environment_k0xu2"]
 background_mode = 1
 background_color = Color(0.63396597, 0.75490177, 1, 1)
+ambient_light_source = 1
 ambient_light_color = Color(0.972549, 1, 0, 1)
 volumetric_fog_density = 0.2193
 volumetric_fog_emission = Color(0.92794496, 0.68204314, 0.731245, 1)

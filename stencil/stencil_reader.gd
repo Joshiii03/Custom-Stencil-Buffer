@@ -2,13 +2,6 @@
 class_name StencilReader
 extends MeshInstance3D
 
-## The Stencil layer of the Player
-@export var current_stencil_layer : int = -1:
-	set(mew_value) : 
-		current_stencil_layer = mew_value
-		var currently =  current_stencil_layer == stencil_layer_1 or (current_stencil_layer == stencil_layer_2 and use_stencil_layer_2)
-		material_override.set_shader_parameter("current_stencil_infront", currently)
-
 ## The Reference of The Player.
 @export var player : Player:
 	set(mew_value):
@@ -40,6 +33,13 @@ extends MeshInstance3D
 		use_stencil_layer_2 = mew_value
 		material_override.set_shader_parameter("use_second_stencil_layer", use_stencil_layer_2)
 		update_stencil()
+
+## The Stencil layer of the Player
+@export var current_stencil_layer : int = -1:
+	set(mew_value) : 
+		current_stencil_layer = mew_value
+		var currently =  current_stencil_layer == stencil_layer_1 or (current_stencil_layer == stencil_layer_2 and use_stencil_layer_2)
+		material_override.set_shader_parameter("current_stencil_infront", currently)
 
 ## Texture for replacing plain color.
 @export var stencil_texture : Texture2D:
