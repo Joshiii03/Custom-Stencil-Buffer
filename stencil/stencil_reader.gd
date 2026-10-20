@@ -1,6 +1,6 @@
 @tool
 class_name StencilReader
-extends MeshInstance3D
+extends GeometryInstance3D
 
 ## The Reference of The Player.
 @export var player : Player:
