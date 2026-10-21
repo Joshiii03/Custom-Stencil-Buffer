@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dmia3f3ytk4vk"]
+
+[ext_resource type="Script" uid="uid://bctqplb6oi5ty" path="res://stencil/stencil_light.gd" id="1_iqosx"]
+
+[node name="StencilLight" type="DirectionalLight3D" unique_id=410236284]
+script = ExtResource("1_iqosx")

@@ -91,5 +91,5 @@ func get_stencil_mask() -> int:
 
 ## Cycles the Stencil Layer
 func change_stencil_layer() -> int:
-	stencil_layer = (stencil_layer + 1) % 3
+	stencil_layer = (stencil_layer + 1) % 4
 	return stencil_layer

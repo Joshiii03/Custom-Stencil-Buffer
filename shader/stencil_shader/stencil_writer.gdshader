@@ -14,7 +14,7 @@ void fragment() {
 	show_color.b = fragment_depth - mod(fragment_depth, 0.01);
 	show_color.g = mod(fragment_depth, .01) * 100.;
 	ALBEDO = show_color;
-	ALPHA = 1.;
+	ALPHA;// = 1.;
 }
 
 //void light() {

@@ -705,6 +705,7 @@ metadata/_custom_type_script = "uid://ba2csny7mcpbx"
 
 [node name="BadApple" type="MeshInstance3D" parent="." unique_id=79210603]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1635854, 1.3542123, 1.7073827)
+visible = false
 layers = 67108864
 material_override = SubResource("ShaderMaterial_bvcgq")
 mesh = SubResource("PlaneMesh_5sem3")

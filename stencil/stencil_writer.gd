@@ -1,6 +1,6 @@
 @tool
 class_name StencilWriter
-extends MeshInstance3D
+extends GeometryInstance3D
 
 @export var debug : bool = false
 
@@ -14,6 +14,25 @@ extends MeshInstance3D
 		var red : float  = stencil_layer/25.5
 		material_override.set_shader_parameter("match_color1", Vector3(red,1,0))
 
+## Stencil that is written on the Stencil Viewport.
+@export var stencil_layer_2 : int = 0 :
+	set(mew_value):
+		mew_value = clamp(mew_value, 0, 25)
+		if debug:
+			print("Change Stecil from:", str(stencil_layer_2), " to: ", str(mew_value))
+		stencil_layer_2 = mew_value
+		var red : float  = stencil_layer_2/25.5
+		material_override.set_shader_parameter("match_color2", Vector3(red,1,0))
+
+## Stencil that is written on the Stencil Viewport.
+@export var stencil_layer_3 : int = 0 :
+	set(mew_value):
+		mew_value = clamp(mew_value, 0, 25)
+		if debug:
+			print("Change Stecil from:", str(stencil_layer_3), " to: ", str(mew_value))
+		stencil_layer_3 = mew_value
+		var red : float  = stencil_layer_3/25.5
+		material_override.set_shader_parameter("match_color3", Vector3(red,1,0))
 
 func _init():
 	if not material_override:

@@ -1,0 +1,611 @@
+[gd_scene format=3 uid="uid://bg4f8h4yfbeqd"]
+
+[ext_resource type="Script" uid="uid://t4dh1f6sues6" path="res://stencil/stencil_holder.gd" id="1_t7w7j"]
+[ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="2_0u1yi"]
+[ext_resource type="PackedScene" uid="uid://dqhej3eysvfvq" path="res://stencil/stencil_reader.tscn" id="2_60m4v"]
+[ext_resource type="PackedScene" uid="uid://dmia3f3ytk4vk" path="res://stencil/stencil_light.tscn" id="2_yceul"]
+[ext_resource type="PackedScene" uid="uid://drcnq82wi1vr8" path="res://player/player.tscn" id="3_h0oml"]
+[ext_resource type="Script" uid="uid://ba2csny7mcpbx" path="res://stencil/stencil_reader.gd" id="3_yceul"]
+[ext_resource type="Shader" uid="uid://ikj0nqcsdx7l" path="res://100_portals/sprite_sheet_portal.gdshader" id="6_5wnog"]
+[ext_resource type="Texture2D" uid="uid://fnlre35leaim" path="res://assets/bad-apple-spritesheet.png" id="7_60m4v"]
+[ext_resource type="Script" uid="uid://c1v67hmjyub8i" path="res://stencil/stencil_writer.gd" id="8_dwae0"]
+[ext_resource type="Script" uid="uid://ddmh472h74ifi" path="res://stencil/stencil_label.gd" id="10_dwae0"]
+[ext_resource type="Shader" uid="uid://c2m0ryu75xvp7" path="res://shader/stencil_shader/stencil_writer.gdshader" id="10_fmpty"]
+[ext_resource type="Shader" uid="uid://b3cknt0ulboo0" path="res://shader/swirl_shader/swirl_portal2.gdshader" id="12_bm0js"]
+[ext_resource type="Shader" uid="uid://cnr6xdh7c74am" path="res://shader/swirl_shader/SwirlPortal.gdshader" id="13_5t6du"]
+[ext_resource type="Shader" uid="uid://cw7qkqn3j01bw" path="res://scenes/manyPortals.gdshader" id="13_ouget"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_lfixh"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ouget"]
+viewport_path = NodePath("Player/CameraPivot/StencilCamera/StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1qdc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0u1yi")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ouget")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/disable_lighting = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_60m4v"]
+top_radius = 3.0
+bottom_radius = 3.0
+height = 5.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wp5od"]
+height = 5.0
+radius = 2.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2x5w5"]
+resource_local_to_scene = true
+render_priority = -1
+shader = ExtResource("2_0u1yi")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ouget")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = true
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/disable_lighting = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_60m4v"]
+flip_faces = true
+radius = 40.0
+height = 80.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p37fx"]
+resource_local_to_scene = true
+render_priority = -1
+shader = ExtResource("2_0u1yi")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ouget")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.83791715, 0.7209272, 0.37016478, 1)
+shader_parameter/disable_lighting = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_dwae0"]
+flip_faces = true
+radius = 30.0
+height = 60.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yceul"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0u1yi")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ouget")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.61906004, 0.44289213, 0.122202046, 1)
+shader_parameter/disable_lighting = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wp5od"]
+size = Vector2(60, 60)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xn6am"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0u1yi")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ouget")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0.5137255, 0, 1)
+shader_parameter/disable_lighting = false
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_60m4v"]
+radius = 0.3
+height = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfi1u"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0u1yi")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ouget")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0.5137255, 0, 1)
+shader_parameter/disable_lighting = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kaqo0"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0u1yi")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ouget")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(1.8410012e-06, 0.4016089, 1.92523e-07, 1)
+shader_parameter/disable_lighting = false
+
+[sub_resource type="MultiMesh" id="MultiMesh_fmpty"]
+transform_format = 1
+instance_count = 64
+mesh = SubResource("CapsuleMesh_60m4v")
+buffer = PackedFloat32Array(-0.09533111, 0.13540688, -0.8646525, 16.245762, -0.111146316, 0.8608514, 0.14706591, -0.41768456, 0.8681046, 0.12508741, -0.076122686, 16.198952, -1.1695063, 0.06623755, 0.061142977, 4.543601, 0.05942477, 1.1647624, -0.12517162, -0.41768456, -0.06778328, -0.12170384, -1.1646734, -25.040775, -0.93118805, -0.0075607914, 0.07446785, -19.31073, 0.0012130539, 0.9277669, 0.109365754, -0.41768458, -0.074840866, 0.10911084, -0.9247742, 17.134468, -0.0132187875, -0.05023513, -0.9448609, 11.432598, -0.01323988, 0.94487035, -0.05005041, -0.41768458, 0.9461026, 0.0125207575, -0.013901848, 29.704277, -0.033676244, 0.064005874, -1.1358857, -9.071084, 0.0664875, 1.1345518, 0.061959516, -0.41768453, 1.1357433, -0.0645199, -0.037307642, 24.361233, -1.0556767, 0.09596326, -0.01849188, 4.2632246, 0.09761943, 1.0449306, -0.15031408, -0.41768456, 0.0046200184, -0.15137678, -1.0493177, -5.70683, 0.061066143, 0.053984523, -0.8931798, 9.149681, 0.019996058, 0.89495146, 0.05545872, -0.41768456, 0.89458627, -0.023689304, 0.059730507, 21.165573, -0.051332127, 0.11793093, -1.1680133, 13.704625, -0.0774177, 1.1662443, 0.121154696, -0.41768453, 1.1713963, 0.0822451, -0.043176755, 21.117447, -1.0915183, -0.0032458215, 0.09500031, 13.916925, -0.017446056, 1.0832504, -0.16343792, -0.41768453, -0.09344105, -0.16433437, -1.0792177, -25.004333, 0.043835018, -0.15241334, -1.0414319, -3.792427, -0.025405562, 1.0418779, -0.15354794, -0.41768456, 1.052219, 0.031505354, 0.039678253, 7.4822044, -0.83133227, 0.1173291, 0.017289191, -22.44799, 0.11803847, 0.83044136, 0.040155593, -0.41768456, -0.011487051, 0.04218336, -0.8386102, -8.489117, -0.034069054, 0.12134294, -0.81607515, 24.306953, 0.089914374, 0.81245184, 0.1170505, -0.41768456, 0.820133, -0.08403157, -0.04673319, 3.6366997, 0.077424, 0.07059448, -0.9515727, 22.456762, 0.094399974, 0.9494499, 0.078117765, -0.41768456, 0.9495067, -0.10015069, 0.06982601, 7.954342, -0.10265872, -0.117993854, -1.0163103, 0.01855278, 0.11924644, 1.0130725, -0.12966315, -0.41768456, 1.0161641, -0.13080403, -0.08745757, 21.978859, -1.0499731, -0.16089882, 0.071056284, -27.46608, -0.15894976, 1.0521318, 0.033688117, -0.41768456, -0.0753153, 0.022616155, -1.0616955, 0.070316195, -0.9371609, 0.07079568, 0.053111855, 17.592697, 0.07638986, 0.9323127, 0.10517197, -0.41768456, -0.04469326, 0.10901618, -0.933928, -23.524527, -1.0537374, -0.13516186, -0.003419178, 4.002556, -0.1352045, 1.0534762, 0.023463996, -0.41768456, 0.00040530387, 0.023708345, -1.0621114, -11.145773, -0.8342483, 0.13012743, 0.013828206, -13.238983, 0.13085997, 0.8297055, 0.08694337, -0.41768456, -0.00018902123, 0.088035986, -0.8398478, -17.404217, -0.85064656, 0.017919246, 0.043560658, -7.5819855, 0.022051033, 0.8477182, 0.08188963, -0.41768456, -0.041621894, 0.08289186, -0.8468853, -8.128807, 0.048720714, -0.13672955, -0.87020737, 29.319763, 0.1041985, 0.86631304, -0.13028386, -0.41768456, 0.87469906, -0.09558368, 0.063990586, 5.114682, -1.1411949, -0.015188251, -0.017110173, -11.146725, -0.015048305, 1.1412861, -0.009415015, -0.41768456, 0.017233381, -0.009187546, -1.141257, -16.242163, -1.162227, -0.13168378, -0.02256617, -8.024333, -0.12966481, 1.159384, -0.08739214, -0.41768456, 0.032200694, -0.084319234, -1.166394, -11.897269, -0.82571214, -0.020837922, 0.025236584, -4.9902906, -0.021153903, 0.8260282, -0.01007761, -0.41768456, -0.024972314, -0.010715732, -0.8259136, -17.782398, -1.1030301, -0.074858844, -0.024966178, -7.0936384, -0.07337125, 1.1016865, -0.061694693, -0.41768456, 0.029048529, -0.05988095, -1.1038446, -16.459545, -0.9012851, -0.011276645, 0.02441771, -27.328259, -0.008221684, 0.8949348, 0.109829314, -0.41768456, -0.02560842, 0.1095578, -0.89463943, -4.9581566, -1.0145203, 0.08359789, 0.0010061779, -28.592228, 0.08276804, 1.006032, -0.13149202, -0.41768456, -0.011792913, -0.13096601, -1.0094305, -8.006219, -0.06139522, -0.15183087, -0.98559326, -7.078179, -0.023525253, 0.98740506, -0.15064453, -0.41768453, 0.99694186, 0.013949925, -0.06425115, 21.273346, -0.82941467, 0.027349003, -0.07092176, -16.299189, 0.032614145, 0.82998705, -0.06135397, -0.41768456, 0.06865989, -0.06387506, -0.8275943, -25.07363, -0.02632574, 0.043077424, -0.9941101, 11.652868, -0.045623567, 0.99335974, 0.0442531, -0.41768456, 0.99399644, 0.046735242, -0.024297569, 19.836855, -1.1304593, -0.12234082, 0.003123006, -23.329, -0.122118585, 1.1295689, 0.04556684, -0.41768456, -0.008005119, 0.044966742, -1.1361467, 2.4376636, -1.1317992, -0.11703536, 0.025469953, -24.755844, -0.114600904, 1.1285056, 0.093044356, -0.41768456, -0.03482277, 0.08996302, -1.1340235, -10.184301, -0.93814313, -0.10123758, -0.04716342, -10.853789, -0.10214248, 0.93909436, 0.015957788, -0.41768456, 0.04517023, 0.020944912, -0.94345486, -26.532646, -0.8525572, 0.082006924, -0.053321432, -6.934883, 0.08711841, 0.8492991, -0.0867385, -0.41768456, 0.04448251, -0.091586284, -0.8520888, 1.5049725, -0.021743586, 0.052549016, -1.144892, 3.5098228, 0.055616934, 1.1437973, 0.051442508, -0.41768456, 1.144747, -0.054572668, -0.024245648, -3.0850906, 0.08988591, -0.1145948, -1.0894251, 6.7320495, -0.08801434, 1.0887971, -0.121790595, -0.41768456, 1.091894, 0.09719828, 0.079865485, 14.64653, -1.0006506, 0.14397341, 0.06846224, -26.757275, 0.1431297, 1.0029633, -0.01719476, -0.41768456, -0.07020898, -0.00730996, -1.0108087, -23.748268, -0.0159237, -0.01883226, -0.8429424, -25.038456, 0.055197217, 0.8412609, -0.019837402, -0.41768456, 0.8413441, -0.05554819, -0.014652497, 25.738373, -0.08813103, 0.031481955, -1.1261289, 18.153898, 0.07178939, 1.1274307, 0.025900096, -0.41768456, 1.1242791, -0.06952279, -0.08992984, 21.767904, -0.88812375, -0.13923834, 0.051756874, -0.26078224, -0.14321423, 0.8858958, -0.07421805, -0.41768456, -0.03944335, -0.08143289, -0.89590335, -3.2712173, -0.040848065, 0.07071883, -1.1668102, 17.095078, 0.07369949, 1.1653553, 0.068050556, -0.41768456, 1.1666257, -0.0711431, -0.045153502, 24.291157, -0.8900181, -0.029951006, -0.05167926, -17.474236, -0.03284753, 0.8900184, 0.049883705, -0.41768456, 0.049888358, 0.051674772, -0.8891237, 16.170773, 0.00138424, -0.006470498, -0.8339539, 22.906147, -0.08287896, 0.8298258, -0.0065760347, -0.41768456, 0.8298507, 0.08288728, 0.00073432183, 5.0243435, -0.103838585, 0.1064883, -0.9783373, 23.904734, -0.13527095, 0.97288597, 0.12025232, -0.41768456, 0.97477454, 0.14635262, -0.08753051, 12.567588, -0.86181265, 0.11034625, 0.048715305, 10.616798, 0.10382649, 0.8575179, -0.10561121, -0.41768456, -0.061396517, -0.09877943, -0.8624057, -13.192432, -0.8142795, -0.0855595, 0.026837114, -6.308777, -0.08584044, 0.81465924, -0.007313836, -0.41768456, -0.02592442, -0.010082028, -0.8187295, -4.9793763, -1.0120506, -0.15009785, -0.07302677, 1.7829952, -0.14820427, 1.0144795, -0.031234644, -0.41768456, 0.076796934, -0.020266829, -1.0226438, -14.269951, 0.01773475, -0.07549009, -1.0674331, 22.93101, 0.0042932285, 1.067576, -0.075428866, -0.41768456, 1.0700905, -0.0030320338, 0.017993331, -20.514633, -0.82414544, -0.0779992, -0.0078019393, 9.205201, -0.07810105, 0.82409585, 0.011254521, -0.41768456, 0.0067060483, 0.011939992, -0.8277517, -12.531594, 0.04440408, 0.034386065, -0.88722944, 26.425312, -0.020009793, 0.88815135, 0.033420347, -0.41768456, 0.88767004, 0.018300543, 0.045135397, 22.836132, -1.0525851, 0.019010175, 0.05842041, -17.448017, 0.016537031, 1.0532949, -0.044790655, -0.41768453, -0.05916805, -0.043798283, -1.0518035, 10.756119, -0.026220758, -0.001843524, -1.1223036, 5.420577, 0.032833356, 1.1221281, -0.0026103326, -0.41768456, 1.1218247, -0.032885328, -0.026155554, 1.7416945, -1.0493006, -0.14646895, 0.07903212, -27.517712, -0.14238332, 1.051243, 0.057844408, -0.41768456, -0.086175516, 0.046538502, -1.0578935, -18.415257, 0.07264437, -0.15400602, -1.0741333, 0.64860725, 0.13488978, 1.0694691, -0.14421462, -0.41768456, 1.0767009, -0.12359308, 0.090538435, 6.6184244, -0.8694916, 0.06846651, 0.021800146, 17.406673, 0.06822741, 0.8697231, -0.010263329, -0.41768456, -0.022537293, -0.008523657, -0.87212265, -28.911709, -1.1309863, -0.055771865, -0.04175172, -2.3693352, -0.056221925, 1.1316783, 0.011266868, -0.41768456, 0.04114368, 0.013317125, -1.1323045, -24.52676, -0.05885392, 0.15686166, -1.0739071, -8.825054, -0.046573777, 1.0741292, 0.15944652, -0.41768456, 1.084303, 0.054650936, -0.051440988, 18.256527, -1.1351861, 0.15883489, 0.04262199, 3.8847818, 0.16317995, 1.1248375, 0.15429002, -0.41768456, -0.020431932, 0.1587595, -1.1358128, -5.8048105, 0.0005711941, -0.048489615, -0.8471768, -4.5172462, -0.040990263, 0.8461864, -0.048460566, -0.41768456, 0.84757274, 0.040955897, -0.0017727199, 21.436619, -0.8597592, 0.054460198, -0.018957559, -28.323439, 0.05413467, 0.8598571, 0.015044631, -0.41768456, 0.01986806, 0.013819923, -0.8613509, 18.604052, -0.8263212, -0.017819345, -0.05742944, -2.768093, -0.010828055, 0.8224513, -0.09939313, -0.41768456, 0.059147466, -0.09838043, -0.8205153, -14.31097, -0.8811191, -0.024606058, 0.0018942164, -1.6953163, -0.024275979, 0.87635297, 0.09162916, -0.41768456, -0.0044410573, 0.091541074, -0.8766871, -4.9637527, 0.047463328, 0.13306722, -1.1298373, 5.0304585, -0.056327365, 1.129708, 0.13068575, -0.41768456, 1.136251, 0.050444543, 0.0536739, 11.779568, 0.0669646, -0.13741674, -0.92675686, -6.430729, -0.06613918, 0.92610973, -0.14209978, -0.41768456, 0.9345519, 0.0753882, 0.056349512, 12.042343, 0.023290807, -0.021914791, -1.1086273, 1.9089637, 0.07741709, 1.1061981, -0.02024034, -0.41768456, 1.106138, -0.07695984, 0.024759816, 28.408943)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j0wu7"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0u1yi")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ouget")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0, 0.77254903, 1)
+shader_parameter/disable_lighting = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fmpty"]
+size = Vector2(50, 50)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sb3aw"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0u1yi")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ouget")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/disable_lighting = false
+
+[sub_resource type="TorusMesh" id="TorusMesh_fmpty"]
+inner_radius = 2.0
+outer_radius = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_enuyp"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0u1yi")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ouget")
+shader_parameter/alpha_from_G = false
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
+shader_parameter/show_color = Color(0, 0.7565833, 0, 1)
+shader_parameter/disable_lighting = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dagrs"]
+size = Vector2(40, 40)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bm0js"]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("6_5wnog")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+shader_parameter/sprite_sheet = ExtResource("7_60m4v")
+shader_parameter/h_frames = 1
+shader_parameter/v_frames = 14
+shader_parameter/animation_speed = 10.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5t6du"]
+size = Vector2(2.2, 1.6)
+orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dlagg"]
+resource_local_to_scene = true
+render_priority = -1
+shader = ExtResource("10_fmpty")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fmpty"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gy71p"]
+render_priority = 0
+shader = ExtResource("10_fmpty")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_bm0js"]
+offsets = PackedFloat32Array(0.22017045, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5t6du"]
+frequency = 0.0063
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bm0js"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_5t6du")
+color_ramp = SubResource("Gradient_bm0js")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ewc6y"]
+resource_local_to_scene = true
+render_priority = -1
+shader = ExtResource("12_bm0js")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+shader_parameter/portal_noise_texture = SubResource("NoiseTexture2D_bm0js")
+shader_parameter/speed = 0.3
+shader_parameter/twist_strength = 6.30000024288956
+shader_parameter/inner_circle_min = 0.2
+shader_parameter/inner_circle_max = 0.35
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k56px"]
+size = Vector2(6, 6)
+orientation = 0
+
+[sub_resource type="Gradient" id="Gradient_dlagg"]
+offsets = PackedFloat32Array(0.54809254, 0.7039367)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ouget"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5t6du"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_ouget")
+color_ramp = SubResource("Gradient_dlagg")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnm1i"]
+resource_local_to_scene = true
+render_priority = -1
+shader = ExtResource("12_bm0js")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+shader_parameter/portal_noise_texture = SubResource("NoiseTexture2D_5t6du")
+shader_parameter/speed = 0.1
+shader_parameter/twist_strength = -1.1999998688694404
+shader_parameter/inner_circle_min = 1.0
+shader_parameter/inner_circle_max = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vkdpk"]
+size = Vector2(12, 12)
+orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5t6du"]
+resource_local_to_scene = true
+render_priority = -1
+shader = ExtResource("13_ouget")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+shader_parameter/match_color2 = Color(0, 0, 0, 1)
+shader_parameter/match_color3 = Color(0, 0, 0, 1)
+shader_parameter/size = 0.05
+shader_parameter/line_width = 0.03
+shader_parameter/chaos = 3.0
+shader_parameter/glitch_speed = 2.0
+shader_parameter/glitch_density = 1.0
+shader_parameter/scan_speed = 0.3
+shader_parameter/scan_width = 0.015
+shader_parameter/scan_count = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wp5od"]
+flip_faces = true
+top_radius = 3.0
+bottom_radius = 3.0
+height = 6.0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dlagg"]
+frequency = 0.021
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1nhfc"]
+noise = SubResource("FastNoiseLite_dlagg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvoi3"]
+resource_local_to_scene = true
+render_priority = -1
+shader = ExtResource("13_5t6du")
+shader_parameter/strength = 20.0
+shader_parameter/base_texture = SubResource("NoiseTexture2D_1nhfc")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+shader_parameter/match_color2 = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5t6du"]
+top_radius = 2.0
+height = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ouget"]
+resource_local_to_scene = true
+render_priority = -1
+shader = ExtResource("10_fmpty")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_530h6"]
+size = Vector2(1, 1)
+orientation = 2
+
+[node name="test_100_Portals" type="Node3D" unique_id=1455260633]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1464135992]
+collision_layer = 67108863
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=656050704]
+shape = SubResource("WorldBoundaryShape3D_lfixh")
+
+[node name="StencilHolder_0" type="Node3D" parent="." unique_id=986399296 node_paths=PackedStringArray("player")]
+script = ExtResource("1_t7w7j")
+player = NodePath("../Player")
+metadata/_custom_type_script = "uid://t4dh1f6sues6"
+
+[node name="Platform" parent="StencilHolder_0" unique_id=1370487389 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46684837, 0)
+material_override = SubResource("ShaderMaterial_h1qdc")
+mesh = SubResource("CylinderMesh_60m4v")
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+current_stencil_layer = 0
+match_colision = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StencilHolder_0/Platform" unique_id=193143640]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StencilHolder_0/Platform/StaticBody3D" unique_id=1065092262]
+shape = SubResource("CylinderShape3D_wp5od")
+
+[node name="StencilLight" parent="StencilHolder_0" unique_id=410236284 instance=ExtResource("2_yceul")]
+transform = Transform3D(1, 0, 0, 0, 0.031818137, 0.9994937, 0, -0.9994937, 0.031818137, 0, 15.019091, 0)
+light_cull_mask = 1
+
+[node name="Sky" parent="StencilHolder_0" unique_id=1188923921 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
+transform = Transform3D(1, 0, 0, 0, 0.031818137, 0.9994937, 0, -0.9994937, 0.031818137, 0, 15.019091, 0)
+material_override = SubResource("ShaderMaterial_2x5w5")
+mesh = SubResource("SphereMesh_60m4v")
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+current_stencil_layer = 0
+
+[node name="StencilHolder_1" type="Node3D" parent="." unique_id=346949480 node_paths=PackedStringArray("player")]
+script = ExtResource("1_t7w7j")
+player = NodePath("../Player")
+stencil_layer_1 = 1
+metadata/_custom_type_script = "uid://t4dh1f6sues6"
+
+[node name="Sky" parent="StencilHolder_1" unique_id=623031134 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
+layers = 2
+material_override = SubResource("ShaderMaterial_p37fx")
+mesh = SubResource("SphereMesh_dwae0")
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer_1 = 1
+current_stencil_layer = 0
+color = Color(0.83791715, 0.7209272, 0.37016478, 1)
+
+[node name="Floor" type="MeshInstance3D" parent="StencilHolder_1" unique_id=1452961233 node_paths=PackedStringArray("player", "stencil_camera")]
+layers = 2
+material_override = SubResource("ShaderMaterial_yceul")
+mesh = SubResource("PlaneMesh_wp5od")
+script = ExtResource("3_yceul")
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer_1 = 1
+current_stencil_layer = 0
+color = Color(0.61906004, 0.44289213, 0.122202046, 1)
+
+[node name="Kaktus" parent="StencilHolder_1" unique_id=1321879166 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8685379, -17.713478)
+layers = 2
+material_override = SubResource("ShaderMaterial_xn6am")
+mesh = SubResource("CapsuleMesh_60m4v")
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer_1 = 1
+current_stencil_layer = 0
+color = Color(0, 0.5137255, 0, 1)
+
+[node name="StencilLight" parent="StencilHolder_1" unique_id=1598602310 instance=ExtResource("2_yceul")]
+transform = Transform3D(1, 0, 0, 0, 0.031818137, 0.9994937, 0, -0.9994937, 0.031818137, 0, 15.019091, 0)
+light_cull_mask = 2
+stencil_layer = 1
+
+[node name="Kaktus2" parent="StencilHolder_1" unique_id=659307957 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4407473, 0.69340706, -14.15428)
+layers = 2
+material_override = SubResource("ShaderMaterial_qfi1u")
+mesh = SubResource("CapsuleMesh_60m4v")
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer_1 = 1
+current_stencil_layer = 0
+color = Color(0, 0.5137255, 0, 1)
+
+[node name="Kakteen" type="MultiMeshInstance3D" parent="StencilHolder_1" unique_id=1220824469 node_paths=PackedStringArray("player", "stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3906207, 0)
+layers = 2
+material_override = SubResource("ShaderMaterial_kaqo0")
+multimesh = SubResource("MultiMesh_fmpty")
+script = ExtResource("3_yceul")
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer_1 = 1
+current_stencil_layer = 0
+color = Color(1.8410012e-06, 0.4016089, 1.92523e-07, 1)
+
+[node name="StencilHolder_2" type="Node3D" parent="." unique_id=673026207 node_paths=PackedStringArray("player")]
+script = ExtResource("1_t7w7j")
+player = NodePath("../Player")
+stencil_layer_1 = 2
+metadata/_custom_type_script = "uid://t4dh1f6sues6"
+
+[node name="StencilLight" parent="StencilHolder_2" unique_id=1435403681 instance=ExtResource("2_yceul")]
+transform = Transform3D(0.60564524, -0.39786744, 0.6891265, -0.79573476, -0.30282265, 0.5245041, 0, -0.8660254, -0.50000006, 0, 19, 0)
+light_cull_mask = 4
+stencil_layer = 2
+
+[node name="Floor" parent="StencilHolder_2" unique_id=1876901747 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
+layers = 4
+material_override = SubResource("ShaderMaterial_j0wu7")
+mesh = SubResource("PlaneMesh_fmpty")
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer_1 = 2
+current_stencil_layer = 0
+color = Color(0, 0, 0.77254903, 1)
+
+[node name="StencilReader" parent="StencilHolder_2" unique_id=1671076080 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
+transform = Transform3D(0.26927745, 0.96306264, 0, -0.96306264, 0.26927745, 0, 0, 0, 1, -15.122206, 12.850296, 1.7085762)
+layers = 4
+material_override = SubResource("ShaderMaterial_sb3aw")
+mesh = SubResource("TorusMesh_fmpty")
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer_1 = 2
+current_stencil_layer = 0
+color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+
+[node name="StencilHolder_3" type="Node3D" parent="." unique_id=812834958 node_paths=PackedStringArray("player")]
+script = ExtResource("1_t7w7j")
+player = NodePath("../Player")
+stencil_layer_1 = 3
+metadata/_custom_type_script = "uid://t4dh1f6sues6"
+
+[node name="StencilLight" parent="StencilHolder_3" unique_id=1175847172 instance=ExtResource("2_yceul")]
+transform = Transform3D(1, 0, 0, 0, 0.3122059, 0.9500145, 0, -0.9500145, 0.3122059, 0, 24.789618, 0)
+light_cull_mask = 8
+stencil_layer = 3
+
+[node name="StencilReader" parent="StencilHolder_3" unique_id=1281714345 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
+layers = 8
+material_override = SubResource("ShaderMaterial_enuyp")
+mesh = SubResource("PlaneMesh_dagrs")
+player = NodePath("../../Player")
+stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
+stencil_layer_1 = 3
+current_stencil_layer = 0
+color = Color(0, 0.7565833, 0, 1)
+
+[node name="Player" parent="." unique_id=605510932 instance=ExtResource("3_h0oml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3522606, 2.5605083, -0.034552574)
+collision_mask = 33554433
+
+[node name="BadApple" type="MeshInstance3D" parent="." unique_id=565690708]
+transform = Transform3D(7, 0, 0, 0, 6.9195356, 1.0583115, 0, -1.0583115, 6.9195356, 1.1635854, 5.6013045, -10.2598915)
+layers = 67108864
+material_override = SubResource("ShaderMaterial_bm0js")
+mesh = SubResource("PlaneMesh_5t6du")
+script = ExtResource("8_dwae0")
+stencil_layer = 1
+
+[node name="StencilLabel" type="Label3D" parent="." unique_id=2046777098]
+transform = Transform3D(0.49753377, 0, 0.86744463, 0, 1, 0, -0.86744463, 0, 0.49753377, -5.133005, 1.9543815, -5.2443357)
+layers = 67108864
+texture_filter = 0
+render_priority = -1
+modulate = Color(0.078431375, 0, 0, 0.99)
+text = "Ahhhh Help"
+font_size = 256
+outline_size = 0
+script = ExtResource("10_dwae0")
+stencil_layer = 2
+metadata/_custom_type_script = "uid://ddmh472h74ifi"
+
+[node name="StencilCPUParticels" type="CPUParticles3D" parent="." unique_id=911397282]
+transform = Transform3D(0.014201374, 5.441706e-10, -0.99989927, 0.89704233, 0.44176126, 0.012740517, 0.44171685, -0.8971329, 0.0062736166, -7.4688745, 0.41710997, 0)
+layers = 67108864
+material_override = SubResource("ShaderMaterial_dlagg")
+amount = 64
+lifetime = 3.0
+explosiveness = 0.31
+randomness = 0.89
+mesh = SubResource("SphereMesh_fmpty")
+gravity = Vector3(0, 2, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+script = ExtResource("8_dwae0")
+stencil_layer = 1
+
+[node name="StencilCPUParticels2" type="CPUParticles3D" parent="." unique_id=1563840951]
+transform = Transform3D(0.014201374, 5.441706e-10, -0.99989927, 0.89704233, 0.44176126, 0.012740517, 0.44171685, -0.8971329, 0.0062736166, -7.222619, 0.41710997, 1.3332577)
+layers = 67108864
+material_override = SubResource("ShaderMaterial_gy71p")
+amount = 64
+lifetime = 3.0
+explosiveness = 0.31
+randomness = 0.89
+mesh = SubResource("SphereMesh_fmpty")
+gravity = Vector3(0, 2, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+script = ExtResource("8_dwae0")
+stencil_layer = 2
+
+[node name="Swirlportal" type="MeshInstance3D" parent="." unique_id=1533604074]
+transform = Transform3D(-0.6159596, 0, -0.7877779, 0.14757724, 0.98229635, -0.11538989, 0.77383137, -0.18733355, -0.60505486, 7.699958, 3.974162, -3.7618313)
+layers = 67108864
+material_override = SubResource("ShaderMaterial_ewc6y")
+mesh = SubResource("PlaneMesh_k56px")
+script = ExtResource("8_dwae0")
+stencil_layer = 1
+
+[node name="SwirlportalMini" type="MeshInstance3D" parent="." unique_id=107258167]
+transform = Transform3D(0.5153111, 0.17368807, 0.8392181, -0.12481079, 0.98401666, -0.12701772, -0.8478662, -0.039289847, 0.52875286, -9.62409, 5.431299, -3.3666782)
+layers = 67108864
+material_override = SubResource("ShaderMaterial_bnm1i")
+mesh = SubResource("PlaneMesh_vkdpk")
+script = ExtResource("8_dwae0")
+stencil_layer = 2
+
+[node name="ManyPortals" type="MeshInstance3D" parent="." unique_id=1091356053]
+transform = Transform3D(0.51006126, 0, 0.60209656, 0, 1, 0, -0.86013836, 0, 0.3570427, 5.5279665, 3.1681566, 3.1323957)
+layers = 67108864
+material_override = SubResource("ShaderMaterial_5t6du")
+mesh = SubResource("CylinderMesh_wp5od")
+script = ExtResource("8_dwae0")
+stencil_layer = 1
+stencil_layer_2 = 2
+
+[node name="SwirlCone" type="MeshInstance3D" parent="." unique_id=590180225]
+transform = Transform3D(-0.9999226, 2.7047256e-10, -0.012453799, -0.01094136, -0.4776392, 0.878488, -0.0059484206, 0.87855613, 0.47760215, 0, 4.4207144, 6.483447)
+layers = 67108864
+material_override = SubResource("ShaderMaterial_qvoi3")
+mesh = SubResource("CylinderMesh_5t6du")
+script = ExtResource("8_dwae0")
+debug = true
+stencil_layer = 2
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="." unique_id=1496835732]
+transform = Transform3D(-0.7310058, 0, -0.6823709, 0, 1, 0, 0.6823709, 0, -0.7310058, 10.330646, 7.962822, 10.63954)
+layers = 67108864
+material_override = SubResource("ShaderMaterial_ouget")
+amount = 20
+mesh = SubResource("PlaneMesh_530h6")
+emission_shape = 3
+emission_box_extents = Vector3(7, 5, 1)
+gravity = Vector3(0, -1, 0)
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+script = ExtResource("8_dwae0")
+stencil_layer = 2
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1967374373]
+transform = Transform3D(0.71576524, 0, -0.6983409, 0, 1, 0, 0.6983409, 0, 0.71576524, 9.473851, 8.337368, -7.055713)
+material_override = SubResource("ShaderMaterial_ouget")
+amount = 20
+mesh = SubResource("PlaneMesh_530h6")
+emission_shape = 3
+emission_box_extents = Vector3(7, 5, 1)
+gravity = Vector3(0, -1, 0)
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+script = ExtResource("8_dwae0")
+stencil_layer = 2
