@@ -66,17 +66,19 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed("close"):
 			get_tree().quit()
 	if event.is_action_pressed("ui_accept"):
+		print("test")
 		change_stencil_layer()
 
 
 func update_stencil() -> void:
-	if stencil_camera:
-		stencil_camera.backround_stencil_layer = stencil_layer
-	for stencil_reader in get_tree().get_nodes_in_group("Stencil_Reader"):
-		stencil_reader.current_stencil_layer = stencil_layer
-	for portal in get_tree().get_nodes_in_group("Portal"):
-		portal.update_portal_layer()
-	update_colision()
+	if is_inside_tree():
+		if stencil_camera:
+			stencil_camera.backround_stencil_layer = stencil_layer
+		for stencil_reader in get_tree().get_nodes_in_group("Stencil_Reader"):
+			stencil_reader.current_stencil_layer = stencil_layer
+		for portal in get_tree().get_nodes_in_group("Portal"):
+			portal.update_portal_layer()
+		update_colision()
 
 
 ## changes the colision-layer and -mask of every direct child

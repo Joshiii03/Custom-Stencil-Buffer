@@ -45,7 +45,11 @@ extends GeometryInstance3D
 @export var stencil_texture : Texture2D:
 	set(mew_value):
 		stencil_texture = mew_value
-		material_override.set_shader_parameter("stencil_texture", mew_value)
+		if stencil_texture:
+			material_override.set_shader_parameter("my_texture", mew_value)
+			material_override.set_shader_parameter("use_texture", true)
+		else:
+			material_override.set_shader_parameter("use_texture", false)
 
 @export var color : Color :
 	set(new_value):

@@ -24,18 +24,18 @@ extends Node3D
 
 func _ready() -> void:
 	update_debugscreen()
-	backround_stencil.visible = !Engine.is_editor_hint()
 	if stencil_camera:
 		stencil_camera.cull_mask = 67108864 # int(pow(2, 26))
 	if screen_camera:
 		screen_camera.cull_mask = 33554431 # int(pow(2, 26)- pow(2, 25)-1)
 	
+	stencil_viewport.size = screen_viewport.size
+	
 	if Engine.is_editor_hint():
-		stencil_viewport.size = EditorInterface.get_editor_viewport_3d(0).size
-		screen_viewport.size = EditorInterface.get_editor_viewport_3d(0).size
-	else:
-		stencil_viewport.size = screen_viewport.size
-
+		EditorInterface.get_editor_viewport_3d(0).get_camera_3d().cull_mask = 252706815 #33554431 # 252706815
+		backround_stencil.visible = true
+	else :
+		backround_stencil.visible = true
 
 func _process(_delta: float) -> void:
 	set_camera_transform()
