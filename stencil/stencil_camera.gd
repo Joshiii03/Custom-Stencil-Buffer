@@ -34,8 +34,8 @@ func _ready() -> void:
 		stencil_viewport.size = EditorInterface.get_editor_viewport_3d(0).size
 		screen_viewport.size = EditorInterface.get_editor_viewport_3d(0).size
 	else:
-		stencil_viewport.size = get_window().size / 2.
-		screen_viewport.size = get_window().size / 2.
+		stencil_viewport.size = screen_viewport.size
+
 
 func _process(_delta: float) -> void:
 	set_camera_transform()

@@ -599,6 +599,7 @@ stencil_layer = 2
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1967374373]
 transform = Transform3D(0.71576524, 0, -0.6983409, 0, 1, 0, 0.6983409, 0, 0.71576524, 9.473851, 8.337368, -7.055713)
+layers = 67108864
 material_override = SubResource("ShaderMaterial_ouget")
 amount = 20
 mesh = SubResource("PlaneMesh_530h6")

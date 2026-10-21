@@ -72,22 +72,28 @@ use_debug_screen = true
 
 [node name="StencilViewport" type="SubViewport" parent="." unique_id=200876042]
 handle_input_locally = false
-size = Vector2i(1289, 594)
+size = Vector2i(2128, 1407)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="StencilViewport" unique_id=1839586270]
-transform = Transform3D(-0.015672445, -0.41391808, 0.9101792, 0, 0.910291, 0.41396892, -0.9998772, 0.006487905, -0.014266485, 1.372007, 0.6240181, -0.021505343)
+transform = Transform3D(0.97851664, -0.17570126, 0.10786246, 0, 0.5231775, 0.85222375, -0.206168, -0.8339151, 0.5119379, 7.8609595, 62.109623, 37.30977)
 cull_mask = 67108864
 environment = SubResource("Environment_hg732")
 current = true
 
 [node name="ScrrenSubViewport" type="SubViewportContainer" parent="." unique_id=1191746610]
-offset_right = 1024.0
-offset_bottom = 512.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
 
 [node name="ScreenViewport" type="SubViewport" parent="ScrrenSubViewport" unique_id=2147221177]
 handle_input_locally = false
-size = Vector2i(1289, 594)
+size = Vector2i(1024, 512)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="ScrrenSubViewport/ScreenViewport" unique_id=1493909745]
