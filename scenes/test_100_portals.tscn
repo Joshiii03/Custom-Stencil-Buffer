@@ -197,7 +197,7 @@ shader_parameter/disable_lighting = false
 inner_radius = 2.0
 outer_radius = 5.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrtlr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_enuyp"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_0u1yi")
@@ -211,7 +211,7 @@ shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
 shader_parameter/disable_lighting = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_enuyp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrtlr"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_0u1yi")
@@ -505,7 +505,7 @@ color = Color(0.7055221, 0.49162716, 0.34201658, 1)
 [node name="Donut2" parent="StencilHolder_2" unique_id=29547551 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
 transform = Transform3D(0.26927745, 0.96306264, 0, -0.96306264, 0.26927745, 0, 0, 0, 1, -2.5147943, 12.850296, 1.7085762)
 layers = 4
-material_override = SubResource("ShaderMaterial_nrtlr")
+material_override = SubResource("ShaderMaterial_enuyp")
 mesh = SubResource("TorusMesh_fmpty")
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
@@ -526,7 +526,7 @@ stencil_layer = 3
 
 [node name="StencilReader" parent="StencilHolder_3" unique_id=1281714345 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
 layers = 8
-material_override = SubResource("ShaderMaterial_enuyp")
+material_override = SubResource("ShaderMaterial_nrtlr")
 mesh = SubResource("PlaneMesh_dagrs")
 player = NodePath("../../Player")
 stencil_camera = NodePath("../../Player/CameraPivot/StencilCamera")
