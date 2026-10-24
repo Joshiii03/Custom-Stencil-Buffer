@@ -3,6 +3,7 @@ shader_type spatial;
 render_mode unshaded, depth_draw_always;
 
 uniform vec3 match_color1 : source_color ;
+uniform vec3 match_color2 : source_color ;
 
 uniform sampler2D sprite_sheet : source_color;
 uniform int h_frames = 4;
@@ -37,7 +38,8 @@ void fragment() {
 	
 	if (pixel.r > 0.1)
 	{
-		discard;
+		show_color = match_color2;
+		//discard;
 	}
 	ALBEDO =show_color;
 	ALPHA = 1.;

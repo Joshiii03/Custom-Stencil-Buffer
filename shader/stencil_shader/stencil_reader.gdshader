@@ -64,7 +64,12 @@ void fragment() {
 	}
 	if (disable_lighting)
 	{
-		EMISSION = show_color;
 		ALBEDO = vec3(0.0);
+		if (use_texture){
+			EMISSION = texture(my_texture, UV).rgb;
+			}
+		else{
+			EMISSION = show_color;
+		}
 	}
 }
