@@ -43,8 +43,11 @@ shader_parameter/stencil_texture = SubResource("ViewportTexture_h2yge")
 shader_parameter/alpha_from_G = true
 shader_parameter/use_texture = false
 shader_parameter/current_stencil_infront = false
-shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0.46137774, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_ahg1b"]
 size = Vector3(1, 2, 1)
@@ -127,8 +130,11 @@ shader_parameter/alpha_from_G = false
 shader_parameter/my_texture = ExtResource("4_i8wmo")
 shader_parameter/use_texture = true
 shader_parameter/current_stencil_infront = false
-shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/disable_lighting = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vkdpk"]
 size = Vector2(4, 5)
@@ -221,7 +227,8 @@ render_priority = 0
 shader = ExtResource("7_egp3b")
 shader_parameter/strength = 20.0
 shader_parameter/base_texture = ExtResource("4_i8wmo")
-shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+shader_parameter/match_color2 = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yyqgc"]
 orientation = 2
@@ -236,11 +243,12 @@ seamless = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bhuw3"]
 render_priority = 0
 shader = ExtResource("8_g60tn")
-shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
 shader_parameter/portal_noise_texture = SubResource("NoiseTexture2D_fp4ru")
 shader_parameter/speed = 0.005
-shader_parameter/power_stregth = 0.3
 shader_parameter/twist_strength = 1.490119991842676e-07
+shader_parameter/inner_circle_min = 0.1
+shader_parameter/inner_circle_max = 0.35
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kvh76"]
 size = Vector2(3, 3)

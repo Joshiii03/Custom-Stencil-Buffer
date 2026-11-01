@@ -1,4 +1,4 @@
-shader_type spatial;
+shader_type canvas_item;
 render_mode unshaded;
 
 uniform bool filter_r = false;
@@ -12,7 +12,7 @@ void vertex() {
 }
 
 void fragment() {
-	vec3 color = texture(texture_screen, UV).rgb;
+	vec4 color = texture(texture_screen, UV);
 	if (filter_r)
 	{
 		color.r = 0.;
@@ -25,7 +25,8 @@ void fragment() {
 	{
 		color.b = 0.;
 	}
-	ALBEDO = color.rgb;
+	COLOR = color;
+	//ALBEDO = color.rgb;
 }
 
 void light() {

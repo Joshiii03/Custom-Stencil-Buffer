@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://h4xmx0p6mpy0"]
+
+[ext_resource type="Script" uid="uid://dw5nch1euelxo" path="res://presentation/slide.gd" id="1_yl7mc"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="2_0xa61"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="3_ba1dk"]
+[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="4_4oewc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4oewc"]
+shader = ExtResource("2_0xa61")
+shader_parameter/godot_icon = ExtResource("3_ba1dk")
+shader_parameter/icon_scale = 1.0
+shader_parameter/rotation = 0.14
+shader_parameter/spacing = 0.15
+shader_parameter/scroll_speed = Vector2(0.07, 0.07)
+shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
+shader_parameter/icon_tint = Color(1, 1, 1, 1)
+shader_parameter/icon_opacity = 0.8
+
+[node name="Slide_test" type="Node" unique_id=1625063147]
+script = ExtResource("1_yl7mc")
+slide_name = "Slide to test them all"
+comments = Array[String](["Start the Slide YAY!", "Say something cool", "end Slide"])
+scene = "res://scenes/test_main_3.tscn"
+use_scene = false
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Control2" type="Control" parent="." unique_id=252352689]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GodotBackround" type="ColorRect" parent="Control2" unique_id=959320865]
+material = SubResource("ShaderMaterial_4oewc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69411767, 0.8784314, 1, 1)
+
+[node name="WhiteBackround" type="ColorRect" parent="Control2" unique_id=1623851035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = 30.000002
+offset_right = 49.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+color = Color(1, 1, 1, 0.64705884)
+
+[node name="Label" type="Label" parent="Control2" unique_id=1337836285]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 85.0
+offset_right = 845.0
+offset_bottom = 394.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("4_4oewc")
+theme_override_font_sizes/font_size = 64
+text = "Hallo Liebe Leute
+Heute Zeige ich euch Buffer
+
+-Joshiii03"

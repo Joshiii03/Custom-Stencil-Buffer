@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bpk5j7gjtd70d"]
+
+[ext_resource type="Script" uid="uid://8t55d6cvqx23" path="res://presentation/listener_window.gd" id="1_8tnih"]
+
+[node name="ListenerWindow" type="Window" unique_id=784600668]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+script = ExtResource("1_8tnih")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=303115743]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1416126558]
+handle_input_locally = false
+size = Vector2i(100, 100)
+render_target_update_mode = 4
+
+[connection signal="window_input" from="." to="." method="_on_window_input"]

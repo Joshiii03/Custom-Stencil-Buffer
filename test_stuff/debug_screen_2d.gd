@@ -4,8 +4,9 @@ extends ColorRect
 @export var viewport : Viewport:
 	set(new_value):
 		viewport = new_value
-		var viewport_texture = viewport.get_texture()
-		material.set_shader_parameter("texture_screen", viewport_texture)
+		if viewport:
+			var viewport_texture = viewport.get_texture()
+			material.set_shader_parameter("texture_screen", viewport_texture)
 
 @export var filter_r : bool:
 	set(new_value):

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cgji5u13hmp77"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wp5od"]
+
+[node name="test_slide" type="Node3D" unique_id=2094119643]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=346197312]
+mesh = SubResource("BoxMesh_wp5od")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=921043166]
+transform = Transform3D(0.60365725, -0.27083382, 0.74983126, 0.0053336024, 0.9418802, 0.3359067, -0.7972261, -0.19877319, 0.57001734, 1.1443206, 0.6242695, 1.6391494)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=153457441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)

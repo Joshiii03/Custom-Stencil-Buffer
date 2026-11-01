@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Custom Stencil Buffer"
-run/main_scene="uid://inj7uj1ocdsu"
+run/main_scene="uid://dmh2g7f2abkb2"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
@@ -19,7 +19,6 @@ config/icon="res://assets/icon.svg"
 
 window/size/viewport_width=1024
 window/size/viewport_height=512
-window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

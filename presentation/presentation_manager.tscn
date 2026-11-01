@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dmh2g7f2abkb2"]
+
+[ext_resource type="Script" uid="uid://c5870fu405g3g" path="res://presentation/presentation_manager.gd" id="1_sbnrm"]
+[ext_resource type="Shader" uid="uid://cieltlaejobcs" path="res://shader/test_shader/test_screen.gdshader" id="2_bqe0t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tc04i"]
+shader = ExtResource("2_bqe0t")
+shader_parameter/filter_r = false
+shader_parameter/filter_b = false
+shader_parameter/filter_g = false
+
+[node name="PresentationManager" type="Control" unique_id=1048246767]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sbnrm")
+
+[node name="Timer" type="Timer" parent="." unique_id=1524674935]
+autostart = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1139798988]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14707774, 0.1595374, 0.16133782, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1684069170]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="VBoxContainer" parent="HBoxContainer" unique_id=1433380129]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OtherScreenView" type="ColorRect" parent="HBoxContainer/Main" unique_id=1893856880]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_tc04i")
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.5019608, 1, 1, 1)
+
+[node name="BottomInfo" type="HBoxContainer" parent="HBoxContainer/Main" unique_id=1568231179]
+layout_mode = 2
+
+[node name="SlideCount" type="Label" parent="HBoxContainer/Main/BottomInfo" unique_id=1098459888]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SlideName" type="Label" parent="HBoxContainer/Main/BottomInfo" unique_id=1293050140]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimerLabel" type="Label" parent="HBoxContainer/Main/BottomInfo" unique_id=677253206]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SideInfo" type="VBoxContainer" parent="HBoxContainer" unique_id=1304019552]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/SideInfo" unique_id=154390429]
+layout_mode = 2
+text = "Comments:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/SideInfo" unique_id=318076976]
+custom_minimum_size = Vector2(250, 400)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/SideInfo/ScrollContainer" unique_id=2096392623]
+layout_mode = 2
+
+[node name="Comments" type="Label" parent="HBoxContainer/SideInfo/ScrollContainer/VBoxContainer" unique_id=1613077330]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "aaahhhhhhhhhhhh"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
