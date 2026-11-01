@@ -21,8 +21,8 @@ void fragment() {
 
 	// Map UV coordinates to the selected frame
 	vec2 frame_size = vec2(
-	    1.0 / float(h_frames),
-	    1.0 / float(v_frames)
+		1.0 / float(h_frames),
+		1.0 / float(v_frames)
 	);
 
 	vec2 frame_uv = UV * frame_size;

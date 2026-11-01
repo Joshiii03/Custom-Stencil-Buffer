@@ -157,7 +157,6 @@ viewport_path = NodePath("StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4em5d"]
 resource_local_to_scene = true
-render_priority = 0
 shader = ExtResource("5_4bf6m")
 shader_parameter/filter_r = true
 shader_parameter/filter_b = false
@@ -173,7 +172,6 @@ viewport_path = NodePath("StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_530h6"]
 resource_local_to_scene = true
-render_priority = 0
 shader = ExtResource("5_4bf6m")
 shader_parameter/filter_r = false
 shader_parameter/filter_b = true
@@ -189,7 +187,6 @@ viewport_path = NodePath("StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yyqgc"]
 resource_local_to_scene = true
-render_priority = 0
 shader = ExtResource("5_4bf6m")
 shader_parameter/filter_r = true
 shader_parameter/filter_b = true

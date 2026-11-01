@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://bfcmqnc25xxqs"]
+
+[ext_resource type="Script" uid="uid://bu07ucx1w6fld" path="res://presentation/text_on_slide.gd" id="1_4g0ke"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="1_xk7f3"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="2_4g0ke"]
+[ext_resource type="Shader" uid="uid://bog4pf2embfqf" path="res://slides/round_edges.gdshader" id="3_u3b6l"]
+[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="4_kwqw3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4gwr"]
+shader = ExtResource("1_xk7f3")
+shader_parameter/godot_icon = ExtResource("2_4g0ke")
+shader_parameter/icon_scale = 1.0
+shader_parameter/rotation = 0.14
+shader_parameter/spacing = 0.15
+shader_parameter/scroll_speed = Vector2(0.04, 0.07)
+shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
+shader_parameter/icon_tint = Color(1, 1, 1, 1)
+shader_parameter/icon_opacity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmlrs"]
+shader = ExtResource("3_u3b6l")
+shader_parameter/corner_radius = 70.000003325
+
+[node name="Text" type="Control" unique_id=1809041724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4g0ke")
+header = null
+text = null
+
+[node name="GodotBackround" type="ColorRect" parent="." unique_id=126046358]
+material = SubResource("ShaderMaterial_g4gwr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69411767, 0.8784314, 1, 1)
+
+[node name="SmallerBox" type="Control" parent="." unique_id=1938946174]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 58.9
+offset_top = 37.4
+offset_right = 58.900024
+offset_bottom = 37.399963
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+
+[node name="WhiteBackround" type="ColorRect" parent="SmallerBox" unique_id=1352649206]
+material = SubResource("ShaderMaterial_wmlrs")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.1111107
+offset_top = 1.1111107
+offset_right = -1.111084
+offset_bottom = 1.111084
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.64705884)
+
+[node name="TextContainer" type="VBoxContainer" parent="SmallerBox" unique_id=368231236]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 58.9
+offset_top = 37.4
+offset_right = 58.900024
+offset_bottom = 37.399994
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+
+[node name="HeaderText" type="Label" parent="SmallerBox/TextContainer" unique_id=2113373313]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MainText" type="Label" parent="SmallerBox/TextContainer" unique_id=793562482]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("4_kwqw3")
+theme_override_font_sizes/font_size = 64
+text = "test"
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112

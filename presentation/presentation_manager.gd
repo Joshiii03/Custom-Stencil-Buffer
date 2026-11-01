@@ -8,9 +8,9 @@ var listener_window : ListenerWindow
 
 var current_slide : int = -1
 @export var slides : Array[Array] = [
-	["start Folie", "uid://h4xmx0p6mpy0"],
-	["portale" , "uid://c26wpn4puqq0f"], 
-	["end Folie" , "uid://bvr10un6jc7nc"]
+	["start Folie", "uid://h4xmx0p6mpy0", true],
+	["portale" , "uid://c26wpn4puqq0f", false], 
+	["end Folie" , "uid://bvr10un6jc7nc", true]
 	]
 
 
@@ -57,10 +57,12 @@ func next_slide() -> void:
 
 func update_UI() -> void:
 	%SlideCount.text = "Slide" + str(current_slide)
-	%TimerLabel.text = "Zeit: " + str(time_since_beginn)
+	%TimerLabel.text = "%02d:%02d" % [ int(time_since_beginn / 60.), time_since_beginn % 60]
+	#%TimerLabel.text = "Zeit: " + str(int(time_since_beginn / 60.)) + ":" + str(int(time_since_beginn % 60))
 	var slide = listener_window.slide
 	%Comments.text = ""
-	%SlideName.text = "Slide: " +  slides[current_slide][0]
+	if slides[current_slide][0]:
+		%SlideName.text = "Slide: " +  slides[current_slide][0]
 	if slide is Slide:
 		for comment : String in slide.comments:
 			%Comments.text += comment + "\n"

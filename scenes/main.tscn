@@ -41,9 +41,12 @@ shader = ExtResource("2_85g3d")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_h2yge")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
-shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0.46137774, 0, 1)
-shader_parameter/tolerance = 0.0003
+shader_parameter/disable_lighting = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_ahg1b"]
 size = Vector3(1, 2, 1)
@@ -125,9 +128,12 @@ shader_parameter/stencil_texture = SubResource("ViewportTexture_kvh76")
 shader_parameter/alpha_from_G = true
 shader_parameter/my_texture = ExtResource("4_ya4ey")
 shader_parameter/use_texture = true
-shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/match_color_1 = Color(0, 0, 0, 1)
+shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
-shader_parameter/tolerance = 0.0003
+shader_parameter/disable_lighting = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vkdpk"]
 size = Vector2(4, 5)
@@ -150,7 +156,6 @@ viewport_path = NodePath("StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4em5d"]
 resource_local_to_scene = true
-render_priority = 0
 shader = ExtResource("5_choun")
 shader_parameter/filter_r = true
 shader_parameter/filter_b = false
@@ -166,7 +171,6 @@ viewport_path = NodePath("StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_530h6"]
 resource_local_to_scene = true
-render_priority = 0
 shader = ExtResource("5_choun")
 shader_parameter/filter_r = false
 shader_parameter/filter_b = true
@@ -182,7 +186,6 @@ viewport_path = NodePath("StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yyqgc"]
 resource_local_to_scene = true
-render_priority = 0
 shader = ExtResource("5_choun")
 shader_parameter/filter_r = true
 shader_parameter/filter_b = true
@@ -212,7 +215,8 @@ render_priority = 0
 shader = ExtResource("7_eb6dy")
 shader_parameter/strength = 20.0
 shader_parameter/base_texture = ExtResource("4_ya4ey")
-shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+shader_parameter/match_color2 = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yyqgc"]
 orientation = 2
@@ -227,11 +231,12 @@ seamless = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bhuw3"]
 render_priority = 0
 shader = ExtResource("8_trceg")
-shader_parameter/match_color = Color(1, 0.27450982, 0.28235295, 1)
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
 shader_parameter/portal_noise_texture = SubResource("NoiseTexture2D_tipki")
 shader_parameter/speed = 0.05
-shader_parameter/power_stregth = 0.3
 shader_parameter/twist_strength = 1.3000001683835605
+shader_parameter/inner_circle_min = 0.1
+shader_parameter/inner_circle_max = 0.35
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kvh76"]
 size = Vector2(3, 3)

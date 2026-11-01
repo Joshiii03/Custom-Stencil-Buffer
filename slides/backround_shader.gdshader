@@ -17,33 +17,33 @@ uniform vec4 icon_tint : source_color = vec4(0.2, 0.55, 1.0, 1.0);
 uniform float icon_opacity = 0.18;
 
 void fragment() {
-    vec2 uv = UV;
+	vec2 uv = UV;
 
-    // Repeating grid
-    vec2 pattern_uv = uv / icon_scale;
-    pattern_uv /= spacing;
-    pattern_uv -= TIME * scroll_speed;
+	// Repeating grid
+	vec2 pattern_uv = uv / icon_scale;
+	pattern_uv /= spacing;
+	pattern_uv -= TIME * scroll_speed;
 
-    // Keep cell coordinates
-    vec2 cell = fract(pattern_uv) - 0.5;
+	// Keep cell coordinates
+	vec2 cell = fract(pattern_uv) - 0.5;
 
-    // Rotate icons
-    float c = cos(rotation);
-    float s = sin(rotation);
+	// Rotate icons
+	float c = cos(rotation);
+	float s = sin(rotation);
 
-    mat2 rot = mat2(vec2(c, -s), vec2(s, c));
-    vec2 icon_uv = rot * cell + 0.5;
+	mat2 rot = mat2(vec2(c, -s), vec2(s, c));
+	vec2 icon_uv = rot * cell + 0.5;
 
-    // Sample icon
-    vec4 icon = texture(godot_icon, icon_uv);
+	// Sample icon
+	vec4 icon = texture(godot_icon, icon_uv);
 
-    // Background
-    vec3 col = background_color.rgb;
+	// Background
+	vec3 col = background_color.rgb;
 
-    // Add icons
-    col = mix(col, icon_tint.rgb, icon.a * icon_opacity);
+	// Add icons
+	col = mix(col, icon_tint.rgb, icon.a * icon_opacity);
 	col = mix(col, background_color.rgb, 1.- (UV.y* .3));
 	
 
-    COLOR = vec4(col, 1.0);
+	COLOR = vec4(col, 1.0);
 }

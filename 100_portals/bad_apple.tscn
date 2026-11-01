@@ -8,6 +8,7 @@
 render_priority = 0
 shader = ExtResource("2_28a5w")
 shader_parameter/match_color1 = Color(0, 0, 0, 1)
+shader_parameter/match_color2 = Color(0, 0, 0, 1)
 shader_parameter/sprite_sheet = ExtResource("3_huv0x")
 shader_parameter/h_frames = 1
 shader_parameter/v_frames = 14

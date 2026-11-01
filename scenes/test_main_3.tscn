@@ -232,11 +232,12 @@ seamless = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axvq2"]
 render_priority = 0
 shader = ExtResource("6_4bqwx")
-shader_parameter/match_color = Color(0, 1, 1, 1)
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
 shader_parameter/portal_noise_texture = SubResource("NoiseTexture2D_h2xqh")
 shader_parameter/speed = 0.05
-shader_parameter/power_stregth = 0.3
 shader_parameter/twist_strength = 3.700000204146439
+shader_parameter/inner_circle_min = 0.1
+shader_parameter/inner_circle_max = 0.35
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gjnwl"]
 orientation = 2
@@ -288,7 +289,6 @@ metadata/_custom_type_script = "uid://c1v67hmjyub8i"
 
 [node name="Player" parent="." unique_id=605510932 instance=ExtResource("1_a8yly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7686281, 0, 0)
-collision_mask = 33554433
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1667204121]
 transform = Transform3D(0.98734814, -6.931214e-09, 0.15856768, -0.15856768, -4.315836e-08, 0.98734814, 0, -1, -4.3711392e-08, 0, 8.082072, 0)

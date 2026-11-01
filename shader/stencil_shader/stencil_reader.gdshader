@@ -56,10 +56,10 @@ void fragment() {
 	//Rendering Color || Texture
 	
 	if (use_texture){
-	    ALBEDO = texture(my_texture, UV).rgb;
+		ALBEDO = texture(my_texture, UV).rgb;
 		}
 	else{
-	    ALBEDO = show_color;}
+		ALBEDO = show_color;}
 	if (alpha_from_G){ALPHA = stencil_map.g;
 	}
 	if (disable_lighting)
