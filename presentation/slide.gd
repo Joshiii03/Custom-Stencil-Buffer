@@ -22,9 +22,10 @@ func _init():
 
 func _input(event):
 	if event.is_action_pressed("jump"):
-		print("###################################")
-		print(%HeaderText.get_rendered_font_size())
-		print(%MainText.get_rendered_font_size())
+		pass
+		#print("###################################")
+		#print(%HeaderText.get_rendered_font_size())
+		#print(%MainText.get_rendered_font_size())
 
 
 func resize_all() -> void:

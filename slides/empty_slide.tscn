@@ -4,5 +4,5 @@
 
 [node name="EmptySlide" unique_id=1215255879 instance=ExtResource("1_m1tic")]
 
-[node name="SmallerBox" parent="Control" parent_id_path=PackedInt32Array(125304991) index="1" unique_id=543174192]
-visible = false
+[node name="Text" parent="." index="0" unique_id=1809041724]
+empty = true

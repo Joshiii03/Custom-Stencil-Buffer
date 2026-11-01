@@ -5,6 +5,7 @@ extends Control
 const listener_Window_path = preload("uid://bpk5j7gjtd70d")
 var listener_window : ListenerWindow
 
+@export var test_run : bool = false
 
 var current_slide : int = -1
 @export var slides : Array[Array] = [
@@ -20,7 +21,6 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		if listener_window:
 			listener_window.mode = Window.MODE_FULLSCREEN
-		print(listener_window.get_subviewport().get_camera_3d())
 	if event.is_action_pressed("ui_right"):
 		next_slide()
 
@@ -31,7 +31,8 @@ func _ready():
 	listener_window.main = self
 	add_child(listener_window)
 	listener_window.position = Vector2(2000, 0)
-	listener_window.mode = Window.MODE_FULLSCREEN
+	if not test_run:
+		listener_window.mode = Window.MODE_FULLSCREEN
 	var viewport_texture = listener_window.get_viewport_texture()
 	%OtherScreenView.material.set_shader_parameter("texture_screen", viewport_texture)
 	next_slide()
@@ -43,22 +44,29 @@ func _on_timer_timeout():
 	time_since_beginn += 1
 	update_UI()
 
+var slide_shown 
 
 func next_slide() -> void:
+	if slide_shown is MultiSlide:
+		slide_shown.next_sub_slide()
+	else:
+		load_new_slide()
+	update_UI()
+
+
+func load_new_slide():
 	current_slide += 1
 	if not  slides.size() > current_slide:
 		current_slide -= slides.size()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	listener_window.show_new_slide(slides[current_slide][1])
-	
-	
-	update_UI()
+	slide_shown = listener_window.show_new_slide(slides[current_slide][1])
+	if slide_shown is MultiSlide:
+		slide_shown.finished.connect(load_new_slide)
 
 
 func update_UI() -> void:
 	%SlideCount.text = "Slide" + str(current_slide)
 	%TimerLabel.text = "%02d:%02d" % [ int(time_since_beginn / 60.), time_since_beginn % 60]
-	#%TimerLabel.text = "Zeit: " + str(int(time_since_beginn / 60.)) + ":" + str(int(time_since_beginn % 60))
 	var slide = listener_window.slide
 	%Comments.text = ""
 	if slides[current_slide][0]:

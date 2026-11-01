@@ -5,12 +5,6 @@
 [node name="EndSlide" unique_id=1215255879 instance=ExtResource("1_822i7")]
 comments = Array[String](["Habt ihr noch fragen?"])
 
-[node name="MainText" parent="Control/SmallerBox/TextContainer" parent_id_path=PackedInt32Array(1375874431) index="1" unique_id=1825341487]
-theme_override_font_sizes/font_size = 48
-text = "That was my Demo.
-
-Thank you very much 
-for your attention.
-
-For the full presentation attend
-The Godot Stammtisch"
+[node name="Text" parent="." index="0" unique_id=1809041724]
+header = "Danke fürs zuhören"
+text = "Für die volle presentation müsst ihr zum Godot Talk kommen"

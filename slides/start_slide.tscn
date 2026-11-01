@@ -1,30 +1,18 @@
 [gd_scene format=3 uid="uid://utcq3wfxo55y"]
 
 [ext_resource type="PackedScene" uid="uid://chnt134v1w81x" path="res://presentation/slide.tscn" id="1_2nn1c"]
-[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="2_oq3lv"]
-[ext_resource type="Shader" uid="uid://bog4pf2embfqf" path="res://slides/round_edges.gdshader" id="2_wmlrs"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_14sd8"]
-shader = ExtResource("2_wmlrs")
-shader_parameter/corner_radius = 100.00000475
 
 [node name="StartSlide" unique_id=1215255879 instance=ExtResource("1_2nn1c")]
-comments = Array[String](["Durch atmen", ""])
+comments = Array[String](["Durch Atmen", "Wer bist du (Joshua / Joshiii03)"])
 
-[node name="WhiteBackround" parent="Control/SmallerBox" parent_id_path=PackedInt32Array(543174192) index="0" unique_id=1226962435]
-material = SubResource("ShaderMaterial_14sd8")
+[node name="Text" parent="." index="0" unique_id=1809041724]
+header = "Buffer & Portale"
+text = "Heute Presentiere ich euch:
+Was sind Buffer?
+-Depth-Buffer
+-Stencil-Buffer 
+- Viewport-Buffer
 
-[node name="HeaderText" parent="Control/SmallerBox/TextContainer" parent_id_path=PackedInt32Array(1375874431) index="0" unique_id=1665116665]
-custom_minimum_size = Vector2(0, 118.833336)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_oq3lv")
-text = "Buffer & Portals"
-resize_font_to_fit = true
-minimum_font_size = 64
-maximum_font_size = 512
-
-[node name="MainText" parent="Control/SmallerBox/TextContainer" parent_id_path=PackedInt32Array(1375874431) index="1" unique_id=1825341487]
-text = "Hallo Liebe Leute
-Heute Zeige ich euch Buffer
-
--Joshiii03"
+Portale:
+-Mit zweiter Camera 
+-Mit Stencil/Vieport-Buffer"

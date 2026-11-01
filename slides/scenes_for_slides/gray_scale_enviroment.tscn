@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://coxue6rdjwetd"]
+
+[ext_resource type="Script" uid="uid://ctqekgp7m03ik" path="res://slides/scenes_for_slides/flying_camera.gd" id="1_8gdft"]
+[ext_resource type="Shader" uid="uid://d0j7r27l2rehf" path="res://slides/scenes_for_slides/depth_shower.gdshader" id="1_ps6cy"]
+[ext_resource type="Script" uid="uid://iaanhr127i8v" path="res://test_stuff/Tweener.gd" id="3_cohd7"]
+[ext_resource type="Script" uid="uid://bxe6vgiwxjwmm" path="res://slides/scenes_for_slides/depth_shower.gd" id="3_cu37e"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2nn1c"]
+size = Vector2(600, 600)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y16oe"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oq3lv"]
+height = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y16oe"]
+render_priority = -1
+shader = ExtResource("1_ps6cy")
+shader_parameter/show_log_scale = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y16oe"]
+flip_faces = true
+orientation = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_8gdft"]
+size = Vector3(33.731995, 3, 3)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cu37e"]
+radius = 10.0
+height = 20.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_8gdft"]
+inner_radius = 2.0
+outer_radius = 7.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_cohd7"]
+size = Vector3(5, 5, 5)
+
+[node name="GrayScaleEnviroment" type="Node3D" unique_id=310221593]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=88985140]
+mesh = SubResource("PlaneMesh_2nn1c")
+
+[node name="Collum" type="Node3D" parent="." unique_id=129650486]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -5, 0, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Collum" unique_id=1770780797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+mesh = SubResource("BoxMesh_y16oe")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Collum" unique_id=1344003865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_y16oe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collum" unique_id=1213982139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+mesh = SubResource("CylinderMesh_oq3lv")
+
+[node name="FlyingCamera" type="Node3D" parent="." unique_id=2005953930]
+transform = Transform3D(0.4782197, -0.0034693205, -0.87823343, 0.007408757, 0.9999726, 8.4019906e-05, 0.87820905, -0.006546799, 0.47823218, -3.826109, 4.4035325, -3.2660403)
+script = ExtResource("1_8gdft")
+SPEED = 0.5
+
+[node name="CameraPivot" type="Node3D" parent="FlyingCamera" unique_id=211132993]
+
+[node name="DepthShower" type="MeshInstance3D" parent="FlyingCamera/CameraPivot" unique_id=1895210388]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0.040119648, 0, -0.35433388)
+material_override = SubResource("ShaderMaterial_y16oe")
+mesh = SubResource("PlaneMesh_y16oe")
+script = ExtResource("3_cu37e")
+
+[node name="Camera3D" type="Camera3D" parent="FlyingCamera/CameraPivot" unique_id=1783013496]
+
+[node name="Collum2" type="Node3D" parent="." unique_id=402330289]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -11.05636, 0, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Collum2" unique_id=244868025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+mesh = SubResource("BoxMesh_y16oe")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Collum2" unique_id=1247308166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_y16oe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collum2" unique_id=2126022397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+mesh = SubResource("CylinderMesh_oq3lv")
+
+[node name="Collum3" type="Node3D" parent="." unique_id=315469549]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -18.711376, 0, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Collum3" unique_id=93907042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+mesh = SubResource("BoxMesh_y16oe")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Collum3" unique_id=1404497340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_y16oe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collum3" unique_id=1106175936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+mesh = SubResource("CylinderMesh_oq3lv")
+
+[node name="Collum4" type="Node3D" parent="." unique_id=930086457]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -25.02564, 0, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Collum4" unique_id=356419985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+mesh = SubResource("BoxMesh_y16oe")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Collum4" unique_id=633012366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_y16oe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collum4" unique_id=180248487]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+mesh = SubResource("CylinderMesh_oq3lv")
+
+[node name="Collum5" type="Node3D" parent="." unique_id=1195778314]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -32.80401, 0, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Collum5" unique_id=811867626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+mesh = SubResource("BoxMesh_y16oe")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Collum5" unique_id=662119426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_y16oe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collum5" unique_id=563446588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+mesh = SubResource("CylinderMesh_oq3lv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1730214658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.732464, 8.377191, 0)
+mesh = SubResource("BoxMesh_8gdft")
+
+[node name="Ball" type="MeshInstance3D" parent="." unique_id=1755663118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.898956, 10.48774, 0)
+mesh = SubResource("SphereMesh_cu37e")
+
+[node name="Donut#" type="MeshInstance3D" parent="." unique_id=1709129335]
+transform = Transform3D(-0.14759207, 0.8475609, 0.5097619, 0.989046, 0.12535259, 0.07794105, 0.002159804, 0.51568145, -0.85677767, 12.651924, 11.387358, -32.20147)
+mesh = SubResource("TorusMesh_8gdft")
+script = ExtResource("3_cohd7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1283557462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.053829, -39.270348)
+mesh = SubResource("BoxMesh_cohd7")

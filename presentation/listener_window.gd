@@ -22,9 +22,9 @@ func get_subviewport() -> Viewport:
 
 var slide : Node
 
-func show_new_slide(new_slide_path : String) -> bool:
+func show_new_slide(new_slide_path : String) -> Node:
 	for child in sub_viewport.get_children():
 		child.queue_free.call_deferred()
 	slide = load(new_slide_path).instantiate()
 	sub_viewport.add_child(slide)
-	return true
+	return slide

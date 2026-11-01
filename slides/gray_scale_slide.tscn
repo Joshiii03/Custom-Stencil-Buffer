@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ocat55rnmwpq"]
+
+[ext_resource type="PackedScene" uid="uid://chnt134v1w81x" path="res://presentation/slide.tscn" id="1_nwine"]
+
+[node name="gray_scale_slide" unique_id=1215255879 instance=ExtResource("1_nwine")]
+slide_name = "Gray Scale"
+comments = Array[String](["Log color", "hallo"])
+scene = "res://slides/scenes_for_slides/gray_scale_enviroment.tscn"
+
+[node name="Text" parent="." index="0" unique_id=1809041724]
+visible = false

@@ -2,16 +2,19 @@
 extends Control
 
 @export_tool_button("") var resize = resize_all
+@export var empty : bool = false
 
 @export_multiline() var header = "" :
 	set(new_value):
 		header = new_value
-		%HeaderText.text = text
+		if header:
+			%HeaderText.text = header
 
 @export_multiline() var text = "" :
 	set(new_value):
 		text = new_value
-		%MainText.text = text
+		if text:
+			%MainText.text = text
 
 
 func resize_all() -> void:
@@ -27,7 +30,8 @@ func resize_all() -> void:
 			%HeaderText.custom_minimum_size = Vector2(0, view_size.y / 6.)
 		else:
 			%HeaderText.custom_minimum_size = Vector2(0,0)
-
+	if empty:
+		%SmallerBox.visible = false
 
 func _init():
 	resize_all()

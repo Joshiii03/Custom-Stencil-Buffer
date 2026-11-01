@@ -5,3 +5,12 @@
 
 [node name="MultiSlide" unique_id=1215255879 instance=ExtResource("1_k1eft")]
 script = ExtResource("2_qn58n")
+sub_slide = 1
+
+[node name="Text" parent="." index="0" unique_id=1809041724]
+header = "Hier ist eine normale Folie"
+text = "mit normalem text
+
+
+
+"
