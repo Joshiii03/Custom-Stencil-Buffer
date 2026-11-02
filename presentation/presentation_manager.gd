@@ -23,7 +23,8 @@ func _input(event):
 			listener_window.mode = Window.MODE_FULLSCREEN
 	if event.is_action_pressed("ui_right"):
 		next_slide()
-
+	if event.is_action_pressed("ui_left"):
+		last_slide()
 
 func _ready():
 	get_viewport().set_embedding_subwindows(false)
@@ -51,28 +52,38 @@ func next_slide() -> void:
 		slide_shown.next_sub_slide()
 	else:
 		load_new_slide()
-	update_UI()
 
 
-func load_new_slide():
-	current_slide += 1
+func last_slide() -> void:
+	#if slide_shown is MultiSlide:
+	#	pass
+	#	#slide_shown.next_sub_slide()
+	#else:
+	load_new_slide(-1)
+
+
+func load_new_slide(increment : int = 1):
+	current_slide += increment
 	if not  slides.size() > current_slide:
 		current_slide -= slides.size()
+	if current_slide < 0:
+		current_slide += slides.size()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	slide_shown = listener_window.show_new_slide(slides[current_slide][1])
 	if slide_shown is MultiSlide:
 		slide_shown.finished.connect(load_new_slide)
+	update_UI()
 
 
 func update_UI() -> void:
-	%SlideCount.text = "Slide" + str(current_slide)
+	%SlideCount.text = "Slide: " + str(current_slide +1) + " / " + str(slides.size())
 	%TimerLabel.text = "%02d:%02d" % [ int(time_since_beginn / 60.), time_since_beginn % 60]
 	var slide = listener_window.slide
 	%Comments.text = ""
 	if slides[current_slide][0]:
-		%SlideName.text = "Slide: " +  slides[current_slide][0]
+		%SlideName.text = "Title: " +  slides[current_slide][0]
 	if slide is Slide:
 		for comment : String in slide.comments:
 			%Comments.text += comment + "\n"
 		if slide.slide_name != "" and slide.slide_name !=  "New Slide":
-			%SlideName.text = "Slide: " + slide.slide_name
+			%SlideName.text = "Title: " + slide.slide_name
