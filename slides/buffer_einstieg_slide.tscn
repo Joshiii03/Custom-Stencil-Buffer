@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="2_wfebe"]
 
 [node name="BufferEinstieg_slide" unique_id=1215255879 instance=ExtResource("1_0hpmo")]
-sub_slide = 0
 comments = Array[String](["RenderSceneBuffersRD"])
 
 [node name="Text" parent="." index="0" unique_id=1809041724]
+visible = false
 header = "Was ist ein Buffer?"
 text = "Eine Buffer ist eine Textur über den gesamten Viewport
 z.B. 
@@ -16,8 +16,7 @@ Depth-Buffer
 Stencil-Buffer"
 
 [node name="DepthBuffer" parent="." index="1" unique_id=937805512 instance=ExtResource("2_wfebe")]
-visible = false
-header = ""
+header = "Wofür ist der Depth Buffer"
 text = "für tiefen Erkennung
 
 

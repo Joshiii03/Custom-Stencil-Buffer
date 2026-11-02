@@ -31,7 +31,7 @@ func next_sub_slide() -> void:
 		finished.emit()
 		sub_slide = 0
 	
-	print(sub_slide)
+	
 	for slide in get_children():
 		slide.visible = false
 	get_children()[sub_slide].visible = true

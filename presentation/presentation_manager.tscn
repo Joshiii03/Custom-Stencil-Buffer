@@ -17,7 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sbnrm")
-slides = Array[Array]([["start Folie", "uid://utcq3wfxo55y"], ["Buffer einsteig", "uid://cseisgsxsfcqm"], ["Gray Scale env", "uid://ocat55rnmwpq"], ["end Folie", "uid://bvr10un6jc7nc"], ["leer?", "uid://crkacg8gorydx"]])
+slides = Array[Array]([["Cover & mehr", "uid://boxwdyd5mneud"], ["start Folie", "uid://utcq3wfxo55y"], ["Buffer einsteig", "uid://cseisgsxsfcqm"], ["Gray Scale env", "uid://ocat55rnmwpq"], ["end Folie", "uid://bvr10un6jc7nc"], ["leer?", "uid://crkacg8gorydx"]])
 
 [node name="Timer" type="Timer" parent="." unique_id=1524674935]
 autostart = true

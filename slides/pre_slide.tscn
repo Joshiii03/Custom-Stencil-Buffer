@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://boxwdyd5mneud"]
+
+[ext_resource type="PackedScene" uid="uid://chnt134v1w81x" path="res://presentation/slide.tscn" id="1_oil82"]
+[ext_resource type="Script" uid="uid://bujugxjfpmj1d" path="res://presentation/multi_slide.gd" id="2_7h8bv"]
+[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="3_71ohk"]
+
+[node name="PreSlide" unique_id=1215255879 instance=ExtResource("1_oil82")]
+script = ExtResource("2_7h8bv")
+sub_slide = 0
+
+[node name="Text" parent="." index="0" unique_id=1809041724]
+header = "Bitte einen Moment Geduld"
+text = "Die Vorführung beginnt in 
+wenigen Minuten.
+
+
+-Ihr Joshiii03"
+
+[node name="Cover" parent="." index="1" unique_id=1048705713 instance=ExtResource("3_71ohk")]
+visible = false
+header = "Buffer & Portale in Godot"
+text = "Buffer für Anfänger
+Portale für Profis
+
+27.11.2026
+-Joshiii03"

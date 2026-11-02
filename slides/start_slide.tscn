@@ -6,13 +6,12 @@
 comments = Array[String](["Durch Atmen", "Wer bist du (Joshua / Joshiii03)"])
 
 [node name="Text" parent="." index="0" unique_id=1809041724]
-header = "Buffer & Portale"
-text = "Heute Presentiere ich euch:
-Was sind Buffer?
+header = "Heute Presentiere ich euch:"
+text = "Was sind Buffer?
 -Depth-Buffer
 -Stencil-Buffer 
 - Viewport-Buffer
 
 Portale:
--Mit zweiter Camera 
--Mit Stencil/Vieport-Buffer"
+-Klassisch Mit zweiter Camera 
+-Mit Stencil/Viewport-Buffer"
