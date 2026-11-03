@@ -8,16 +8,8 @@
 script = ExtResource("2_7h8bv")
 sub_slide = 0
 
-[node name="Text" parent="." index="0" unique_id=1809041724]
-header = "Bitte einen Moment Geduld"
-text = "Die Vorführung beginnt in 
-wenigen Minuten.
-
-
--Ihr Joshiii03"
-
-[node name="Cover" parent="." index="1" unique_id=1048705713 instance=ExtResource("3_71ohk")]
-visible = false
+[node name="Cover" parent="." index="0" unique_id=1048705713 instance=ExtResource("3_71ohk")]
+empty = false
 header = "Buffer & Portale in Godot"
 text = "Buffer für Anfänger
 Portale für Profis

@@ -2,7 +2,11 @@
 extends Control
 
 @export_tool_button("") var resize = resize_all
-@export var empty : bool = false
+@export var empty : bool = false :
+	set(new_value):
+		empty = new_value
+		if is_inside_tree() and get_node("%SmallerBox"):
+			%SmallerBox.visible = !empty
 
 @export_multiline() var header = "" :
 	set(new_value):
@@ -18,7 +22,6 @@ extends Control
 
 
 func resize_all() -> void:
-	print("resize")
 	if get_viewport():
 		var view_size = get_viewport().size
 		var text_scale : float = 0.9

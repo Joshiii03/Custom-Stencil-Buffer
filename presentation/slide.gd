@@ -1,44 +1,87 @@
+
 @tool
 class_name Slide
 extends Node
 
 @export var slide_name: String = "New Slide"
-@export var comments : Array[String] = []
+@export var comments: Array[String] = []
 
-@export_file_path("*tscn") var scene  
-@export var use_scene : bool = true
+@export_file_path("*.tscn") var scene: String
+@export var use_scene: bool = true
 
-func _ready():
-	if scene and use_scene and not Engine.is_editor_hint():
-		var new_scene = load(scene).instantiate()
-		get_parent().add_child(new_scene)
+var new_scene: PackedScene = null
+var instance: Node = null
+
+var loading_started := false
+var activation_id := 0
+
+
+func prepare() -> void:
+	if Engine.is_editor_hint():
+		return
+
+	if not scene or not use_scene:
+		return
+
+	if new_scene != null or loading_started:
+		return
+
+	var error = ResourceLoader.load_threaded_request(scene)
+
+	if error == OK or error == ERR_BUSY:
+		loading_started = true
 	else:
-		resize_all()
+		push_error("Could not start loading: " + scene)
 
 
-func _init():
-	resize_all()
+func activate() -> void:
+	if Engine.is_editor_hint() or not scene or not use_scene:
+		return
+
+	activation_id += 1
+	var my_id = activation_id
+
+	# Start loading if it hasn't already started
+	prepare()
+
+	# Wait until loading is complete
+	while new_scene == null:
+		# Was this activation cancelled?
+		if my_id != activation_id:
+			return
+
+		var status = ResourceLoader.load_threaded_get_status(scene)
+
+		match status:
+			ResourceLoader.THREAD_LOAD_LOADED:
+				new_scene = ResourceLoader.load_threaded_get(scene)
+				loading_started = false
+
+			ResourceLoader.THREAD_LOAD_FAILED:
+				loading_started = false
+				push_error("Failed to load slide: " + scene)
+				return
+
+			ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
+				loading_started = false
+				push_error("Invalid resource: " + scene)
+				return
+
+			_:
+				await get_tree().process_frame
+
+	# Check again before instantiating
+	if my_id != activation_id:
+		return
+
+	instance = new_scene.instantiate()
+	get_parent().add_child(instance)
 
 
-func _input(event):
-	if event.is_action_pressed("jump"):
-		pass
-		#print("###################################")
-		#print(%HeaderText.get_rendered_font_size())
-		#print(%MainText.get_rendered_font_size())
+func deactivate() -> void:
+	# Cancel any pending activation
+	activation_id += 1
 
-
-func resize_all() -> void:
-	pass
-	#if get_viewport():
-	#	var view_size = get_viewport().size
-	#	var scale : float = 0.9
-	#	%SmallerBox.scale = Vector2(scale, scale)
-	#	%SmallerBox.position = view_size / 2. * (1 - scale)
-	#	%TextContainer.scale = Vector2(scale, scale)
-	#	%TextContainer.position = view_size / 2. * (1 - scale)
-	#	if %HeaderText.text:
-	#		%HeaderText.custom_minimum_size = Vector2(0, view_size.y / 6.)
-	#	else:
-	#		%HeaderText.custom_minimum_size = Vector2(0,0)
-	#	#%MainText
+	if is_instance_valid(instance):
+		instance.queue_free()
+		instance = null

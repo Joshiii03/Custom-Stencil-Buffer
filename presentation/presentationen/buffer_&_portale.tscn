@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cubn6r3g8lwcu"]
+
+[ext_resource type="PackedScene" uid="uid://d4hv25j8qmu71" path="res://presentation/presentation.tscn" id="1_canl1"]
+[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="2_ry4wd"]
+[ext_resource type="PackedScene" uid="uid://chnt134v1w81x" path="res://presentation/slide.tscn" id="3_yh82q"]
+
+[node name="Buffer & Portale" unique_id=378429670 instance=ExtResource("1_canl1")]
+
+[node name="Cover" parent="." index="0" unique_id=1809041724 instance=ExtResource("2_ry4wd")]
+visible = false
+empty = false
+header = "Buffer & Portale in Godot"
+text = "Buffer für Anfänger
+Portale für Profis
+
+27.11.2026
+-Joshiii03"
+
+[node name="DepthBuffer" parent="." index="1" unique_id=688750164 instance=ExtResource("2_ry4wd")]
+visible = false
+empty = false
+header = "Wofür ist der Depth Buffer"
+text = "für tiefen Erkennung
+
+
+
+"
+
+[node name="GrayScaleEnv" parent="." index="2" unique_id=1215255879 instance=ExtResource("3_yh82q")]
+scene = "uid://coxue6rdjwetd"
+
+[node name="100Portals" parent="." index="3" unique_id=516392851 instance=ExtResource("3_yh82q")]
+scene = "uid://bg4f8h4yfbeqd"
+
+[node name="Text" parent="." index="4" unique_id=210955464 instance=ExtResource("2_ry4wd")]

@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://chnt134v1w81x"]
 
 [ext_resource type="Script" uid="uid://dw5nch1euelxo" path="res://presentation/slide.gd" id="1_3rhp3"]
-[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="2_pefex"]
 
 [node name="Slide" type="Node" unique_id=1215255879]
 script = ExtResource("1_3rhp3")
-
-[node name="Text" parent="." unique_id=1809041724 instance=ExtResource("2_pefex")]
