@@ -8,8 +8,6 @@ extends Label3D
 @export var stencil_layer : int = 0 :
 	set(mew_value):
 		mew_value = clamp(mew_value, 0, 25)
-		if debug:
-			print("Change Stecil from:", str(stencil_layer), " to: ", str(mew_value))
 		stencil_layer = mew_value
 		var red : float  = stencil_layer/25.5
 		modulate =  Color(red,0,0.0, 0.99)
@@ -20,5 +18,3 @@ extends Label3D
 func _ready():
 	layers = 67108864 # int(pow(2, 26))
 	stencil_layer = stencil_layer
-	if debug:
-		print(layers)

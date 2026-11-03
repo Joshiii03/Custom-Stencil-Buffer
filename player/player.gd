@@ -66,7 +66,6 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed("close"):
 			get_tree().quit()
 	if event.is_action_pressed("ui_accept"):
-		print("test")
 		change_stencil_layer()
 
 

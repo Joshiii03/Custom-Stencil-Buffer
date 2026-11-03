@@ -8,7 +8,6 @@ var current_index: int = 0
 
 var slide_count : int = 0:
 	get():
-		print(slides.get_children())
 		return slides.get_child_count()
 
 

@@ -43,7 +43,6 @@ func activate() -> void:
 	if not is_spawning_scene:
 		for child in get_children():
 			child.visible = true
-		print("activate")
 		return
 	
 	if Engine.is_editor_hint():

@@ -21,7 +21,6 @@ shader_parameter/icon_opacity = 1.0
 [node name="Buffer & Portale" unique_id=378429670 instance=ExtResource("1_canl1")]
 
 [node name="Foreground" type="Control" parent="." index="0" unique_id=908551025]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,35 +28,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Foreground" index="0" unique_id=609181157]
+[node name="Control" type="MarginContainer" parent="Foreground" index="0" unique_id=127679303]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Label" type="Label" parent="Foreground/Control" index="0" unique_id=903472778]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Foreground/Control" index="0" unique_id=959884184]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Foreground/Control/VBoxContainer" index="0" unique_id=903472778]
+layout_mode = 2
+size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_nlifg")
 theme_override_font_sizes/font_size = 64
-text = "GRAYSCALE
-
-
-
-
-
-
-
-
-
-"
+text = "Slide name"
 resize_font_to_fit = true
+minimum_font_size = 64
+maximum_font_size = 124
+
+[node name="Control" type="Control" parent="Foreground/Control/VBoxContainer" index="1" unique_id=1899167673]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="Foreground/Control/VBoxContainer" index="2" unique_id=1244790374]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_nlifg")
+text = "Slide 0 / 0"
+horizontal_alignment = 2
+vertical_alignment = 2
+resize_font_to_fit = true
+minimum_font_size = 64
 maximum_font_size = 124
 
 [node name="Backround" type="Control" parent="." index="1" unique_id=2003296756]
@@ -88,17 +96,16 @@ comments = Array[String](["EInatmen -> Ausatmen ( du packst das!)", ""])
 
 [node name="Cover" parent="Slides/Cover" index="0" unique_id=1809041724 instance=ExtResource("2_ry4wd")]
 visible = false
-empty = false
-header = "Buffer & Portale in Godot"
-text = "Buffer für Anfänger
-Portale für Profis
+slide_header = "Buffer & Portale in Godot"
+header = "Buffer für Anfänger
+Portale für Profis"
+text = "
 
 27.11.2026
 -Joshiii03"
 
 [node name="DepthBuffer" parent="Slides" index="1" unique_id=688750164 instance=ExtResource("2_ry4wd")]
-visible = false
-empty = false
+slide_header = ""
 header = "Wofür ist der Depth Buffer"
 text = "für tiefen Erkennung
 
@@ -114,4 +121,5 @@ scene = "uid://bg4f8h4yfbeqd"
 
 [node name="Empty" parent="Slides" index="4" unique_id=210955464 instance=ExtResource("2_ry4wd")]
 visible = false
+empty = true
 header = ""

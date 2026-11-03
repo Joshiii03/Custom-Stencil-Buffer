@@ -11,7 +11,6 @@ signal  finished
 @export_tool_button("next slide") var show_next_slide = next_sub_slide
 
 func add_new_slide() -> void:
-	print("creating new")
 	
 	var new = text_path.instantiate()
 	add_child(new)

@@ -15,63 +15,84 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 4
 script = ExtResource("1_4g0ke")
-empty = true
+slide_header = null
 header = null
 text = null
 
-[node name="SmallerBox" type="Control" parent="." unique_id=1938946174]
+[node name="SmallerBox2" type="MarginContainer" parent="." unique_id=1020454935]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 47.05
-offset_top = 37.45
-offset_right = 47.05005
-offset_bottom = 37.450012
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.9, 0.9)
+theme_override_constants/margin_left = 84
+theme_override_constants/margin_top = 84
+theme_override_constants/margin_right = 84
+theme_override_constants/margin_bottom = 84
 
-[node name="WhiteBackround" type="ColorRect" parent="SmallerBox" unique_id=1352649206]
-material = SubResource("ShaderMaterial_wmlrs")
+[node name="SlideHeader" type="Label" parent="SmallerBox2" unique_id=2048879931]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 122.666664)
+custom_maximum_size = Vector2(99999, 122.666664)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_kwqw3")
+theme_override_font_sizes/font_size = 64
+text = "SlideHeader"
+resize_font_to_fit = true
+maximum_font_size = 254
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=783781141]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.1111107
-offset_top = 1.1111107
-offset_right = -1.111084
-offset_bottom = 1.111084
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SmallerBox" type="MarginContainer" parent="VBoxContainer" unique_id=476401181]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 19
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 207
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 42
+
+[node name="WhiteBackround" type="ColorRect" parent="VBoxContainer/SmallerBox" unique_id=1352649206]
+material = SubResource("ShaderMaterial_wmlrs")
+layout_mode = 2
 color = Color(1, 1, 1, 0.64705884)
 
-[node name="TextContainer" type="VBoxContainer" parent="SmallerBox" unique_id=368231236]
+[node name="TextMarginBox" type="MarginContainer" parent="VBoxContainer/SmallerBox" unique_id=637698339]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 47.05
-offset_top = 37.45
-offset_right = 47.05005
-offset_bottom = 37.450012
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.9, 0.9)
+layout_mode = 2
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 42
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 42
 
-[node name="HeaderText" type="Label" parent="SmallerBox/TextContainer" unique_id=2113373313]
+[node name="TextContainer" type="VBoxContainer" parent="VBoxContainer/SmallerBox/TextMarginBox" unique_id=368231236]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HeaderText" type="Label" parent="VBoxContainer/SmallerBox/TextMarginBox/TextContainer" unique_id=2113373313]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 122.666664)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_kwqw3")
+text = "Test Überschrift"
 resize_font_to_fit = true
 maximum_font_size = 255
 
-[node name="MainText" type="Label" parent="SmallerBox/TextContainer" unique_id=793562482]
+[node name="MainText" type="Label" parent="VBoxContainer/SmallerBox/TextMarginBox/TextContainer" unique_id=793562482]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -80,7 +101,9 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("4_kwqw3")
 theme_override_font_sizes/font_size = 64
-text = "test"
+text = "test Text
+
+"
 resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112

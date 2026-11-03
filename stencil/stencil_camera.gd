@@ -33,7 +33,6 @@ func _ready() -> void:
 	
 	if Engine.is_editor_hint():
 		EditorInterface.get_editor_viewport_3d(0).get_camera_3d().cull_mask = int(pow(2, 29)- pow(2, 25)-1)
-		print("camera layer",int(pow(2, 29)- pow(2, 25)-1))
 		backround_stencil.visible = true
 	else :
 		backround_stencil.visible = true
