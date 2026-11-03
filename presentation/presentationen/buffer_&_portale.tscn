@@ -43,7 +43,8 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="Foreground/Control" index="0" unique_id=959884184]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Foreground/Control/VBoxContainer" index="0" unique_id=903472778]
+[node name="TopLabel" type="Label" parent="Foreground/Control/VBoxContainer" index="0" unique_id=903472778]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_nlifg")
@@ -57,7 +58,8 @@ maximum_font_size = 124
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label2" type="Label" parent="Foreground/Control/VBoxContainer" index="2" unique_id=1244790374]
+[node name="BottomLabel" type="Label" parent="Foreground/Control/VBoxContainer" index="2" unique_id=1244790374]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_nlifg")
@@ -114,6 +116,7 @@ text = "für tiefen Erkennung
 "
 
 [node name="GrayScaleEnv" parent="Slides" index="2" unique_id=811273123 instance=ExtResource("3_yh82q")]
+slide_name = "DepthBuffer show case"
 scene = "uid://coxue6rdjwetd"
 
 [node name="100Portals" parent="Slides" index="3" unique_id=516392851 instance=ExtResource("3_yh82q")]

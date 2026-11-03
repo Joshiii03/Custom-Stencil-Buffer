@@ -57,7 +57,8 @@ func show_slide(index: int) -> void:
 			var next = slides.get_child(next_index)
 			if next is Slide:
 				next.prepare()
-
+	
+	update_UI()
 
 func show_next_slide() -> void:
 	show_slide((current_index + 1) % slides.get_child_count())
@@ -65,3 +66,12 @@ func show_next_slide() -> void:
 
 func show_prev_slide() -> void:
 	show_slide((current_index - 1 + slides.get_child_count()) % slides.get_child_count())
+
+
+func update_UI() -> void:
+	var current_slide = get_slide()
+	if current_slide is Slide:
+		%TopLabel.text = current_slide.slide_name
+	else:
+		%TopLabel.text = current_slide.name
+	%BottomLabel.text = str(current_index +1) + " / " + str(slide_count)
