@@ -72,6 +72,16 @@ func update_UI() -> void:
 	var current_slide = get_slide()
 	if current_slide is Slide:
 		%TopLabel.text = current_slide.slide_name
+		%TopLabel.visible = not current_slide.is_empty
+		%BottomLabel.visible = not current_slide.is_empty
 	else:
 		%TopLabel.text = current_slide.name
+		%TopLabel.visible = true
+		%BottomLabel.visible = true
 	%BottomLabel.text = str(current_index +1) + " / " + str(slide_count)
+	
+	if get_viewport():
+		var view_size : Vector2 = get_viewport().size
+		var margin = view_size.length() * 0.02
+		%TopLabel.custom_minimum_size = Vector2(0,margin)
+		%BottomLabel.custom_minimum_size = Vector2(0,margin)

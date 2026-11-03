@@ -2,10 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://d4hv25j8qmu71" path="res://presentation/presentation.tscn" id="1_canl1"]
 [ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="2_38dde"]
+[ext_resource type="Shader" uid="uid://du8kd8deoqd7b" path="res://presentation/presentationen/logo.gdshader" id="2_ceemk"]
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="2_ry4wd"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="3_nlifg"]
 [ext_resource type="PackedScene" uid="uid://chnt134v1w81x" path="res://presentation/slide.tscn" id="3_yh82q"]
 [ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="6_nlifg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlifg"]
+shader = ExtResource("2_ceemk")
+shader_parameter/godot_icon = ExtResource("3_nlifg")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ceemk"]
 shader = ExtResource("2_38dde")
@@ -43,15 +48,25 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="Foreground/Control" index="0" unique_id=959884184]
 layout_mode = 2
 
-[node name="TopLabel" type="Label" parent="Foreground/Control/VBoxContainer" index="0" unique_id=903472778]
+[node name="HBoxContainer" type="HBoxContainer" parent="Foreground/Control/VBoxContainer" index="0" unique_id=894825372]
+layout_mode = 2
+size_flags_horizontal = 17
+
+[node name="TextureRect" type="TextureRect" parent="Foreground/Control/VBoxContainer/HBoxContainer" index="0" unique_id=1318568321]
+material = SubResource("ShaderMaterial_nlifg")
+layout_mode = 2
+texture = ExtResource("3_nlifg")
+expand_mode = 2
+
+[node name="TopLabel" type="Label" parent="Foreground/Control/VBoxContainer/HBoxContainer" index="1" unique_id=903472778]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_nlifg")
 theme_override_font_sizes/font_size = 64
 text = "Slide name"
 resize_font_to_fit = true
-minimum_font_size = 64
 maximum_font_size = 124
 
 [node name="Control" type="Control" parent="Foreground/Control/VBoxContainer" index="1" unique_id=1899167673]
@@ -61,13 +76,11 @@ size_flags_vertical = 3
 [node name="BottomLabel" type="Label" parent="Foreground/Control/VBoxContainer" index="2" unique_id=1244790374]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("6_nlifg")
 text = "Slide 0 / 0"
 horizontal_alignment = 2
 vertical_alignment = 2
 resize_font_to_fit = true
-minimum_font_size = 64
 maximum_font_size = 124
 
 [node name="Backround" type="Control" parent="." index="1" unique_id=2003296756]
@@ -117,12 +130,18 @@ text = "für tiefen Erkennung
 
 [node name="GrayScaleEnv" parent="Slides" index="2" unique_id=811273123 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case"
+comments = Array[String](["1 -> Stripes"])
 scene = "uid://coxue6rdjwetd"
 
 [node name="100Portals" parent="Slides" index="3" unique_id=516392851 instance=ExtResource("3_yh82q")]
 scene = "uid://bg4f8h4yfbeqd"
 
-[node name="Empty" parent="Slides" index="4" unique_id=210955464 instance=ExtResource("2_ry4wd")]
+[node name="Slide" parent="Slides" index="4" unique_id=1437317286 instance=ExtResource("3_yh82q")]
+slide_name = "Empty"
+comments = Array[String](["You made it !", ""])
+is_empty = true
+
+[node name="Empty" parent="Slides/Slide" index="0" unique_id=210955464 instance=ExtResource("2_ry4wd")]
 visible = false
 empty = true
 header = ""

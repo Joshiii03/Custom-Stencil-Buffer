@@ -8,6 +8,7 @@ extends Node
 
 @export_file_path("*.tscn") var scene: String
 @export var use_scene: bool = true
+@export var is_empty : bool = false
 
 var new_scene: PackedScene = null
 var instance: Node = null
