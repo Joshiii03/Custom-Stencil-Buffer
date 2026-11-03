@@ -43,6 +43,7 @@ color = Color(0.69411767, 0.8784314, 1, 1)
 
 [node name="Cover" parent="Slides" index="0" unique_id=1215255879 instance=ExtResource("3_yh82q")]
 slide_name = "Cover Slide"
+comments = Array[String](["EInatmen -> Ausatmen ( du packst das!)", ""])
 
 [node name="Cover" parent="Slides/Cover" index="0" unique_id=1809041724 instance=ExtResource("2_ry4wd")]
 visible = false

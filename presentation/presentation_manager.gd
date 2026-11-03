@@ -64,12 +64,13 @@ func last_slide() -> void:
 
 
 func update_UI() -> void:
-	#%SlideCount.text = "Slide: " + str(current_slide +1) + " / " + str(slides.size())
 	%TimerLabel.text = "%02d:%02d" % [ int(time_since_beginn / 60.), time_since_beginn % 60]
-	var slide = listener_window.slide
+	var slide = presentation.get_slide()
 	%Comments.text = ""
-	if slide is Slide:
+	if slide:
 		for comment : String in slide.comments:
 			%Comments.text += comment + "\n"
 		if slide.slide_name != "" and slide.slide_name !=  "New Slide":
 			%SlideName.text = "Title: " + slide.slide_name
+	
+	%SlideCount.text = "Slide: " + str(presentation.current_index +1) + " / " + str(presentation.slide_count)

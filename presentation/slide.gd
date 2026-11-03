@@ -86,7 +86,7 @@ func activate() -> void:
 		return
 	
 	instance = new_scene.instantiate()
-	get_parent().add_child(instance)
+	add_child(instance)
 
 
 func deactivate() -> void:
