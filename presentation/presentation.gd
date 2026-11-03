@@ -22,12 +22,9 @@ func _ready() -> void:
 	show_slide(0)
 
 
-func get_slide() -> Slide:
+func get_slide() -> Node:
 	var slide = slides.get_children()[current_index]
-	if slide is Slide:
-		return slide
-	else:
-		return null
+	return slide
 
 
 func show_slide(index: int) -> void:

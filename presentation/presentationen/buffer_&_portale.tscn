@@ -71,6 +71,6 @@ scene = "uid://coxue6rdjwetd"
 [node name="100Portals" parent="Slides" index="3" unique_id=516392851 instance=ExtResource("3_yh82q")]
 scene = "uid://bg4f8h4yfbeqd"
 
-[node name="Text" parent="Slides" index="4" unique_id=210955464 instance=ExtResource("2_ry4wd")]
+[node name="Empty" parent="Slides" index="4" unique_id=210955464 instance=ExtResource("2_ry4wd")]
 visible = false
 header = ""
