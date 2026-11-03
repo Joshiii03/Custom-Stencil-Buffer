@@ -18,7 +18,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sbnrm")
 presentation_path = "uid://cubn6r3g8lwcu"
-test_run = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1524674935]
 autostart = true

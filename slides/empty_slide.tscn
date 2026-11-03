@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://crkacg8gorydx"]
-
-[ext_resource type="PackedScene" uid="uid://chnt134v1w81x" path="res://presentation/slide.tscn" id="1_m1tic"]
-
-[node name="EmptySlide" unique_id=1215255879 instance=ExtResource("1_m1tic")]
-
-[node name="Text" parent="." index="0" unique_id=1809041724]
-empty = true

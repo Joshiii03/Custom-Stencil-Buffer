@@ -3,7 +3,7 @@ class_name StencilHolder
 extends Node3D
 
 @export var update : bool  = false:
-	set(new_value):
+	set(_new_value):
 		update = true
 		update_player()
 		update_stencil()

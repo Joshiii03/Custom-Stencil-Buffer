@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="2_ry4wd"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="3_nlifg"]
 [ext_resource type="PackedScene" uid="uid://chnt134v1w81x" path="res://presentation/slide.tscn" id="3_yh82q"]
+[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="6_nlifg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ceemk"]
 shader = ExtResource("2_38dde")
@@ -19,7 +20,47 @@ shader_parameter/icon_opacity = 1.0
 
 [node name="Buffer & Portale" unique_id=378429670 instance=ExtResource("1_canl1")]
 
-[node name="Backround" type="Control" parent="." index="0" unique_id=2003296756]
+[node name="Foreground" type="Control" parent="." index="0" unique_id=908551025]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Foreground" index="0" unique_id=609181157]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Foreground/Control" index="0" unique_id=903472778]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_nlifg")
+theme_override_font_sizes/font_size = 64
+text = "GRAYSCALE
+
+
+
+
+
+
+
+
+
+"
+resize_font_to_fit = true
+maximum_font_size = 124
+
+[node name="Backround" type="Control" parent="." index="1" unique_id=2003296756]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +80,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.69411767, 0.8784314, 1, 1)
 
-[node name="Slides" type="Node" parent="." index="1" unique_id=579594150]
+[node name="Slides" type="Node" parent="." index="2" unique_id=579594150]
 
 [node name="Cover" parent="Slides" index="0" unique_id=1215255879 instance=ExtResource("3_yh82q")]
 slide_name = "Cover Slide"
