@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="2_ry4wd"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="3_nlifg"]
 [ext_resource type="PackedScene" uid="uid://chnt134v1w81x" path="res://presentation/slide.tscn" id="3_yh82q"]
+[ext_resource type="Script" uid="uid://dw5nch1euelxo" path="res://presentation/slide.gd" id="7_ceemk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ceemk"]
 shader = ExtResource("2_38dde")
@@ -69,24 +70,43 @@ text = ""
 bottom_text = "27.11.2026
 -Joshiii03"
 
-[node name="GrayScaleEnv" parent="Slides" index="2" unique_id=811273123 instance=ExtResource("3_yh82q")]
+[node name="Introduction" type="Node" parent="Slides" index="2" unique_id=855151296]
+script = ExtResource("7_ceemk")
+slide_name = "Einführung"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/Introduction" index="0" unique_id=2040530073 instance=ExtResource("2_ry4wd")]
+slide_header = "Was Ich heute Präsentieren werde"
+header = ""
+text = "Buffer
+-Depth Buffer
+-Stencil Buffer
+-Viewport Buffer
+
+Portals:
+-Portals with Camera (short)
+-Portals with Stencil
+-Portals with Viewport Buffer"
+bottom_text = ""
+
+[node name="GrayScaleEnv" parent="Slides" index="3" unique_id=811273123 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case I"
 comments = Array[String](["1 -> Stripes"])
 scene = "uid://coxue6rdjwetd"
 
-[node name="DepthBuffer_II" parent="Slides" index="3" unique_id=23279040 instance=ExtResource("3_yh82q")]
+[node name="DepthBuffer_II" parent="Slides" index="4" unique_id=23279040 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case II"
 scene = "uid://150tix107shr"
 
 [node name="Text" parent="Slides/DepthBuffer_II" index="0" unique_id=1615261784 instance=ExtResource("2_ry4wd")]
 empty = true
 
-[node name="100Portals" parent="Slides" index="4" unique_id=516392851 instance=ExtResource("3_yh82q")]
+[node name="100Portals" parent="Slides" index="5" unique_id=516392851 instance=ExtResource("3_yh82q")]
 slide_name = "100 Portale"
 comments = Array[String](["Bad Apple von Tobi vorgeschlagen"])
 scene = "uid://bg4f8h4yfbeqd"
 
-[node name="EmptyEndSlide" parent="Slides" index="5" unique_id=1437317286 instance=ExtResource("3_yh82q")]
+[node name="EmptyEndSlide" parent="Slides" index="6" unique_id=1437317286 instance=ExtResource("3_yh82q")]
 slide_name = "Empty"
 comments = Array[String](["You made it !", ""])
 is_empty = true

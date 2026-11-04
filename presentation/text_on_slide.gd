@@ -65,7 +65,8 @@ func resize_all() -> void:
 			%SmallerBox.add_theme_constant_override("margin_top", int(margin * 2 + view_size.y / 6. ))
 		else:
 			%SlideHeader.custom_minimum_size =  Vector2(0,0)
-		
+		if %BottomText.text == "":
+			%BottomText.size_flags_vertical = 0
 		
 		
 		if empty:
