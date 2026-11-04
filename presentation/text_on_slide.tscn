@@ -5,8 +5,9 @@
 [ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="4_kwqw3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmlrs"]
+resource_local_to_scene = true
 shader = ExtResource("3_u3b6l")
-shader_parameter/corner_radius = 70.000003325
+shader_parameter/rect_size = Vector2(952, 303)
 
 [node name="Text" type="Control" unique_id=1809041724]
 layout_mode = 3
@@ -20,6 +21,7 @@ script = ExtResource("1_4g0ke")
 slide_header = null
 header = null
 text = null
+bottom_text = null
 
 [node name="SmallerBox2" type="MarginContainer" parent="." unique_id=1020454935]
 unique_name_in_owner = true
@@ -29,15 +31,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 84
-theme_override_constants/margin_top = 84
-theme_override_constants/margin_right = 84
-theme_override_constants/margin_bottom = 84
+theme_override_constants/margin_left = 72
+theme_override_constants/margin_top = 72
+theme_override_constants/margin_right = 72
+theme_override_constants/margin_bottom = 72
 
 [node name="SlideHeader" type="Label" parent="SmallerBox2" unique_id=2048879931]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 122.666664)
-custom_maximum_size = Vector2(99999, 122.666664)
+custom_minimum_size = Vector2(0, 100.833336)
+custom_maximum_size = Vector2(99999, 100.833336)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("4_kwqw3")
@@ -59,12 +61,13 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 42
-theme_override_constants/margin_top = 207
-theme_override_constants/margin_right = 42
-theme_override_constants/margin_bottom = 42
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 173
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 36
 
 [node name="WhiteBackround" type="ColorRect" parent="VBoxContainer/SmallerBox" unique_id=1352649206]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_wmlrs")
 layout_mode = 2
 color = Color(1, 1, 1, 0.64705884)
@@ -72,10 +75,10 @@ color = Color(1, 1, 1, 0.64705884)
 [node name="TextMarginBox" type="MarginContainer" parent="VBoxContainer/SmallerBox" unique_id=637698339]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 42
-theme_override_constants/margin_top = 42
-theme_override_constants/margin_right = 42
-theme_override_constants/margin_bottom = 42
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 36
 
 [node name="TextContainer" type="VBoxContainer" parent="VBoxContainer/SmallerBox/TextMarginBox" unique_id=368231236]
 unique_name_in_owner = true
@@ -83,12 +86,12 @@ layout_mode = 2
 
 [node name="HeaderText" type="Label" parent="VBoxContainer/SmallerBox/TextMarginBox/TextContainer" unique_id=2113373313]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 122.666664)
+custom_minimum_size = Vector2(0, 100.833336)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_kwqw3")
-text = "Test Überschrift"
+text = "Überschrift"
 resize_font_to_fit = true
 maximum_font_size = 255
 
@@ -101,9 +104,24 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("4_kwqw3")
 theme_override_font_sizes/font_size = 64
-text = "test Text
+text = "Main Text
 
 "
 resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112
+
+[node name="BottomText" type="Label" parent="VBoxContainer/SmallerBox/TextMarginBox/TextContainer" unique_id=943491461]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_kwqw3")
+text = "Bottom Text"
+vertical_alignment = 2
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[connection signal="visibility_changed" from="VBoxContainer/SmallerBox/WhiteBackround" to="." method="_on_white_backround_visibility_changed"]

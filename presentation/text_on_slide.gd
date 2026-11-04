@@ -5,30 +5,35 @@ extends Control
 @export var empty : bool = false :
 	set(new_value):
 		empty = new_value
-		if is_inside_tree() and get_node("%SmallerBox"):
+		if is_inside_tree() and get_node_or_null("%SmallerBox"):
 			%SmallerBox.visible = !empty
-			
+
 
 @export_multiline() var slide_header = "" :
 	set(new_value):
 		slide_header = new_value
-		if slide_header:
+		if get_node_or_null("%SlideHeader"):
 			%SlideHeader.text = slide_header
-		elif get_node_or_null("%SlideHeader"):
-			%SlideHeader.text = ""
 
 @export_multiline() var header = "" :
 	set(new_value):
 		header = new_value
-		if header:
+		if get_node_or_null("%HeaderText"):
 			%HeaderText.text = header
 
 
 @export_multiline() var text = "" :
 	set(new_value):
 		text = new_value
-		if text:
+		if get_node_or_null("%MainText"):
 			%MainText.text = text
+
+
+@export_multiline() var bottom_text = "":
+	set(new_value):
+		bottom_text = new_value
+		if get_node_or_null("%BottomText"):
+			%BottomText.text = bottom_text
 
 
 func resize_all() -> void:
@@ -61,9 +66,15 @@ func resize_all() -> void:
 		else:
 			%SlideHeader.custom_minimum_size =  Vector2(0,0)
 		
+		
+		
 		if empty:
 			%SmallerBox.visible = false
 			%SmallerBox2.visible = false
+		
+		await get_tree().process_frame
+		if %WhiteBackround.size != Vector2.ZERO:
+			%WhiteBackround.material.set_shader_parameter("rect_size", %WhiteBackround.size)
 
 
 func _init():
@@ -71,4 +82,8 @@ func _init():
 
 
 func _ready():
+	resize_all()
+
+
+func _on_white_backround_visibility_changed():
 	resize_all()

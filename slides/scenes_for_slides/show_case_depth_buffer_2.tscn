@@ -1,0 +1,322 @@
+[gd_scene format=3 uid="uid://150tix107shr"]
+
+[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="1_6drkg"]
+[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="1_n6iaa"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="1_rxvv5"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="2_tl00a"]
+[ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="4_cb44x"]
+[ext_resource type="PackedScene" uid="uid://c0q4g2nbgdwsp" path="res://presentation/animator/animator_key.tscn" id="5_ig3tk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tl00a"]
+shader = ExtResource("1_rxvv5")
+shader_parameter/godot_icon = ExtResource("2_tl00a")
+shader_parameter/icon_scale = 1.0
+shader_parameter/rotation = 0.14
+shader_parameter/spacing = 0.15
+shader_parameter/scroll_speed = Vector2(0.04, 0.07)
+shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
+shader_parameter/icon_tint = Color(1, 1, 1, 1)
+shader_parameter/icon_opacity = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6iaa"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0.58431375, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6triu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_se8cq"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0.7450938, 5.7756904e-07, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rxvv5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tl00a"]
+resource_local_to_scene = true
+depth_draw_mode = 2
+albedo_color = Color(1, 0, 0.58431375, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6drkg"]
+resource_local_to_scene = true
+depth_draw_mode = 2
+albedo_color = Color(0, 0.7450938, 5.7756904e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig3tk"]
+resource_local_to_scene = true
+depth_draw_mode = 1
+albedo_color = Color(1, 0, 0.58431375, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uiih5"]
+resource_local_to_scene = true
+depth_draw_mode = 1
+depth_test = 1
+albedo_color = Color(0, 0.7450938, 5.7756904e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_reabw"]
+resource_local_to_scene = true
+depth_draw_mode = 1
+depth_test = 1
+albedo_color = Color(1, 0, 0.58431375, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6fvs"]
+resource_local_to_scene = true
+depth_draw_mode = 1
+albedo_color = Color(0, 0.7450938, 5.7756904e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6triu"]
+resource_local_to_scene = true
+depth_draw_mode = 2
+albedo_color = Color(1, 0, 0.58431375, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cb44x"]
+resource_local_to_scene = true
+render_priority = 1
+depth_draw_mode = 2
+albedo_color = Color(0, 0.7450938, 5.7756904e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6er6"]
+resource_local_to_scene = true
+render_priority = 1
+depth_draw_mode = 2
+albedo_color = Color(1, 0, 0.58431375, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cb44x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifqaf"]
+resource_local_to_scene = true
+depth_draw_mode = 2
+albedo_color = Color(0, 0.7450938, 5.7756904e-07, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ig3tk"]
+
+[sub_resource type="Environment" id="Environment_n6iaa"]
+background_mode = 3
+background_canvas_max_layer = -1
+
+[node name="ShowCaseDepthBuffer2" type="Node3D" unique_id=1710354203]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=283624614]
+transform = Transform3D(1, 0, 0, 0, 0.9552875, 0.29567844, 0, -0.29567844, 0.9552875, 0, 2.273, 5.013009)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=470322437]
+layer = -1
+
+[node name="Text" parent="Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("1_n6iaa")]
+slide_header = ""
+header = "DepthBuffer "
+text = ""
+bottom_text = ""
+
+[node name="Backround" type="Control" parent="Camera3D/CanvasLayer" unique_id=288644725]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GodotBackround" type="ColorRect" parent="Camera3D/CanvasLayer/Backround" unique_id=877798907]
+z_index = -999
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_tl00a")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69411767, 0.8784314, 1, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1685258012]
+transform = Transform3D(0.9936659, 0.043608047, 0.103569075, -0.11237534, 0.38559908, 0.91579753, 0, -0.9216353, 0.38805708, 0, 21.260742, 4.5661774)
+
+[node name="Normal" type="Node3D" parent="." unique_id=593663815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="Square" type="MeshInstance3D" parent="Normal" unique_id=300452237]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.5, 0, 0)
+material_override = SubResource("StandardMaterial3D_n6iaa")
+mesh = SubResource("BoxMesh_6triu")
+
+[node name="Sphere" type="MeshInstance3D" parent="Normal" unique_id=1106817904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.83329105)
+material_override = SubResource("StandardMaterial3D_se8cq")
+mesh = SubResource("SphereMesh_rxvv5")
+
+[node name="Animator" parent="Normal/Sphere" unique_id=64424430 instance=ExtResource("4_cb44x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8278959)
+autostart = true
+loop = true
+
+[node name="Animator_key" parent="Normal/Sphere/Animator" unique_id=2121909404 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.583)
+time = 2.0
+
+[node name="Animator_key2" parent="Normal/Sphere/Animator" unique_id=628970997 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.554)
+time = 2.0
+
+[node name="Label3D" type="Label3D" parent="Normal" unique_id=1446678017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57904387, -1.5, 0)
+billboard = 1
+no_depth_test = true
+modulate = Color(0, 0, 0, 1)
+text = "Normaler 
+DepthBuffer"
+font = ExtResource("1_6drkg")
+font_size = 82
+outline_size = 0
+
+[node name="NoRenderPrio" type="Node3D" parent="." unique_id=480764823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0, 0)
+
+[node name="Square" type="MeshInstance3D" parent="NoRenderPrio" unique_id=1952860299]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.5, 0, 0)
+material_override = SubResource("StandardMaterial3D_tl00a")
+mesh = SubResource("BoxMesh_6triu")
+
+[node name="Sphere" type="MeshInstance3D" parent="NoRenderPrio" unique_id=1863696982]
+material_override = SubResource("StandardMaterial3D_6drkg")
+mesh = SubResource("SphereMesh_rxvv5")
+
+[node name="Animator" parent="NoRenderPrio/Sphere" unique_id=1953052596 instance=ExtResource("4_cb44x")]
+autostart = true
+loop = true
+
+[node name="Animator_key" parent="NoRenderPrio/Sphere/Animator" unique_id=2044937965 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.583)
+time = 2.0
+
+[node name="Animator_key2" parent="NoRenderPrio/Sphere/Animator" unique_id=276173998 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.554)
+time = 2.0
+
+[node name="Label3D" type="Label3D" parent="NoRenderPrio" unique_id=1120937253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49405742, -1.5, 0)
+billboard = 1
+no_depth_test = true
+modulate = Color(0, 0, 0, 1)
+text = "Kein DepthBuffer"
+font = ExtResource("1_6drkg")
+font_size = 82
+outline_size = 0
+
+[node name="Inverted" type="Node3D" parent="." unique_id=594932749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0, 0)
+
+[node name="Square" type="MeshInstance3D" parent="Inverted" unique_id=1390239535]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.5, 0, 0)
+material_override = SubResource("StandardMaterial3D_ig3tk")
+mesh = SubResource("BoxMesh_6triu")
+
+[node name="Sphere" type="MeshInstance3D" parent="Inverted" unique_id=1031261955]
+material_override = SubResource("StandardMaterial3D_uiih5")
+mesh = SubResource("SphereMesh_rxvv5")
+
+[node name="Animator" parent="Inverted/Sphere" unique_id=695365891 instance=ExtResource("4_cb44x")]
+autostart = true
+loop = true
+
+[node name="Animator_key" parent="Inverted/Sphere/Animator" unique_id=1004221202 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.583)
+time = 2.0
+
+[node name="Animator_key2" parent="Inverted/Sphere/Animator" unique_id=510674450 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.554)
+time = 2.0
+
+[node name="Label3D" type="Label3D" parent="Inverted" unique_id=2073359682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3032546, -1.5, 0)
+billboard = 1
+no_depth_test = true
+modulate = Color(0, 0, 0, 1)
+text = "Invertierter
+DepthBuffer"
+font = ExtResource("1_6drkg")
+font_size = 82
+outline_size = 0
+
+[node name="Inverted2" type="Node3D" parent="." unique_id=1601098714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 1.5, 0)
+
+[node name="Square" type="MeshInstance3D" parent="Inverted2" unique_id=1619654993]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.5, 0, 0)
+material_override = SubResource("StandardMaterial3D_reabw")
+mesh = SubResource("BoxMesh_6triu")
+
+[node name="Sphere" type="MeshInstance3D" parent="Inverted2" unique_id=1218471555]
+material_override = SubResource("StandardMaterial3D_e6fvs")
+mesh = SubResource("SphereMesh_rxvv5")
+
+[node name="Animator" parent="Inverted2/Sphere" unique_id=234809026 instance=ExtResource("4_cb44x")]
+autostart = true
+loop = true
+
+[node name="Animator_key" parent="Inverted2/Sphere/Animator" unique_id=1358346377 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.583)
+time = 2.0
+
+[node name="Animator_key2" parent="Inverted2/Sphere/Animator" unique_id=7141875 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.554)
+time = 2.0
+
+[node name="NoDepthBuffer" type="Node3D" parent="." unique_id=973956248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Square" type="MeshInstance3D" parent="NoDepthBuffer" unique_id=1055581882]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.5, 0, 0)
+material_override = SubResource("StandardMaterial3D_6triu")
+mesh = SubResource("BoxMesh_6triu")
+
+[node name="Sphere" type="MeshInstance3D" parent="NoDepthBuffer" unique_id=2054473951]
+material_override = SubResource("StandardMaterial3D_cb44x")
+mesh = SubResource("SphereMesh_rxvv5")
+
+[node name="Animator" parent="NoDepthBuffer/Sphere" unique_id=1356925130 instance=ExtResource("4_cb44x")]
+autostart = true
+loop = true
+
+[node name="Animator_key" parent="NoDepthBuffer/Sphere/Animator" unique_id=645823092 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.583)
+time = 2.0
+
+[node name="Animator_key2" parent="NoDepthBuffer/Sphere/Animator" unique_id=1547491837 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.554)
+time = 2.0
+
+[node name="Label3D" type="Label3D" parent="NoDepthBuffer" unique_id=51380574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, -1.5, 0)
+billboard = 1
+no_depth_test = true
+modulate = Color(0, 0, 0, 1)
+text = "Kein DepthBuffer
+aber Renderpriorität"
+font = ExtResource("1_6drkg")
+font_size = 82
+outline_size = 0
+
+[node name="NoDepthBuffer2" type="Node3D" parent="." unique_id=934087503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 0)
+
+[node name="Square" type="MeshInstance3D" parent="NoDepthBuffer2" unique_id=176426033]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.5, 0, 0)
+material_override = SubResource("StandardMaterial3D_p6er6")
+mesh = SubResource("BoxMesh_cb44x")
+
+[node name="Sphere" type="MeshInstance3D" parent="NoDepthBuffer2" unique_id=839105628]
+material_override = SubResource("StandardMaterial3D_ifqaf")
+mesh = SubResource("SphereMesh_ig3tk")
+
+[node name="Animator" parent="NoDepthBuffer2/Sphere" unique_id=1555432536 instance=ExtResource("4_cb44x")]
+autostart = true
+loop = true
+
+[node name="Animator_key" parent="NoDepthBuffer2/Sphere/Animator" unique_id=1583711218 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.583)
+time = 2.0
+
+[node name="Animator_key2" parent="NoDepthBuffer2/Sphere/Animator" unique_id=1228744195 instance=ExtResource("5_ig3tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.554)
+time = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1474981850]
+environment = SubResource("Environment_n6iaa")

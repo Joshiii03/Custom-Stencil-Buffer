@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://d3offbakf8d5b"]
+
+[ext_resource type="Script" uid="uid://bjnk5v04m8e1o" path="res://presentation/foreground.gd" id="1_l2rmv"]
+[ext_resource type="Shader" uid="uid://du8kd8deoqd7b" path="res://presentation/presentationen/logo.gdshader" id="2_crk7a"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="3_f7ssb"]
+[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="4_ji5b3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlifg"]
+shader = ExtResource("2_crk7a")
+shader_parameter/godot_icon = ExtResource("3_f7ssb")
+
+[node name="Foreground" type="Control" unique_id=72472130]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_l2rmv")
+
+[node name="Control" type="MarginContainer" parent="." unique_id=1123509723]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=359450855]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=710705344]
+layout_mode = 2
+size_flags_horizontal = 17
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer" unique_id=773713297]
+material = SubResource("ShaderMaterial_nlifg")
+layout_mode = 2
+texture = ExtResource("3_f7ssb")
+expand_mode = 2
+
+[node name="TopLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer" unique_id=1873958963]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_ji5b3")
+theme_override_font_sizes/font_size = 64
+text = "Slide name"
+resize_font_to_fit = true
+maximum_font_size = 124
+
+[node name="Control" type="Control" parent="Control/VBoxContainer" unique_id=32915815]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottomLabel" type="Label" parent="Control/VBoxContainer" unique_id=2031087775]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ji5b3")
+text = "Slide 0 / 0"
+horizontal_alignment = 2
+vertical_alignment = 2
+resize_font_to_fit = true
+maximum_font_size = 124

@@ -6,6 +6,10 @@ var current_index: int = 0
 @onready var slides = $Slides
 @onready var backround = $Backround
 
+@export var start_slide : int = 0
+
+signal update_UI(presentation : Presentation)
+
 var slide_count : int = 0:
 	get():
 		return slides.get_child_count()
@@ -18,7 +22,7 @@ func _ready() -> void:
 		else:
 			child.visible = false
 
-	show_slide(0)
+	show_slide(start_slide-1)
 
 
 func get_slide() -> Node:
@@ -58,7 +62,7 @@ func show_slide(index: int) -> void:
 			if next is Slide:
 				next.prepare()
 	
-	update_UI()
+	update_UI.emit(self)
 
 func show_next_slide() -> void:
 	show_slide((current_index + 1) % slides.get_child_count())
@@ -66,22 +70,3 @@ func show_next_slide() -> void:
 
 func show_prev_slide() -> void:
 	show_slide((current_index - 1 + slides.get_child_count()) % slides.get_child_count())
-
-
-func update_UI() -> void:
-	var current_slide = get_slide()
-	if current_slide is Slide:
-		%TopLabel.text = current_slide.slide_name
-		%TopLabel.visible = not current_slide.is_empty
-		%BottomLabel.visible = not current_slide.is_empty
-	else:
-		%TopLabel.text = current_slide.name
-		%TopLabel.visible = true
-		%BottomLabel.visible = true
-	%BottomLabel.text = str(current_index +1) + " / " + str(slide_count)
-	
-	if get_viewport():
-		var view_size : Vector2 = get_viewport().size
-		var margin = view_size.length() * 0.02
-		%TopLabel.custom_minimum_size = Vector2(0,margin)
-		%BottomLabel.custom_minimum_size = Vector2(0,margin)

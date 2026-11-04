@@ -1,13 +1,19 @@
 
 shader_type canvas_item;
 
-uniform float corner_radius : hint_range(0.0, 200.0) = 20.0;
+const float corner_radius = 70.0;
+uniform vec2 rect_size = vec2(200.0, 100.0);
 
 void fragment() {
-	vec2 size = 1.0 / SCREEN_PIXEL_SIZE;
-	vec2 pixel_pos = UV * size;
-	vec2 half_size = size * 0.5;
+	// Get the actual ColorRect dimensions in pixels
+	vec2 size = rect_size;
+	
+	// Convert UV coordinates into pixel coordinates
+	vec2 pixel_size = vec2(size.x, size.y);
+	vec2 half_size = pixel_size * 0.5;
+	vec2 pixel_pos = UV * pixel_size;
 
+	// Rounded rectangle SDF
 	vec2 q = abs(pixel_pos - half_size)
 		   - (half_size - vec2(corner_radius));
 
@@ -15,6 +21,7 @@ void fragment() {
 			+ min(max(q.x, q.y), 0.0)
 			- corner_radius;
 
+	// Anti-aliasing
 	float aa = fwidth(d);
 	float alpha = 1.0 - smoothstep(-aa, aa, d);
 
