@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://oyg5yigg3bus"]
+
+[ext_resource type="Script" uid="uid://cwhfmtnaja7cd" path="res://slides/scenes_for_slides/mirror_player.gd" id="1_mt7t8"]
+[ext_resource type="Script" uid="uid://nblossmxmlw6" path="res://slides/scenes_for_slides/mirror_world.gd" id="2_2bi3l"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mt7t8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt7t8"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.5327327, 0.32205102, 0.09586597, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+stencil_reference = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_mt7t8"]
+size = Vector3(1, 1.5, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i25r"]
+render_priority = -1
+transparency = 1
+albedo_color = Color(0.38431373, 0.6666667, 1, 0.26666668)
+stencil_mode = 3
+stencil_flags = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2bi3l"]
+flip_faces = true
+size = Vector2(0.8, 1.4)
+orientation = 2
+
+[sub_resource type="Environment" id="Environment_mt7t8"]
+background_mode = 1
+background_color = Color(0.5286497, 0.6093226, 0.7480718, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2o72k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tldc"]
+transparency = 1
+depth_draw_mode = 1
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mt7t8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bi3l"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(1, 0.81960785, 0.76862746, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+stencil_reference = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2o72k"]
+size = Vector2(12, 12)
+
+[node name="StencilShowCaseII" type="Node3D" unique_id=68502928]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1441589419]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1499071374]
+shape = SubResource("WorldBoundaryShape3D_mt7t8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1501634842]
+transform = Transform3D(0.9644615, -0.25809902, 0.056559723, -0.16022193, -0.40106735, 0.9019279, -0.21010244, -0.8789368, -0.4281671, 1.133625, 7.566851, -3.1747727)
+
+[node name="Mirror" type="Node3D" parent="." unique_id=719377762]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.5320258, 2.1417966)
+metadata/_edit_group_ = true
+
+[node name="Frame" type="MeshInstance3D" parent="Mirror" unique_id=1777026473]
+material_override = SubResource("StandardMaterial3D_mt7t8")
+mesh = SubResource("BoxMesh_mt7t8")
+
+[node name="SpiegelFläche" type="MeshInstance3D" parent="Mirror" unique_id=183277194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.101)
+material_override = SubResource("StandardMaterial3D_1i25r")
+mesh = SubResource("PlaneMesh_2bi3l")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=815920416]
+environment = SubResource("Environment_mt7t8")
+
+[node name="MirrorPlayer" type="CharacterBody3D" parent="." unique_id=997426350 node_paths=PackedStringArray("mirror")]
+transform = Transform3D(-0.99977463, 0, -0.021230208, 0, 1, 0, 0.021230208, 0, -0.99977463, 0, 1.1957381, -4.309992)
+script = ExtResource("1_mt7t8")
+mirror = NodePath("../Mirror")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MirrorPlayer" unique_id=1320125677]
+shape = SubResource("CapsuleShape3D_2o72k")
+
+[node name="OtherMe" type="MeshInstance3D" parent="MirrorPlayer" unique_id=1061776281]
+material_override = SubResource("StandardMaterial3D_2tldc")
+mesh = SubResource("CapsuleMesh_mt7t8")
+
+[node name="CameraPivot" type="Node3D" parent="MirrorPlayer" unique_id=1954507547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4132259, 0)
+
+[node name="Camera3D" type="Camera3D" parent="MirrorPlayer/CameraPivot" unique_id=1184225905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1551857)
+
+[node name="NormalWorld" type="Node3D" parent="." unique_id=430360508]
+
+[node name="Floor" type="MeshInstance3D" parent="NormalWorld" unique_id=299707448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6887722, 0.06426966, 0.3670032)
+material_override = SubResource("StandardMaterial3D_2bi3l")
+mesh = SubResource("PlaneMesh_2o72k")
+
+[node name="MirrorWorld" type="Node3D" parent="." unique_id=154319106]
+script = ExtResource("2_2bi3l")

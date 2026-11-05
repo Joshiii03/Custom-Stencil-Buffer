@@ -10,6 +10,8 @@ const GRAVITY = 9.8
 @onready var stencil_camera: StencilCamera = $CameraPivot/StencilCamera
 @onready var camera_pivot: Node3D = $CameraPivot
 
+@onready var use_stencil_camera : bool = true
+
 @export var stencil_layer : int = 0 :
 	set(new_value):
 		new_value = clamp(new_value, 0, 25)
@@ -20,6 +22,7 @@ var vertical_look_angle = 0.0
 
 
 func _ready():
+	camera_pivot.visible = use_stencil_camera
 	update_stencil()
 
 

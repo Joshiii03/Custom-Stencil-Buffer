@@ -5,7 +5,7 @@ extends Control
 func _ready():
 	if autoconnect:
 		var last_parent = get_parent()
-		while not last_parent is Presentation and last_parent != get_tree():
+		while not last_parent is Presentation and last_parent != get_tree() and last_parent:
 			last_parent = last_parent.get_parent()
 		
 		if last_parent is Presentation:
