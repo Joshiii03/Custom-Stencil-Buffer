@@ -20,7 +20,7 @@ shader_parameter/icon_tint = Color(1, 1, 1, 1)
 shader_parameter/icon_opacity = 1.0
 
 [node name="Buffer & Portale" unique_id=378429670 instance=ExtResource("1_canl1")]
-start_slide = 4
+start_slide = 6
 
 [node name="Foreground" parent="." index="0" unique_id=72472130 instance=ExtResource("2_nlifg")]
 autoconnect = true
@@ -78,15 +78,15 @@ metadata/_custom_type_script = "uid://dw5nch1euelxo"
 [node name="Text" parent="Slides/Introduction" index="0" unique_id=2040530073 instance=ExtResource("2_ry4wd")]
 slide_header = "Was Ich heute Präsentieren werde"
 header = ""
-text = "Buffer
--Depth Buffer
--Stencil Buffer
+text = "1. Buffer
+-Depth Buffer / Tiefen Buffer
+-Stencil Buffer /Schablonen Buffer
 -Viewport Buffer
 
-Portals:
--Portals with Camera (short)
--Portals with Stencil
--Portals with Viewport Buffer"
+2. Portals:
+-Klassische Portale mit 2. Kamera (short)
+-Portale mit Stencil Buffer
+-Portale mit Viewport Buffer"
 bottom_text = ""
 
 [node name="GrayScaleEnv" parent="Slides" index="3" unique_id=811273123 instance=ExtResource("3_yh82q")]
@@ -101,12 +101,19 @@ scene = "uid://150tix107shr"
 [node name="Text" parent="Slides/DepthBuffer_II" index="0" unique_id=1615261784 instance=ExtResource("2_ry4wd")]
 empty = true
 
-[node name="100Portals" parent="Slides" index="5" unique_id=516392851 instance=ExtResource("3_yh82q")]
+[node name="DepthBuffer_I" type="Node" parent="Slides" index="5" unique_id=896560601]
+script = ExtResource("7_ceemk")
+slide_name = "StencilBuffer showcase I"
+comments = Array[String](["1 -> On/Off"])
+scene = "uid://clsxveo03tft6"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="100Portals" parent="Slides" index="6" unique_id=516392851 instance=ExtResource("3_yh82q")]
 slide_name = "100 Portale"
 comments = Array[String](["Bad Apple von Tobi vorgeschlagen"])
 scene = "uid://bg4f8h4yfbeqd"
 
-[node name="EmptyEndSlide" parent="Slides" index="6" unique_id=1437317286 instance=ExtResource("3_yh82q")]
+[node name="EmptyEndSlide" parent="Slides" index="7" unique_id=1437317286 instance=ExtResource("3_yh82q")]
 slide_name = "Empty"
 comments = Array[String](["You made it !", ""])
 is_empty = true
