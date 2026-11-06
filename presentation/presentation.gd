@@ -6,7 +6,7 @@ var current_index: int = 0
 @onready var slides = $Slides
 @onready var backround = $Backround
 
-@export var start_slide : int = 0
+@export var start_slide : int = 1
 
 signal update_UI(presentation : Presentation)
 

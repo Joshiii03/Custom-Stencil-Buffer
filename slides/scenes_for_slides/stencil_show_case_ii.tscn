@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://oyg5yigg3bus"]
 
 [ext_resource type="Script" uid="uid://cwhfmtnaja7cd" path="res://slides/scenes_for_slides/mirror_player.gd" id="1_mt7t8"]
+[ext_resource type="Texture2D" uid="uid://cvoicv4b0ffcn" path="res://assets/icon.svg" id="2_1i25r"]
 [ext_resource type="Script" uid="uid://nblossmxmlw6" path="res://slides/scenes_for_slides/mirror_world.gd" id="2_2bi3l"]
+[ext_resource type="Script" uid="uid://cu5dwdaou0rqe" path="res://slides/scenes_for_slides/normal_world.gd" id="3_b5jf1"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mt7t8"]
 
@@ -38,6 +40,7 @@ background_color = Color(0.5286497, 0.6093226, 0.7480718, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tldc"]
 transparency = 1
 depth_draw_mode = 1
+albedo_texture = ExtResource("2_1i25r")
 stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 2
@@ -55,6 +58,44 @@ stencil_reference = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2o72k"]
 size = Vector2(12, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ol2ta"]
+render_priority = -1
+transparency = 1
+depth_draw_mode = 1
+stencil_mode = 3
+stencil_flags = 2
+stencil_reference = 0
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_1i25r"]
+next_pass = SubResource("StandardMaterial3D_ol2ta")
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.48422825, 0.23793188, 0.10021552, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+stencil_reference = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2bi3l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1i25r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5jf1"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(1, 0.81960785, 0.76862746, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_2tldc"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.48422825, 0.23793188, 0.10021552, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
 
 [node name="StencilShowCaseII" type="Node3D" unique_id=68502928]
 
@@ -101,11 +142,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4132259, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1551857)
 
 [node name="NormalWorld" type="Node3D" parent="." unique_id=430360508]
+script = ExtResource("3_b5jf1")
 
 [node name="Floor" type="MeshInstance3D" parent="NormalWorld" unique_id=299707448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6887722, 0.06426966, 0.3670032)
 material_override = SubResource("StandardMaterial3D_2bi3l")
 mesh = SubResource("PlaneMesh_2o72k")
 
-[node name="MirrorWorld" type="Node3D" parent="." unique_id=154319106]
+[node name="Cube" type="MeshInstance3D" parent="NormalWorld" unique_id=380889194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1307399, 1.121806, -2.3105373)
+material_override = SubResource("ORMMaterial3D_1i25r")
+mesh = SubResource("BoxMesh_2bi3l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NormalWorld/Cube" unique_id=774956385]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NormalWorld/Cube/StaticBody3D" unique_id=1371532093]
+shape = SubResource("BoxShape3D_1i25r")
+
+[node name="MirrorWorld" type="Node3D" parent="." unique_id=154319106 node_paths=PackedStringArray("normal_world", "mirror")]
 script = ExtResource("2_2bi3l")
+normal_world = NodePath("../NormalWorld")
+mirror = NodePath("../Mirror")
+
+[node name="@MeshInstance3D@72881" type="MeshInstance3D" parent="MirrorWorld" unique_id=1568379831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6887722, 0.06426966, 3.91659)
+material_override = SubResource("StandardMaterial3D_b5jf1")
+mesh = SubResource("PlaneMesh_2o72k")
+
+[node name="@MeshInstance3D@72882" type="MeshInstance3D" parent="MirrorWorld" unique_id=1346800029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1307399, 1.121806, 6.5941305)
+material_override = SubResource("ORMMaterial3D_2tldc")
+mesh = SubResource("BoxMesh_2bi3l")

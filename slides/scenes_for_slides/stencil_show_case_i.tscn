@@ -14,6 +14,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_as8oc"]
 albedo_color = Color(0, 0.3529412, 0, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewocp"]
+albedo_color = Color(0.5137255, 0.22745098, 0, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p2vpb"]
 render_priority = 1
 shader = ExtResource("4_hh7h8")
@@ -102,8 +105,13 @@ radius = 1.314
 sides = 16
 material = ExtResource("4_46cwb")
 
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Boat/CSGCylinder3D" unique_id=686983748]
+transform = Transform3D(0.40957603, 0.57357645, 0, -0.28678823, 0.81915206, 0, 0, 0, 1, 1.4608674, 1.0070317, 0)
+sides = 4
+material = SubResource("StandardMaterial3D_ewocp")
+
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Boat/CSGCylinder3D" unique_id=2118531584]
-transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, 0, 0.08963013, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.889, 0, 0, 0, 0.8, 0, 0.19742572, 0)
 operation = 2
 radius = 1.314
 sides = 16
@@ -125,7 +133,7 @@ transform = Transform3D(-1, 3.5527137e-15, -8.742276e-08, -7.9265654e-08, 0.4217
 layer = -1
 
 [node name="Text" parent="Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("8_ewocp")]
-slide_header = "Ship Ship Ahoy!"
+slide_header = "Ship Ahoy!"
 header = ""
 text = "Das Innere des Bootes 
 schreibt 1 in den Stencil
