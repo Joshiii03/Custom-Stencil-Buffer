@@ -1,65 +1,62 @@
 [gd_scene format=3 uid="uid://oyg5yigg3bus"]
 
-[ext_resource type="Script" uid="uid://cwhfmtnaja7cd" path="res://slides/scenes_for_slides/mirror_player.gd" id="1_mt7t8"]
-[ext_resource type="Texture2D" uid="uid://cvoicv4b0ffcn" path="res://assets/icon.svg" id="2_1i25r"]
 [ext_resource type="Script" uid="uid://nblossmxmlw6" path="res://slides/scenes_for_slides/mirror_world.gd" id="2_2bi3l"]
+[ext_resource type="Texture2D" uid="uid://bik5uv10x5nkl" path="res://assets/Teppich2.png" id="2_2igkg"]
 [ext_resource type="Script" uid="uid://cu5dwdaou0rqe" path="res://slides/scenes_for_slides/normal_world.gd" id="3_b5jf1"]
+[ext_resource type="ArrayMesh" uid="uid://bhdhjsgidx7nk" path="res://assets/Gras_mash.tres" id="4_2tldc"]
+[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="4_ol2ta"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="5_o421m"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="6_22x1v"]
+[ext_resource type="Script" uid="uid://cie0fcqbdyepd" path="res://presentation/animator/animator.gd" id="7_22x1v"]
+[ext_resource type="Script" uid="uid://c7wrltuknx6fc" path="res://presentation/animator/animator_key.gd" id="8_2igkg"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mt7t8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt7t8"]
 transparency = 1
 depth_draw_mode = 1
-albedo_color = Color(0.5327327, 0.32205102, 0.09586597, 1)
+albedo_color = Color(0.48235294, 0.23921569, 0.101960786, 1)
 stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 2
 stencil_reference = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_mt7t8"]
-size = Vector3(1, 1.5, 0.2)
+size = Vector3(2, 1.5, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i25r"]
 render_priority = -1
 transparency = 1
-albedo_color = Color(0.38431373, 0.6666667, 1, 0.26666668)
+depth_draw_mode = 2
+albedo_color = Color(0.38431373, 0.6666667, 1, 0.54509807)
 stencil_mode = 3
 stencil_flags = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2bi3l"]
 flip_faces = true
-size = Vector2(0.8, 1.4)
+size = Vector2(1.7, 1.3)
 orientation = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_b5jf1"]
+size = Vector3(1.5, 1.5, 0.2)
+
 [sub_resource type="Environment" id="Environment_mt7t8"]
-background_mode = 1
+background_mode = 3
 background_color = Color(0.5286497, 0.6093226, 0.7480718, 1)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2o72k"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tldc"]
-transparency = 1
-depth_draw_mode = 1
-albedo_texture = ExtResource("2_1i25r")
-stencil_mode = 3
-stencil_flags = 1
-stencil_compare = 2
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_mt7t8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bi3l"]
 transparency = 1
 depth_draw_mode = 1
-albedo_color = Color(1, 0.81960785, 0.76862746, 1)
+albedo_texture = ExtResource("2_2igkg")
 stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 2
 stencil_reference = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2o72k"]
-size = Vector2(12, 12)
+size = Vector2(7, 7)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ol2ta"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjm2s"]
 render_priority = -1
 transparency = 1
 depth_draw_mode = 1
@@ -67,35 +64,137 @@ stencil_mode = 3
 stencil_flags = 2
 stencil_reference = 0
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_1i25r"]
-next_pass = SubResource("StandardMaterial3D_ol2ta")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8mbb"]
+next_pass = SubResource("StandardMaterial3D_wjm2s")
 transparency = 1
 depth_draw_mode = 1
-albedo_color = Color(0.48422825, 0.23793188, 0.10021552, 1)
+albedo_color = Color(0.2728377, 0.2728377, 0.2728377, 1)
 stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 2
 stencil_reference = 0
 
-[sub_resource type="BoxMesh" id="BoxMesh_2bi3l"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_b5jf1"]
+bottom_radius = 0.3
+height = 0.7
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1i25r"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5jf1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agk1o"]
+render_priority = -1
 transparency = 1
 depth_draw_mode = 1
-albedo_color = Color(1, 0.81960785, 0.76862746, 1)
+stencil_mode = 3
+stencil_flags = 2
+stencil_reference = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5kjp"]
+next_pass = SubResource("StandardMaterial3D_agk1o")
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0, 0.5254902, 0, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+stencil_reference = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o174s"]
+render_priority = -1
+transparency = 1
+depth_draw_mode = 1
+stencil_mode = 3
+stencil_flags = 2
+stencil_reference = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6atjl"]
+next_pass = SubResource("StandardMaterial3D_o174s")
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0, 0.5254902, 0, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+stencil_reference = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mskhb"]
+render_priority = -1
+transparency = 1
+depth_draw_mode = 1
+stencil_mode = 3
+stencil_flags = 2
+stencil_reference = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xb1g"]
+next_pass = SubResource("StandardMaterial3D_mskhb")
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.16470589, 0.6117647, 0.5019608, 1)
+uv1_scale = Vector3(2, 2, 2)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+stencil_reference = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2igkg"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2igkg"]
+transparency = 1
+depth_draw_mode = 1
+albedo_texture = ExtResource("2_2igkg")
 stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 2
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_2tldc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifns6"]
 transparency = 1
 depth_draw_mode = 1
-albedo_color = Color(0.48422825, 0.23793188, 0.10021552, 1)
+albedo_color = Color(0.2728377, 0.2728377, 0.2728377, 1)
 stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trs7i"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0, 0.5254902, 0, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lttif"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0, 0.5254902, 0, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4htpo"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0, 0.5254902, 0, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtuht"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.16470589, 0.6117647, 0.5019608, 1)
+uv1_scale = Vector3(2, 2, 2)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2igkg"]
+shader = ExtResource("5_o421m")
+shader_parameter/godot_icon = ExtResource("6_22x1v")
+shader_parameter/icon_scale = 1.0
+shader_parameter/rotation = 0.14
+shader_parameter/spacing = 0.15
+shader_parameter/scroll_speed = Vector2(0.04, 0.07)
+shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
+shader_parameter/icon_tint = Color(1, 1, 1, 1)
+shader_parameter/icon_opacity = 1.0
 
 [node name="StencilShowCaseII" type="Node3D" unique_id=68502928]
 
@@ -108,68 +207,151 @@ shape = SubResource("WorldBoundaryShape3D_mt7t8")
 transform = Transform3D(0.9644615, -0.25809902, 0.056559723, -0.16022193, -0.40106735, 0.9019279, -0.21010244, -0.8789368, -0.4281671, 1.133625, 7.566851, -3.1747727)
 
 [node name="Mirror" type="Node3D" parent="." unique_id=719377762]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.5320258, 2.1417966)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.5, 2.525898)
 metadata/_edit_group_ = true
 
 [node name="Frame" type="MeshInstance3D" parent="Mirror" unique_id=1777026473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.101)
 material_override = SubResource("StandardMaterial3D_mt7t8")
 mesh = SubResource("BoxMesh_mt7t8")
 
 [node name="SpiegelFläche" type="MeshInstance3D" parent="Mirror" unique_id=183277194]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.101)
 material_override = SubResource("StandardMaterial3D_1i25r")
 mesh = SubResource("PlaneMesh_2bi3l")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Mirror" unique_id=166486851]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mirror/StaticBody3D" unique_id=606462804]
+shape = SubResource("BoxShape3D_b5jf1")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=815920416]
 environment = SubResource("Environment_mt7t8")
-
-[node name="MirrorPlayer" type="CharacterBody3D" parent="." unique_id=997426350 node_paths=PackedStringArray("mirror")]
-transform = Transform3D(-0.99977463, 0, -0.021230208, 0, 1, 0, 0.021230208, 0, -0.99977463, 0, 1.1957381, -4.309992)
-script = ExtResource("1_mt7t8")
-mirror = NodePath("../Mirror")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MirrorPlayer" unique_id=1320125677]
-shape = SubResource("CapsuleShape3D_2o72k")
-
-[node name="OtherMe" type="MeshInstance3D" parent="MirrorPlayer" unique_id=1061776281]
-material_override = SubResource("StandardMaterial3D_2tldc")
-mesh = SubResource("CapsuleMesh_mt7t8")
-
-[node name="CameraPivot" type="Node3D" parent="MirrorPlayer" unique_id=1954507547]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4132259, 0)
-
-[node name="Camera3D" type="Camera3D" parent="MirrorPlayer/CameraPivot" unique_id=1184225905]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1551857)
 
 [node name="NormalWorld" type="Node3D" parent="." unique_id=430360508]
 script = ExtResource("3_b5jf1")
 
 [node name="Floor" type="MeshInstance3D" parent="NormalWorld" unique_id=299707448]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6887722, 0.06426966, 0.3670032)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.064, 1.0396723)
 material_override = SubResource("StandardMaterial3D_2bi3l")
 mesh = SubResource("PlaneMesh_2o72k")
 
-[node name="Cube" type="MeshInstance3D" parent="NormalWorld" unique_id=380889194]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1307399, 1.121806, -2.3105373)
-material_override = SubResource("ORMMaterial3D_1i25r")
-mesh = SubResource("BoxMesh_2bi3l")
+[node name="Pot" type="MeshInstance3D" parent="NormalWorld" unique_id=2017542294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5599914, 0.4020661, -0.4393071)
+material_override = SubResource("StandardMaterial3D_w8mbb")
+mesh = SubResource("CylinderMesh_b5jf1")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NormalWorld/Cube" unique_id=774956385]
+[node name="Plant" type="MeshInstance3D" parent="NormalWorld" unique_id=1249831989]
+transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 1.5599914, 0.7456775, -0.4711461)
+material_override = SubResource("StandardMaterial3D_s5kjp")
+mesh = ExtResource("4_2tldc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NormalWorld/Cube/StaticBody3D" unique_id=1371532093]
-shape = SubResource("BoxShape3D_1i25r")
+[node name="Plant2" type="MeshInstance3D" parent="NormalWorld" unique_id=363981565]
+transform = Transform3D(-0.9945276, 0.07901856, -0.034046024, 0.09948314, 0.79587346, -0.01982629, 0.03191197, -0.01848384, -0.9992236, 1.5599914, 0.7456775, -0.4711461)
+material_override = SubResource("StandardMaterial3D_6atjl")
+mesh = ExtResource("4_2tldc")
+
+[node name="Plant3" type="MeshInstance3D" parent="NormalWorld" unique_id=1778035413]
+transform = Transform3D(1.3416128, -0.0809241, -0.37419185, 0.13927637, 0.79587334, -0.027756806, 0.3750694, -0.0060723233, 1.3487809, 1.5599914, 0.7252648, -0.26022065)
+material_override = SubResource("StandardMaterial3D_6atjl")
+mesh = ExtResource("4_2tldc")
+
+[node name="Cube" type="MeshInstance3D" parent="NormalWorld" unique_id=1043680069]
+transform = Transform3D(0.5229125, 0, 0.8523862, 0, 0.9999999, 0, -0.8523862, 0, 0.5229125, 0, 0.2989905, -0.033527613)
+material_override = SubResource("StandardMaterial3D_8xb1g")
+mesh = SubResource("BoxMesh_2igkg")
 
 [node name="MirrorWorld" type="Node3D" parent="." unique_id=154319106 node_paths=PackedStringArray("normal_world", "mirror")]
 script = ExtResource("2_2bi3l")
 normal_world = NodePath("../NormalWorld")
 mirror = NodePath("../Mirror")
 
-[node name="@MeshInstance3D@72881" type="MeshInstance3D" parent="MirrorWorld" unique_id=1568379831]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6887722, 0.06426966, 3.91659)
-material_override = SubResource("StandardMaterial3D_b5jf1")
+[node name="Floor" type="MeshInstance3D" parent="MirrorWorld" unique_id=686553811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0.064, 4.0121236)
+material_override = SubResource("StandardMaterial3D_2igkg")
 mesh = SubResource("PlaneMesh_2o72k")
 
-[node name="@MeshInstance3D@72882" type="MeshInstance3D" parent="MirrorWorld" unique_id=1346800029]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1307399, 1.121806, 6.5941305)
-material_override = SubResource("ORMMaterial3D_2tldc")
-mesh = SubResource("BoxMesh_2bi3l")
+[node name="Pot" type="MeshInstance3D" parent="MirrorWorld" unique_id=940291084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 1.5599914, 0.4020661, 5.491103)
+material_override = SubResource("StandardMaterial3D_ifns6")
+mesh = SubResource("CylinderMesh_b5jf1")
+
+[node name="Plant" type="MeshInstance3D" parent="MirrorWorld" unique_id=816797714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 1.5599914, 0.7456775, 5.522942)
+material_override = SubResource("StandardMaterial3D_trs7i")
+mesh = ExtResource("4_2tldc")
+
+[node name="Plant2" type="MeshInstance3D" parent="MirrorWorld" unique_id=501017989]
+transform = Transform3D(-0.9945274, 0.0987732, -0.03404592, 0.09948313, 0.9948417, -0.019826306, -0.03191199, 0.0231048, 0.9992236, 1.5599914, 0.7456775, 5.522942)
+material_override = SubResource("StandardMaterial3D_lttif")
+mesh = ExtResource("4_2tldc")
+
+[node name="Plant3" type="MeshInstance3D" parent="MirrorWorld" unique_id=224576870]
+transform = Transform3D(0.95829487, -0.10115513, -0.2672799, 0.09948313, 0.9948417, -0.019826291, -0.26790673, 0.0075904056, -0.9634149, 1.5599914, 0.7252648, 5.3120165)
+material_override = SubResource("StandardMaterial3D_4htpo")
+mesh = ExtResource("4_2tldc")
+
+[node name="Cube" type="MeshInstance3D" parent="MirrorWorld" unique_id=1833375923]
+transform = Transform3D(0.52291256, 0, 0.85238636, 0, 1, 0, 0.85238636, 0, -0.52291256, 0, 0.2989905, 5.0853233)
+material_override = SubResource("StandardMaterial3D_rtuht")
+mesh = SubResource("BoxMesh_2igkg")
+
+[node name="CamareaPivot" type="Node3D" parent="." unique_id=847591937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4453316)
+
+[node name="Camera3D" type="Camera3D" parent="CamareaPivot" unique_id=1847679435]
+transform = Transform3D(-1, 3.6168493e-15, -8.742277e-08, -2.0272132e-08, 0.9727429, 0.23188624, 8.503988e-08, 0.23188624, -0.9727429, 2.5966845, 3.2337208, -6.7767906)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CamareaPivot/Camera3D" unique_id=1273096848]
+layer = -1
+
+[node name="Text" parent="CamareaPivot/Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("4_ol2ta")]
+slide_header = "Mirror Mirror on the Wall"
+header = ""
+text = ""
+bottom_text = ""
+
+[node name="Backround" type="Control" parent="CamareaPivot/Camera3D/CanvasLayer" unique_id=372914648]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GodotBackround" type="ColorRect" parent="CamareaPivot/Camera3D/CanvasLayer/Backround" unique_id=959192174]
+z_index = -999
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_2igkg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69411767, 0.8784314, 1, 1)
+
+[node name="Animator" type="Node3D" parent="CamareaPivot" unique_id=111290023]
+script = ExtResource("7_22x1v")
+autostart = true
+loop = true
+metadata/_custom_type_script = "uid://cie0fcqbdyepd"
+
+[node name="AnimatorKey" type="Marker3D" parent="CamareaPivot/Animator" unique_id=2046039711]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, 0, 0, 0)
+script = ExtResource("8_2igkg")
+time = 4.0
+animate_position = false
+animate_rotation = true
+metadata/_custom_type_script = "uid://c7wrltuknx6fc"
+
+[node name="AnimatorKey2" type="Marker3D" parent="CamareaPivot/Animator" unique_id=2088639064]
+script = ExtResource("8_2igkg")
+time = 4.0
+animate_position = false
+animate_rotation = true
+metadata/_custom_type_script = "uid://c7wrltuknx6fc"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1843760520]
+transform = Transform3D(0.106342174, 0.99432963, -2.3222844e-08, -0.34018895, 0.03638276, 0.93965304, 0.9343248, -0.099924736, 0.342129, 0, 7.8981886, 2.3245862)
+shadow_enabled = true
+spot_range = 16.73729

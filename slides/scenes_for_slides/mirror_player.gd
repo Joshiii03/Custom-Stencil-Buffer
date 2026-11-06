@@ -41,7 +41,7 @@ func _physics_process(delta):
 				velocity.y = JUMP_VELOCITY
 		move_and_slide()
 		other_me.global_position = Vector3(-mirror.global_position.x + global_position.x, global_position.y , mirror.global_position.z * 2 - global_position.z)
-
+		other_me.rotation = Vector3(-camera_pivot.rotation.x, -camera_pivot.rotation.y, camera_pivot.rotation.z)
 
 func _input(event: InputEvent) -> void:
 	if not Engine.is_editor_hint():

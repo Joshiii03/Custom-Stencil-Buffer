@@ -33,6 +33,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_60m4v"]
@@ -56,6 +57,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_60m4v"]
@@ -87,6 +89,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.83791715, 0.7209272, 0.37016478, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_dwae0"]
@@ -106,6 +109,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.61906004, 0.44289213, 0.122202046, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wp5od"]
@@ -123,6 +127,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0.5137255, 0, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_60m4v"]
@@ -141,6 +146,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0.5137255, 0, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="Gradient" id="Gradient_gy71p"]
@@ -167,6 +173,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(1.8410012e-06, 0.4016089, 1.92523e-07, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="MultiMesh" id="MultiMesh_fmpty"]
@@ -187,6 +194,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0, 0.77254903, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fmpty"]
@@ -204,6 +212,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="TorusMesh" id="TorusMesh_fmpty"]
@@ -222,6 +231,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nrtlr"]
@@ -236,6 +246,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7mb42"]
@@ -250,6 +261,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_84p7w"]
@@ -264,6 +276,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fq66f"]
@@ -278,6 +291,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i712e"]
@@ -292,6 +306,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6io1q"]
@@ -306,6 +321,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uj3le"]
@@ -320,6 +336,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jyqsc"]
@@ -334,6 +351,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtg0c"]
@@ -348,6 +366,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skv6o"]
@@ -362,6 +381,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0.7055221, 0.49162716, 0.34201658, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1seiu"]
@@ -376,6 +396,7 @@ shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
 shader_parameter/show_color = Color(0, 0.7565833, 0, 1)
+shader_parameter/no_depth_test = false
 shader_parameter/disable_lighting = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dagrs"]
@@ -559,7 +580,6 @@ shape = SubResource("CylinderShape3D_wp5od")
 
 [node name="StencilLight" parent="StencilHolder_0" unique_id=410236284 instance=ExtResource("2_yceul")]
 transform = Transform3D(1, 0, 0, 0, 0.031818137, 0.9994937, 0, -0.9994937, 0.031818137, 0, 15.019091, 0)
-light_cull_mask = 1
 
 [node name="Sky" parent="StencilHolder_0" unique_id=1188923921 node_paths=PackedStringArray("player", "stencil_camera") instance=ExtResource("2_60m4v")]
 transform = Transform3D(1, 0, 0, 0, 0.031818137, 0.9994937, 0, -0.9994937, 0.031818137, 0, 15.019091, 0)

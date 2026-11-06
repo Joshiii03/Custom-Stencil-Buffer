@@ -13,10 +13,10 @@ func make_mirror_world() -> void:
 		return
 
 	for child in get_children():
-		child.queue_free()
+		child.queue_free.call_deferred()
 
 	for child in normal_world.get_children():
-		if not child is MeshInstance3D:
+		if not child is MeshInstance3D or not child.is_inside_tree():
 			continue
 
 		var new_child := MeshInstance3D.new()
@@ -43,6 +43,14 @@ func make_mirror_world() -> void:
 			child.global_position.y,
 			mirror.global_position.z * 2 - child.global_position.z
 		)
+		new_child.rotation = Vector3(
+			-child.rotation.x, 
+			-child.rotation.y, 
+			child.rotation.z
+			)
+		new_child.scale.z = -new_child.scale.z
+		
+		new_child.name = child.name
 
 		add_child(new_child)
 		new_child.owner = get_tree().edited_scene_root

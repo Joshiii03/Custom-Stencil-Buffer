@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ciqmh3b0mdo8k"]
+
+[ext_resource type="Script" uid="uid://cwhfmtnaja7cd" path="res://slides/scenes_for_slides/mirror_player.gd" id="1_ihotl"]
+[ext_resource type="Texture2D" uid="uid://cvoicv4b0ffcn" path="res://assets/icon.svg" id="2_4yy86"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2o72k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tldc"]
+transparency = 1
+depth_draw_mode = 1
+albedo_texture = ExtResource("2_4yy86")
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mt7t8"]
+
+[node name="MirrorPlayer" type="CharacterBody3D" unique_id=547633859 node_paths=PackedStringArray("mirror")]
+transform = Transform3D(-0.99977463, 0, -0.021230208, 0, 1, 0, 0.021230208, 0, -0.99977463, 0, 0, 0)
+script = ExtResource("1_ihotl")
+mirror = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=979194673]
+shape = SubResource("CapsuleShape3D_2o72k")
+
+[node name="OtherMe" type="MeshInstance3D" parent="." unique_id=46315242]
+material_override = SubResource("StandardMaterial3D_2tldc")
+mesh = SubResource("CapsuleMesh_mt7t8")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1529631978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4132259, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1884136768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1551857)

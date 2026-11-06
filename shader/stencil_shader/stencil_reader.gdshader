@@ -16,6 +16,8 @@ uniform vec3 match_color_1 : source_color ;
 uniform vec3 match_color_2 : source_color ;
 uniform vec3 show_color : source_color;
 
+uniform bool no_depth_test = false;
+
 uniform bool disable_lighting = false;
 const float tolerance = .001 ;
 
@@ -31,7 +33,7 @@ void fragment() {
 	vec4 clip_pos = PROJECTION_MATRIX * vec4(VERTEX, 1.0);
 	float fragment_depth = clip_pos.z / clip_pos.w;
 	float stencil_depth = stencil_map.b  + (stencil_map.g / 100.);
-	bool depth_test = fragment_depth  < stencil_depth;
+	bool depth_test = fragment_depth  < stencil_depth || no_depth_test;
 	
 	if (use_second_stencil_layer)
 	{
