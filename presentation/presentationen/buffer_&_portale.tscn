@@ -20,7 +20,6 @@ shader_parameter/icon_tint = Color(1, 1, 1, 1)
 shader_parameter/icon_opacity = 1.0
 
 [node name="Buffer & Portale" unique_id=378429670 instance=ExtResource("1_canl1")]
-start_slide = 7
 
 [node name="Foreground" parent="." index="0" unique_id=72472130 instance=ExtResource("2_nlifg")]
 autoconnect = true

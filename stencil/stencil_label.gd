@@ -9,8 +9,8 @@ extends Label3D
 	set(mew_value):
 		mew_value = clamp(mew_value, 0, 25)
 		stencil_layer = mew_value
-		var red : float  = stencil_layer/25.5
-		modulate =  Color(red,0.,1., 1)
+		var red : float  = stencil_layer/25.
+		modulate =  Color(red,0.,0., 1)
 		
 		#material_override.set_shader_parameter("match_color1", Vector3(red,1,0))
 

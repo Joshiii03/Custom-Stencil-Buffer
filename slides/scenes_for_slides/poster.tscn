@@ -1,28 +1,26 @@
 [gd_scene format=3 uid="uid://btb2ank6d0oj1"]
 
-[ext_resource type="PackedScene" uid="uid://drkb23xqyf8p6" path="res://stencil/stencil_camera.tscn" id="1_1gcxy"]
-[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="1_dqe5j"]
-[ext_resource type="Script" uid="uid://ddmh472h74ifi" path="res://stencil/stencil_label.gd" id="2_ye76b"]
+[ext_resource type="PackedScene" uid="uid://cp3w6ivg6o5kc" path="res://slides/scenes_for_slides/stencil_camera_with_text.tscn" id="1_upsik"]
 [ext_resource type="Script" uid="uid://t4dh1f6sues6" path="res://stencil/stencil_holder.gd" id="4_upsik"]
 [ext_resource type="Shader" uid="uid://b2bpjwvtyxp8f" path="res://shader/stencil_shader/stencil_reader.gdshader" id="5_luyfc"]
 [ext_resource type="Script" uid="uid://ba2csny7mcpbx" path="res://stencil/stencil_reader.gd" id="6_ka68k"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_nnvfm"]
-viewport_path = NodePath("StencilCamera/StencilViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_ewe2l"]
+viewport_path = NodePath("StencilCameraWithText/StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nn6wy"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_luyfc")
-shader_parameter/stencil_texture = SubResource("ViewportTexture_nnvfm")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_ewe2l")
 shader_parameter/alpha_from_G = false
 shader_parameter/use_texture = false
-shader_parameter/current_stencil_infront = false
+shader_parameter/current_stencil_infront = true
 shader_parameter/use_second_stencil_layer = false
 shader_parameter/match_color_1 = Color(0, 0, 0, 1)
 shader_parameter/match_color_2 = Color(0, 0, 0, 1)
-shader_parameter/show_color = Color(1, 0, 0, 1)
-shader_parameter/no_depth_test = false
+shader_parameter/show_color = Color(0.48235294, 0, 0.8117647, 1)
+shader_parameter/no_depth_test = true
 shader_parameter/disable_lighting = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_kp6v6"]
@@ -30,31 +28,23 @@ size = Vector3(20, 5, 1)
 
 [node name="Poster" type="Node3D" unique_id=1917678277]
 
-[node name="StencilCamera" parent="." unique_id=1225835657 instance=ExtResource("1_1gcxy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.0445027)
-backround_stencil_layer = 1
-
-[node name="Label3D" type="Label3D" parent="." unique_id=2051183801]
-modulate = Color(0.039215688, 1, 1, 0.99)
-text = "PORTALS"
-font = ExtResource("1_dqe5j")
-font_size = 256
-outline_size = 0
-script = ExtResource("2_ye76b")
-stencil_layer = 1
-
 [node name="StencilHolder" type="Node3D" parent="." unique_id=1476071057]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8824912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2387142)
 script = ExtResource("4_upsik")
 metadata/_custom_type_script = "uid://t4dh1f6sues6"
 
 [node name="StencilReader" type="MeshInstance3D" parent="StencilHolder" unique_id=1600487292 node_paths=PackedStringArray("stencil_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.3662772)
-layers = 2
 material_override = SubResource("ShaderMaterial_nn6wy")
 mesh = SubResource("BoxMesh_kp6v6")
 script = ExtResource("6_ka68k")
-stencil_camera = NodePath("../../StencilCamera")
-stencil_layer_1 = 1
+stencil_camera = NodePath("../../StencilCameraWithText")
 current_stencil_layer = 0
-color = Color(1, 0, 0, 1)
+color = Color(0.48235294, 0, 0.8117647, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="StencilHolder" unique_id=1568127135]
+transform = Transform3D(1, 0, 0, 0, 0.19515619, 0.9807722, 0, -0.9807722, 0.19515619, 0, 7.05945, 1.8156846)
+
+[node name="StencilCameraWithText" parent="." unique_id=1225835657 instance=ExtResource("1_upsik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.191179)
+use_backround_stencil = true

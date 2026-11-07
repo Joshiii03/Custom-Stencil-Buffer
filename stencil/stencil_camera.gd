@@ -8,12 +8,14 @@ extends Node3D
 @export var stencil_camera : Camera3D 
 @export var screen_camera : Camera3D
 @onready var backround_stencil = $BackroundStencil
+@export var use_backround_stencil : bool = true
 @onready var debug_screen : Control = $ScrrenSubViewport/ScreenViewport/DebugScreen
 
 @export var backround_stencil_layer : int = 0:
 	set(mew_value):
 		backround_stencil_layer = mew_value
 		if backround_stencil:
+			print("backround_stencil: ", backround_stencil_layer)
 			backround_stencil.stencil_layer = backround_stencil_layer
 
 @export var use_debug_screen : bool = false:
@@ -23,6 +25,7 @@ extends Node3D
 
 
 func _ready() -> void:
+	backround_stencil_layer = backround_stencil_layer
 	update_debugscreen()
 	if stencil_camera:
 		stencil_camera.cull_mask = 67108864 # int(pow(2, 26))
@@ -33,9 +36,9 @@ func _ready() -> void:
 	
 	if Engine.is_editor_hint():
 		EditorInterface.get_editor_viewport_3d(0).get_camera_3d().cull_mask = int(pow(2, 29)- pow(2, 25)-1)
-		backround_stencil.visible = true
+		backround_stencil.visible = use_backround_stencil
 	else :
-		backround_stencil.visible = true
+		backround_stencil.visible = use_backround_stencil
 
 func _process(_delta: float) -> void:
 	set_camera_transform()
