@@ -2,15 +2,27 @@
 
 [ext_resource type="PackedScene" uid="uid://drkb23xqyf8p6" path="res://stencil/stencil_camera.tscn" id="1_nwpof"]
 [ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="2_3bq84"]
+[ext_resource type="Shader" uid="uid://7of27kfcgx0f" path="res://slides/scenes_for_slides/labelshader.gdshader" id="2_pp7f5"]
 [ext_resource type="Script" uid="uid://cq0tpu2vh34ph" path="res://stencil/stencil_label2D.gd" id="3_3bq84"]
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="4_gue1n"]
 [ext_resource type="Shader" uid="uid://whmbn0jacgnb" path="res://stencil/backround_stencil.gdshader" id="4_ilj5q"]
 [ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="5_pp7f5"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="6_2wakw"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_820ae"]
+resource_local_to_scene = true
+shader = ExtResource("2_pp7f5")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+
 [sub_resource type="Environment" id="Environment_pp7f5"]
-background_mode = 1
 background_color = Color(0, 1, 1, 1)
+background_energy_multiplier = 0.0
+ambient_light_source = 1
+reflected_light_source = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pp7f5"]
+shader = ExtResource("2_pp7f5")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cr523"]
 shader = ExtResource("5_pp7f5")
@@ -38,14 +50,14 @@ use_backround_stencil = false
 disable_3d = true
 
 [node name="Label" type="Label" parent="StencilViewport" index="0" unique_id=1939022203]
-modulate = Color(0.039215688, 0, 0, 1)
-self_modulate = Color(0.039215688, 0, 0, 1)
+visible = false
+top_level = true
+material = SubResource("ShaderMaterial_820ae")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.039215688, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_3bq84")
 theme_override_font_sizes/font_size = 256
 text = "PORTAL"
@@ -54,11 +66,21 @@ vertical_alignment = 1
 resize_font_to_fit = true
 maximum_font_size = 512
 script = ExtResource("3_3bq84")
-stencil_layer = 1
+stencil_layer = 25
 
 [node name="Camera3D" parent="StencilViewport" index="1" unique_id=1839586270]
-transform = Transform3D(-0.015672445, -0.41391808, 0.9101792, 0, 0.910291, 0.41396892, -0.9998772, 0.006487905, -0.014266485, 573.56866, 260.87128, -8.990327)
+transform = Transform3D(-0.12876073, -0.53944314, 0.83211887, 0, 0.8391038, 0.5439713, -0.9916757, 0.07004214, -0.10804362, 2.1968849, 1.4361436, -0.28524697)
 environment = SubResource("Environment_pp7f5")
+
+[node name="ColorRect" type="ColorRect" parent="StencilViewport" index="2" unique_id=1840113802]
+material = SubResource("ShaderMaterial_pp7f5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_3bq84")
+stencil_layer = 25
 
 [node name="ScreenViewport" parent="ScrrenSubViewport" parent_id_path=PackedInt32Array(1191746610) index="0" unique_id=2147221177]
 size_2d_override_stretch = true
@@ -97,6 +119,7 @@ grow_vertical = 2
 color = Color(0.69411767, 0.8784314, 1, 1)
 
 [node name="BackroundStencil" parent="." index="2" unique_id=1543779115]
+visible = false
 material_override = SubResource("ShaderMaterial_ewe2l")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3" unique_id=1979547770]
