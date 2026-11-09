@@ -7,17 +7,14 @@ class_name StencilLabel2D
 ## Stencil that is written on the Stencil Viewport.
 @export var stencil_layer : int = 0 :
 	set(mew_value):
-		mew_value = clamp(mew_value, 0, 25)
+		mew_value = clamp(mew_value, 1, 3)
 		stencil_layer = mew_value
-		var red : float  = stencil_layer/25.5
-		
-		material.set_shader_parameter("match_color1", Vector3(red,0,0))
-		print(red)
-		#modulate =  Color(red,0.,0., 1)
-		#set("theme_override_colors/font_color",  Color(red,0.,0., 1))
-		#print(red)
-		#self_modulate = Color(red,0.,0., 1)
-		#material_override.set_shader_parameter("match_color1", Vector3(red,1,0))
+		if stencil_layer == 1:
+			material.set_shader_parameter("match_color1", Vector3(1,0,0))
+		if stencil_layer == 2:
+			material.set_shader_parameter("match_color1", Vector3(0,1,0))
+		if stencil_layer == 3:
+			material.set_shader_parameter("match_color1", Vector3(0,0,1))
 
 
 func _ready():

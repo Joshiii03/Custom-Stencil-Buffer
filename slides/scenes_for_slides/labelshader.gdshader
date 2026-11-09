@@ -1,5 +1,5 @@
 shader_type canvas_item;
-render_mode unshaded, blend_disabled;
+render_mode unshaded;
 
 uniform vec3 match_color1 : source_color = vec3(0.,0.,0.);
 
