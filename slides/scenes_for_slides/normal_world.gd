@@ -26,26 +26,24 @@ func correct_material() -> void:
 					child.material_override.next_pass = new_material
 			elif child.get_children()[0] is MeshInstance3D:
 				var child_mesh = child.get_children()[0].mesh
-				var surface_0 = child_mesh.get("surface_0/material")
-				var surface_1 = child_mesh.get("surface_1/material")
+				for index in child_mesh.get_surface_count():
+					var surface = child_mesh.surface_get_material(index)
+					surface.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+					surface.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
+					surface.stencil_mode = BaseMaterial3D.STENCIL_MODE_CUSTOM
+					surface.stencil_flags = 1
+					surface.stencil_compare = BaseMaterial3D.STENCIL_COMPARE_EQUAL
+					surface.stencil_reference = 0
+
 				
-				surface_0.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-				surface_1.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-				
-				surface_0.render_priority = -1
-				surface_1.render_priority = -1
-				
-				surface_0.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
-				surface_1.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
-				
-				surface_0.stencil_mode = BaseMaterial3D.STENCIL_MODE_CUSTOM
-				surface_1.stencil_mode = BaseMaterial3D.STENCIL_MODE_CUSTOM
-				
-				surface_0.stencil_flags = 1
-				surface_1.stencil_flags = 1
-				
-				surface_0.stencil_compare = BaseMaterial3D.STENCIL_COMPARE_EQUAL
-				surface_1.stencil_compare = BaseMaterial3D.STENCIL_COMPARE_EQUAL
-				
-				surface_0.stencil_reference = 0
-				surface_1.stencil_reference = 0
+				var new_material : StandardMaterial3D = StandardMaterial3D.new()
+				new_material.render_priority = -1
+				new_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+				new_material.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
+				new_material.stencil_mode = BaseMaterial3D.STENCIL_MODE_CUSTOM
+				new_material.stencil_flags = 2
+				new_material.stencil_reference = 0
+				new_material.albedo_color = Color(0,0,0,0)
+				if not child.get_children()[0].material_overlay:
+					child.get_children()[0].material_overlay = Material.new()
+				child.get_children()[0].material_overlay = new_material

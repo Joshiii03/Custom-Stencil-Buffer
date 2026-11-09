@@ -36,26 +36,19 @@ func make_mirror_world() -> void:
 					new_child.material_override.next_pass = null
 		elif child.get_children().size() > 0:
 			child = child.get_children()[0]
-			print(child)
 			if child is MeshInstance3D:
 				new_child.mesh = child.mesh.duplicate()
-				var surface_0 = new_child.mesh.get("surface_0/material")
-				var surface_1 = new_child.mesh.get("surface_1/material")
-				
-				surface_0.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-				surface_1.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-				surface_0.render_priority = -1
-				surface_1.render_priority = -1
-				surface_0.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
-				surface_1.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
-				surface_0.stencil_mode = BaseMaterial3D.STENCIL_MODE_CUSTOM
-				surface_1.stencil_mode = BaseMaterial3D.STENCIL_MODE_CUSTOM
-				surface_0.stencil_flags = 1
-				surface_1.stencil_flags = 1
-				surface_0.stencil_compare = BaseMaterial3D.STENCIL_COMPARE_EQUAL
-				surface_1.stencil_compare = BaseMaterial3D.STENCIL_COMPARE_EQUAL
-				surface_0.stencil_reference = 0
-				surface_1.stencil_reference = 0
+				for index in new_child.mesh.get_surface_count():
+					var surface = new_child.mesh.surface_get_material(index).duplicate()
+					if surface:
+						new_child.mesh.surface_set_material(index, surface)
+						surface.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+						surface.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
+						surface.stencil_mode = BaseMaterial3D.STENCIL_MODE_CUSTOM
+						surface.stencil_flags = 1
+						surface.stencil_compare = BaseMaterial3D.STENCIL_COMPARE_EQUAL
+						surface.stencil_reference = 1
+						surface.cull_mode = 0
 			else:
 				continue
 		else:
@@ -71,10 +64,11 @@ func make_mirror_world() -> void:
 			child.global_position.y,
 			mirror.global_position.z * 2 - child.global_position.z
 		)
-		new_child.rotation = Vector3(
-			-child.rotation.x, 
-			-child.rotation.y, 
-			child.rotation.z
+		print("set rotation")
+		new_child.global_rotation = Vector3(
+			-child.global_rotation.x, 
+			-child.global_rotation.y, 
+			child.global_rotation.z
 			)
 		new_child.scale.z = -new_child.scale.z
 		

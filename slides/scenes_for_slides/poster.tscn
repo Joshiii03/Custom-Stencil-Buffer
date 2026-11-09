@@ -1,18 +1,40 @@
 [gd_scene format=3 uid="uid://btb2ank6d0oj1"]
 
+[ext_resource type="Script" uid="uid://cm16kcgmiq1ky" path="res://slides/scenes_for_slides/poster.gd" id="1_luyfc"]
 [ext_resource type="PackedScene" uid="uid://cp3w6ivg6o5kc" path="res://slides/scenes_for_slides/stencil_camera_with_text.tscn" id="1_upsik"]
 [ext_resource type="Shader" uid="uid://dpb3avkyvq0rp" path="res://slides/scenes_for_slides/label_stencil_reader.gdshader" id="2_ewe2l"]
+[ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="4_luyfc"]
 [ext_resource type="Script" uid="uid://t4dh1f6sues6" path="res://stencil/stencil_holder.gd" id="4_upsik"]
+[ext_resource type="PackedScene" uid="uid://c0q4g2nbgdwsp" path="res://presentation/animator/animator_key.tscn" id="5_ka68k"]
 [ext_resource type="Script" uid="uid://ba2csny7mcpbx" path="res://stencil/stencil_reader.gd" id="6_ka68k"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ewe2l"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_luyfc"]
 viewport_path = NodePath("StencilCameraWithText/StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_luyfc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_ewe2l")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_luyfc")
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/stencil_layer = 1
+shader_parameter/show_color = Color(0.7176471, 0, 0.8156863, 1)
+shader_parameter/disable_lighting = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_ewe2l"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_luyfc"]
+radius = 1.0
+height = 2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nn6wy"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_ewe2l")
-shader_parameter/stencil_texture = SubResource("ViewportTexture_ewe2l")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_luyfc")
 shader_parameter/use_texture = false
 shader_parameter/current_stencil_infront = false
 shader_parameter/use_second_stencil_layer = false
@@ -21,13 +43,13 @@ shader_parameter/show_color = Color(0.48235294, 0, 0.8117647, 1)
 shader_parameter/disable_lighting = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_kp6v6"]
-size = Vector3(50, 20, 1)
+size = Vector3(60, 20, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upsik"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_ewe2l")
-shader_parameter/stencil_texture = SubResource("ViewportTexture_ewe2l")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_luyfc")
 shader_parameter/use_texture = false
 shader_parameter/current_stencil_infront = false
 shader_parameter/use_second_stencil_layer = false
@@ -36,9 +58,27 @@ shader_parameter/show_color = Color(0, 0, 0, 1)
 shader_parameter/disable_lighting = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_luyfc"]
-size = Vector3(50, 33, 1)
+size = Vector3(200, 33, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ka68k"]
+render_priority = 0
+shader = ExtResource("2_ewe2l")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_luyfc")
+shader_parameter/use_texture = false
+shader_parameter/current_stencil_infront = false
+shader_parameter/use_second_stencil_layer = false
+shader_parameter/stencil_layer = 2
+shader_parameter/show_color = Color(0, 0, 0, 1)
+shader_parameter/disable_lighting = false
+
+[sub_resource type="TorusMesh" id="TorusMesh_luyfc"]
+inner_radius = 1.0
+outer_radius = 3.0
+rings = 32
+ring_segments = 16
 
 [node name="Poster" type="Node3D" unique_id=1917678277]
+script = ExtResource("1_luyfc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1568127135]
 transform = Transform3D(1, 0, 0, 0, 0.19515619, 0.9807722, 0, -0.9807722, 0.19515619, 0, 7.05945, 4.0543985)
@@ -49,8 +89,58 @@ script = ExtResource("4_upsik")
 stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://t4dh1f6sues6"
 
+[node name="CPUParticles3D" type="CPUParticles3D" parent="StencilHolder1" unique_id=602801055 node_paths=PackedStringArray("stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.048386, -17.202318)
+layers = 2
+material_override = SubResource("ShaderMaterial_luyfc")
+emitting = false
+amount = 512
+lifetime = 7.0
+one_shot = true
+mesh = SubResource("BoxMesh_ewe2l")
+emission_shape = 3
+emission_box_extents = Vector3(25, 1, 5)
+gravity = Vector3(0, -7, 0)
+radial_accel_min = -2.0
+radial_accel_max = 2.0
+damping_min = 5.607
+damping_max = 5.607
+scale_amount_min = 0.8
+scale_amount_max = 1.5
+color = Color(0.7291737, 0.0019467926, 0.9068225, 1)
+hue_variation_min = -0.45
+hue_variation_max = 0.48
+script = ExtResource("6_ka68k")
+stencil_camera = NodePath("../../StencilCameraWithText")
+stencil_layer_1 = 1
+color = Color(0.7291737, 0.0019467926, 0.9068225, 1)
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="StencilHolder1" unique_id=1135405723 node_paths=PackedStringArray("stencil_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.048386, -17.202318)
+layers = 2
+material_override = SubResource("ShaderMaterial_luyfc")
+emitting = false
+amount = 100
+lifetime = 7.0
+one_shot = true
+mesh = SubResource("SphereMesh_luyfc")
+emission_shape = 3
+emission_box_extents = Vector3(25, 1, 5)
+gravity = Vector3(0, -7, 0)
+radial_accel_min = -2.0
+radial_accel_max = 2.0
+damping_min = 5.607
+damping_max = 5.607
+scale_amount_min = 0.8
+scale_amount_max = 1.5
+color = Color(0.7176471, 0, 0.8156863, 1)
+script = ExtResource("6_ka68k")
+stencil_camera = NodePath("../../StencilCameraWithText")
+stencil_layer_1 = 1
+color = Color(0.7176471, 0, 0.8156863, 1)
+
 [node name="StencilReader" type="MeshInstance3D" parent="StencilHolder1" unique_id=1600487292 node_paths=PackedStringArray("stencil_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8414936, -8.073019)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.174679, -18.157269)
 layers = 2
 material_override = SubResource("ShaderMaterial_nn6wy")
 mesh = SubResource("BoxMesh_kp6v6")
@@ -60,13 +150,23 @@ stencil_layer_1 = 1
 current_stencil_layer = 0
 color = Color(0.48235294, 0, 0.8117647, 1)
 
+[node name="Animator" parent="StencilHolder1/StencilReader" unique_id=1953052596 instance=ExtResource("4_luyfc")]
+autostart = true
+
+[node name="Animator_key" parent="StencilHolder1/StencilReader/Animator" unique_id=2121909404 instance=ExtResource("5_ka68k")]
+time = 3.0
+
+[node name="Animator_key2" parent="StencilHolder1/StencilReader/Animator" unique_id=1926980421 instance=ExtResource("5_ka68k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.364151, 0)
+time = 5.0
+
 [node name="StencilHolder2" type="Node3D" parent="." unique_id=1424626924]
 script = ExtResource("4_upsik")
 stencil_layer_1 = 3
 metadata/_custom_type_script = "uid://t4dh1f6sues6"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StencilHolder2" unique_id=908592577 node_paths=PackedStringArray("stencil_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.221655)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -52.286617, -48.020386)
 layers = 8
 material_override = SubResource("ShaderMaterial_upsik")
 mesh = SubResource("BoxMesh_luyfc")
@@ -74,5 +174,97 @@ script = ExtResource("6_ka68k")
 stencil_camera = NodePath("../../StencilCameraWithText")
 stencil_layer_1 = 3
 
+[node name="Animator" parent="StencilHolder2/MeshInstance3D" unique_id=1377129057 instance=ExtResource("4_luyfc")]
+autostart = true
+
+[node name="Animator_key" parent="StencilHolder2/MeshInstance3D/Animator" unique_id=779797594 instance=ExtResource("5_ka68k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.286694, 0)
+time = 3.0
+
+[node name="Animator_key2" parent="StencilHolder2/MeshInstance3D/Animator" unique_id=1005930258 instance=ExtResource("5_ka68k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.864803, 0)
+time = 5.0
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="StencilHolder2" unique_id=1096721548 node_paths=PackedStringArray("stencil_camera")]
+transform = Transform3D(0.9972455, -0.07399515, 0.005126976, -0.048990935, -0.605207, 0.79455906, -0.055690542, -0.7926219, -0.60716516, -67.88728, -13.387936, -39.809563)
+layers = 8
+material_override = SubResource("ShaderMaterial_ka68k")
+emitting = false
+amount = 100
+lifetime = 2.0
+one_shot = true
+speed_scale = 0.3
+randomness = 0.18
+mesh = SubResource("TorusMesh_luyfc")
+spread = 30.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+radial_accel_max = 80.37
+tangential_accel_max = 100.0
+scale_amount_min = 0.8
+scale_amount_max = 1.5
+script = ExtResource("6_ka68k")
+stencil_camera = NodePath("../../StencilCameraWithText")
+stencil_layer_1 = 3
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="StencilHolder2" unique_id=1038438030 node_paths=PackedStringArray("stencil_camera")]
+transform = Transform3D(-0.95932066, -0.12603278, 0.25262618, 0.27677852, -0.59626836, 0.75356334, 0.05565934, 0.7928304, 0.60689545, 94.86729, -21.481073, -56.89401)
+layers = 8
+material_override = SubResource("ShaderMaterial_ka68k")
+emitting = false
+amount = 100
+lifetime = 2.0
+one_shot = true
+speed_scale = 0.3
+randomness = 0.18
+mesh = SubResource("TorusMesh_luyfc")
+spread = 30.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+radial_accel_max = 80.37
+tangential_accel_max = 100.0
+scale_amount_min = 0.8
+scale_amount_max = 2.0
+script = ExtResource("6_ka68k")
+stencil_camera = NodePath("../../StencilCameraWithText")
+stencil_layer_1 = 3
+
+[node name="CPUParticles3D3" type="CPUParticles3D" parent="StencilHolder2" unique_id=1488775372 node_paths=PackedStringArray("stencil_camera")]
+transform = Transform3D(-0.4754681, -0.5134454, 0.7143556, 0.8779707, -0.32832003, 0.3483874, 0.05565931, 0.79283047, 0.6068954, 50.03531, -48.508545, -56.89401)
+layers = 8
+material_override = SubResource("ShaderMaterial_ka68k")
+emitting = false
+amount = 100
+lifetime = 2.0
+one_shot = true
+speed_scale = 0.3
+randomness = 0.18
+mesh = SubResource("TorusMesh_luyfc")
+spread = 30.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+radial_accel_max = 80.37
+tangential_accel_max = 100.0
+scale_amount_min = 0.8
+scale_amount_max = 2.0
+script = ExtResource("6_ka68k")
+stencil_camera = NodePath("../../StencilCameraWithText")
+stencil_layer_1 = 3
+
 [node name="StencilCameraWithText" parent="." unique_id=1225835657 instance=ExtResource("1_upsik")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.8908)
+use_debug_screen = false
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1526729096]
+transform = Transform3D(1, 0, 0, 0, 0.6622603, 0.74927384, 0, -0.74927384, 0.6622603, 0, -4.101367, 24.438122)
+visible = false
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1537452683]
+transform = Transform3D(1, 0, 0, 0, 0.9621938, 0.2723659, 0, -0.2723659, 0.9621938, 0, 11.80209, 22.837072)
+light_energy = 2.346
+spot_range = 67.879326
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1604737248]
+transform = Transform3D(0.89943707, 0.22593637, 0.37411985, 1.7559346e-08, 0.85601115, -0.5169574, -0.43705025, 0.46497068, 0.7699282, 12.107241, -9.457264, 22.837072)
+light_energy = 6.01
+spot_range = 67.879326

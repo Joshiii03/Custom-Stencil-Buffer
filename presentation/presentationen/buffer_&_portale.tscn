@@ -20,7 +20,6 @@ shader_parameter/icon_tint = Color(1, 1, 1, 1)
 shader_parameter/icon_opacity = 1.0
 
 [node name="Buffer & Portale" unique_id=378429670 instance=ExtResource("1_canl1")]
-start_slide = 3
 
 [node name="Foreground" parent="." index="0" unique_id=72472130 instance=ExtResource("2_nlifg")]
 autoconnect = true
@@ -71,6 +70,7 @@ bottom_text = "27.11.2026
 -Joshiii03"
 
 [node name="Poster" parent="Slides" index="2" unique_id=884469479 instance=ExtResource("3_yh82q")]
+slide_name = "von Jshiii03"
 scene = "uid://btb2ank6d0oj1"
 
 [node name="Introduction" type="Node" parent="Slides" index="3" unique_id=855151296]
