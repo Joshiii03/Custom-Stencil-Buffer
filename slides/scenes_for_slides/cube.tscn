@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dhh3hkblmc45"]
+
+[ext_resource type="Script" uid="uid://dud1bgouukw1e" path="res://slides/scenes_for_slides/cube.gd" id="1_gcyl3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i3anb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i3anb"]
+
+[node name="Cube" type="RigidBody3D" unique_id=508999443]
+collision_mask = 2
+script = ExtResource("1_gcyl3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1102760745]
+shape = SubResource("BoxShape3D_i3anb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1842405951]
+mesh = SubResource("BoxMesh_i3anb")

@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://1uim5ttf3kel"]
+
+[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="1_i3anb"]
+[ext_resource type="Script" uid="uid://jocesv0vospl" path="res://slides/scenes_for_slides/hole.gd" id="1_qaies"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="2_qaies"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="3_h7hso"]
+
+[sub_resource type="Gradient" id="Gradient_i3anb"]
+colors = PackedColorArray(0, 0.39607844, 0, 1, 0.6431373, 1, 0.49411765, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e6mje"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kgcv8"]
+noise = SubResource("FastNoiseLite_e6mje")
+color_ramp = SubResource("Gradient_i3anb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgcv8"]
+transparency = 1
+depth_draw_mode = 1
+albedo_texture = SubResource("NoiseTexture2D_kgcv8")
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rvtmp"]
+material = SubResource("StandardMaterial3D_kgcv8")
+size = Vector2(7, 4)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_e6mje"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgcv8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6mje"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.5093015, 0.3306361, 0.13052273, 1)
+stencil_mode = 3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i3anb"]
+flip_faces = true
+height = 0.4
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvtmp"]
+render_priority = -1
+transparency = 1
+depth_draw_mode = 2
+albedo_color = Color(1, 1, 1, 0)
+stencil_mode = 3
+stencil_flags = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rvtmp"]
+height = 0.001
+cap_bottom = false
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_37s01"]
+height = 2.663086
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ga1hw"]
+shader = ExtResource("2_qaies")
+shader_parameter/godot_icon = ExtResource("3_h7hso")
+shader_parameter/icon_scale = 1.0
+shader_parameter/rotation = 0.14
+shader_parameter/spacing = 0.15
+shader_parameter/scroll_speed = Vector2(0.04, 0.07)
+shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
+shader_parameter/icon_tint = Color(1, 1, 1, 1)
+shader_parameter/icon_opacity = 1.0
+
+[sub_resource type="Environment" id="Environment_i3anb"]
+background_mode = 3
+background_color = Color(0.5286497, 0.6093226, 0.7480718, 1)
+
+[node name="StencilShowCase_III" type="Node3D" unique_id=512492025]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=2091792688]
+mesh = SubResource("PlaneMesh_rvtmp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1049302651]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1002370060]
+shape = SubResource("WorldBoundaryShape3D_e6mje")
+
+[node name="Hole" type="CharacterBody3D" parent="." unique_id=1321721573]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_qaies")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hole" unique_id=1613039875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_kgcv8")
+
+[node name="Hole" type="MeshInstance3D" parent="Hole" unique_id=1121970324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+material_override = SubResource("StandardMaterial3D_e6mje")
+mesh = SubResource("CylinderMesh_i3anb")
+
+[node name="StencilWriter" type="MeshInstance3D" parent="Hole" unique_id=164196784]
+material_override = SubResource("StandardMaterial3D_rvtmp")
+mesh = SubResource("CylinderMesh_rvtmp")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Hole" unique_id=688224263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(2, 1, 2)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Hole/CSGBox3D" unique_id=1146960923]
+operation = 2
+sides = 24
+
+[node name="Area3D" type="Area3D" parent="Hole" unique_id=266284576]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hole/Area3D" unique_id=1683565503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82470703, 0)
+shape = SubResource("CylinderShape3D_37s01")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=702921088]
+transform = Transform3D(0.7476852, -0.57991135, 0.323527, 0, 0.4872003, 0.8732903, -0.66405344, -0.6529462, 0.36427245, -2.3328853, 3.2001536, 3.481892)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=969122076]
+transform = Transform3D(1, 0, 0, 0, 0.8621874, 0.50658953, 0, -0.50658953, 0.8621874, 0, 2.4142466, 3.362061)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=199780450]
+layer = -1
+
+[node name="Text" parent="Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("1_i3anb")]
+slide_header = "Mirror Mirror on the Wall"
+header = ""
+text = ""
+bottom_text = ""
+
+[node name="Backround" type="Control" parent="Camera3D/CanvasLayer" unique_id=1382279083]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GodotBackround" type="ColorRect" parent="Camera3D/CanvasLayer/Backround" unique_id=567222244]
+z_index = -999
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_ga1hw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69411767, 0.8784314, 1, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1294772819]
+environment = SubResource("Environment_i3anb")
+
+[connection signal="body_entered" from="Hole/Area3D" to="Hole" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Hole/Area3D" to="Hole" method="_on_area_3d_body_exited"]

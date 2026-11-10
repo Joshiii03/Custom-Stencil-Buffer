@@ -910,6 +910,7 @@ metadata/_gltf_primary_texture_coord = 0
 resource_name = "glass_mp_1"
 transparency = 4
 cull_mode = 2
+depth_draw_mode = 1
 albedo_texture = ExtResource("41_vslw2")
 texture_filter = 2
 stencil_mode = 3
@@ -919,9 +920,13 @@ metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8r4v"]
 resource_name = "metal_6"
-cull_mode = 2
+transparency = 1
+depth_draw_mode = 1
 albedo_texture = ExtResource("42_uk8k5")
 texture_filter = 2
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_eaqsu"]
@@ -1012,7 +1017,7 @@ shape = SubResource("WorldBoundaryShape3D_mt7t8")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1501634842]
 transform = Transform3D(0.9644615, -0.25809902, 0.056559723, -0.16022193, -0.40106735, 0.9019279, -0.21010244, -0.8789368, -0.4281671, 1.133625, 7.566851, -3.1747727)
 light_color = Color(0.9810186, 0.90504974, 0.7949581, 1)
-light_energy = 3.467
+light_energy = 1.299
 
 [node name="Mirror" type="Node3D" parent="." unique_id=719377762]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.5, 2.525898)
@@ -1048,10 +1053,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0017543, -2.3841858e-07, 0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3459654, 0, -0.8266974)
 
 [node name="supply_crate_1_22" parent="NormalWorld" unique_id=1399429965 instance=ExtResource("25_d4uj7")]
-transform = Transform3D(0.5355865, 0, -0.8444804, 0, 1, 0, 0.8444804, 0, 0.5355865, 2.1528945, 0.97289705, -0.13799429)
+transform = Transform3D(0.5355865, 0, -0.8444804, 0, 1, 0, 0.8444804, 0, 0.5355865, 2.1528945, 0.8829429, -0.13799429)
 
 [node name="wooden_crate_42" parent="NormalWorld" unique_id=147463024 instance=ExtResource("26_s16af")]
-transform = Transform3D(0.8321327, 0, -0.5545766, 0, 1, 0, 0.5545766, 0, 0.8321327, -2.6857889, 6.4373026e-08, -0.53277135)
+transform = Transform3D(0.8321327, 0, -0.5545766, 0, 1, 0, 0.5545766, 0, 0.8321327, -2.6857889, 0.03625733, -0.53277135)
 
 [node name="ashtray_12" parent="NormalWorld" unique_id=1670230110 instance=ExtResource("27_js2ky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.811043, 0.6298373, 1.3268855)
@@ -1143,8 +1148,10 @@ metadata/_custom_type_script = "uid://c7wrltuknx6fc"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1843760520]
 transform = Transform3D(0.106342174, 0.99432963, -2.3222844e-08, -0.34018895, 0.03638276, 0.93965304, 0.9343248, -0.099924736, 0.342129, 0, 7.8981886, 2.3245862)
+light_energy = 16.0
 shadow_enabled = true
-spot_range = 16.73729
+spot_range = 11.865291
+spot_angle = 53.396408
 
 [node name="MirrorWorld2" type="Node3D" parent="." unique_id=1756277114 node_paths=PackedStringArray("normal_world", "mirror")]
 script = ExtResource("2_2bi3l")

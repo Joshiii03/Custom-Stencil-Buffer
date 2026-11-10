@@ -90,17 +90,18 @@ stencil_layer_1 = 1
 metadata/_custom_type_script = "uid://t4dh1f6sues6"
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="StencilHolder1" unique_id=602801055 node_paths=PackedStringArray("stencil_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.048386, -17.202318)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.675339, -17.202318)
 layers = 2
 material_override = SubResource("ShaderMaterial_luyfc")
 emitting = false
 amount = 512
-lifetime = 7.0
+lifetime = 3.0
 one_shot = true
+speed_scale = 0.8
 mesh = SubResource("BoxMesh_ewe2l")
 emission_shape = 3
 emission_box_extents = Vector3(25, 1, 5)
-gravity = Vector3(0, -7, 0)
+gravity = Vector3(0, -10, 0)
 radial_accel_min = -2.0
 radial_accel_max = 2.0
 damping_min = 5.607
@@ -116,17 +117,18 @@ stencil_layer_1 = 1
 color = Color(0.7291737, 0.0019467926, 0.9068225, 1)
 
 [node name="CPUParticles3D2" type="CPUParticles3D" parent="StencilHolder1" unique_id=1135405723 node_paths=PackedStringArray("stencil_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.048386, -17.202318)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.675339, -17.202318)
 layers = 2
 material_override = SubResource("ShaderMaterial_luyfc")
 emitting = false
 amount = 100
-lifetime = 7.0
+lifetime = 3.0
 one_shot = true
+speed_scale = 0.7
 mesh = SubResource("SphereMesh_luyfc")
 emission_shape = 3
 emission_box_extents = Vector3(25, 1, 5)
-gravity = Vector3(0, -7, 0)
+gravity = Vector3(0, -10, 0)
 radial_accel_min = -2.0
 radial_accel_max = 2.0
 damping_min = 5.607
@@ -157,7 +159,7 @@ autostart = true
 time = 3.0
 
 [node name="Animator_key2" parent="StencilHolder1/StencilReader/Animator" unique_id=1926980421 instance=ExtResource("5_ka68k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.364151, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.054878, 0)
 time = 5.0
 
 [node name="StencilHolder2" type="Node3D" parent="." unique_id=1424626924]
@@ -182,7 +184,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.286694, 0)
 time = 3.0
 
 [node name="Animator_key2" parent="StencilHolder2/MeshInstance3D/Animator" unique_id=1005930258 instance=ExtResource("5_ka68k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.864803, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.642681, 0)
 time = 5.0
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="StencilHolder2" unique_id=1096721548 node_paths=PackedStringArray("stencil_camera")]
@@ -193,7 +195,7 @@ emitting = false
 amount = 100
 lifetime = 2.0
 one_shot = true
-speed_scale = 0.3
+speed_scale = 0.4
 randomness = 0.18
 mesh = SubResource("TorusMesh_luyfc")
 spread = 30.0
@@ -215,7 +217,7 @@ emitting = false
 amount = 100
 lifetime = 2.0
 one_shot = true
-speed_scale = 0.3
+speed_scale = 0.4
 randomness = 0.18
 mesh = SubResource("TorusMesh_luyfc")
 spread = 30.0
@@ -237,7 +239,7 @@ emitting = false
 amount = 100
 lifetime = 2.0
 one_shot = true
-speed_scale = 0.3
+speed_scale = 0.4
 randomness = 0.18
 mesh = SubResource("TorusMesh_luyfc")
 spread = 30.0
