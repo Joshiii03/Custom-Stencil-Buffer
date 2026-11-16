@@ -21,3 +21,14 @@ var is_near_hole : bool = false:
 
 func _ready():
 	is_near_hole = is_near_hole
+
+func _process(_delta):
+	#move_and_collide(Vector3(0,0,0))
+	if position.y < -10:
+		
+		queue_free.call_deferred()
+
+
+func _on_timer_timeout():
+	
+	move_and_collide(get_velocity_at_local_position(Vector3(0,0,0)))

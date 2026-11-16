@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://0winjex0jdb5"]
+
+[ext_resource type="Script" uid="uid://brpraootlp4vd" path="res://slides/scenes_for_slides/stencil_showcase_iv.gd" id="1_4fyqs"]
+[ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="1_344gi"]
+[ext_resource type="Script" uid="uid://c7wrltuknx6fc" path="res://presentation/animator/animator_key.gd" id="2_h6en1"]
+[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="3_l0fth"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="4_1b82e"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="5_3ujo4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rfrh"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.05
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6l47"]
+next_pass = SubResource("StandardMaterial3D_4rfrh")
+albedo_color = Color(1, 0, 1, 1)
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.05
+
+[sub_resource type="SphereMesh" id="SphereMesh_4rfrh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n5wk"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.05
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hmvx"]
+next_pass = SubResource("StandardMaterial3D_7n5wk")
+albedo_color = Color(0, 0.7137255, 0.078431375, 1)
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_l2x33"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1kl0"]
+shader = ExtResource("4_1b82e")
+shader_parameter/godot_icon = ExtResource("5_3ujo4")
+shader_parameter/icon_scale = 1.0
+shader_parameter/rotation = 0.14
+shader_parameter/spacing = 0.15
+shader_parameter/scroll_speed = Vector2(0.04, 0.07)
+shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
+shader_parameter/icon_tint = Color(1, 1, 1, 1)
+shader_parameter/icon_opacity = 1.0
+
+[sub_resource type="Environment" id="Environment_s6l47"]
+background_mode = 3
+background_color = Color(0.8825258, 0.9110345, 0.7026604, 1)
+ambient_light_color = Color(0.94132656, 0.9413266, 0.94132656, 1)
+
+[node name="StencilBufferShowcaseIV" type="Node3D" unique_id=717274879]
+script = ExtResource("1_4fyqs")
+
+[node name="Sphere" type="MeshInstance3D" parent="." unique_id=1478353866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1560315, 0, 0)
+material_override = SubResource("StandardMaterial3D_s6l47")
+mesh = SubResource("SphereMesh_4rfrh")
+
+[node name="Animaton1" parent="Sphere" unique_id=1953052596 instance=ExtResource("1_344gi")]
+autostart = true
+loop = true
+
+[node name="AnimatorKey2" type="Marker3D" parent="Sphere/Animaton1" unique_id=2104920686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1893014, 0, 0)
+script = ExtResource("2_h6en1")
+time = 2.0
+metadata/_custom_type_script = "uid://c7wrltuknx6fc"
+
+[node name="AnimatorKey" type="Marker3D" parent="Sphere/Animaton1" unique_id=1775191779]
+script = ExtResource("2_h6en1")
+time = 2.0
+metadata/_custom_type_script = "uid://c7wrltuknx6fc"
+
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=412867892]
+transform = Transform3D(0.90040535, 0, 0.435052, 0, 1, 0, -0.435052, 0, 0.90040535, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6hmvx")
+mesh = SubResource("BoxMesh_l2x33")
+
+[node name="Animator" parent="Cube" unique_id=61305136 instance=ExtResource("1_344gi")]
+
+[node name="AnimatorKey" type="Marker3D" parent="Cube/Animator" unique_id=1058240391]
+transform = Transform3D(0.39897206, 0, 0.9169632, 0, 1, 0, -0.9169632, 0, 0.39897206, 0, 0, 0)
+script = ExtResource("2_h6en1")
+time = 5.0
+animate_position = false
+animate_rotation = true
+metadata/_custom_type_script = "uid://c7wrltuknx6fc"
+
+[node name="Animator2" parent="Cube" unique_id=1774314806 instance=ExtResource("1_344gi")]
+
+[node name="AnimatorKey" type="Marker3D" parent="Cube/Animator2" unique_id=2097688500]
+transform = Transform3D(0.9003189, 0, 0.43523115, 0, 1, 0, -0.43523115, 0, 0.9003189, 0, 0, 0)
+script = ExtResource("2_h6en1")
+time = 5.0
+animate_position = false
+animate_rotation = true
+metadata/_custom_type_script = "uid://c7wrltuknx6fc"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1991977349]
+transform = Transform3D(1, 0, 0, 0, 0.81163275, 0.584168, 0, -0.584168, 0.81163275, -0.47298124, 1.3809276, 1.5974162)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=2100772419]
+layer = -1
+
+[node name="Text" parent="Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("3_l0fth")]
+slide_header = "Outline"
+header = ""
+text = ""
+bottom_text = ""
+
+[node name="Backround" type="Control" parent="Camera3D/CanvasLayer" unique_id=443771123]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GodotBackround" type="ColorRect" parent="Camera3D/CanvasLayer/Backround" unique_id=221039995]
+z_index = -999
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_p1kl0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69411767, 0.8784314, 1, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=292651037]
+environment = SubResource("Environment_s6l47")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1968821063]
+transform = Transform3D(1, 0, 0, 0, 0.6922767, 0.7216321, 0, -0.7216321, 0.6922767, 0, 2.6067119, 3.087154)

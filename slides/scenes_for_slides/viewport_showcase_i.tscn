@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://db6ymwq5kkrbj"]
+
+[ext_resource type="PackedScene" uid="uid://drkb23xqyf8p6" path="res://stencil/stencil_camera.tscn" id="1_3bod3"]
+[ext_resource type="PackedScene" uid="uid://deqrdnmbcmcwv" path="res://stencil/stencil_writer.tscn" id="2_kmv5n"]
+[ext_resource type="Shader" uid="uid://dc3wrty0ip7d1" path="res://slides/scenes_for_slides/canvas_otline.gdshader" id="7_v2xov"]
+[ext_resource type="Shader" uid="uid://c2m0ryu75xvp7" path="res://shader/stencil_shader/stencil_writer.gdshader" id="8_qg63f"]
+[ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="9_0p0sy"]
+[ext_resource type="Script" uid="uid://c7wrltuknx6fc" path="res://presentation/animator/animator_key.gd" id="10_ykglo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykglo"]
+albedo_color = Color(0, 0.7137255, 0.078431375, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0p0sy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2sjss"]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("8_qg63f")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qg63f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inapi"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0p0sy"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_v2xov"]
+viewport_path = NodePath("StencilCamera/StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pri25"]
+resource_local_to_scene = true
+shader = ExtResource("7_v2xov")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_v2xov")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 1.0
+shader_parameter/stencil_threshold = 0.01
+
+[node name="ViewportShowcase_I" type="Node3D" unique_id=1590383904]
+
+[node name="Cube" parent="." unique_id=1860981665 instance=ExtResource("2_kmv5n")]
+transform = Transform3D(0.90040535, 0, 0.435052, 0, 1, 0, -0.435052, 0, 0.90040535, 0, 0, 0)
+stencil_layer = 25
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube" unique_id=996838560]
+material_override = SubResource("StandardMaterial3D_ykglo")
+mesh = SubResource("BoxMesh_0p0sy")
+
+[node name="Sphere" parent="." unique_id=884894534 instance=ExtResource("2_kmv5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9342557, 0, 0)
+material_override = SubResource("ShaderMaterial_2sjss")
+mesh = SubResource("SphereMesh_qg63f")
+stencil_layer = 25
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sphere" unique_id=516967042]
+material_override = SubResource("StandardMaterial3D_inapi")
+mesh = SubResource("SphereMesh_0p0sy")
+
+[node name="Animaton1" parent="Sphere" unique_id=1953052596 instance=ExtResource("9_0p0sy")]
+autostart = true
+loop = true
+
+[node name="AnimatorKey2" type="Marker3D" parent="Sphere/Animaton1" unique_id=446670125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1893014, 0, 0)
+script = ExtResource("10_ykglo")
+time = 2.0
+metadata/_custom_type_script = "uid://c7wrltuknx6fc"
+
+[node name="AnimatorKey" type="Marker3D" parent="Sphere/Animaton1" unique_id=1024693303]
+script = ExtResource("10_ykglo")
+time = 2.0
+metadata/_custom_type_script = "uid://c7wrltuknx6fc"
+
+[node name="StencilCamera" parent="." unique_id=1225835657 instance=ExtResource("1_3bod3")]
+transform = Transform3D(1, 0, 0, 0, 0.81163275, 0.584168, 0, -0.584168, 0.81163275, -0.47298124, 1.3809276, 1.5974162)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=126892648]
+transform = Transform3D(1, 0, 0, 0, 0.6922767, 0.7216321, 0, -0.7216321, 0.6922767, 0, 2.6067119, 3.087154)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1550380651]
+material = SubResource("ShaderMaterial_pri25")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

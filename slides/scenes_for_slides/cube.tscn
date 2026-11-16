@@ -1,17 +1,30 @@
 [gd_scene format=3 uid="uid://dhh3hkblmc45"]
 
 [ext_resource type="Script" uid="uid://dud1bgouukw1e" path="res://slides/scenes_for_slides/cube.gd" id="1_gcyl3"]
+[ext_resource type="PackedScene" uid="uid://bpab70ljfl1pj" path="res://assets/Large Props/cardboard_box_2.glb" id="2_37s01"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3anb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_i3anb"]
+size = Vector3(1.1, 1.1, 1)
 
 [node name="Cube" type="RigidBody3D" unique_id=508999443]
 collision_mask = 2
+can_sleep = false
 script = ExtResource("1_gcyl3")
+
+[node name="cardboard_box_22" parent="." unique_id=940196992 instance=ExtResource("2_37s01")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.50929636, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1102760745]
 shape = SubResource("BoxShape3D_i3anb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1842405951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017959714, 0)
+visible = false
 mesh = SubResource("BoxMesh_i3anb")
+
+[node name="Timer" type="Timer" parent="." unique_id=1445973495]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

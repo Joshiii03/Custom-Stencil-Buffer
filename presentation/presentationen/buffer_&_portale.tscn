@@ -46,7 +46,7 @@ color = Color(0.69411767, 0.8784314, 1, 1)
 
 [node name="Slides" type="Node" parent="." index="2" unique_id=579594150]
 
-[node name="PreBeginning" parent="Slides" index="0" unique_id=1215255879 instance=ExtResource("3_yh82q")]
+[node name="PreBeginning" parent="Slides" index="0" unique_id=1682851372 instance=ExtResource("3_yh82q")]
 slide_name = "von Joshiii03"
 
 [node name="Text" parent="Slides/PreBeginning" index="0" unique_id=1809041724 instance=ExtResource("2_ry4wd")]
@@ -67,7 +67,8 @@ slide_name = "Einführung"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
 [node name="Text" parent="Slides/Introduction" index="0" unique_id=2040530073 instance=ExtResource("2_ry4wd")]
-slide_header = "Was Ich heute Präsentieren werde"
+visible = false
+slide_header = "Inhaltsangabe"
 header = ""
 text = "1. Buffer
 -Depth Buffer / Tiefen Buffer
@@ -80,40 +81,69 @@ text = "1. Buffer
 -Portale mit Viewport Buffer"
 bottom_text = ""
 
-[node name="DepthBuffer_I" parent="Slides" index="3" unique_id=811273123 instance=ExtResource("3_yh82q")]
+[node name="What is a Buffer" type="Node" parent="Slides" index="3" unique_id=805235415]
+script = ExtResource("7_ceemk")
+slide_name = "Buffer I"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/What is a Buffer" index="0" unique_id=1714056312 instance=ExtResource("2_ry4wd")]
+slide_header = "Was ist ein Buffer?"
+header = ""
+text = "-Eine Texture Die über 
+   den gesamten Bildschirm geht.
+-Oben links (0,0)
+-Unten rechts (1,1)
+-z.B. Colorbuffet, Depthuffer, Stencilbuffer"
+bottom_text = ""
+
+[node name="DepthBufferExplaination" type="Node" parent="Slides" index="4" unique_id=1460932531]
+script = ExtResource("7_ceemk")
+slide_name = "Depth Buffer I"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="DepthBuffer_I" parent="Slides" index="5" unique_id=811273123 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case I"
 comments = Array[String](["1 -> Stripes"])
 scene = "uid://coxue6rdjwetd"
 
-[node name="DepthBuffer_II" parent="Slides" index="4" unique_id=23279040 instance=ExtResource("3_yh82q")]
+[node name="DepthBuffer_II" parent="Slides" index="6" unique_id=23279040 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case II"
 scene = "uid://150tix107shr"
 
 [node name="Text" parent="Slides/DepthBuffer_II" index="0" unique_id=1615261784 instance=ExtResource("2_ry4wd")]
 empty = true
 
-[node name="StencilBuffer_I" type="Node" parent="Slides" index="5" unique_id=896560601]
+[node name="StencilBuffer_I" type="Node" parent="Slides" index="7" unique_id=896560601]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer showcase I"
 comments = Array[String](["1 -> On/Off"])
 scene = "uid://clsxveo03tft6"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer_II" type="Node" parent="Slides" index="6" unique_id=427331744]
+[node name="StencilBuffer_II" type="Node" parent="Slides" index="8" unique_id=427331744]
 script = ExtResource("7_ceemk")
-slide_name = "StencilBuffer II"
+slide_name = "StencilBuffer showcase II"
 scene = "uid://oyg5yigg3bus"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="Slide" parent="Slides" index="7" unique_id=1460568131 instance=ExtResource("3_yh82q")]
+[node name="StencilBuffer_III" parent="Slides" index="9" unique_id=1460568131 instance=ExtResource("3_yh82q")]
+slide_name = "StencilBuffer showcase III"
 scene = "uid://1uim5ttf3kel"
 
-[node name="100Portals" parent="Slides" index="8" unique_id=516392851 instance=ExtResource("3_yh82q")]
+[node name="StencilBuffer_IV" parent="Slides" index="10" unique_id=1082524065 instance=ExtResource("3_yh82q")]
+slide_name = "StencilBuffer showcase IV"
+scene = "uid://0winjex0jdb5"
+
+[node name="Viewport_I" parent="Slides" index="11" unique_id=1215255879 instance=ExtResource("3_yh82q")]
+slide_name = "Viewport"
+scene = "uid://db6ymwq5kkrbj"
+
+[node name="100Portals" parent="Slides" index="12" unique_id=516392851 instance=ExtResource("3_yh82q")]
 slide_name = "100 Portale"
 comments = Array[String](["Bad Apple von Tobi vorgeschlagen"])
 scene = "uid://bg4f8h4yfbeqd"
 
-[node name="EmptyEndSlide" parent="Slides" index="9" unique_id=1437317286 instance=ExtResource("3_yh82q")]
+[node name="EmptyEndSlide" parent="Slides" index="13" unique_id=1437317286 instance=ExtResource("3_yh82q")]
 slide_name = "Empty"
 comments = Array[String](["You made it !", ""])
 is_empty = true

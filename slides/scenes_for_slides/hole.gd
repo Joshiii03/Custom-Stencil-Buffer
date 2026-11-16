@@ -1,14 +1,8 @@
 extends CharacterBody3D
 
 const SPEED =3
+@onready var hole = $Hole
 
-@onready var cube_scene : PackedScene = preload("uid://dhh3hkblmc45")
-
-func _input(event):
-	if event.is_action_pressed("1"):
-		var new_cube = cube_scene.instantiate()
-		new_cube.position = Vector3(0,5,0)
-		get_parent().add_child(new_cube)
 
 func _physics_process(_delta):
 	if not Engine.is_editor_hint():
@@ -26,7 +20,8 @@ func _physics_process(_delta):
 		else:
 			velocity.x = lerp(velocity.x, 0.0, 0.1)
 			velocity.z = lerp(velocity.z, 0.0, 0.1)
-
+		
+		hole.material_override.set_shader_parameter("coords", hole.position)
 		move_and_slide()
 
 
