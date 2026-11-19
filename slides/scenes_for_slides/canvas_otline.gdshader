@@ -3,39 +3,35 @@ shader_type canvas_item;
 
 uniform sampler2D stencil_texture : filter_nearest;
 uniform vec4 outline_color : source_color = vec4(1.0, 0.5, 0.0, 1.0);
-uniform float outline_width : hint_range(1.0, 10.0) = 1.0;
-
-// Number of neighboring pixels to check
+uniform float outline_width : hint_range(1.0, 30.0) = 2.0;
 uniform float stencil_threshold : hint_range(0.0, 1.0) = 0.01;
+
+const int DIRECTIONS = 32;
 
 void fragment() {
 	vec2 uv = UV;
-	vec2 pixel_size = TEXTURE_PIXEL_SIZE * outline_width;
 
-	// Current stencil value
+	// Use the stencil texture's actual pixel dimensions
+	vec2 pixel_size = 1.0 / vec2(textureSize(stencil_texture, 0));
+	pixel_size *= outline_width;
+
 	float center = texture(stencil_texture, uv).r;
+	float max_neighbor = 0.0;
 
-	bool edge = false;
+	for (int i = 0; i < DIRECTIONS; i++) {
+		float angle = float(i) * 6.28318530718 / float(DIRECTIONS);
 
-	// Check surrounding 8 pixels
-	for (int x = -1; x <= 1; x++) {
-		for (int y = -1; y <= 1; y++) {
+		vec2 direction = vec2(cos(angle), sin(angle));
 
-			if (x == 0 && y == 0) {
-				continue;
-			}
+		float neighbor = texture(
+			stencil_texture,
+			uv + direction * pixel_size
+		).r;
 
-			vec2 offset = vec2(float(x), float(y)) * pixel_size;
-
-			float neighbor = texture(stencil_texture, (uv + offset*0.01)).r;
-
-			if (abs(center - neighbor) > stencil_threshold) {
-				edge = true;
-			}
-		}
+		max_neighbor = max(max_neighbor, neighbor);
 	}
 
-	if (edge && center < 0.01) {
+	if (center < 0.01 && max_neighbor > stencil_threshold) {
 		COLOR = outline_color;
 	} else {
 		COLOR = vec4(0.0);

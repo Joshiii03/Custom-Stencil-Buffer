@@ -7,6 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="3_nlifg"]
 [ext_resource type="PackedScene" uid="uid://chnt134v1w81x" path="res://presentation/slide.tscn" id="3_yh82q"]
 [ext_resource type="Script" uid="uid://dw5nch1euelxo" path="res://presentation/slide.gd" id="7_ceemk"]
+[ext_resource type="Script" uid="uid://bu07ucx1w6fld" path="res://presentation/text_on_slide.gd" id="8_s27kt"]
+[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="9_ispgc"]
+[ext_resource type="Shader" uid="uid://bog4pf2embfqf" path="res://slides/round_edges.gdshader" id="10_1d0r8"]
+[ext_resource type="Shader" uid="uid://cieltlaejobcs" path="res://shader/test_shader/test_screen.gdshader" id="11_1d0r8"]
+[ext_resource type="Texture2D" uid="uid://d2eeb5x50y7dn" path="res://assets/externe_graphiken/Depthbuffer.png" id="11_ispgc"]
+[ext_resource type="Script" uid="uid://bcpjyfbfddeif" path="res://presentation/presentationen/color_buffer.gd" id="12_8u34s"]
+[ext_resource type="Texture2D" uid="uid://bgwep7ntllq0p" path="res://assets/externe_graphiken/OIIA_Cat.png" id="14_7vd5s"]
+[ext_resource type="Script" uid="uid://b682x2wrwxu6t" path="res://presentation/presentationen/animated_gif.gd" id="15_omgj7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ceemk"]
 shader = ExtResource("2_38dde")
@@ -19,7 +27,25 @@ shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
 shader_parameter/icon_tint = Color(1, 1, 1, 1)
 shader_parameter/icon_opacity = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmlrs"]
+resource_local_to_scene = true
+shader = ExtResource("10_1d0r8")
+shader_parameter/rect_size = Vector2(946, 271)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afoqy"]
+resource_local_to_scene = true
+shader = ExtResource("11_1d0r8")
+shader_parameter/filter_r = false
+shader_parameter/filter_b = false
+shader_parameter/filter_g = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8u34s"]
+resource_local_to_scene = true
+shader = ExtResource("10_1d0r8")
+shader_parameter/rect_size = Vector2(946, 437)
+
 [node name="Buffer & Portale" unique_id=378429670 instance=ExtResource("1_canl1")]
+start_slide = 10
 
 [node name="Foreground" parent="." index="0" unique_id=72472130 instance=ExtResource("2_nlifg")]
 autoconnect = true
@@ -71,11 +97,11 @@ visible = false
 slide_header = "Inhaltsangabe"
 header = ""
 text = "1. Buffer
--Depth Buffer / Tiefen Buffer
--Stencil Buffer /Schablonen Buffer
+-Depth Buffer / Tiefen Puffer
+-Stencil Buffer /Schablonen Puffer
 -Viewport Buffer
 
-2. Portals:
+2. Portale:
 -Klassische Portale mit 2. Kamera (short)
 -Portale mit Stencil Buffer
 -Portale mit Viewport Buffer"
@@ -87,6 +113,7 @@ slide_name = "Buffer I"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
 [node name="Text" parent="Slides/What is a Buffer" index="0" unique_id=1714056312 instance=ExtResource("2_ry4wd")]
+visible = false
 slide_header = "Was ist ein Buffer?"
 header = ""
 text = "-Eine Texture Die über 
@@ -96,59 +123,479 @@ text = "-Eine Texture Die über
 -z.B. Colorbuffet, Depthuffer, Stencilbuffer"
 bottom_text = ""
 
-[node name="DepthBufferExplaination" type="Node" parent="Slides" index="4" unique_id=1460932531]
+[node name="ColorBuffer_I" parent="Slides" index="4" unique_id=1215255879 instance=ExtResource("3_yh82q")]
+is_empty = true
+use_cf_logo = false
+use_cf_top_left = true
+cf_top_left = "(0,0)"
+use_cf_top_right = true
+cf_top_right = "(0,1)"
+use_cf_buttom_left = true
+cf_buttom_left = "(1,0)"
+use_cf_buttom_right = true
+cf_buttom_right = "(1,1)"
+
+[node name="Text" type="Control" parent="Slides/ColorBuffer_I" index="0" unique_id=2093635153]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("8_s27kt")
+
+[node name="SmallerBox2" type="MarginContainer" parent="Slides/ColorBuffer_I/Text" index="0" unique_id=1020454935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 78
+theme_override_constants/margin_top = 78
+theme_override_constants/margin_right = 78
+theme_override_constants/margin_bottom = 78
+
+[node name="SlideHeader" type="Label" parent="Slides/ColorBuffer_I/Text/SmallerBox2" index="0" unique_id=2048879931]
+custom_minimum_size = Vector2(0, 124.833336)
+custom_maximum_size = Vector2(99999, 124.833336)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("9_ispgc")
+theme_override_font_sizes/font_size = 64
+text = "Color Buffer"
+resize_font_to_fit = true
+maximum_font_size = 254
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Slides/ColorBuffer_I/Text" index="1" unique_id=783781141]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SmallerBox" type="MarginContainer" parent="Slides/ColorBuffer_I/Text/VBoxContainer" index="0" unique_id=476401181]
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 19
+theme_override_constants/margin_left = 39
+theme_override_constants/margin_top = 203
+theme_override_constants/margin_right = 39
+theme_override_constants/margin_bottom = 39
+
+[node name="WhiteBackround" type="ColorRect" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox" index="0" unique_id=1352649206]
+material = SubResource("ShaderMaterial_wmlrs")
+layout_mode = 2
+color = Color(1, 1, 1, 0.64705884)
+
+[node name="SmallTextBox" type="MarginContainer" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox" index="1" unique_id=637698339]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 17
+theme_override_constants/margin_left = 333
+theme_override_constants/margin_top = 77
+theme_override_constants/margin_right = 333
+theme_override_constants/margin_bottom = 77
+
+[node name="Frame" type="ColorRect" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox" index="0" unique_id=1957556259]
+layout_mode = 2
+color = Color(0.34136367, 0.5439898, 1, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox" index="1" unique_id=1759006260]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="ColorBuffer" type="ColorRect" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/MarginContainer" index="0" unique_id=1965102495]
+material = SubResource("ShaderMaterial_afoqy")
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 17
+script = ExtResource("12_8u34s")
+
+[node name="TextContainer" type="VBoxContainer" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox" index="2" unique_id=368231236]
+layout_mode = 2
+
+[node name="HeaderText" type="Label" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer" index="0" unique_id=2113373313]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_ispgc")
+resize_font_to_fit = true
+maximum_font_size = 255
+
+[node name="MainText" type="Label" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer" index="1" unique_id=793562482]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("9_ispgc")
+theme_override_font_sizes/font_size = 64
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[node name="BottomText" type="Label" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer" index="2" unique_id=943491461]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ispgc")
+vertical_alignment = 2
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[node name="DepthBufferExplaination" type="Node" parent="Slides" index="5" unique_id=1460932531]
 script = ExtResource("7_ceemk")
 slide_name = "Depth Buffer I"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="DepthBuffer_I" parent="Slides" index="5" unique_id=811273123 instance=ExtResource("3_yh82q")]
+[node name="Text" type="Control" parent="Slides/DepthBufferExplaination" index="0" unique_id=1085649706]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("8_s27kt")
+header = "Depth Buffer"
+
+[node name="SmallerBox2" type="MarginContainer" parent="Slides/DepthBufferExplaination/Text" index="0" unique_id=942194729]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 74
+theme_override_constants/margin_top = 74
+theme_override_constants/margin_right = 74
+theme_override_constants/margin_bottom = 74
+
+[node name="SlideHeader" type="Label" parent="Slides/DepthBufferExplaination/Text/SmallerBox2" index="0" unique_id=1962900836]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(99999, 102.666664)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("9_ispgc")
+theme_override_font_sizes/font_size = 64
+resize_font_to_fit = true
+maximum_font_size = 254
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Slides/DepthBufferExplaination/Text" index="1" unique_id=998836630]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SmallerBox" type="MarginContainer" parent="Slides/DepthBufferExplaination/Text/VBoxContainer" index="0" unique_id=323212394]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 19
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_top = 37
+theme_override_constants/margin_right = 37
+theme_override_constants/margin_bottom = 37
+
+[node name="WhiteBackround" type="ColorRect" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox" index="0" unique_id=700062465]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_8u34s")
+layout_mode = 2
+color = Color(1, 1, 1, 0.64705884)
+
+[node name="TextMarginBox" type="MarginContainer" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox" index="1" unique_id=1682510347]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_top = 37
+theme_override_constants/margin_right = 37
+theme_override_constants/margin_bottom = 37
+
+[node name="MarginContainer" type="MarginContainer" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox" index="0" unique_id=579490563]
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 17
+
+[node name="Graphic" type="TextureRect" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox/MarginContainer" index="0" unique_id=364596876]
+custom_minimum_size = Vector2(100, 100)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 17
+texture = ExtResource("11_ispgc")
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox/MarginContainer/Graphic" index="0" unique_id=1663742175]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.6799758, 1, 0.43600002)
+
+[node name="TextContainer" type="VBoxContainer" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox" index="1" unique_id=939641654]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HeaderText" type="Label" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="0" unique_id=149221527]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_ispgc")
+resize_font_to_fit = true
+maximum_font_size = 255
+
+[node name="MainText" type="Label" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="1" unique_id=924582697]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("9_ispgc")
+theme_override_font_sizes/font_size = 64
+text = "-Einfach ein Greenscreen
+
+TODO: OIIA Katze einbauen"
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[node name="BottomText" type="Label" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="2" unique_id=863726153]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ispgc")
+vertical_alignment = 2
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[node name="DepthBuffer_HowTo" parent="Slides" index="6" unique_id=808722060 instance=ExtResource("3_yh82q")]
+slide_name = "DepthBuffer How To?"
+
+[node name="Text" parent="Slides/DepthBuffer_HowTo" index="0" unique_id=1480904480 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "Depth Buffer nutzen?"
+header = ""
+text = ""
+bottom_text = ""
+
+[node name="DepthBuffer_I" parent="Slides" index="7" unique_id=811273123 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case I"
 comments = Array[String](["1 -> Stripes"])
 scene = "uid://coxue6rdjwetd"
 
-[node name="DepthBuffer_II" parent="Slides" index="6" unique_id=23279040 instance=ExtResource("3_yh82q")]
+[node name="DepthBuffer_II" parent="Slides" index="8" unique_id=23279040 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case II"
 scene = "uid://150tix107shr"
 
 [node name="Text" parent="Slides/DepthBuffer_II" index="0" unique_id=1615261784 instance=ExtResource("2_ry4wd")]
+visible = false
 empty = true
 
-[node name="StencilBuffer_I" type="Node" parent="Slides" index="7" unique_id=896560601]
+[node name="StencilBufferExplanation" parent="Slides" index="9" unique_id=123178485 instance=ExtResource("3_yh82q")]
+use_cf_buttom_left = true
+cf_buttom_left = "https://tenor.com/de/view/spincat-gif-4620048645392468202"
+
+[node name="Text" type="Control" parent="Slides/StencilBufferExplanation" index="0" unique_id=824516417]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("8_s27kt")
+slide_header = "Stencil Buffer?"
+text = "-Einfach ein Greenscreen
+
+TODO: OIIA Katze einbauen"
+
+[node name="SmallerBox2" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text" index="0" unique_id=643075720]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 78
+theme_override_constants/margin_top = 78
+theme_override_constants/margin_right = 78
+theme_override_constants/margin_bottom = 78
+
+[node name="SlideHeader" type="Label" parent="Slides/StencilBufferExplanation/Text/SmallerBox2" index="0" unique_id=1925180921]
+custom_minimum_size = Vector2(0, 124.666664)
+custom_maximum_size = Vector2(99999, 124.666664)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("9_ispgc")
+theme_override_font_sizes/font_size = 64
+text = "Stencil Buffer?"
+resize_font_to_fit = true
+maximum_font_size = 254
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Slides/StencilBufferExplanation/Text" index="1" unique_id=725834392]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SmallerBox" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer" index="0" unique_id=1016204447]
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 19
+theme_override_constants/margin_left = 39
+theme_override_constants/margin_top = 202
+theme_override_constants/margin_right = 39
+theme_override_constants/margin_bottom = 39
+
+[node name="WhiteBackround" type="ColorRect" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="0" unique_id=178308746]
+material = SubResource("ShaderMaterial_wmlrs")
+layout_mode = 2
+color = Color(1, 1, 1, 0.64705884)
+
+[node name="TextMarginBox" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="1" unique_id=1900082076]
+layout_mode = 2
+theme_override_constants/margin_left = 39
+theme_override_constants/margin_top = 39
+theme_override_constants/margin_right = 39
+theme_override_constants/margin_bottom = 39
+
+[node name="TextContainer" type="VBoxContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="0" unique_id=759128592]
+layout_mode = 2
+
+[node name="HeaderText" type="Label" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="0" unique_id=573384318]
+custom_minimum_size = Vector2(0, 124.666664)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_ispgc")
+text = "-Einfach ein Greenscreen
+
+TODO: OIIA Katze einbauen"
+resize_font_to_fit = true
+maximum_font_size = 255
+
+[node name="MainText" type="Label" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="1" unique_id=1102657844]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("9_ispgc")
+theme_override_font_sizes/font_size = 64
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[node name="BottomText" type="Label" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="2" unique_id=2103405009]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ispgc")
+vertical_alignment = 2
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[node name="OIIA_Cat_gif" type="Sprite2D" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="2" unique_id=1901629970]
+visible = false
+position = Vector2(691, 333)
+texture = ExtResource("14_7vd5s")
+vframes = 32
+script = ExtResource("15_omgj7")
+
+[node name="StencilBuffer_HowTo" parent="Slides" index="10" unique_id=1789856615 instance=ExtResource("3_yh82q")]
+
+[node name="Text" parent="Slides/StencilBuffer_HowTo" index="0" unique_id=1245823599 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "Stencil Buffer wie?"
+header = ""
+text = "1. Immer Alpha aktivieren
+2. Stencil -> Custom
+3. Select mode(Read  /Write)
+4. Reference / Stencillayer
+5. compare (==, !=, >=,<=)"
+bottom_text = ""
+
+[node name="StencilBuffer_I" type="Node" parent="Slides" index="11" unique_id=896560601]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer showcase I"
 comments = Array[String](["1 -> On/Off"])
 scene = "uid://clsxveo03tft6"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer_II" type="Node" parent="Slides" index="8" unique_id=427331744]
+[node name="StencilBuffer_II" type="Node" parent="Slides" index="12" unique_id=427331744]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer showcase II"
 scene = "uid://oyg5yigg3bus"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer_III" parent="Slides" index="9" unique_id=1460568131 instance=ExtResource("3_yh82q")]
+[node name="StencilBuffer_III" parent="Slides" index="13" unique_id=1460568131 instance=ExtResource("3_yh82q")]
 slide_name = "StencilBuffer showcase III"
 scene = "uid://1uim5ttf3kel"
 
-[node name="StencilBuffer_IV" parent="Slides" index="10" unique_id=1082524065 instance=ExtResource("3_yh82q")]
+[node name="StencilBuffer_IV" parent="Slides" index="14" unique_id=1082524065 instance=ExtResource("3_yh82q")]
 slide_name = "StencilBuffer showcase IV"
 scene = "uid://0winjex0jdb5"
 
-[node name="Viewport_I" parent="Slides" index="11" unique_id=1215255879 instance=ExtResource("3_yh82q")]
+[node name="Viewport_I" parent="Slides" index="15" unique_id=281215632 instance=ExtResource("3_yh82q")]
 slide_name = "Viewport"
 scene = "uid://db6ymwq5kkrbj"
 
-[node name="100Portals" parent="Slides" index="12" unique_id=516392851 instance=ExtResource("3_yh82q")]
+[node name="100Portals" parent="Slides" index="16" unique_id=516392851 instance=ExtResource("3_yh82q")]
 slide_name = "100 Portale"
 comments = Array[String](["Bad Apple von Tobi vorgeschlagen"])
 scene = "uid://bg4f8h4yfbeqd"
 
-[node name="EmptyEndSlide" parent="Slides" index="13" unique_id=1437317286 instance=ExtResource("3_yh82q")]
+[node name="Q&A" type="Node" parent="Slides" index="17" unique_id=457507216]
+script = ExtResource("7_ceemk")
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/Q&A" index="0" unique_id=1589392394 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "Danke für eure Aufmerksamkeit"
+header = ""
+text = "Habt ihr noch Fragen?
+
+
+"
+bottom_text = ""
+
+[node name="EmptyEndSlide" parent="Slides" index="18" unique_id=1437317286 instance=ExtResource("3_yh82q")]
 slide_name = "Empty"
 comments = Array[String](["You made it !", ""])
 is_empty = true
+use_cf_logo = false
 
 [node name="Empty" parent="Slides/EmptyEndSlide" index="0" unique_id=210955464 instance=ExtResource("2_ry4wd")]
 visible = false
 empty = true
 header = ""
+
+[connection signal="visibility_changed" from="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/WhiteBackround" to="Slides/ColorBuffer_I/Text" method="_on_white_backround_visibility_changed"]
+[connection signal="visibility_changed" from="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/WhiteBackround" to="Slides/DepthBufferExplaination/Text" method="_on_white_backround_visibility_changed"]
+[connection signal="visibility_changed" from="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/WhiteBackround" to="Slides/StencilBufferExplanation/Text" method="_on_white_backround_visibility_changed"]

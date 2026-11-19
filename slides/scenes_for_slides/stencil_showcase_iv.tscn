@@ -120,7 +120,7 @@ transform = Transform3D(1, 0, 0, 0, 0.81163275, 0.584168, 0, -0.584168, 0.811632
 layer = -1
 
 [node name="Text" parent="Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("3_l0fth")]
-slide_header = "Outline"
+slide_header = "Outline Stencil Buffer"
 header = ""
 text = ""
 bottom_text = ""

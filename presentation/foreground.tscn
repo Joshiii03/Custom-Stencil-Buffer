@@ -39,16 +39,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 17
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer" unique_id=773713297]
+[node name="Logo" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer" unique_id=773713297]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_nlifg")
 layout_mode = 2
 texture = ExtResource("3_f7ssb")
 expand_mode = 2
 
-[node name="TopLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer" unique_id=1873958963]
+[node name="TopLeft" type="Label" parent="Control/VBoxContainer/HBoxContainer" unique_id=1873958963]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 19
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("4_ji5b3")
 theme_override_font_sizes/font_size = 64
@@ -56,13 +57,37 @@ text = "Slide name"
 resize_font_to_fit = true
 maximum_font_size = 124
 
+[node name="TopRight" type="Label" parent="Control/VBoxContainer/HBoxContainer" unique_id=591813178]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 19
+theme_override_fonts/font = ExtResource("4_ji5b3")
+horizontal_alignment = 2
+resize_font_to_fit = true
+maximum_font_size = 124
+
 [node name="Control" type="Control" parent="Control/VBoxContainer" unique_id=32915815]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BottomLabel" type="Label" parent="Control/VBoxContainer" unique_id=2031087775]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=44872100]
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 17
+
+[node name="BottomLeft" type="Label" parent="Control/VBoxContainer/HBoxContainer2" unique_id=1464815479]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 19
+theme_override_fonts/font = ExtResource("4_ji5b3")
+resize_font_to_fit = true
+maximum_font_size = 124
+
+[node name="BottomRight" type="Label" parent="Control/VBoxContainer/HBoxContainer2" unique_id=2031087775]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
 theme_override_fonts/font = ExtResource("4_ji5b3")
 text = "Slide 0 / 0"
 horizontal_alignment = 2

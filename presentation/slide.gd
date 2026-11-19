@@ -10,6 +10,22 @@ extends Node
 @export var use_scene: bool = true
 @export var is_empty : bool = false
 
+@export_category("Custon Forground")
+@export var use_cf_logo : bool = true
+
+@export var use_cf_top_left : bool = false
+@export var cf_top_left : String = ""
+
+@export var use_cf_top_right : bool = false
+@export var cf_top_right : String = ""
+
+@export var use_cf_buttom_left : bool = false
+@export var cf_buttom_left : String = ""
+
+@export var use_cf_buttom_right : bool = false
+@export var cf_buttom_right : String = ""
+
+
 var new_scene: PackedScene = null
 var instance: Node = null
 

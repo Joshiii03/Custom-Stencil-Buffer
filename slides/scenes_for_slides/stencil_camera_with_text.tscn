@@ -115,17 +115,14 @@ size_2d_override_stretch = true
 [node name="Camera3D" parent="ScrrenSubViewport/ScreenViewport" index="0" unique_id=1493909745]
 environment = null
 
-[node name="CanvasLayer" type="CanvasLayer" parent="ScrrenSubViewport/ScreenViewport/Camera3D" index="0" unique_id=580700877]
-layer = -1
-
-[node name="Text" parent="ScrrenSubViewport/ScreenViewport/Camera3D/CanvasLayer" index="0" unique_id=1809041724 instance=ExtResource("4_gue1n")]
+[node name="Text" parent="ScrrenSubViewport/ScreenViewport/Camera3D" index="0" unique_id=1809041724 instance=ExtResource("4_gue1n")]
 empty = true
 slide_header = ""
 header = "DepthBuffer "
 text = ""
 bottom_text = ""
 
-[node name="Backround" type="Control" parent="ScrrenSubViewport/ScreenViewport/Camera3D/CanvasLayer" index="1" unique_id=453931749]
+[node name="Backround" type="Control" parent="ScrrenSubViewport/ScreenViewport/Camera3D" index="1" unique_id=453931749]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,7 +130,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GodotBackround" type="ColorRect" parent="ScrrenSubViewport/ScreenViewport/Camera3D/CanvasLayer/Backround" index="0" unique_id=33159650]
+[node name="GodotBackround" type="ColorRect" parent="ScrrenSubViewport/ScreenViewport/Camera3D/Backround" index="0" unique_id=33159650]
 z_index = -999
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_cr523")
@@ -144,6 +141,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.69411767, 0.8784314, 1, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ScrrenSubViewport/ScreenViewport/Camera3D" index="2" unique_id=580700877]
+layer = -1
 
 [node name="Foreground" parent="ScrrenSubViewport/ScreenViewport" index="1" unique_id=72472130]
 debug = true

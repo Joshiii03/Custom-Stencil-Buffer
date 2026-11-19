@@ -1,11 +1,19 @@
 [gd_scene format=3 uid="uid://db6ymwq5kkrbj"]
 
-[ext_resource type="PackedScene" uid="uid://drkb23xqyf8p6" path="res://stencil/stencil_camera.tscn" id="1_3bod3"]
 [ext_resource type="PackedScene" uid="uid://deqrdnmbcmcwv" path="res://stencil/stencil_writer.tscn" id="2_kmv5n"]
+[ext_resource type="Script" uid="uid://ldqun124cyr4" path="res://stencil/stencil_camera.gd" id="5_ykglo"]
+[ext_resource type="PackedScene" uid="uid://d3offbakf8d5b" path="res://presentation/foreground.tscn" id="6_ti2ox"]
+[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="6_u0in7"]
+[ext_resource type="PackedScene" uid="uid://7npp3npm1iaq" path="res://test_stuff/debug_screen_2d.tscn" id="7_u0in7"]
 [ext_resource type="Shader" uid="uid://dc3wrty0ip7d1" path="res://slides/scenes_for_slides/canvas_otline.gdshader" id="7_v2xov"]
+[ext_resource type="Shader" uid="uid://b2m7xgbyi52f1" path="res://test_stuff/debug_screen_2d.gdshader" id="8_qfcyv"]
 [ext_resource type="Shader" uid="uid://c2m0ryu75xvp7" path="res://shader/stencil_shader/stencil_writer.gdshader" id="8_qg63f"]
 [ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="9_0p0sy"]
+[ext_resource type="Shader" uid="uid://whmbn0jacgnb" path="res://stencil/backround_stencil.gdshader" id="9_lu01m"]
+[ext_resource type="Script" uid="uid://cg5ql60p7dtnm" path="res://stencil/backround_stencil.gd" id="10_lpp4l"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="10_qfcyv"]
 [ext_resource type="Script" uid="uid://c7wrltuknx6fc" path="res://presentation/animator/animator_key.gd" id="10_ykglo"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="11_lu01m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykglo"]
 albedo_color = Color(0, 0.7137255, 0.078431375, 1)
@@ -25,6 +33,76 @@ albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_0p0sy"]
 
+[sub_resource type="Environment" id="Environment_hg732"]
+background_mode = 1
+background_color = Color(0, 1, 1, 1)
+
+[sub_resource type="Environment" id="Environment_k0xu2"]
+background_mode = 3
+background_color = Color(0.63396597, 0.75490177, 1, 1)
+ambient_light_source = 1
+ambient_light_color = Color(0.972549, 1, 0, 1)
+volumetric_fog_density = 0.2193
+volumetric_fog_emission = Color(0.92794496, 0.68204314, 0.731245, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_37w73"]
+viewport_path = NodePath("StencilCamera/StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxc3u"]
+resource_local_to_scene = true
+shader = ExtResource("8_qfcyv")
+shader_parameter/filter_r = false
+shader_parameter/filter_b = false
+shader_parameter/filter_g = false
+shader_parameter/texture_screen = SubResource("ViewportTexture_37w73")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnwtb"]
+resource_local_to_scene = true
+shader = ExtResource("8_qfcyv")
+shader_parameter/filter_r = false
+shader_parameter/filter_b = true
+shader_parameter/filter_g = true
+shader_parameter/texture_screen = SubResource("ViewportTexture_37w73")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mlomn"]
+resource_local_to_scene = true
+shader = ExtResource("8_qfcyv")
+shader_parameter/filter_r = true
+shader_parameter/filter_b = true
+shader_parameter/filter_g = false
+shader_parameter/texture_screen = SubResource("ViewportTexture_37w73")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phq4y"]
+resource_local_to_scene = true
+shader = ExtResource("8_qfcyv")
+shader_parameter/filter_r = true
+shader_parameter/filter_b = false
+shader_parameter/filter_g = true
+shader_parameter/texture_screen = SubResource("ViewportTexture_37w73")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpp4l"]
+shader = ExtResource("10_qfcyv")
+shader_parameter/godot_icon = ExtResource("11_lu01m")
+shader_parameter/icon_scale = 1.0
+shader_parameter/rotation = 0.14
+shader_parameter/spacing = 0.15
+shader_parameter/scroll_speed = Vector2(0.04, 0.07)
+shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
+shader_parameter/icon_tint = Color(1, 1, 1, 1)
+shader_parameter/icon_opacity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lghiy"]
+render_priority = -2
+shader = ExtResource("9_lu01m")
+shader_parameter/match_color1 = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k56px"]
+flip_faces = true
+orientation = 2
+
+[sub_resource type="Environment" id="Environment_ykglo"]
+background_mode = 3
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_v2xov"]
 viewport_path = NodePath("StencilCamera/StencilViewport")
 
@@ -33,7 +111,7 @@ resource_local_to_scene = true
 shader = ExtResource("7_v2xov")
 shader_parameter/stencil_texture = SubResource("ViewportTexture_v2xov")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/outline_width = 1.0
+shader_parameter/outline_width = 30.0
 shader_parameter/stencil_threshold = 0.01
 
 [node name="ViewportShowcase_I" type="Node3D" unique_id=1590383904]
@@ -71,8 +149,124 @@ script = ExtResource("10_ykglo")
 time = 2.0
 metadata/_custom_type_script = "uid://c7wrltuknx6fc"
 
-[node name="StencilCamera" parent="." unique_id=1225835657 instance=ExtResource("1_3bod3")]
+[node name="StencilCamera" type="Node3D" parent="." unique_id=1225835657 node_paths=PackedStringArray("stencil_viewport", "screen_viewport", "stencil_camera", "screen_camera")]
 transform = Transform3D(1, 0, 0, 0, 0.81163275, 0.584168, 0, -0.584168, 0.81163275, -0.47298124, 1.3809276, 1.5974162)
+script = ExtResource("5_ykglo")
+stencil_viewport = NodePath("StencilViewport")
+screen_viewport = NodePath("ScrrenSubViewport/ScreenViewport")
+stencil_camera = NodePath("StencilViewport/Camera3D")
+screen_camera = NodePath("ScrrenSubViewport/ScreenViewport/Camera3D")
+
+[node name="StencilViewport" type="SubViewport" parent="StencilCamera" unique_id=200876042]
+handle_input_locally = false
+size = Vector2i(1024, 512)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="StencilCamera/StencilViewport" unique_id=1839586270]
+transform = Transform3D(-0.99960893, -0.012238527, 0.025143474, 0, 0.8991427, 0.43765557, -0.02796383, 0.43748444, -0.8987911, 0.049939215, 0.8692585, -1.7851521)
+cull_mask = 67108864
+environment = SubResource("Environment_hg732")
+current = true
+
+[node name="ScrrenSubViewport" type="SubViewportContainer" parent="StencilCamera" unique_id=1191746610]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="ScreenViewport" type="SubViewport" parent="StencilCamera/ScrrenSubViewport" unique_id=2147221177]
+handle_input_locally = false
+size = Vector2i(1024, 512)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="StencilCamera/ScrrenSubViewport/ScreenViewport" unique_id=1493909745]
+transform = Transform3D(0.97091705, 0.096033394, -0.21931192, 0, 0.9160278, 0.40111482, 0.23941624, -0.3894492, 0.889387, -0.6448033, 1.1793255, 2.6149042)
+cull_mask = 33554431
+environment = SubResource("Environment_k0xu2")
+
+[node name="Text" parent="StencilCamera/ScrrenSubViewport/ScreenViewport" unique_id=1809041724 instance=ExtResource("6_u0in7")]
+slide_header = "Outline Viewport Buffer"
+header = ""
+text = ""
+bottom_text = ""
+
+[node name="Foreground" parent="StencilCamera/ScrrenSubViewport/ScreenViewport" unique_id=72472130 instance=ExtResource("6_ti2ox")]
+autoconnect = true
+
+[node name="DebugScreen" type="VBoxContainer" parent="StencilCamera/ScrrenSubViewport/ScreenViewport" unique_id=174703118]
+visible = false
+custom_minimum_size = Vector2(128, 256)
+offset_left = 13.0
+offset_top = 116.0
+offset_right = 173.0
+offset_bottom = 411.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+metadata/_edit_group_ = true
+
+[node name="DebugScreen2D4" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=2034007952 node_paths=PackedStringArray("viewport") instance=ExtResource("7_u0in7")]
+material = SubResource("ShaderMaterial_nxc3u")
+layout_mode = 2
+size_flags_vertical = 3
+viewport = NodePath("../../../../StencilViewport")
+
+[node name="DebugScreen2D3" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=148876606 node_paths=PackedStringArray("viewport") instance=ExtResource("7_u0in7")]
+material = SubResource("ShaderMaterial_gnwtb")
+layout_mode = 2
+size_flags_vertical = 3
+viewport = NodePath("../../../../StencilViewport")
+filter_g = true
+filter_b = true
+
+[node name="DebugScreen2D2" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=1252589453 node_paths=PackedStringArray("viewport") instance=ExtResource("7_u0in7")]
+material = SubResource("ShaderMaterial_mlomn")
+layout_mode = 2
+size_flags_vertical = 3
+viewport = NodePath("../../../../StencilViewport")
+filter_r = true
+filter_b = true
+
+[node name="DebugScreen2D" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=384009483 node_paths=PackedStringArray("viewport") instance=ExtResource("7_u0in7")]
+material = SubResource("ShaderMaterial_phq4y")
+layout_mode = 2
+size_flags_vertical = 3
+viewport = NodePath("../../../../StencilViewport")
+filter_r = true
+filter_g = true
+
+[node name="Backround" type="Control" parent="StencilCamera/ScrrenSubViewport/ScreenViewport" unique_id=1749678933]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GodotBackround" type="ColorRect" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Backround" unique_id=1365773729]
+z_index = -999
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_lpp4l")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69411767, 0.8784314, 1, 1)
+
+[node name="BackroundStencil" type="MeshInstance3D" parent="StencilCamera" unique_id=1543779115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52139956)
+layers = 67108864
+material_override = SubResource("ShaderMaterial_lghiy")
+mesh = SubResource("PlaneMesh_k56px")
+script = ExtResource("10_lpp4l")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="StencilCamera" unique_id=1996679014]
+environment = SubResource("Environment_ykglo")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=126892648]
 transform = Transform3D(1, 0, 0, 0, 0.6922767, 0.7216321, 0, -0.7216321, 0.6922767, 0, 2.6067119, 3.087154)
