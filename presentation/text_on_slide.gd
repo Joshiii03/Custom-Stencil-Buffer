@@ -50,7 +50,9 @@ extends Control
 func resize_all() -> void:
 	if get_viewport():
 		var view_size : Vector2 = get_viewport().size
-		var margin = view_size.length() * 0.03
+		var margin = view_size.length() * 0.025
+		var text_margin_side = margin * 0.8
+		var text_margin_top = margin * 0.1
 		upper_header_box.add_theme_constant_override("margin_left", int(margin))
 		upper_header_box.add_theme_constant_override("margin_right", int(margin))
 		upper_header_box.add_theme_constant_override("margin_top", int(margin))
@@ -61,10 +63,10 @@ func resize_all() -> void:
 		main_box.add_theme_constant_override("margin_top", int(margin * 2))
 		main_box.add_theme_constant_override("margin_bottom", int(margin * 2))
 		
-		main_text_box.add_theme_constant_override("margin_left", int(margin))
-		main_text_box.add_theme_constant_override("margin_right", int(margin))
-		main_text_box.add_theme_constant_override("margin_top", int(margin))
-		main_text_box.add_theme_constant_override("margin_bottom", int(margin))
+		main_text_box.add_theme_constant_override("margin_left", int(text_margin_side))
+		main_text_box.add_theme_constant_override("margin_right", int(text_margin_side))
+		main_text_box.add_theme_constant_override("margin_top", int(text_margin_top))
+		main_text_box.add_theme_constant_override("margin_bottom", int(text_margin_top))
 		
 		if lower_header_label.text:
 			lower_header_label.custom_minimum_size = Vector2(0, view_size.y / 6.)

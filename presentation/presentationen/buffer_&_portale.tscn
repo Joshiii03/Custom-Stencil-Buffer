@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="2_ry4wd"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="3_nlifg"]
 [ext_resource type="PackedScene" uid="uid://chnt134v1w81x" path="res://presentation/slide.tscn" id="3_yh82q"]
+[ext_resource type="Script" uid="uid://bnv753fetheo2" path="res://presentation/presentationen/slides.gd" id="5_uq8jk"]
 [ext_resource type="Script" uid="uid://dw5nch1euelxo" path="res://presentation/slide.gd" id="7_ceemk"]
 [ext_resource type="Script" uid="uid://bu07ucx1w6fld" path="res://presentation/text_on_slide.gd" id="8_s27kt"]
 [ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="9_ispgc"]
@@ -15,6 +16,7 @@
 [ext_resource type="Script" uid="uid://bcpjyfbfddeif" path="res://presentation/presentationen/color_buffer.gd" id="12_8u34s"]
 [ext_resource type="Texture2D" uid="uid://bgwep7ntllq0p" path="res://assets/externe_graphiken/OIIA_Cat.png" id="14_7vd5s"]
 [ext_resource type="Script" uid="uid://b682x2wrwxu6t" path="res://presentation/presentationen/animated_gif.gd" id="15_omgj7"]
+[ext_resource type="Shader" uid="uid://7yp2qrbs372l" path="res://presentation/presentationen/sprite_sheet.gdshader" id="16_8u6uk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ceemk"]
 shader = ExtResource("2_38dde")
@@ -30,7 +32,7 @@ shader_parameter/icon_opacity = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmlrs"]
 resource_local_to_scene = true
 shader = ExtResource("10_1d0r8")
-shader_parameter/rect_size = Vector2(946, 271)
+shader_parameter/rect_size = Vector2(896, 259)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_afoqy"]
 resource_local_to_scene = true
@@ -42,7 +44,19 @@ shader_parameter/filter_g = false
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8u34s"]
 resource_local_to_scene = true
 shader = ExtResource("10_1d0r8")
-shader_parameter/rect_size = Vector2(946, 437)
+shader_parameter/rect_size = Vector2(884, 429)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omgj7"]
+shader = ExtResource("16_8u6uk")
+shader_parameter/sprite_sheet = ExtResource("14_7vd5s")
+shader_parameter/h_frames = 1
+shader_parameter/v_frames = 32
+shader_parameter/animation_speed = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uq8jk"]
+resource_local_to_scene = true
+shader = ExtResource("10_1d0r8")
+shader_parameter/rect_size = Vector2(894, 257)
 
 [node name="Buffer & Portale" unique_id=378429670 instance=ExtResource("1_canl1")]
 
@@ -70,6 +84,7 @@ grow_vertical = 2
 color = Color(0.69411767, 0.8784314, 1, 1)
 
 [node name="Slides" type="Node" parent="." index="2" unique_id=579594150]
+script = ExtResource("5_uq8jk")
 
 [node name="PreBeginning" parent="Slides" index="0" unique_id=1682851372 instance=ExtResource("3_yh82q")]
 slide_name = "von Joshiii03"
@@ -115,14 +130,14 @@ metadata/_custom_type_script = "uid://dw5nch1euelxo"
 visible = false
 slide_header = "Was ist ein Buffer?"
 header = ""
-text = "-Eine Texture Die über 
-   den gesamten Bildschirm geht.
+text = "-Eine Texture Die über den gesamten Bildschirm geht.
 -Oben links (0,0)
 -Unten rechts (1,1)
 -z.B. Colorbuffet, Depthuffer, Stencilbuffer"
 bottom_text = ""
 
-[node name="ColorBuffer_I" parent="Slides" index="4" unique_id=1215255879 instance=ExtResource("3_yh82q")]
+[node name="ColorBufferExplanaition" parent="Slides" index="4" unique_id=1215255879 instance=ExtResource("3_yh82q")]
+slide_name = "ColorBuffer_I"
 is_empty = true
 use_cf_logo = false
 use_cf_top_left = true
@@ -134,7 +149,7 @@ cf_buttom_left = "(1,0)"
 use_cf_buttom_right = true
 cf_buttom_right = "(1,1)"
 
-[node name="Text" type="Control" parent="Slides/ColorBuffer_I" index="0" unique_id=2093635153 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "white_backround")]
+[node name="Text" type="Control" parent="Slides/ColorBufferExplanaition" index="0" unique_id=2093635153 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "white_backround")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -144,28 +159,36 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 script = ExtResource("8_s27kt")
+slide_header = "Color Buffer"
+text = "Werte von 0 -1
+Nähere Objekte überschreiben den Wert
+Ist ein Objekt nicht das näheste
+-nicht rendern
+
+
+"
 upper_header_box = NodePath("SmallerBox2")
 main_box = NodePath("VBoxContainer/SmallerBox")
 main_text_box = NodePath("VBoxContainer/SmallerBox/SmallTextBox")
 slider_header_label = NodePath("SmallerBox2/SlideHeader")
 lower_header_label = NodePath("VBoxContainer/SmallerBox/SmallTextBox/TextContainer/HeaderText")
-main_label = NodePath("VBoxContainer/SmallerBox/SmallTextBox/TextContainer/MainText")
+main_label = NodePath("../../DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer/MainText")
 bottom_label = NodePath("VBoxContainer/SmallerBox/SmallTextBox/TextContainer/BottomText")
 white_backround = NodePath("VBoxContainer/SmallerBox/WhiteBackround")
 
-[node name="SmallerBox2" type="MarginContainer" parent="Slides/ColorBuffer_I/Text" index="0" unique_id=1020454935]
+[node name="SmallerBox2" type="MarginContainer" parent="Slides/ColorBufferExplanaition/Text" index="0" unique_id=1020454935]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 38
-theme_override_constants/margin_top = 201
-theme_override_constants/margin_right = 38
-theme_override_constants/margin_bottom = 38
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="SlideHeader" type="Label" parent="Slides/ColorBuffer_I/Text/SmallerBox2" index="0" unique_id=2048879931]
+[node name="SlideHeader" type="Label" parent="Slides/ColorBufferExplanaition/Text/SmallerBox2" index="0" unique_id=2048879931]
 custom_minimum_size = Vector2(0, 124.833336)
 custom_maximum_size = Vector2(99999, 124.833336)
 layout_mode = 2
@@ -176,7 +199,7 @@ text = "Color Buffer"
 resize_font_to_fit = true
 maximum_font_size = 254
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Slides/ColorBuffer_I/Text" index="1" unique_id=783781141]
+[node name="VBoxContainer" type="VBoxContainer" parent="Slides/ColorBufferExplanaition/Text" index="1" unique_id=783781141]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,52 +207,59 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SmallerBox" type="MarginContainer" parent="Slides/ColorBuffer_I/Text/VBoxContainer" index="0" unique_id=476401181]
+[node name="SmallerBox" type="MarginContainer" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer" index="0" unique_id=476401181]
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 77
-theme_override_constants/margin_top = 77
-theme_override_constants/margin_right = 77
-theme_override_constants/margin_bottom = 77
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 189
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
 
-[node name="WhiteBackround" type="ColorRect" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox" index="0" unique_id=1352649206]
+[node name="WhiteBackround" type="ColorRect" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox" index="0" unique_id=1352649206]
 material = SubResource("ShaderMaterial_wmlrs")
 layout_mode = 2
 color = Color(1, 1, 1, 0.64705884)
 
-[node name="SmallTextBox" type="MarginContainer" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox" index="1" unique_id=637698339]
+[node name="SmallTextBox" type="MarginContainer" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox" index="1" unique_id=637698339]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 17
-theme_override_constants/margin_left = 38
-theme_override_constants/margin_top = 38
-theme_override_constants/margin_right = 38
-theme_override_constants/margin_bottom = 38
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 3
 
-[node name="Frame" type="ColorRect" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox" index="0" unique_id=1957556259]
+[node name="Frame" type="ColorRect" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/SmallTextBox" index="0" unique_id=1957556259]
 layout_mode = 2
-color = Color(0.34136367, 0.5439898, 1, 1)
+color = Color(0.2236315, 0.21707302, 0.34025574, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox" index="1" unique_id=1759006260]
+[node name="MarginContainer" type="MarginContainer" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/SmallTextBox" index="1" unique_id=1759006260]
 layout_mode = 2
 theme_override_constants/margin_left = 22
 theme_override_constants/margin_top = 22
 theme_override_constants/margin_right = 22
 theme_override_constants/margin_bottom = 22
 
-[node name="ColorBuffer" type="ColorRect" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/MarginContainer" index="0" unique_id=1965102495]
+[node name="ColorBuffer" type="ColorRect" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/SmallTextBox/MarginContainer" index="0" unique_id=1965102495]
+process_mode = 3
 material = SubResource("ShaderMaterial_afoqy")
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 17
 script = ExtResource("12_8u34s")
 
-[node name="TextContainer" type="VBoxContainer" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox" index="2" unique_id=368231236]
+[node name="Sprite2D" type="Sprite2D" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/SmallTextBox/MarginContainer" index="1" unique_id=486972589]
+position = Vector2(198, 164)
+texture = ExtResource("14_7vd5s")
+vframes = 32
+script = ExtResource("15_omgj7")
+
+[node name="TextContainer" type="VBoxContainer" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/SmallTextBox" index="2" unique_id=368231236]
 layout_mode = 2
 
-[node name="HeaderText" type="Label" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer" index="0" unique_id=2113373313]
+[node name="HeaderText" type="Label" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer" index="0" unique_id=2113373313]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -237,7 +267,7 @@ theme_override_fonts/font = ExtResource("9_ispgc")
 resize_font_to_fit = true
 maximum_font_size = 255
 
-[node name="MainText" type="Label" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer" index="1" unique_id=793562482]
+[node name="MainText" type="Label" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer" index="1" unique_id=793562482]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -245,11 +275,13 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("9_ispgc")
 theme_override_font_sizes/font_size = 64
+text = "
+"
 resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112
 
-[node name="BottomText" type="Label" parent="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer" index="2" unique_id=943491461]
+[node name="BottomText" type="Label" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer" index="2" unique_id=943491461]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -260,12 +292,12 @@ resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112
 
-[node name="DepthBufferExplaination" type="Node" parent="Slides" index="5" unique_id=1460932531]
+[node name="DepthBufferExplanation" type="Node" parent="Slides" index="5" unique_id=1460932531]
 script = ExtResource("7_ceemk")
 slide_name = "Depth Buffer I"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="Text" type="Control" parent="Slides/DepthBufferExplaination" index="0" unique_id=1085649706 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "white_backround")]
+[node name="Text" type="Control" parent="Slides/DepthBufferExplanation" index="0" unique_id=1085649706 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "white_backround")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -279,13 +311,13 @@ header = "Depth Buffer"
 upper_header_box = NodePath("SmallerBox2")
 main_box = NodePath("VBoxContainer/SmallerBox")
 main_text_box = NodePath("VBoxContainer/SmallerBox/TextMarginBox")
-slider_header_label = NodePath("../../ColorBuffer_I/Text/SmallerBox2/SlideHeader")
-lower_header_label = NodePath("../../ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer/HeaderText")
-main_label = NodePath("../../ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer/MainText")
-bottom_label = NodePath("../../ColorBuffer_I/Text/VBoxContainer/SmallerBox/SmallTextBox/TextContainer/BottomText")
+slider_header_label = NodePath("../../ColorBufferExplanaition/Text/SmallerBox2/SlideHeader")
+lower_header_label = NodePath("VBoxContainer/SmallerBox/TextMarginBox/TextContainer/HeaderText")
+main_label = NodePath("VBoxContainer/SmallerBox/TextMarginBox/TextContainer/MainText")
+bottom_label = NodePath("VBoxContainer/SmallerBox/TextMarginBox/TextContainer/BottomText")
 white_backround = NodePath("VBoxContainer/SmallerBox/WhiteBackround")
 
-[node name="SmallerBox2" type="MarginContainer" parent="Slides/DepthBufferExplaination/Text" index="0" unique_id=942194729]
+[node name="SmallerBox2" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text" index="0" unique_id=942194729]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -293,12 +325,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 38
-theme_override_constants/margin_top = 201
-theme_override_constants/margin_right = 38
-theme_override_constants/margin_bottom = 38
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
-[node name="SlideHeader" type="Label" parent="Slides/DepthBufferExplaination/Text/SmallerBox2" index="0" unique_id=1962900836]
+[node name="SlideHeader" type="Label" parent="Slides/DepthBufferExplanation/Text/SmallerBox2" index="0" unique_id=1962900836]
 unique_name_in_owner = true
 custom_maximum_size = Vector2(99999, 102.666664)
 layout_mode = 2
@@ -308,7 +340,7 @@ theme_override_font_sizes/font_size = 64
 resize_font_to_fit = true
 maximum_font_size = 254
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Slides/DepthBufferExplaination/Text" index="1" unique_id=998836630]
+[node name="VBoxContainer" type="VBoxContainer" parent="Slides/DepthBufferExplanation/Text" index="1" unique_id=998836630]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -316,36 +348,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SmallerBox" type="MarginContainer" parent="Slides/DepthBufferExplaination/Text/VBoxContainer" index="0" unique_id=323212394]
+[node name="SmallerBox" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer" index="0" unique_id=323212394]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 77
-theme_override_constants/margin_top = 77
-theme_override_constants/margin_right = 77
-theme_override_constants/margin_bottom = 77
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
-[node name="WhiteBackround" type="ColorRect" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox" index="0" unique_id=700062465]
+[node name="WhiteBackround" type="ColorRect" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox" index="0" unique_id=700062465]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_8u34s")
 layout_mode = 2
 color = Color(1, 1, 1, 0.64705884)
 
-[node name="TextMarginBox" type="MarginContainer" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox" index="1" unique_id=1682510347]
+[node name="TextMarginBox" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox" index="1" unique_id=1682510347]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 38
-theme_override_constants/margin_top = 38
-theme_override_constants/margin_right = 38
-theme_override_constants/margin_bottom = 38
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox" index="0" unique_id=579490563]
+[node name="MarginContainer" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="0" unique_id=579490563]
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 17
 
-[node name="Graphic" type="TextureRect" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox/MarginContainer" index="0" unique_id=364596876]
+[node name="Graphic" type="TextureRect" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/MarginContainer" index="0" unique_id=364596876]
 custom_minimum_size = Vector2(100, 100)
 propagate_maximum_size = true
 layout_mode = 2
@@ -354,7 +386,7 @@ size_flags_vertical = 17
 texture = ExtResource("11_ispgc")
 stretch_mode = 5
 
-[node name="ColorRect" type="ColorRect" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox/MarginContainer/Graphic" index="0" unique_id=1663742175]
+[node name="ColorRect" type="ColorRect" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/MarginContainer/Graphic" index="0" unique_id=1663742175]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -364,20 +396,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.6799758, 1, 0.43600002)
 
-[node name="TextContainer" type="VBoxContainer" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox" index="1" unique_id=939641654]
+[node name="TextContainer" type="VBoxContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="1" unique_id=939641654]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HeaderText" type="Label" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="0" unique_id=149221527]
+[node name="HeaderText" type="Label" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="0" unique_id=149221527]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0.33333334)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_ispgc")
+text = "Depth Buffer"
 resize_font_to_fit = true
 maximum_font_size = 255
 
-[node name="MainText" type="Label" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="1" unique_id=924582697]
+[node name="MainText" type="Label" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="1" unique_id=924582697]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -386,14 +420,18 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("9_ispgc")
 theme_override_font_sizes/font_size = 64
-text = "-Einfach ein Greenscreen
+text = "Werte von 0 -1
+Nähere Objekte überschreiben den Wert
+Ist ein Objekt nicht das näheste
+-nicht rendern
 
-TODO: OIIA Katze einbauen"
+
+"
 resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112
 
-[node name="BottomText" type="Label" parent="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="2" unique_id=863726153]
+[node name="BottomText" type="Label" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="2" unique_id=863726153]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
@@ -412,27 +450,30 @@ slide_name = "DepthBuffer How To?"
 visible = false
 slide_header = "Depth Buffer nutzen?"
 header = ""
-text = ""
+text = "DepthDraw -> Tiefe in den Depth Buffer zeichen?
+Depth test -> rendern wenn dahinter?"
 bottom_text = ""
 
-[node name="DepthBuffer_I" parent="Slides" index="7" unique_id=811273123 instance=ExtResource("3_yh82q")]
+[node name="DepthBuffer GrayScale" parent="Slides" index="7" unique_id=811273123 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case I"
 comments = Array[String](["1 -> Stripes"])
 scene = "uid://coxue6rdjwetd"
 
-[node name="DepthBuffer_II" parent="Slides" index="8" unique_id=23279040 instance=ExtResource("3_yh82q")]
+[node name="DepthBuffer DiffrentModes" parent="Slides" index="8" unique_id=23279040 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case II"
 scene = "uid://150tix107shr"
 
-[node name="Text" parent="Slides/DepthBuffer_II" index="0" unique_id=1615261784 instance=ExtResource("2_ry4wd")]
+[node name="Text" parent="Slides/DepthBuffer DiffrentModes" index="0" unique_id=1615261784 instance=ExtResource("2_ry4wd")]
 visible = false
 empty = true
 
 [node name="StencilBufferExplanation" parent="Slides" index="9" unique_id=123178485 instance=ExtResource("3_yh82q")]
+slide_name = "StencilBuffer I"
 use_cf_buttom_left = true
 cf_buttom_left = "https://tenor.com/de/view/spincat-gif-4620048645392468202"
 
 [node name="Text" type="Control" parent="Slides/StencilBufferExplanation" index="0" unique_id=824516417 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "white_backround")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -442,9 +483,7 @@ grow_vertical = 2
 size_flags_vertical = 4
 script = ExtResource("8_s27kt")
 slide_header = "Stencil Buffer?"
-text = "-Einfach ein Greenscreen
-
-TODO: OIIA Katze einbauen"
+text = "-Einfach ein Greenscreen"
 upper_header_box = NodePath("SmallerBox2")
 main_box = NodePath("VBoxContainer/SmallerBox")
 main_text_box = NodePath("VBoxContainer/SmallerBox/TextMarginBox")
@@ -452,7 +491,7 @@ slider_header_label = NodePath("SmallerBox2/SlideHeader")
 lower_header_label = NodePath("VBoxContainer/SmallerBox/TextMarginBox/TextContainer/HeaderText")
 main_label = NodePath("VBoxContainer/SmallerBox/TextMarginBox/TextContainer/MainText")
 bottom_label = NodePath("VBoxContainer/SmallerBox/TextMarginBox/TextContainer/BottomText")
-white_backround = NodePath("../../DepthBufferExplaination/Text/VBoxContainer/SmallerBox/WhiteBackround")
+white_backround = NodePath("../../DepthBufferExplanation/Text/VBoxContainer/SmallerBox/WhiteBackround")
 
 [node name="SmallerBox2" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text" index="0" unique_id=643075720]
 layout_mode = 1
@@ -461,14 +500,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 38
-theme_override_constants/margin_top = 201
-theme_override_constants/margin_right = 38
-theme_override_constants/margin_bottom = 38
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="SlideHeader" type="Label" parent="Slides/StencilBufferExplanation/Text/SmallerBox2" index="0" unique_id=1925180921]
-custom_minimum_size = Vector2(0, 124.833336)
-custom_maximum_size = Vector2(99999, 124.833336)
+custom_minimum_size = Vector2(0, 0.33333334)
+custom_maximum_size = Vector2(99999, 0.33333334)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("9_ispgc")
@@ -489,10 +528,10 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 77
-theme_override_constants/margin_top = 77
-theme_override_constants/margin_right = 77
-theme_override_constants/margin_bottom = 77
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="WhiteBackround" type="ColorRect" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="0" unique_id=178308746]
 material = SubResource("ShaderMaterial_wmlrs")
@@ -501,23 +540,19 @@ color = Color(1, 1, 1, 0.64705884)
 
 [node name="TextMarginBox" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="1" unique_id=1900082076]
 layout_mode = 2
-theme_override_constants/margin_left = 38
-theme_override_constants/margin_top = 38
-theme_override_constants/margin_right = 38
-theme_override_constants/margin_bottom = 38
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="TextContainer" type="VBoxContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="0" unique_id=759128592]
 layout_mode = 2
 
 [node name="HeaderText" type="Label" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="0" unique_id=573384318]
-custom_minimum_size = Vector2(0, 124.833336)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_ispgc")
-text = "-Einfach ein Greenscreen
-
-TODO: OIIA Katze einbauen"
 resize_font_to_fit = true
 maximum_font_size = 255
 
@@ -529,11 +564,19 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("9_ispgc")
 theme_override_font_sizes/font_size = 64
+text = "-Einfach ein Greenscreen"
 resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112
 
-[node name="BottomText" type="Label" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="2" unique_id=2103405009]
+[node name="ColorRect" type="ColorRect" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="2" unique_id=960549189]
+material = SubResource("ShaderMaterial_omgj7")
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 19
+size_flags_stretch_ratio = 1.25
+
+[node name="BottomText" type="Label" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="3" unique_id=2103405009]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -546,12 +589,14 @@ maximum_font_size = 112
 
 [node name="OIIA_Cat_gif" type="Sprite2D" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="2" unique_id=1901629970]
 visible = false
-position = Vector2(691, 333)
+position = Vector2(665, 287)
+scale = Vector2(2, 2)
 texture = ExtResource("14_7vd5s")
 vframes = 32
 script = ExtResource("15_omgj7")
 
 [node name="StencilBuffer_HowTo" parent="Slides" index="10" unique_id=1789856615 instance=ExtResource("3_yh82q")]
+slide_name = "StencilBuffer II"
 
 [node name="Text" parent="Slides/StencilBuffer_HowTo" index="0" unique_id=1245823599 instance=ExtResource("2_ry4wd")]
 visible = false
@@ -560,42 +605,244 @@ header = ""
 text = "1. Immer Alpha aktivieren
 2. Stencil -> Custom
 3. Select mode(Read  /Write)
-4. Reference / Stencillayer
-5. compare (==, !=, >=,<=)"
+4. Refernce / Stencillayer
+5. Compare (==, !=, >=,<=)
+6. Render Priorität"
 bottom_text = ""
 
-[node name="StencilBuffer_I" type="Node" parent="Slides" index="11" unique_id=896560601]
+[node name="Stencil_BasicExample" type="Node" parent="Slides" index="11" unique_id=848832614]
 script = ExtResource("7_ceemk")
-slide_name = "StencilBuffer showcase I"
+slide_name = "StencilBuffer III"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="StencilBuffer Boat" type="Node" parent="Slides" index="12" unique_id=896560601]
+script = ExtResource("7_ceemk")
+slide_name = "StencilBuffer Showcase I"
 comments = Array[String](["1 -> On/Off"])
 scene = "uid://clsxveo03tft6"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer_II" type="Node" parent="Slides" index="12" unique_id=427331744]
+[node name="StencilBuffer Mirrow" type="Node" parent="Slides" index="13" unique_id=427331744]
 script = ExtResource("7_ceemk")
-slide_name = "StencilBuffer showcase II"
+slide_name = "StencilBuffer Showcase II"
 scene = "uid://oyg5yigg3bus"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer_III" parent="Slides" index="13" unique_id=1460568131 instance=ExtResource("3_yh82q")]
-slide_name = "StencilBuffer showcase III"
+[node name="StencilBuffer Hole" parent="Slides" index="14" unique_id=1460568131 instance=ExtResource("3_yh82q")]
+slide_name = "StencilBuffer Showcase III"
 scene = "uid://1uim5ttf3kel"
 
-[node name="StencilBuffer_IV" parent="Slides" index="14" unique_id=1082524065 instance=ExtResource("3_yh82q")]
-slide_name = "StencilBuffer showcase IV"
+[node name="StencilBuffer Outline" parent="Slides" index="15" unique_id=1082524065 instance=ExtResource("3_yh82q")]
+slide_name = "StencilBuffer Showcase IV"
+comments = Array[String](["X-Ray", "Wand hintergehung"])
 scene = "uid://0winjex0jdb5"
 
-[node name="Viewport_I" parent="Slides" index="15" unique_id=281215632 instance=ExtResource("3_yh82q")]
-slide_name = "Viewport"
+[node name="StencilBuffer XRay" type="Node" parent="Slides" index="16" unique_id=10989928]
+script = ExtResource("7_ceemk")
+slide_name = "StencilBuffer Showcase V"
+scene = "uid://d3cvff46x0iv6"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="ViewportExplanation" type="Node" parent="Slides" index="17" unique_id=1571947425]
+script = ExtResource("7_ceemk")
+slide_name = "ViewportBuffer I"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/ViewportExplanation" index="0" unique_id=577381041 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "ViewportBuffer"
+header = ""
+text = "-Viewport Texture
+-No Shading
+-diffrent chanals (RGB)
+-R -> Stencil
+-B -> Depth
+-G -> Depth precision"
+bottom_text = ""
+
+[node name="Viewport Outline" parent="Slides" index="18" unique_id=281215632 instance=ExtResource("3_yh82q")]
+slide_name = "Viewport I"
+comments = Array[String](["Viewport Outline"])
 scene = "uid://db6ymwq5kkrbj"
 
-[node name="100Portals" parent="Slides" index="16" unique_id=516392851 instance=ExtResource("3_yh82q")]
+[node name="Portale" type="Node" parent="Slides" index="19" unique_id=2109680318]
+script = ExtResource("7_ceemk")
+slide_name = "Portale I"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/Portale" index="0" unique_id=798028149 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "Was sind Portale?"
+header = ""
+text = "Keine Wurmlöcher"
+bottom_text = ""
+
+[node name="Portale Klassisch" type="Node" parent="Slides" index="20" unique_id=205270232]
+script = ExtResource("7_ceemk")
+slide_name = "Portale I"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/Portale Klassisch" index="0" unique_id=1122722746 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "Portale Klassisch"
+header = ""
+text = "Beispiele:
+Portal 1&2, Chasing Charaots, (Prey 2006)
+2. Kamera -> Viewporttexture wird aud das Portal gerenderd
+-Kamera Transform an Spieler Transform anpasse.
+-Matrixen Mathe"
+bottom_text = ""
+
+[node name="100Portals" parent="Slides" index="21" unique_id=516392851 instance=ExtResource("3_yh82q")]
 slide_name = "100 Portale"
 comments = Array[String](["Bad Apple von Tobi vorgeschlagen"])
 scene = "uid://bg4f8h4yfbeqd"
 
-[node name="Q&A" type="Node" parent="Slides" index="17" unique_id=457507216]
+[node name="Portale Vergleich" type="Node" parent="Slides" index="22" unique_id=1771099179]
 script = ExtResource("7_ceemk")
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" type="Control" parent="Slides/Portale Vergleich" index="0" unique_id=794457423 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "white_backround")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("8_s27kt")
+slide_header = "Klassisch oder Stencil?"
+text = "Klassisch:
+-Im gleichen Raum
+-Environment
+-Portal in Portal"
+upper_header_box = NodePath("HeaderBox")
+main_box = NodePath("VBoxContainer/MainBox")
+main_text_box = NodePath("VBoxContainer/MainBox/MainTextBox")
+slider_header_label = NodePath("HeaderBox/SlideHeader")
+lower_header_label = NodePath("VBoxContainer/MainBox/MainTextBox/TextContainer/HeaderText")
+main_label = NodePath("VBoxContainer/MainBox/MainTextBox/TextContainer/HBoxContainer/MainText")
+bottom_label = NodePath("VBoxContainer/MainBox/MainTextBox/TextContainer/BottomText")
+white_backround = NodePath("VBoxContainer/MainBox/WhiteBackround")
+
+[node name="HeaderBox" type="MarginContainer" parent="Slides/Portale Vergleich/Text" index="0" unique_id=577425305]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="SlideHeader" type="Label" parent="Slides/Portale Vergleich/Text/HeaderBox" index="0" unique_id=1079644395]
+custom_minimum_size = Vector2(0, 124.833336)
+custom_maximum_size = Vector2(99999, 124.833336)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("9_ispgc")
+theme_override_font_sizes/font_size = 64
+text = "Klassisch oder Stencil?"
+resize_font_to_fit = true
+maximum_font_size = 254
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Slides/Portale Vergleich/Text" index="1" unique_id=1394432769]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainBox" type="MarginContainer" parent="Slides/Portale Vergleich/Text/VBoxContainer" index="0" unique_id=1112180722]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 19
+theme_override_constants/margin_left = 65
+theme_override_constants/margin_top = 190
+theme_override_constants/margin_right = 65
+theme_override_constants/margin_bottom = 65
+
+[node name="WhiteBackround" type="ColorRect" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox" index="0" unique_id=1922861846]
+material = SubResource("ShaderMaterial_uq8jk")
+layout_mode = 2
+color = Color(1, 1, 1, 0.64705884)
+
+[node name="MainTextBox" type="MarginContainer" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox" index="1" unique_id=1396698318]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 3
+
+[node name="TextContainer" type="VBoxContainer" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox/MainTextBox" index="0" unique_id=2010788201]
+layout_mode = 2
+
+[node name="HeaderText" type="Label" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox/MainTextBox/TextContainer" index="0" unique_id=1167298867]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_ispgc")
+resize_font_to_fit = true
+maximum_font_size = 255
+
+[node name="BottomText" type="Label" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox/MainTextBox/TextContainer" index="1" unique_id=163822916]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ispgc")
+vertical_alignment = 2
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox/MainTextBox/TextContainer" index="2" unique_id=1101890514]
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 19
+
+[node name="MainText" type="Label" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox/MainTextBox/TextContainer/HBoxContainer" index="0" unique_id=634074025]
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("9_ispgc")
+theme_override_font_sizes/font_size = 64
+text = "Klassisch:
+-Im gleichen Raum
+-Environment
+-Portal in Portal"
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[node name="MainText2" type="Label" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox/MainTextBox/TextContainer/HBoxContainer" index="1" unique_id=2005829220]
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 17
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_ispgc")
+text = "Stencil:
+-Unterschiedliche Welten
+-Viele
+-3D / belibige Form
+-Mehrere in einem Mesh"
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[node name="Q&A" type="Node" parent="Slides" index="23" unique_id=457507216]
+script = ExtResource("7_ceemk")
+slide_name = "Q&A"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
 [node name="Text" parent="Slides/Q&A" index="0" unique_id=1589392394 instance=ExtResource("2_ry4wd")]
@@ -608,7 +855,7 @@ text = "Habt ihr noch Fragen?
 "
 bottom_text = ""
 
-[node name="EmptyEndSlide" parent="Slides" index="18" unique_id=1437317286 instance=ExtResource("3_yh82q")]
+[node name="EmptyEndSlide" parent="Slides" index="24" unique_id=1437317286 instance=ExtResource("3_yh82q")]
 slide_name = "Empty"
 comments = Array[String](["You made it !", ""])
 is_empty = true
@@ -619,6 +866,7 @@ visible = false
 empty = true
 header = ""
 
-[connection signal="visibility_changed" from="Slides/ColorBuffer_I/Text/VBoxContainer/SmallerBox/WhiteBackround" to="Slides/ColorBuffer_I/Text" method="_on_white_backround_visibility_changed"]
-[connection signal="visibility_changed" from="Slides/DepthBufferExplaination/Text/VBoxContainer/SmallerBox/WhiteBackround" to="Slides/DepthBufferExplaination/Text" method="_on_white_backround_visibility_changed"]
+[connection signal="visibility_changed" from="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/WhiteBackround" to="Slides/ColorBufferExplanaition/Text" method="_on_white_backround_visibility_changed"]
+[connection signal="visibility_changed" from="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/WhiteBackround" to="Slides/DepthBufferExplanation/Text" method="_on_white_backround_visibility_changed"]
 [connection signal="visibility_changed" from="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/WhiteBackround" to="Slides/StencilBufferExplanation/Text" method="_on_white_backround_visibility_changed"]
+[connection signal="visibility_changed" from="Slides/Portale Vergleich/Text/VBoxContainer/MainBox/WhiteBackround" to="Slides/Portale Vergleich/Text" method="_on_white_backround_visibility_changed"]

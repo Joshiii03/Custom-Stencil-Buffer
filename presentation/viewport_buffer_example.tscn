@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ho8nk18r8lai"]
+
+[ext_resource type="PackedScene" uid="uid://drkb23xqyf8p6" path="res://stencil/stencil_camera.tscn" id="1_yrs3p"]
+[ext_resource type="PackedScene" uid="uid://deqrdnmbcmcwv" path="res://stencil/stencil_writer.tscn" id="2_sj3m5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sj3m5"]
+
+[node name="ViewportBuffer Example" type="Node3D" unique_id=837114660]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1085090981]
+transform = Transform3D(0.66565573, -0.17601058, -0.72520524, -0.31999415, 0.81059235, -0.4904526, 0.67417073, 0.5585341, 0.4832531, 0, 0, 0)
+mesh = SubResource("BoxMesh_sj3m5")
+
+[node name="StencilCamera" parent="." unique_id=1225835657 instance=ExtResource("1_yrs3p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.3389907)
+
+[node name="StencilWriter" parent="." unique_id=1860981665 instance=ExtResource("2_sj3m5")]
+transform = Transform3D(0.66565573, -0.17601058, -0.72520524, -0.31999415, 0.81059235, -0.4904526, 0.67417073, 0.5585341, 0.4832531, 0, 0, 0)
+stencil_layer = 25
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1754661706]
+transform = Transform3D(1, 0, 0, 0, 0.85375583, 0.52067375, 0, -0.52067375, 0.85375583, 0, 2.3297932, 2.4839277)
+light_energy = 10.341
