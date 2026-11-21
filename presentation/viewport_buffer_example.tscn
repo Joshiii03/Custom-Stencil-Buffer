@@ -8,10 +8,13 @@
 [ext_resource type="Script" uid="uid://c7wrltuknx6fc" path="res://presentation/animator/animator_key.gd" id="3_vrsbl"]
 [ext_resource type="Shader" uid="uid://b2m7xgbyi52f1" path="res://test_stuff/debug_screen_2d.gdshader" id="4_s3d7m"]
 [ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="5_5kmfm"]
-[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="5_lh5sy"]
+[ext_resource type="Script" uid="uid://bu07ucx1w6fld" path="res://presentation/text_on_slide.gd" id="5_7w0ay"]
 [ext_resource type="Shader" uid="uid://whmbn0jacgnb" path="res://stencil/backround_stencil.gdshader" id="5_vrsbl"]
 [ext_resource type="Script" uid="uid://cg5ql60p7dtnm" path="res://stencil/backround_stencil.gd" id="6_5kmfm"]
+[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="6_b1u2y"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="6_lh5sy"]
+[ext_resource type="Shader" uid="uid://bog4pf2embfqf" path="res://slides/round_edges.gdshader" id="7_wgvgn"]
+[ext_resource type="Script" uid="uid://bs3qk05velsdl" path="res://presentation/picture_container.gd" id="8_b1u2y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrsbl"]
 albedo_color = Color(0.22455695, 0.43109804, 0, 1)
@@ -41,6 +44,22 @@ ambient_light_color = Color(0.972549, 1, 0, 1)
 volumetric_fog_density = 0.2193
 volumetric_fog_emission = Color(0.92794496, 0.68204314, 0.731245, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uq8jk"]
+resource_local_to_scene = true
+shader = ExtResource("7_wgvgn")
+shader_parameter/rect_size = Vector2(910, 398)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lh5sy"]
+viewport_path = NodePath("StencilCamera/StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnwtb"]
+resource_local_to_scene = true
+shader = ExtResource("4_s3d7m")
+shader_parameter/filter_r = false
+shader_parameter/filter_b = true
+shader_parameter/filter_g = true
+shader_parameter/texture_screen = SubResource("ViewportTexture_lh5sy")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wqvo4"]
 shader = ExtResource("5_5kmfm")
 shader_parameter/godot_icon = ExtResource("6_lh5sy")
@@ -52,23 +71,12 @@ shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
 shader_parameter/icon_tint = Color(1, 1, 1, 1)
 shader_parameter/icon_opacity = 1.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lh5sy"]
-viewport_path = NodePath("StencilCamera/StencilViewport")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nxc3u"]
 resource_local_to_scene = true
 shader = ExtResource("4_s3d7m")
 shader_parameter/filter_r = false
 shader_parameter/filter_b = false
 shader_parameter/filter_g = false
-shader_parameter/texture_screen = SubResource("ViewportTexture_lh5sy")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnwtb"]
-resource_local_to_scene = true
-shader = ExtResource("4_s3d7m")
-shader_parameter/filter_r = false
-shader_parameter/filter_b = true
-shader_parameter/filter_g = true
 shader_parameter/texture_screen = SubResource("ViewportTexture_lh5sy")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mlomn"]
@@ -139,7 +147,7 @@ mesh = SubResource("TorusMesh_s3d7m")
 stencil_layer = 3
 
 [node name="StencilCamera" type="Node3D" parent="." unique_id=1225835657 node_paths=PackedStringArray("stencil_viewport", "screen_viewport", "stencil_camera", "screen_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4994545, 0.16073763, 2.6343305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.161, 2.634)
 script = ExtResource("1_xesm1")
 stencil_viewport = NodePath("StencilViewport")
 screen_viewport = NodePath("ScrrenSubViewport/ScreenViewport")
@@ -153,7 +161,7 @@ size = Vector2i(1024, 512)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="StencilCamera/StencilViewport" unique_id=1839586270]
-transform = Transform3D(0.9795678, 0.035434157, -0.1979679, 0, 0.9843563, 0.17618936, 0.20111406, -0.17258944, 0.96424377, -3.4559815, 1.2595186, 6.893055)
+transform = Transform3D(0.820173, -0.2565973, 0.5113453, 0, 0.89377975, 0.4485061, -0.57211554, -0.3678526, 0.7330541, 1.0942061, 2.749724, 4.494245)
 cull_mask = 67108864
 environment = SubResource("Environment_hg732")
 current = true
@@ -178,11 +186,137 @@ transform = Transform3D(0.99242246, 0.049285877, -0.11255439, 7.13516e-09, 0.916
 cull_mask = 33554431
 environment = SubResource("Environment_k0xu2")
 
-[node name="Text" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D" unique_id=1809041724 instance=ExtResource("5_lh5sy")]
-slide_header = ""
+[node name="Text" type="Control" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D" unique_id=1809041724 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "white_backround")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("5_7w0ay")
 header = "Example"
-text = ""
-bottom_text = ""
+upper_header_box = NodePath("HeaderBox")
+main_box = NodePath("VBoxContainer/MainBox")
+main_text_box = NodePath("VBoxContainer/MainBox/MainTextBox")
+slider_header_label = NodePath("HeaderBox/SlideHeader")
+lower_header_label = NodePath("VBoxContainer/MainBox/MainTextBox/TextContainer/HeaderText")
+main_label = NodePath("VBoxContainer/MainBox/MainTextBox/TextContainer/MainText")
+bottom_label = NodePath("VBoxContainer/MainBox/MainTextBox/TextContainer/BottomText")
+white_backround = NodePath("VBoxContainer/MainBox/WhiteBackround")
+
+[node name="HeaderBox" type="MarginContainer" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text" unique_id=1020454935]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 28
+
+[node name="SlideHeader" type="Label" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/HeaderBox" unique_id=2048879931]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(99999, 85.333336)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_b1u2y")
+theme_override_font_sizes/font_size = 64
+resize_font_to_fit = true
+maximum_font_size = 254
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text" unique_id=783781141]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainBox" type="MarginContainer" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer" unique_id=476401181]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 19
+theme_override_constants/margin_left = 57
+theme_override_constants/margin_top = 57
+theme_override_constants/margin_right = 57
+theme_override_constants/margin_bottom = 57
+
+[node name="WhiteBackround" type="ColorRect" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox" unique_id=1352649206]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_uq8jk")
+layout_mode = 2
+color = Color(1, 1, 1, 0.64705884)
+
+[node name="MainTextBox" type="MarginContainer" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox" unique_id=637698339]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 2
+
+[node name="PictureContainer" type="MarginContainer" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/MainTextBox" unique_id=1106290699]
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 17
+script = ExtResource("8_b1u2y")
+ratio = Vector2(1.6, 1)
+screen_margin = 0.09
+horizontal_offset = -0.8
+
+[node name="DebugScreen2D3" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/MainTextBox/PictureContainer" unique_id=148876606 node_paths=PackedStringArray("viewport") instance=ExtResource("1_sj3m5")]
+material = SubResource("ShaderMaterial_gnwtb")
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 17
+viewport = NodePath("../../../../../../../../../StencilViewport")
+filter_g = true
+filter_b = true
+
+[node name="TextContainer" type="VBoxContainer" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/MainTextBox" unique_id=368231236]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HeaderText" type="Label" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/MainTextBox/TextContainer" unique_id=2113373313]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 85.333336)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_b1u2y")
+text = "Example"
+resize_font_to_fit = true
+maximum_font_size = 255
+
+[node name="MainText" type="Label" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/MainTextBox/TextContainer" unique_id=793562482]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("6_b1u2y")
+theme_override_font_sizes/font_size = 64
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
+
+[node name="BottomText" type="Label" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/MainTextBox/TextContainer" unique_id=943491461]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_b1u2y")
+vertical_alignment = 2
+resize_font_to_fit = true
+minimum_font_size = 15
+maximum_font_size = 112
 
 [node name="Backround" type="Control" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D" unique_id=832050794]
 layout_mode = 3
@@ -223,14 +357,6 @@ layout_mode = 2
 size_flags_vertical = 3
 viewport = NodePath("../../../../StencilViewport")
 
-[node name="DebugScreen2D3" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=148876606 node_paths=PackedStringArray("viewport") instance=ExtResource("1_sj3m5")]
-material = SubResource("ShaderMaterial_gnwtb")
-layout_mode = 2
-size_flags_vertical = 3
-viewport = NodePath("../../../../StencilViewport")
-filter_g = true
-filter_b = true
-
 [node name="DebugScreen2D2" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=1252589453 node_paths=PackedStringArray("viewport") instance=ExtResource("1_sj3m5")]
 visible = false
 material = SubResource("ShaderMaterial_mlomn")
@@ -263,3 +389,6 @@ spot_angle = 56.946674
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1598549913]
 environment = SubResource("Environment_s3d7m")
+
+[connection signal="visibility_changed" from="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/WhiteBackround" to="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text" method="_on_white_backround_visibility_changed"]
+[connection signal="resized" from="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/MainTextBox/PictureContainer" to="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/MainTextBox/PictureContainer" method="_on_resized"]
