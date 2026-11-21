@@ -60,7 +60,6 @@ shader = ExtResource("10_1d0r8")
 shader_parameter/rect_size = Vector2(898, 261)
 
 [node name="Buffer & Portale" unique_id=378429670 instance=ExtResource("1_canl1")]
-start_slide = 19
 
 [node name="Foreground" parent="." index="0" unique_id=72472130 instance=ExtResource("2_nlifg")]
 autoconnect = true
@@ -678,14 +677,17 @@ slide_name = "ViewportBuffer I"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
 [node name="Text" parent="Slides/ViewportExplanation" index="0" unique_id=577381041 instance=ExtResource("2_ry4wd")]
+visible = false
 slide_header = "ViewportBuffer"
 header = ""
-text = "-Viewport Texture
--No Shading
--diffrent chanals (RGB)
--R -> Stencil
--B -> Depth
--G -> Depth precision"
+text = "-2x Viewports
+-1. Viewport Textur -> StencilBuffer
+-Kein Shading / Envrionment als Hintergrund Stencil
+-Verschiedene Kanäle (RGB) -> mehrere Buffer
+
+2. Viewport Textur -> normaler Color Buffer
+-SUbviewportContainer auf Stretch
+-Größe auf 1. Viewport übertragen"
 bottom_text = ""
 
 [node name="Viewport Example" type="Node" parent="Slides" index="19" unique_id=1087488895]
@@ -704,7 +706,30 @@ slide_name = "Viewport I"
 comments = Array[String](["Viewport Outline"])
 scene = "uid://db6ymwq5kkrbj"
 
-[node name="Portale" type="Node" parent="Slides" index="22" unique_id=2109680318]
+[node name="Viewport_Label" type="Node" parent="Slides" index="22" unique_id=1322215039]
+script = ExtResource("7_ceemk")
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Stencil_X_Viewport" type="Node" parent="Slides" index="23" unique_id=789998625]
+script = ExtResource("7_ceemk")
+slide_name = "Stencil || Viewport?"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/Stencil_X_Viewport" index="0" unique_id=1126846423 instance=ExtResource("2_ry4wd")]
+slide_header = "Stencil gegen Viewport"
+header = ""
+text = "Viewport:
+Flexibler, kann \"alles\"
+
+aber:
+Schwieriger aufszusetzen, viel Debugging
+Zeit aufwändiger
+
+Fazit:
+Stencil wenn möglich, Viewport wenn nötig"
+bottom_text = ""
+
+[node name="Portale" type="Node" parent="Slides" index="24" unique_id=2109680318]
 script = ExtResource("7_ceemk")
 slide_name = "Portale I"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -716,7 +741,7 @@ header = ""
 text = "Keine Wurmlöcher"
 bottom_text = ""
 
-[node name="Portale Klassisch" type="Node" parent="Slides" index="23" unique_id=205270232]
+[node name="Portale Klassisch" type="Node" parent="Slides" index="25" unique_id=205270232]
 script = ExtResource("7_ceemk")
 slide_name = "Portale I"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -732,12 +757,12 @@ Portal 1&2, Chasing Carrots, (Prey 2006)
 -Matrixen Mathe"
 bottom_text = ""
 
-[node name="100Portals" parent="Slides" index="24" unique_id=516392851 instance=ExtResource("3_yh82q")]
+[node name="100Portals" parent="Slides" index="26" unique_id=516392851 instance=ExtResource("3_yh82q")]
 slide_name = "100 Portale"
 comments = Array[String](["Bad Apple von Tobi vorgeschlagen"])
 scene = "uid://bg4f8h4yfbeqd"
 
-[node name="Portale Vergleich" type="Node" parent="Slides" index="25" unique_id=1771099179]
+[node name="Portale Vergleich" type="Node" parent="Slides" index="27" unique_id=1771099179]
 script = ExtResource("7_ceemk")
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
@@ -879,7 +904,7 @@ resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112
 
-[node name="Q&A" type="Node" parent="Slides" index="26" unique_id=457507216]
+[node name="Q&A" type="Node" parent="Slides" index="28" unique_id=457507216]
 script = ExtResource("7_ceemk")
 slide_name = "Q&A"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -894,7 +919,7 @@ text = "Habt ihr noch Fragen?
 "
 bottom_text = ""
 
-[node name="EmptyEndSlide" parent="Slides" index="27" unique_id=1437317286 instance=ExtResource("3_yh82q")]
+[node name="EmptyEndSlide" parent="Slides" index="29" unique_id=1437317286 instance=ExtResource("3_yh82q")]
 slide_name = "Empty"
 comments = Array[String](["You made it !", ""])
 is_empty = true

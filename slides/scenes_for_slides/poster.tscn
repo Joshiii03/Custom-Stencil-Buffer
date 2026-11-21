@@ -255,7 +255,6 @@ stencil_layer_1 = 3
 
 [node name="StencilCameraWithText" parent="." unique_id=1225835657 instance=ExtResource("1_upsik")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.8908)
-use_debug_screen = false
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1526729096]
 transform = Transform3D(1, 0, 0, 0, 0.6622603, 0.74927384, 0, -0.74927384, 0.6622603, 0, -4.101367, 24.438122)
