@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bfcmqnc25xxqs"]
 
 [ext_resource type="Script" uid="uid://bu07ucx1w6fld" path="res://presentation/text_on_slide.gd" id="1_4g0ke"]
-[ext_resource type="Shader" uid="uid://bog4pf2embfqf" path="res://slides/round_edges.gdshader" id="3_u3b6l"]
+[ext_resource type="Shader" uid="uid://bog4pf2embfqf" path="res://presentation/round_edges.gdshader" id="3_u3b6l"]
 [ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="4_kwqw3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmlrs"]

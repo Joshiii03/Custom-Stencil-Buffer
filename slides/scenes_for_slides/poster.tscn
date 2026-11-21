@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://btb2ank6d0oj1"]
 
 [ext_resource type="Script" uid="uid://cm16kcgmiq1ky" path="res://slides/scenes_for_slides/poster.gd" id="1_luyfc"]
-[ext_resource type="PackedScene" uid="uid://cp3w6ivg6o5kc" path="res://slides/scenes_for_slides/stencil_camera_with_text.tscn" id="1_upsik"]
-[ext_resource type="Shader" uid="uid://dpb3avkyvq0rp" path="res://slides/scenes_for_slides/label_stencil_reader.gdshader" id="2_ewe2l"]
+[ext_resource type="PackedScene" uid="uid://cp3w6ivg6o5kc" path="res://slides/Stencil/stencil_camera_with_text.tscn" id="1_upsik"]
+[ext_resource type="Shader" uid="uid://dpb3avkyvq0rp" path="res://slides/Stencil/label_stencil_reader.gdshader" id="2_ewe2l"]
 [ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="4_luyfc"]
 [ext_resource type="Script" uid="uid://t4dh1f6sues6" path="res://stencil/stencil_holder.gd" id="4_upsik"]
 [ext_resource type="PackedScene" uid="uid://c0q4g2nbgdwsp" path="res://presentation/animator/animator_key.tscn" id="5_ka68k"]

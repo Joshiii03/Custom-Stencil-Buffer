@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="1_6drkg"]
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="1_n6iaa"]
-[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="1_rxvv5"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://presentation/backround_shader.gdshader" id="1_rxvv5"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="2_tl00a"]
 [ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="4_cb44x"]
 [ext_resource type="PackedScene" uid="uid://c0q4g2nbgdwsp" path="res://presentation/animator/animator_key.tscn" id="5_ig3tk"]

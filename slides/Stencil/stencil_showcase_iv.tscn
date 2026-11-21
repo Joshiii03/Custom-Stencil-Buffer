@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://0winjex0jdb5"]
 
-[ext_resource type="Script" uid="uid://brpraootlp4vd" path="res://slides/scenes_for_slides/stencil_showcase_iv.gd" id="1_4fyqs"]
+[ext_resource type="Script" uid="uid://brpraootlp4vd" path="res://slides/Stencil/stencil_showcase_iv.gd" id="1_4fyqs"]
 [ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="1_344gi"]
 [ext_resource type="Script" uid="uid://c7wrltuknx6fc" path="res://presentation/animator/animator_key.gd" id="2_h6en1"]
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="3_l0fth"]
-[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="4_1b82e"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://presentation/backround_shader.gdshader" id="4_1b82e"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="5_3ujo4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rfrh"]

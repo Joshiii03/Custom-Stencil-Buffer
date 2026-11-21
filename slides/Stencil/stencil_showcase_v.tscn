@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvoicv4b0ffcn" path="res://assets/icon.svg" id="4_dqsah"]
 [ext_resource type="Texture2D" uid="uid://op2hwxpvv3cf" path="res://assets/externe_graphiken/skelli_godot.png" id="5_lykfm"]
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="5_pc5v6"]
-[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="6_8ygyr"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://presentation/backround_shader.gdshader" id="6_8ygyr"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="7_287a3"]
 [ext_resource type="Texture2D" uid="uid://b17hb4stbh0hc" path="res://assets/externe_graphiken/floor_1.png" id="8_7kng6"]
 

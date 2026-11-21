@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://1uim5ttf3kel"]
 
-[ext_resource type="Script" uid="uid://dmg2skybe0atq" path="res://slides/scenes_for_slides/stencil_show_case_iii.gd" id="1_h7hso"]
+[ext_resource type="Script" uid="uid://dmg2skybe0atq" path="res://slides/Stencil/stencil_show_case_iii.gd" id="1_h7hso"]
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="1_i3anb"]
 [ext_resource type="Script" uid="uid://jocesv0vospl" path="res://slides/scenes_for_slides/hole.gd" id="1_qaies"]
-[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="2_qaies"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://presentation/backround_shader.gdshader" id="2_qaies"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="3_h7hso"]
 [ext_resource type="Shader" uid="uid://bsikfx1scjm0t" path="res://slides/scenes_for_slides/Earth.gdshader" id="3_inapi"]
 [ext_resource type="ArrayMesh" uid="uid://bhdhjsgidx7nk" path="res://assets/Gras_mash.tres" id="6_ga1hw"]

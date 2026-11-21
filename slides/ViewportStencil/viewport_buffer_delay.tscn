@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://b7v4r3xuj340e"]
+
+[ext_resource type="Shader" uid="uid://b2rrwtggmh4ob" path="res://slides/ViewportStencil/viewport_buffer_delay.gdshader" id="1_lre5a"]
+[ext_resource type="Script" uid="uid://c5y1pie4lpwey" path="res://slides/ViewportStencil/camera_pivot.gd" id="1_n1nqc"]
+[ext_resource type="Shader" uid="uid://ocja60tmeuut" path="res://slides/ViewportStencil/viewport_buffer_delay_2.gdshader" id="2_2036l"]
+[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="4_xf5pw"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://presentation/backround_shader.gdshader" id="5_1w3hn"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="6_nfiec"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1wt6j"]
+viewport_path = NodePath("CameraPivot/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n1nqc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_lre5a")
+shader_parameter/stencil_texture = SubResource("ViewportTexture_1wt6j")
+
+[sub_resource type="BoxMesh" id="BoxMesh_il5n0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lre5a"]
+render_priority = 0
+shader = ExtResource("2_2036l")
+
+[sub_resource type="BoxMesh" id="BoxMesh_n1nqc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_npacm"]
+shader = ExtResource("5_1w3hn")
+shader_parameter/godot_icon = ExtResource("6_nfiec")
+shader_parameter/icon_scale = 1.0
+shader_parameter/rotation = 0.14
+shader_parameter/spacing = 0.15
+shader_parameter/scroll_speed = Vector2(0.04, 0.07)
+shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
+shader_parameter/icon_tint = Color(1, 1, 1, 1)
+shader_parameter/icon_opacity = 1.0
+
+[sub_resource type="Environment" id="Environment_2036l"]
+background_mode = 3
+background_color = Color(0.8825258, 0.9110345, 0.7026604, 1)
+ambient_light_color = Color(0.94132656, 0.9413266, 0.94132656, 1)
+
+[node name="ViewportBufferDelay" type="Node3D" unique_id=716091343]
+
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=41537268]
+material_override = SubResource("ShaderMaterial_n1nqc")
+mesh = SubResource("BoxMesh_il5n0")
+
+[node name="Cube" type="MeshInstance3D" parent="Cube" unique_id=638138991]
+layers = 2
+material_override = SubResource("ShaderMaterial_lre5a")
+mesh = SubResource("BoxMesh_n1nqc")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=80964286]
+transform = Transform3D(0.9584775, 0, -0.28516826, 0, 1, 0, 0.28516826, 0, 0.9584775, -1.8500605, 0, 2.3393118)
+script = ExtResource("1_n1nqc")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CameraPivot" unique_id=160938017]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CameraPivot/SubViewportContainer" unique_id=67744358]
+handle_input_locally = false
+size = Vector2i(1024, 512)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SubViewportContainer/SubViewport" unique_id=921754631]
+cull_mask = 1047553
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraPivot/SubViewportContainer/SubViewport/Camera3D" unique_id=1289501589]
+layer = -1
+
+[node name="Text" parent="CameraPivot/SubViewportContainer/SubViewport/Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("4_xf5pw")]
+slide_header = "ViewportBuffer Delay Fix"
+header = ""
+text = ""
+bottom_text = ""
+
+[node name="Backround" type="Control" parent="CameraPivot/SubViewportContainer/SubViewport/Camera3D/CanvasLayer" unique_id=973153119]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GodotBackround" type="ColorRect" parent="CameraPivot/SubViewportContainer/SubViewport/Camera3D/CanvasLayer/Backround" unique_id=751333271]
+z_index = -999
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_npacm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69411767, 0.8784314, 1, 1)
+
+[node name="SubViewport" type="SubViewport" parent="CameraPivot" unique_id=1147626058]
+size = Vector2i(1024, 1024)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SubViewport" unique_id=423207084]
+cull_mask = 1047554
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1308063475]
+transform = Transform3D(1, 0, 0, 0, 0.12211121, 0.9925164, 0, -0.9925164, 0.12211121, 0, 4.377109, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1840175594]
+environment = SubResource("Environment_2036l")

@@ -1,14 +1,14 @@
 [gd_scene format=4 uid="uid://clsxveo03tft6"]
 
-[ext_resource type="Script" uid="uid://bl8sdlvrvydtn" path="res://slides/scenes_for_slides/stencil_show_case_i.gd" id="1_uohbq"]
+[ext_resource type="Script" uid="uid://bl8sdlvrvydtn" path="res://slides/Stencil/stencil_show_case_i.gd" id="1_uohbq"]
 [ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="1_wmxfe"]
 [ext_resource type="PackedScene" uid="uid://c0q4g2nbgdwsp" path="res://presentation/animator/animator_key.tscn" id="2_uohbq"]
 [ext_resource type="Material" uid="uid://dkt3e5j4v7c78" path="res://boat/boatOutside.tres" id="4_46cwb"]
-[ext_resource type="Shader" uid="uid://cw8vn2jm6jpm8" path="res://slides/scenes_for_slides/water.gdshader" id="4_hh7h8"]
-[ext_resource type="Script" uid="uid://butbtewa0j3al" path="res://slides/scenes_for_slides/water.gd" id="5_5hc77"]
+[ext_resource type="Shader" uid="uid://cw8vn2jm6jpm8" path="res://slides/Stencil/water.gdshader" id="4_hh7h8"]
+[ext_resource type="Script" uid="uid://butbtewa0j3al" path="res://slides/Stencil/water.gd" id="5_5hc77"]
 [ext_resource type="Material" uid="uid://yyhjq77rqhq6" path="res://boat/boatinside.tres" id="5_w7wwx"]
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="8_ewocp"]
-[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="9_oe0vo"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://presentation/backround_shader.gdshader" id="9_oe0vo"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="10_r2r4s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_as8oc"]

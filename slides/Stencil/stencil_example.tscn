@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://8vb6bvn1hgku"]
+
+[ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="1_wr22i"]
+[ext_resource type="PackedScene" uid="uid://c0q4g2nbgdwsp" path="res://presentation/animator/animator_key.tscn" id="2_76lmk"]
+[ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="3_p5ec3"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://presentation/backround_shader.gdshader" id="4_jnivw"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="5_wwg2i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr22i"]
+render_priority = 1
+transparency = 1
+albedo_color = Color(0, 0.7137255, 0.078431375, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+stencil_reference = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_3fpps"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76lmk"]
+transparency = 1
+albedo_color = Color(1, 0, 1, 1)
+stencil_mode = 3
+stencil_flags = 2
+stencil_reference = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a31fh"]
+orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aodun"]
+shader = ExtResource("4_jnivw")
+shader_parameter/godot_icon = ExtResource("5_wwg2i")
+shader_parameter/icon_scale = 1.0
+shader_parameter/rotation = 0.14
+shader_parameter/spacing = 0.15
+shader_parameter/scroll_speed = Vector2(0.04, 0.07)
+shader_parameter/background_color = Color(0.15294118, 0.4117647, 0.7411765, 1)
+shader_parameter/icon_tint = Color(1, 1, 1, 1)
+shader_parameter/icon_opacity = 1.0
+
+[sub_resource type="Environment" id="Environment_wr22i"]
+background_mode = 3
+background_color = Color(0.8825258, 0.9110345, 0.7026604, 1)
+ambient_light_color = Color(0.94132656, 0.9413266, 0.94132656, 1)
+
+[node name="Stencil_Example" type="Node3D" unique_id=163660463]
+
+[node name="Reader" type="MeshInstance3D" parent="." unique_id=1043171558]
+transform = Transform3D(0.7199515, -0.0021123476, -0.6940211, -0.12724692, 0.98264205, -0.13499202, 0.68225944, 0.18549977, 0.707186, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wr22i")
+mesh = SubResource("BoxMesh_3fpps")
+
+[node name="Writer" type="MeshInstance3D" parent="." unique_id=628070706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6947899, 0, 1.3017112)
+material_override = SubResource("StandardMaterial3D_76lmk")
+mesh = SubResource("PlaneMesh_a31fh")
+
+[node name="Animator" parent="Writer" unique_id=1953052596 instance=ExtResource("1_wr22i")]
+autostart = true
+loop = true
+
+[node name="Animator_key2" parent="Writer/Animator" unique_id=2121909404 instance=ExtResource("2_76lmk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8798625, 0, 0)
+time = 2.0
+
+[node name="Animator_key" parent="Writer/Animator" unique_id=1234023653 instance=ExtResource("2_76lmk")]
+time = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1122615866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9385319, 0.4342873, 4.1038513)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=1491587947]
+layer = -1
+
+[node name="Text" parent="Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("3_p5ec3")]
+slide_header = "StencilBuffer Example"
+header = ""
+text = "Pink:
+Schreibt Stencil 1
+Grün:
+
+Ließt Stencil 1
+Equal (==)"
+bottom_text = ""
+
+[node name="Backround" type="Control" parent="Camera3D/CanvasLayer" unique_id=516951847]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GodotBackround" type="ColorRect" parent="Camera3D/CanvasLayer/Backround" unique_id=1169775779]
+z_index = -999
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_aodun")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69411767, 0.8784314, 1, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=876241734]
+transform = Transform3D(0.8863511, -0.13690238, 0.44231153, 0, 0.9552882, 0.2956767, -0.46301383, -0.2620734, 0.84672076, 0, 4.086137, 3.675952)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=435691691]
+environment = SubResource("Environment_wr22i")

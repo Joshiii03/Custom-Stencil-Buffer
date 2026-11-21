@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bfcmqnc25xxqs" path="res://presentation/text_on_slide.tscn" id="4_ol2ta"]
 [ext_resource type="PackedScene" uid="uid://boopyskmd7p1l" path="res://assets/Furniture/display_cabinet_mp_1_2.glb" id="4_trs7i"]
 [ext_resource type="PackedScene" uid="uid://evlbu2xifdb7" path="res://assets/Furniture/chair_mp_1_3.glb" id="5_8xb1g"]
-[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://slides/backround_shader.gdshader" id="5_o421m"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://presentation/backround_shader.gdshader" id="5_o421m"]
 [ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="6_22x1v"]
 [ext_resource type="PackedScene" uid="uid://qg36ei6kg5fq" path="res://assets/Furniture/bedside_table_1.glb" id="6_lttif"]
 [ext_resource type="Script" uid="uid://cie0fcqbdyepd" path="res://presentation/animator/animator.gd" id="7_22x1v"]

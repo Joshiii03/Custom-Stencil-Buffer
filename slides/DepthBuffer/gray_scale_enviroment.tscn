@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://coxue6rdjwetd"]
 
 [ext_resource type="Script" uid="uid://ctqekgp7m03ik" path="res://slides/scenes_for_slides/flying_camera.gd" id="1_8gdft"]
-[ext_resource type="Shader" uid="uid://d0j7r27l2rehf" path="res://slides/scenes_for_slides/depth_shower.gdshader" id="1_ps6cy"]
+[ext_resource type="Shader" uid="uid://d0j7r27l2rehf" path="res://slides/DepthBuffer/depth_shower.gdshader" id="1_ps6cy"]
 [ext_resource type="Script" uid="uid://iaanhr127i8v" path="res://test_stuff/Tweener.gd" id="3_cohd7"]
-[ext_resource type="Script" uid="uid://bxe6vgiwxjwmm" path="res://slides/scenes_for_slides/depth_shower.gd" id="3_cu37e"]
+[ext_resource type="Script" uid="uid://bxe6vgiwxjwmm" path="res://slides/DepthBuffer/depth_shower.gd" id="3_cu37e"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2nn1c"]
 size = Vector2(600, 600)
