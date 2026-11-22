@@ -39,11 +39,14 @@ extends Control
 @export var upper_header_box : MarginContainer
 @export var main_box : MarginContainer
 @export var main_text_box : MarginContainer
+@export var picture_cotaier : MarginContainer
 
 @export var slider_header_label : Label
 @export var lower_header_label : Label
 @export var main_label : Label
 @export var bottom_label : Label
+@export var picture : ColorRect
+
 
 @export var white_backround : ColorRect
 

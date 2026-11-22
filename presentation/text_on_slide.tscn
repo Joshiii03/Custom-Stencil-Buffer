@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bu07ucx1w6fld" path="res://presentation/text_on_slide.gd" id="1_4g0ke"]
 [ext_resource type="Shader" uid="uid://bog4pf2embfqf" path="res://presentation/round_edges.gdshader" id="3_u3b6l"]
+[ext_resource type="Script" uid="uid://bs3qk05velsdl" path="res://presentation/picture_container.gd" id="3_xk7f3"]
 [ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="4_kwqw3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmlrs"]
 resource_local_to_scene = true
 shader = ExtResource("3_u3b6l")
-shader_parameter/rect_size = Vector2(870, 358)
+shader_parameter/rect_size = Vector2(888, 251)
 
 [node name="Text" type="Control" unique_id=1809041724 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "white_backround")]
 layout_mode = 3
@@ -39,10 +40,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 38
-theme_override_constants/margin_top = 201
-theme_override_constants/margin_right = 38
-theme_override_constants/margin_bottom = 38
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 34
 
 [node name="SlideHeader" type="Label" parent="HeaderBox" unique_id=2048879931]
 unique_name_in_owner = true
@@ -69,10 +70,17 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 77
-theme_override_constants/margin_top = 77
-theme_override_constants/margin_right = 77
-theme_override_constants/margin_bottom = 77
+theme_override_constants/margin_left = 68
+theme_override_constants/margin_top = 193
+theme_override_constants/margin_right = 68
+theme_override_constants/margin_bottom = 68
+
+[node name="PictureContainer" type="MarginContainer" parent="VBoxContainer/MainBox" unique_id=371014278]
+layout_mode = 2
+script = ExtResource("3_xk7f3")
+
+[node name="Picture" type="ColorRect" parent="VBoxContainer/MainBox/PictureContainer" unique_id=1386437385]
+layout_mode = 2
 
 [node name="WhiteBackround" type="ColorRect" parent="VBoxContainer/MainBox" unique_id=1352649206]
 unique_name_in_owner = true
@@ -83,10 +91,10 @@ color = Color(1, 1, 1, 0.64705884)
 [node name="MainTextBox" type="MarginContainer" parent="VBoxContainer/MainBox" unique_id=637698339]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 38
-theme_override_constants/margin_top = 38
-theme_override_constants/margin_right = 38
-theme_override_constants/margin_bottom = 38
+theme_override_constants/margin_left = 27
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 27
+theme_override_constants/margin_bottom = 3
 
 [node name="TextContainer" type="VBoxContainer" parent="VBoxContainer/MainBox/MainTextBox" unique_id=368231236]
 unique_name_in_owner = true

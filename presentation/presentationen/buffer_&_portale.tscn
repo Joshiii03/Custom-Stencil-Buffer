@@ -33,7 +33,7 @@ shader_parameter/icon_opacity = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmlrs"]
 resource_local_to_scene = true
 shader = ExtResource("10_1d0r8")
-shader_parameter/rect_size = Vector2(898, 261)
+shader_parameter/rect_size = Vector2(888, 251)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_afoqy"]
 resource_local_to_scene = true
@@ -100,7 +100,7 @@ bottom_text = "Die Vorführung beginnt in wenigen Augenblicken"
 
 [node name="Poster" parent="Slides" index="1" unique_id=884469479 instance=ExtResource("3_yh82q")]
 slide_name = "von Joshiii03"
-scene = "uid://btb2ank6d0oj1"
+scene = "res://slides/scenes_for_slides/poster.tscn"
 
 [node name="Introduction" type="Node" parent="Slides" index="2" unique_id=855151296]
 script = ExtResource("7_ceemk")
@@ -114,7 +114,7 @@ header = ""
 text = "1. Buffer
 -Depth Buffer / Tiefen Puffer
 -Stencil Buffer /Schablonen Puffer
--Viewport Buffer
+-Viewport Buffer / Ansichtsfenster Puffer
 
 2. Portale:
 -Klassische Portale mit 2. Kamera (short)
@@ -134,7 +134,7 @@ header = ""
 text = "-Eine Texture Die über den gesamten Bildschirm geht.
 -Oben links (0,0)
 -Unten rechts (1,1)
--z.B. Colorbuffet, Depthuffer, Stencilbuffer"
+-z.B. Colorbuffer, Depthuffer, Stencilbuffer"
 bottom_text = ""
 
 [node name="ColorBufferExplanaition" parent="Slides" index="4" unique_id=1215255879 instance=ExtResource("3_yh82q")]
@@ -184,14 +184,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 31
-theme_override_constants/margin_top = 31
-theme_override_constants/margin_right = 31
-theme_override_constants/margin_bottom = 31
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 34
 
 [node name="SlideHeader" type="Label" parent="Slides/ColorBufferExplanaition/Text/SmallerBox2" index="0" unique_id=2048879931]
-custom_minimum_size = Vector2(0, 124.666664)
-custom_maximum_size = Vector2(99999, 124.666664)
+custom_minimum_size = Vector2(0, 124.833336)
+custom_maximum_size = Vector2(99999, 124.833336)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("9_ispgc")
@@ -212,10 +212,10 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 63
-theme_override_constants/margin_top = 188
-theme_override_constants/margin_right = 63
-theme_override_constants/margin_bottom = 63
+theme_override_constants/margin_left = 68
+theme_override_constants/margin_top = 193
+theme_override_constants/margin_right = 68
+theme_override_constants/margin_bottom = 68
 
 [node name="WhiteBackround" type="ColorRect" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox" index="0" unique_id=1352649206]
 material = SubResource("ShaderMaterial_wmlrs")
@@ -227,9 +227,9 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 17
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 27
 theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 25
+theme_override_constants/margin_right = 27
 theme_override_constants/margin_bottom = 3
 
 [node name="TextContainer" type="VBoxContainer" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/SmallTextBox" index="0" unique_id=368231236]
@@ -449,7 +449,6 @@ maximum_font_size = 112
 slide_name = "DepthBuffer How To?"
 
 [node name="Text" parent="Slides/DepthBuffer_HowTo" index="0" unique_id=1480904480 instance=ExtResource("2_ry4wd")]
-visible = false
 slide_header = "Depth Buffer nutzen?"
 header = ""
 text = "DepthDraw -> Tiefe in den Depth Buffer zeichen?
@@ -465,11 +464,12 @@ scene = "uid://coxue6rdjwetd"
 slide_name = "DepthBuffer show case II"
 scene = "uid://150tix107shr"
 
-[node name="Text" parent="Slides/DepthBuffer DiffrentModes" index="0" unique_id=1615261784 instance=ExtResource("2_ry4wd")]
-visible = false
-empty = true
+[node name="DepthBuffer Transparant" type="Node" parent="Slides" index="9" unique_id=1829956431]
+script = ExtResource("7_ceemk")
+slide_name = "DepthBudder Transparenz"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBufferExplanation" parent="Slides" index="9" unique_id=123178485 instance=ExtResource("3_yh82q")]
+[node name="StencilBufferExplanation" parent="Slides" index="10" unique_id=123178485 instance=ExtResource("3_yh82q")]
 slide_name = "StencilBuffer I"
 use_cf_buttom_left = true
 cf_buttom_left = "https://tenor.com/de/view/spincat-gif-4620048645392468202"
@@ -602,7 +602,7 @@ texture = ExtResource("14_7vd5s")
 vframes = 32
 script = ExtResource("15_omgj7")
 
-[node name="StencilBuffer_HowTo" parent="Slides" index="10" unique_id=1789856615 instance=ExtResource("3_yh82q")]
+[node name="StencilBuffer_HowTo" parent="Slides" index="11" unique_id=1789856615 instance=ExtResource("3_yh82q")]
 slide_name = "StencilBuffer II"
 
 [node name="Text" parent="Slides/StencilBuffer_HowTo" index="0" unique_id=1245823599 instance=ExtResource("2_ry4wd")]
@@ -617,41 +617,41 @@ text = "1. Immer Alpha aktivieren
 6. Render Priorität"
 bottom_text = ""
 
-[node name="Stencil_BasicExample" type="Node" parent="Slides" index="11" unique_id=848832614]
+[node name="Stencil_BasicExample" type="Node" parent="Slides" index="12" unique_id=848832614]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer III"
 scene = "uid://8vb6bvn1hgku"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer Boat" type="Node" parent="Slides" index="12" unique_id=896560601]
+[node name="StencilBuffer Boat" type="Node" parent="Slides" index="13" unique_id=896560601]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer Showcase I"
 comments = Array[String](["1 -> On/Off"])
 scene = "uid://clsxveo03tft6"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer Mirrow" type="Node" parent="Slides" index="13" unique_id=427331744]
+[node name="StencilBuffer Mirrow" type="Node" parent="Slides" index="14" unique_id=427331744]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer Showcase II"
 scene = "uid://oyg5yigg3bus"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer Hole" parent="Slides" index="14" unique_id=1460568131 instance=ExtResource("3_yh82q")]
+[node name="StencilBuffer Hole" parent="Slides" index="15" unique_id=1460568131 instance=ExtResource("3_yh82q")]
 slide_name = "StencilBuffer Showcase III"
 scene = "uid://1uim5ttf3kel"
 
-[node name="StencilBuffer Outline" parent="Slides" index="15" unique_id=1082524065 instance=ExtResource("3_yh82q")]
+[node name="StencilBuffer Outline" parent="Slides" index="16" unique_id=1082524065 instance=ExtResource("3_yh82q")]
 slide_name = "StencilBuffer Showcase IV"
 comments = Array[String](["X-Ray", "Wand hintergehung"])
 scene = "uid://0winjex0jdb5"
 
-[node name="StencilBuffer XRay" type="Node" parent="Slides" index="16" unique_id=10989928]
+[node name="StencilBuffer XRay" type="Node" parent="Slides" index="17" unique_id=10989928]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer Showcase V"
 scene = "uid://d3cvff46x0iv6"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer_summery" type="Node" parent="Slides" index="17" unique_id=80035988]
+[node name="StencilBuffer_summery" type="Node" parent="Slides" index="18" unique_id=80035988]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer Summary"
 comments = Array[String]([""])
@@ -667,11 +667,12 @@ text = "Pros:
 
 Cons:
 -Hat seine Limits / Nicht Flexible
+-kann nicht lesen und schreiben in einem
 -Shader Script Kann den Stencil nicht auslesen oder schreiben
 -Shader Script kann die Stencil Layer nicht ändern"
 bottom_text = ""
 
-[node name="ViewportExplanation" type="Node" parent="Slides" index="18" unique_id=1571947425]
+[node name="ViewportExplanation" type="Node" parent="Slides" index="19" unique_id=1571947425]
 script = ExtResource("7_ceemk")
 slide_name = "ViewportBuffer I"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -680,7 +681,7 @@ metadata/_custom_type_script = "uid://dw5nch1euelxo"
 visible = false
 slide_header = "ViewportBuffer"
 header = ""
-text = "-2x Viewports
+text = "-2x Viewports in Unteschiedliche Render Ebenen
 -1. Viewport Textur -> StencilBuffer
 -Kein Shading / Envrionment als Hintergrund Stencil
 -Verschiedene Kanäle (RGB) -> mehrere Buffer
@@ -690,32 +691,35 @@ text = "-2x Viewports
 -Größe auf 1. Viewport übertragen"
 bottom_text = ""
 
-[node name="Viewport Example" type="Node" parent="Slides" index="19" unique_id=1087488895]
+[node name="Viewport Example" type="Node" parent="Slides" index="20" unique_id=1087488895]
 script = ExtResource("7_ceemk")
 slide_name = "ViewportBuffer  II"
 scene = "uid://ho8nk18r8lai"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="Viewport_delay" type="Node" parent="Slides" index="20" unique_id=856625693]
+[node name="Viewport_delay" type="Node" parent="Slides" index="21" unique_id=856625693]
 script = ExtResource("7_ceemk")
 scene = "uid://b7v4r3xuj340e"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="Viewport Outline" parent="Slides" index="21" unique_id=281215632 instance=ExtResource("3_yh82q")]
+[node name="Viewport Outline" parent="Slides" index="22" unique_id=281215632 instance=ExtResource("3_yh82q")]
 slide_name = "Viewport I"
 comments = Array[String](["Viewport Outline"])
 scene = "uid://db6ymwq5kkrbj"
 
-[node name="Viewport_Label" type="Node" parent="Slides" index="22" unique_id=1322215039]
+[node name="Viewport_Label" type="Node" parent="Slides" index="23" unique_id=1322215039]
 script = ExtResource("7_ceemk")
+slide_name = "ViewportBuffer"
+scene = "res://slides/scenes_for_slides/poster.tscn"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="Stencil_X_Viewport" type="Node" parent="Slides" index="23" unique_id=789998625]
+[node name="Stencil_X_Viewport" type="Node" parent="Slides" index="24" unique_id=789998625]
 script = ExtResource("7_ceemk")
 slide_name = "Stencil || Viewport?"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
 [node name="Text" parent="Slides/Stencil_X_Viewport" index="0" unique_id=1126846423 instance=ExtResource("2_ry4wd")]
+visible = false
 slide_header = "Stencil gegen Viewport"
 header = ""
 text = "Viewport:
@@ -729,7 +733,7 @@ Fazit:
 Stencil wenn möglich, Viewport wenn nötig"
 bottom_text = ""
 
-[node name="Portale" type="Node" parent="Slides" index="24" unique_id=2109680318]
+[node name="Portale" type="Node" parent="Slides" index="25" unique_id=2109680318]
 script = ExtResource("7_ceemk")
 slide_name = "Portale I"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -741,9 +745,9 @@ header = ""
 text = "Keine Wurmlöcher"
 bottom_text = ""
 
-[node name="Portale Klassisch" type="Node" parent="Slides" index="25" unique_id=205270232]
+[node name="Portale Klassisch" type="Node" parent="Slides" index="26" unique_id=205270232]
 script = ExtResource("7_ceemk")
-slide_name = "Portale I"
+slide_name = "Portale II"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
 [node name="Text" parent="Slides/Portale Klassisch" index="0" unique_id=1122722746 instance=ExtResource("2_ry4wd")]
@@ -752,17 +756,96 @@ slide_header = "Portale Klassisch"
 header = ""
 text = "Beispiele:
 Portal 1&2, Chasing Carrots, (Prey 2006)
-2. Kamera -> Viewporttexture wird aud das Portal gerenderd
+Viewporttexture wird aud das Portal gerenderd
+2. Kamera wird auf die andere Seite gespiegelt
 -Kamera Transform an Spieler Transform anpasse.
--Matrixen Mathe"
+-Matrixen Mathe Magie
+Prey(2006) nur eien Kamera und Stencil für Hilfe"
 bottom_text = ""
 
-[node name="100Portals" parent="Slides" index="26" unique_id=516392851 instance=ExtResource("3_yh82q")]
+[node name="Portale_DepthProblem" type="Node" parent="Slides" index="27" unique_id=1607896104]
+script = ExtResource("7_ceemk")
+slide_name = "Probleme"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/Portale_DepthProblem" index="0" unique_id=1321819778 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "Portale Tiefen Problem"
+header = ""
+text = "Wann ist ein Objekt Sichtbar?
+3 Faktoren: 
+Spieler Ebene, Portal Ebene, Portale Entfernung
+1. Objekte davor sind dahinter -> Stencil schreiben
+2.Problem Portal Entfernung == DepthBuffer
+Depthtest Invertiert an Portal
+Restlichen Depthtests gehen kaputt"
+bottom_text = ""
+
+[node name="Portale_DepthSolution" type="Node" parent="Slides" index="28" unique_id=1445297227]
+script = ExtResource("7_ceemk")
+slide_name = "Lösung a la Stencil"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/Portale_DepthSolution" index="0" unique_id=415946253 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "Lösung 1 "
+header = ""
+text = "Die Normale des Portal + Position = Ebene
+Alle Objekte werden vor dem Portal Unsichtbar
+float  z_coord = dot(v_vertex - portal_coords, portal_norm );
+-> Vorschlag von Robert/Kosro
+
+Neues Problem:
+Nur Ein Portal pro Ebene & \"unschöne\" Lösung"
+bottom_text = ""
+
+[node name="Portale_ViewPort_Solution" type="Node" parent="Slides" index="29" unique_id=1816766835]
+script = ExtResource("7_ceemk")
+slide_name = "Lösung a la Viewport"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/Portale_ViewPort_Solution" index="0" unique_id=868763090 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "Lösung2"
+header = ""
+text = "Gäbe es nur einen Zweiten Depthbuffer für Portale
+-> Viewport für Portale
+R -> Stencil
+G/B -> Tiefe / Depthbuffer
+B = Grobe tiefe
+G = Preziese Tiefe
+
+	vec4 clip_pos = PROJECTION_MATRIX * vec4(VERTEX, 1.0);
+	float fragment_depth = clip_pos.z / clip_pos.w;"
+bottom_text = ""
+
+[node name="Portale_ShowCase_I" type="Node" parent="Slides" index="30" unique_id=333795176]
+script = ExtResource("7_ceemk")
+slide_name = "Endlich Portale"
+scene = "uid://c26wpn4puqq0f"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Portal Transition" type="Node" parent="Slides" index="31" unique_id=967069030]
+script = ExtResource("7_ceemk")
+slide_name = "Sandwich Portal"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/Portal Transition" index="0" unique_id=339435327 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "Wie Durch das Portal"
+header = ""
+text = "-Zwei Seiten wie ein Sandwich
+-StencilWriter | Spieler | StencilWriter
+-Überprüfen auf welcher seite der Spieler ist
+-Spieler Kamera ändert Standard"
+bottom_text = ""
+
+[node name="100Portals" parent="Slides" index="32" unique_id=516392851 instance=ExtResource("3_yh82q")]
 slide_name = "100 Portale"
 comments = Array[String](["Bad Apple von Tobi vorgeschlagen"])
 scene = "uid://bg4f8h4yfbeqd"
 
-[node name="Portale Vergleich" type="Node" parent="Slides" index="27" unique_id=1771099179]
+[node name="Portale Vergleich" type="Node" parent="Slides" index="33" unique_id=1771099179]
 script = ExtResource("7_ceemk")
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
@@ -904,7 +987,7 @@ resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112
 
-[node name="Q&A" type="Node" parent="Slides" index="28" unique_id=457507216]
+[node name="Q&A" type="Node" parent="Slides" index="34" unique_id=457507216]
 script = ExtResource("7_ceemk")
 slide_name = "Q&A"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -919,7 +1002,14 @@ text = "Habt ihr noch Fragen?
 "
 bottom_text = ""
 
-[node name="EmptyEndSlide" parent="Slides" index="29" unique_id=1437317286 instance=ExtResource("3_yh82q")]
+[node name="Funny_Screenshots" type="Node" parent="Slides" index="35" unique_id=1446485996]
+script = ExtResource("7_ceemk")
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/Funny_Screenshots" index="0" unique_id=1223743819 instance=ExtResource("2_ry4wd")]
+visible = false
+
+[node name="EmptyEndSlide" parent="Slides" index="36" unique_id=1437317286 instance=ExtResource("3_yh82q")]
 slide_name = "Empty"
 comments = Array[String](["You made it !", ""])
 is_empty = true
