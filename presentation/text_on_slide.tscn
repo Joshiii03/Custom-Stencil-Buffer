@@ -3,14 +3,21 @@
 [ext_resource type="Script" uid="uid://bu07ucx1w6fld" path="res://presentation/text_on_slide.gd" id="1_4g0ke"]
 [ext_resource type="Shader" uid="uid://bog4pf2embfqf" path="res://presentation/round_edges.gdshader" id="3_u3b6l"]
 [ext_resource type="Script" uid="uid://bs3qk05velsdl" path="res://presentation/picture_container.gd" id="3_xk7f3"]
+[ext_resource type="Shader" uid="uid://d0iub38d4hc0k" path="res://presentation/picture.gdshader" id="4_4g0ke"]
 [ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="4_kwqw3"]
+[ext_resource type="Texture2D" uid="uid://burcbaco18d50" path="res://assets/Screenshots/X-Ray_setup.png" id="6_u3b6l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmlrs"]
 resource_local_to_scene = true
 shader = ExtResource("3_u3b6l")
-shader_parameter/rect_size = Vector2(888, 251)
+shader_parameter/rect_size = Vector2(884, 247)
 
-[node name="Text" type="Control" unique_id=1809041724 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "white_backround")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3b6l"]
+resource_local_to_scene = true
+shader = ExtResource("4_4g0ke")
+shader_parameter/pic = ExtResource("6_u3b6l")
+
+[node name="Text" type="Control" unique_id=1809041724 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "picture_container", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "picture", "white_backround")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,10 +33,12 @@ bottom_text = null
 upper_header_box = NodePath("HeaderBox")
 main_box = NodePath("VBoxContainer/MainBox")
 main_text_box = NodePath("VBoxContainer/MainBox/MainTextBox")
+picture_container = NodePath("VBoxContainer/MainBox/PictureContainer")
 slider_header_label = NodePath("HeaderBox/SlideHeader")
 lower_header_label = NodePath("VBoxContainer/MainBox/MainTextBox/TextContainer/HeaderText")
 main_label = NodePath("VBoxContainer/MainBox/MainTextBox/TextContainer/MainText")
 bottom_label = NodePath("VBoxContainer/MainBox/MainTextBox/TextContainer/BottomText")
+picture = NodePath("VBoxContainer/MainBox/PictureContainer/Picture")
 white_backround = NodePath("VBoxContainer/MainBox/WhiteBackround")
 
 [node name="HeaderBox" type="MarginContainer" parent="." unique_id=1020454935]
@@ -40,10 +49,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 34
-theme_override_constants/margin_top = 34
-theme_override_constants/margin_right = 34
-theme_override_constants/margin_bottom = 34
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 35
 
 [node name="SlideHeader" type="Label" parent="HeaderBox" unique_id=2048879931]
 unique_name_in_owner = true
@@ -70,17 +79,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 68
-theme_override_constants/margin_top = 193
-theme_override_constants/margin_right = 68
-theme_override_constants/margin_bottom = 68
-
-[node name="PictureContainer" type="MarginContainer" parent="VBoxContainer/MainBox" unique_id=371014278]
-layout_mode = 2
-script = ExtResource("3_xk7f3")
-
-[node name="Picture" type="ColorRect" parent="VBoxContainer/MainBox/PictureContainer" unique_id=1386437385]
-layout_mode = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 195
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 70
 
 [node name="WhiteBackround" type="ColorRect" parent="VBoxContainer/MainBox" unique_id=1352649206]
 unique_name_in_owner = true
@@ -88,12 +90,25 @@ material = SubResource("ShaderMaterial_wmlrs")
 layout_mode = 2
 color = Color(1, 1, 1, 0.64705884)
 
+[node name="PictureContainer" type="MarginContainer" parent="VBoxContainer/MainBox" unique_id=371014278]
+layout_mode = 2
+theme_override_constants/margin_left = 313
+theme_override_constants/margin_top = 57
+theme_override_constants/margin_right = 313
+theme_override_constants/margin_bottom = 57
+script = ExtResource("3_xk7f3")
+
+[node name="Picture" type="ColorRect" parent="VBoxContainer/MainBox/PictureContainer" unique_id=1386437385]
+visible = false
+material = SubResource("ShaderMaterial_u3b6l")
+layout_mode = 2
+
 [node name="MainTextBox" type="MarginContainer" parent="VBoxContainer/MainBox" unique_id=637698339]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 27
+theme_override_constants/margin_left = 28
 theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 27
+theme_override_constants/margin_right = 28
 theme_override_constants/margin_bottom = 3
 
 [node name="TextContainer" type="VBoxContainer" parent="VBoxContainer/MainBox/MainTextBox" unique_id=368231236]

@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://ho8nk18r8lai"]
 
-[ext_resource type="PackedScene" uid="uid://7npp3npm1iaq" path="res://test_stuff/debug_screen_2d.tscn" id="1_sj3m5"]
-[ext_resource type="Script" uid="uid://ldqun124cyr4" path="res://stencil/stencil_camera.gd" id="1_xesm1"]
-[ext_resource type="PackedScene" uid="uid://d3offbakf8d5b" path="res://presentation/foreground.tscn" id="2_7vvk6"]
-[ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="2_s3d7m"]
-[ext_resource type="PackedScene" uid="uid://deqrdnmbcmcwv" path="res://stencil/stencil_writer.tscn" id="2_sj3m5"]
-[ext_resource type="Script" uid="uid://c7wrltuknx6fc" path="res://presentation/animator/animator_key.gd" id="3_vrsbl"]
-[ext_resource type="Shader" uid="uid://b2m7xgbyi52f1" path="res://test_stuff/debug_screen_2d.gdshader" id="4_s3d7m"]
-[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://presentation/backround_shader.gdshader" id="5_5kmfm"]
-[ext_resource type="Script" uid="uid://bu07ucx1w6fld" path="res://presentation/text_on_slide.gd" id="5_7w0ay"]
-[ext_resource type="Shader" uid="uid://whmbn0jacgnb" path="res://stencil/backround_stencil.gdshader" id="5_vrsbl"]
-[ext_resource type="Script" uid="uid://cg5ql60p7dtnm" path="res://stencil/backround_stencil.gd" id="6_5kmfm"]
-[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="6_b1u2y"]
-[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="6_lh5sy"]
-[ext_resource type="Shader" uid="uid://bog4pf2embfqf" path="res://presentation/round_edges.gdshader" id="7_wgvgn"]
-[ext_resource type="Script" uid="uid://bs3qk05velsdl" path="res://presentation/picture_container.gd" id="8_b1u2y"]
+[ext_resource type="PackedScene" uid="uid://deqrdnmbcmcwv" path="res://stencil/stencil_writer.tscn" id="1_nwag2"]
+[ext_resource type="PackedScene" uid="uid://br5hpup3rjpuo" path="res://presentation/animator/animator.tscn" id="2_wtscv"]
+[ext_resource type="Script" uid="uid://c7wrltuknx6fc" path="res://presentation/animator/animator_key.gd" id="3_2prax"]
+[ext_resource type="Script" uid="uid://ldqun124cyr4" path="res://stencil/stencil_camera.gd" id="4_gjkbg"]
+[ext_resource type="Script" uid="uid://bu07ucx1w6fld" path="res://presentation/text_on_slide.gd" id="5_tjh78"]
+[ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="6_ggq5i"]
+[ext_resource type="Shader" uid="uid://bog4pf2embfqf" path="res://presentation/round_edges.gdshader" id="7_lpwhg"]
+[ext_resource type="Script" uid="uid://bs3qk05velsdl" path="res://presentation/picture_container.gd" id="8_rebnf"]
+[ext_resource type="PackedScene" uid="uid://7npp3npm1iaq" path="res://test_stuff/debug_screen_2d.tscn" id="9_cxer6"]
+[ext_resource type="Shader" uid="uid://b2m7xgbyi52f1" path="res://test_stuff/debug_screen_2d.gdshader" id="10_glpcp"]
+[ext_resource type="Shader" uid="uid://coin5ftbc40p2" path="res://presentation/backround_shader.gdshader" id="11_f3w7q"]
+[ext_resource type="Texture2D" uid="uid://bf7jc8kl31unu" path="res://assets/GodotStammtischLogo.png" id="12_0n3ba"]
+[ext_resource type="PackedScene" uid="uid://d3offbakf8d5b" path="res://presentation/foreground.tscn" id="13_ph7yy"]
+[ext_resource type="Shader" uid="uid://whmbn0jacgnb" path="res://stencil/backround_stencil.gdshader" id="14_vgpoh"]
+[ext_resource type="Script" uid="uid://cg5ql60p7dtnm" path="res://stencil/backround_stencil.gd" id="15_f3lmr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrsbl"]
 albedo_color = Color(0.22455695, 0.43109804, 0, 1)
@@ -46,23 +46,23 @@ volumetric_fog_emission = Color(0.92794496, 0.68204314, 0.731245, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uq8jk"]
 resource_local_to_scene = true
-shader = ExtResource("7_wgvgn")
+shader = ExtResource("7_lpwhg")
 shader_parameter/rect_size = Vector2(910, 398)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lh5sy"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_c0got"]
 viewport_path = NodePath("StencilCamera/StencilViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gnwtb"]
 resource_local_to_scene = true
-shader = ExtResource("4_s3d7m")
+shader = ExtResource("10_glpcp")
 shader_parameter/filter_r = false
 shader_parameter/filter_b = true
 shader_parameter/filter_g = true
-shader_parameter/texture_screen = SubResource("ViewportTexture_lh5sy")
+shader_parameter/texture_screen = SubResource("ViewportTexture_c0got")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wqvo4"]
-shader = ExtResource("5_5kmfm")
-shader_parameter/godot_icon = ExtResource("6_lh5sy")
+shader = ExtResource("11_f3w7q")
+shader_parameter/godot_icon = ExtResource("12_0n3ba")
 shader_parameter/icon_scale = 1.0
 shader_parameter/rotation = 0.14
 shader_parameter/spacing = 0.15
@@ -73,31 +73,31 @@ shader_parameter/icon_opacity = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nxc3u"]
 resource_local_to_scene = true
-shader = ExtResource("4_s3d7m")
+shader = ExtResource("10_glpcp")
 shader_parameter/filter_r = false
 shader_parameter/filter_b = false
 shader_parameter/filter_g = false
-shader_parameter/texture_screen = SubResource("ViewportTexture_lh5sy")
+shader_parameter/texture_screen = SubResource("ViewportTexture_c0got")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mlomn"]
 resource_local_to_scene = true
-shader = ExtResource("4_s3d7m")
+shader = ExtResource("10_glpcp")
 shader_parameter/filter_r = true
 shader_parameter/filter_b = true
 shader_parameter/filter_g = false
-shader_parameter/texture_screen = SubResource("ViewportTexture_lh5sy")
+shader_parameter/texture_screen = SubResource("ViewportTexture_c0got")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_phq4y"]
 resource_local_to_scene = true
-shader = ExtResource("4_s3d7m")
+shader = ExtResource("10_glpcp")
 shader_parameter/filter_r = true
 shader_parameter/filter_b = false
 shader_parameter/filter_g = true
-shader_parameter/texture_screen = SubResource("ViewportTexture_lh5sy")
+shader_parameter/texture_screen = SubResource("ViewportTexture_c0got")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lghiy"]
 render_priority = -2
-shader = ExtResource("5_vrsbl")
+shader = ExtResource("14_vgpoh")
 shader_parameter/match_color1 = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k56px"]
@@ -114,7 +114,7 @@ transform = Transform3D(0.58386713, -0.23896155, -0.77588433, -0.31999418, 0.810
 material_override = SubResource("StandardMaterial3D_vrsbl")
 mesh = SubResource("BoxMesh_sj3m5")
 
-[node name="StencilWriter" parent="Cube" unique_id=1860981665 instance=ExtResource("2_sj3m5")]
+[node name="StencilWriter" parent="Cube" unique_id=1860981665 instance=ExtResource("1_nwag2")]
 transform = Transform3D(1, -2.9802322e-08, 0, 0, 1.0000001, 0, 5.9604645e-08, -2.9802322e-08, 1.0000001, 0, 0, 0)
 stencil_layer = 25
 
@@ -123,32 +123,32 @@ transform = Transform3D(1, 0, 0, 0, 0.40036064, -0.91635764, 0, 0.91635764, 0.40
 material_override = SubResource("StandardMaterial3D_s3d7m")
 mesh = SubResource("TorusMesh_xesm1")
 
-[node name="Animator" parent="Donut" unique_id=1953052596 instance=ExtResource("2_s3d7m")]
+[node name="Animator" parent="Donut" unique_id=1953052596 instance=ExtResource("2_wtscv")]
 autostart = true
 loop = true
 
-[node name="AnimatorKey" type="Marker3D" parent="Donut/Animator" unique_id=988101562]
-script = ExtResource("3_vrsbl")
-time = 2.0
-animate_position = false
-animate_rotation = true
-metadata/_custom_type_script = "uid://c7wrltuknx6fc"
-
 [node name="AnimatorKey2" type="Marker3D" parent="Donut/Animator" unique_id=1961203343]
-transform = Transform3D(-0.37034464, 0.8511996, 0.37189278, -0.8511997, -0.15069391, -0.50274324, -0.37189284, -0.50274324, 0.7803495, 0, 0, 0)
-script = ExtResource("3_vrsbl")
+transform = Transform3D(-0.89940864, 0.22939269, 0.37208, -0.40308627, -0.7645212, -0.50302005, 0.1690739, -0.6024007, 0.78008187, 0, 0, 0)
+script = ExtResource("3_2prax")
 time = 2.0
 animate_position = false
 animate_rotation = true
 metadata/_custom_type_script = "uid://c7wrltuknx6fc"
 
-[node name="StencilWriter" parent="Donut" unique_id=638593496 instance=ExtResource("2_sj3m5")]
+[node name="AnimatorKey" type="Marker3D" parent="Donut/Animator" unique_id=988101562]
+script = ExtResource("3_2prax")
+time = 2.0
+animate_position = false
+animate_rotation = true
+metadata/_custom_type_script = "uid://c7wrltuknx6fc"
+
+[node name="StencilWriter" parent="Donut" unique_id=638593496 instance=ExtResource("1_nwag2")]
 mesh = SubResource("TorusMesh_s3d7m")
 stencil_layer = 3
 
 [node name="StencilCamera" type="Node3D" parent="." unique_id=1225835657 node_paths=PackedStringArray("stencil_viewport", "screen_viewport", "stencil_camera", "screen_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.161, 2.634)
-script = ExtResource("1_xesm1")
+script = ExtResource("4_gjkbg")
 stencil_viewport = NodePath("StencilViewport")
 screen_viewport = NodePath("ScrrenSubViewport/ScreenViewport")
 stencil_camera = NodePath("StencilViewport/Camera3D")
@@ -161,7 +161,7 @@ size = Vector2i(1024, 512)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="StencilCamera/StencilViewport" unique_id=1839586270]
-transform = Transform3D(0.820173, -0.2565973, 0.5113453, 0, 0.89377975, 0.4485061, -0.57211554, -0.3678526, 0.7330541, 1.0942061, 2.749724, 4.494245)
+transform = Transform3D(0.820173, -0.2565973, 0.5113453, 0, 0.89377975, 0.4485061, -0.57211554, -0.3678526, 0.7330541, 1.0931721, 2.7488172, 4.492763)
 cull_mask = 67108864
 environment = SubResource("Environment_hg732")
 current = true
@@ -194,7 +194,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
-script = ExtResource("5_7w0ay")
+script = ExtResource("5_tjh78")
 header = "Example"
 upper_header_box = NodePath("HeaderBox")
 main_box = NodePath("VBoxContainer/MainBox")
@@ -223,7 +223,7 @@ unique_name_in_owner = true
 custom_maximum_size = Vector2(99999, 85.333336)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("6_b1u2y")
+theme_override_fonts/font = ExtResource("6_ggq5i")
 theme_override_font_sizes/font_size = 64
 resize_font_to_fit = true
 maximum_font_size = 254
@@ -264,12 +264,16 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 17
-script = ExtResource("8_b1u2y")
+theme_override_constants/margin_left = 503
+theme_override_constants/margin_top = 89
+theme_override_constants/margin_right = 55
+theme_override_constants/margin_bottom = 89
+script = ExtResource("8_rebnf")
 ratio = Vector2(1.6, 1)
 screen_margin = 0.09
 horizontal_offset = -0.8
 
-[node name="DebugScreen2D3" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/MainTextBox/PictureContainer" unique_id=148876606 node_paths=PackedStringArray("viewport") instance=ExtResource("1_sj3m5")]
+[node name="DebugScreen2D3" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/Camera3D/Text/VBoxContainer/MainBox/MainTextBox/PictureContainer" unique_id=148876606 node_paths=PackedStringArray("viewport") instance=ExtResource("9_cxer6")]
 material = SubResource("ShaderMaterial_gnwtb")
 layout_mode = 2
 size_flags_horizontal = 17
@@ -288,7 +292,7 @@ custom_minimum_size = Vector2(0, 85.333336)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_b1u2y")
+theme_override_fonts/font = ExtResource("6_ggq5i")
 text = "Example"
 resize_font_to_fit = true
 maximum_font_size = 255
@@ -300,7 +304,7 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("6_b1u2y")
+theme_override_fonts/font = ExtResource("6_ggq5i")
 theme_override_font_sizes/font_size = 64
 resize_font_to_fit = true
 minimum_font_size = 15
@@ -312,7 +316,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_b1u2y")
+theme_override_fonts/font = ExtResource("6_ggq5i")
 vertical_alignment = 2
 resize_font_to_fit = true
 minimum_font_size = 15
@@ -338,7 +342,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.69411767, 0.8784314, 1, 1)
 
-[node name="Foreground" parent="StencilCamera/ScrrenSubViewport/ScreenViewport" unique_id=72472130 instance=ExtResource("2_7vvk6")]
+[node name="Foreground" parent="StencilCamera/ScrrenSubViewport/ScreenViewport" unique_id=72472130 instance=ExtResource("13_ph7yy")]
 autoconnect = true
 
 [node name="DebugScreen" type="VBoxContainer" parent="StencilCamera/ScrrenSubViewport/ScreenViewport" unique_id=174703118]
@@ -350,14 +354,14 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 metadata/_edit_group_ = true
 
-[node name="DebugScreen2D4" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=2034007952 node_paths=PackedStringArray("viewport") instance=ExtResource("1_sj3m5")]
+[node name="DebugScreen2D4" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=2034007952 node_paths=PackedStringArray("viewport") instance=ExtResource("9_cxer6")]
 visible = false
 material = SubResource("ShaderMaterial_nxc3u")
 layout_mode = 2
 size_flags_vertical = 3
 viewport = NodePath("../../../../StencilViewport")
 
-[node name="DebugScreen2D2" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=1252589453 node_paths=PackedStringArray("viewport") instance=ExtResource("1_sj3m5")]
+[node name="DebugScreen2D2" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=1252589453 node_paths=PackedStringArray("viewport") instance=ExtResource("9_cxer6")]
 visible = false
 material = SubResource("ShaderMaterial_mlomn")
 layout_mode = 2
@@ -366,7 +370,7 @@ viewport = NodePath("../../../../StencilViewport")
 filter_r = true
 filter_b = true
 
-[node name="DebugScreen2D" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=384009483 node_paths=PackedStringArray("viewport") instance=ExtResource("1_sj3m5")]
+[node name="DebugScreen2D" parent="StencilCamera/ScrrenSubViewport/ScreenViewport/DebugScreen" unique_id=384009483 node_paths=PackedStringArray("viewport") instance=ExtResource("9_cxer6")]
 visible = false
 material = SubResource("ShaderMaterial_phq4y")
 layout_mode = 2
@@ -380,7 +384,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52139956)
 layers = 67108864
 material_override = SubResource("ShaderMaterial_lghiy")
 mesh = SubResource("PlaneMesh_k56px")
-script = ExtResource("6_5kmfm")
+script = ExtResource("15_f3lmr")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1754661706]
 transform = Transform3D(0.96238273, 0.073607706, -0.26153672, -1.23748105e-08, 0.96260256, 0.27091777, 0.27169755, -0.26072657, 0.926392, -1.0955746, 2.3297932, 2.8659253)

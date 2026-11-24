@@ -68,6 +68,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="FrameRate" type="Label" parent="HBoxContainer/Main/BottomInfo" unique_id=1951851936]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="SideInfo" type="VBoxContainer" parent="HBoxContainer" unique_id=1304019552]
 layout_mode = 2
 

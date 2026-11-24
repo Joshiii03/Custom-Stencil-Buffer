@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cvdkhbp7l5glu"]
+
+[ext_resource type="Script" uid="uid://bx77ubau2kg" path="res://presentation/presentationen/laserpointer.gd" id="1_dsvvi"]
+
+[node name="Laserpointer" type="Node2D" unique_id=2049069564]
+script = ExtResource("1_dsvvi")

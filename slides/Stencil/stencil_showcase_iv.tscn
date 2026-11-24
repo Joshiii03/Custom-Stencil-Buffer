@@ -124,6 +124,8 @@ slide_header = "Outline Stencil Buffer"
 header = ""
 text = ""
 bottom_text = ""
+picture_path = "res://assets/Screenshots/Outline_howto.png"
+picture_horizontal_offset = 0.8
 
 [node name="Backround" type="Control" parent="Camera3D/CanvasLayer" unique_id=443771123]
 layout_mode = 3

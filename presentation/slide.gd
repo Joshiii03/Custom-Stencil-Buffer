@@ -55,62 +55,77 @@ func prepare() -> void:
 		push_error("Could not start loading: " + scene)
 
 
+
 func activate() -> void:
-	
+
+	if Engine.is_editor_hint():
+		return
+
 	if not is_spawning_scene:
 		for child in get_children():
 			child.visible = true
 		return
-	
-	if Engine.is_editor_hint():
+
+	# Prevent duplicate instances
+	if is_instance_valid(instance):
 		return
-	
+
 	activation_id += 1
 	var my_id = activation_id
-	
+
 	# Start loading if it hasn't already started
 	prepare()
-	
+
 	# Wait until loading is complete
 	while new_scene == null:
-		# Was this activation cancelled?
 		if my_id != activation_id:
 			return
-		
+
 		var status = ResourceLoader.load_threaded_get_status(scene)
-		
+
 		match status:
 			ResourceLoader.THREAD_LOAD_LOADED:
 				new_scene = ResourceLoader.load_threaded_get(scene)
 				loading_started = false
-			
+
 			ResourceLoader.THREAD_LOAD_FAILED:
 				loading_started = false
 				push_error("Failed to load slide: " + scene)
 				return
-			
+
 			ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
 				loading_started = false
 				push_error("Invalid resource: " + scene)
 				return
-			
+
 			_:
 				await get_tree().process_frame
-	
+
 	# Check again before instantiating
 	if my_id != activation_id:
 		return
-	
+
+	# Additional duplicate protection
+	if is_instance_valid(instance):
+		return
+
 	instance = new_scene.instantiate()
 	add_child(instance)
 
 
 func deactivate() -> void:
-	# Cancel any pending activation
+
+	# Cancel pending activation
 	activation_id += 1
-	
+
+	# Free instantiated scene
 	if is_instance_valid(instance):
 		instance.queue_free()
-		instance = null
+
+	# Clear references regardless of instance validity
+	instance = null
+	new_scene = null
+
+	# Hide remaining children
 	for child in get_children():
 		child.visible = false

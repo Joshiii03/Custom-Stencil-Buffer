@@ -35,11 +35,36 @@ extends Control
 		if bottom_label:
 			bottom_label.text = bottom_text
 
+@export_file_path() var picture_path = "":
+	set(new_value):
+		picture_path = new_value
+		if picture:
+			picture.material.set_shader_parameter("pic", load(picture_path))
+
+@export var picture_ratio : Vector2 = Vector2.ONE:
+	set(new_value):
+		if picture_container:
+			print("set")
+			picture_ratio = new_value
+			picture_container.ratio = picture_ratio
+
+@export_range(0.0, 0.2) var picture_screen_margin: float = 0.05:
+	set(new_value):
+		if picture_container:
+			picture_screen_margin = new_value
+			picture_container.screen_margin = picture_screen_margin
+
+@export_range(-1.0, 1.0) var picture_horizontal_offset: float = 0.0:
+	set(new_value):
+		if picture_container:
+			picture_horizontal_offset = new_value
+			picture_container.horizontal_offset = picture_horizontal_offset
+
 @export_category("Node References")
 @export var upper_header_box : MarginContainer
 @export var main_box : MarginContainer
 @export var main_text_box : MarginContainer
-@export var picture_cotaier : MarginContainer
+@export var picture_container : MarginContainer
 
 @export var slider_header_label : Label
 @export var lower_header_label : Label
@@ -85,6 +110,8 @@ func resize_all() -> void:
 		if bottom_label.text == "":
 			bottom_label.size_flags_vertical = 0
 		
+		if picture:
+			picture.visible = picture_path != ""
 		
 		if empty:
 			upper_header_box.visible = false

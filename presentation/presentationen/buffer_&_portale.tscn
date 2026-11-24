@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://bgwep7ntllq0p" path="res://assets/externe_graphiken/OIIA_Cat.png" id="14_7vd5s"]
 [ext_resource type="Script" uid="uid://b682x2wrwxu6t" path="res://presentation/presentationen/animated_gif.gd" id="15_omgj7"]
 [ext_resource type="Shader" uid="uid://7yp2qrbs372l" path="res://presentation/presentationen/sprite_sheet.gdshader" id="16_8u6uk"]
+[ext_resource type="Shader" uid="uid://d0iub38d4hc0k" path="res://presentation/picture.gdshader" id="16_piyj2"]
+[ext_resource type="Texture2D" uid="uid://bvt2kd7v8nkna" path="res://assets/Screenshots/DepthBuffer.png" id="17_52u2h"]
+[ext_resource type="PackedScene" uid="uid://cvdkhbp7l5glu" path="res://presentation/presentationen/laserpointer.tscn" id="21_khgom"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ceemk"]
 shader = ExtResource("2_38dde")
@@ -33,7 +36,7 @@ shader_parameter/icon_opacity = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmlrs"]
 resource_local_to_scene = true
 shader = ExtResource("10_1d0r8")
-shader_parameter/rect_size = Vector2(888, 251)
+shader_parameter/rect_size = Vector2(916, 374)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_afoqy"]
 resource_local_to_scene = true
@@ -45,7 +48,11 @@ shader_parameter/filter_g = false
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8u34s"]
 resource_local_to_scene = true
 shader = ExtResource("10_1d0r8")
-shader_parameter/rect_size = Vector2(884, 429)
+shader_parameter/rect_size = Vector2(898, 386)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yt1pa"]
+shader = ExtResource("16_piyj2")
+shader_parameter/pic = ExtResource("17_52u2h")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_omgj7"]
 shader = ExtResource("16_8u6uk")
@@ -131,10 +138,13 @@ metadata/_custom_type_script = "uid://dw5nch1euelxo"
 visible = false
 slide_header = "Was ist ein Buffer?"
 header = ""
-text = "-Eine Texture Die über den gesamten Bildschirm geht.
--Oben links (0,0)
--Unten rechts (1,1)
--z.B. Colorbuffer, Depthuffer, Stencilbuffer"
+text = "-Auch Framebuffer genannt
+-Eine Texture Die über den gesamten Bildschirm geht.
+-Oben links (0,0) / Unten rechts (1,1)
+-Float Werte 0 -1 in 8 Bit
+-Objekte Zeichnen in diese Textur
+-z.B. Colorbuffer, Depthuffer, Stencilbuffer
+"
 bottom_text = ""
 
 [node name="ColorBufferExplanaition" parent="Slides" index="4" unique_id=1215255879 instance=ExtResource("3_yh82q")]
@@ -168,6 +178,7 @@ Ist ein Objekt nicht das näheste
 
 
 "
+picture_path = null
 upper_header_box = NodePath("SmallerBox2")
 main_box = NodePath("VBoxContainer/SmallerBox")
 main_text_box = NodePath("VBoxContainer/SmallerBox/SmallTextBox")
@@ -190,13 +201,11 @@ theme_override_constants/margin_right = 34
 theme_override_constants/margin_bottom = 34
 
 [node name="SlideHeader" type="Label" parent="Slides/ColorBufferExplanaition/Text/SmallerBox2" index="0" unique_id=2048879931]
-custom_minimum_size = Vector2(0, 124.833336)
-custom_maximum_size = Vector2(99999, 124.833336)
+custom_maximum_size = Vector2(99999, 107.166664)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("9_ispgc")
 theme_override_font_sizes/font_size = 64
-text = "Color Buffer"
 resize_font_to_fit = true
 maximum_font_size = 254
 
@@ -212,10 +221,10 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 68
-theme_override_constants/margin_top = 193
-theme_override_constants/margin_right = 68
-theme_override_constants/margin_bottom = 68
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 69
+theme_override_constants/margin_right = 69
+theme_override_constants/margin_bottom = 69
 
 [node name="WhiteBackround" type="ColorRect" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox" index="0" unique_id=1352649206]
 material = SubResource("ShaderMaterial_wmlrs")
@@ -251,7 +260,13 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("9_ispgc")
 theme_override_font_sizes/font_size = 64
-text = "
+text = "Objekte Zeichnen sich in diese Text
+
+
+
+
+
+
 "
 resize_font_to_fit = true
 minimum_font_size = 15
@@ -270,9 +285,12 @@ maximum_font_size = 112
 
 [node name="ColorBuffer" type="MarginContainer" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox" index="2" unique_id=2050401459]
 layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 113
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 113
 script = ExtResource("12_yt1pa")
 ratio = Vector2(1.3, 1)
-screen_margin = 0.01
 horizontal_offset = -0.6
 
 [node name="Frame" type="ColorRect" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/ColorBuffer" index="0" unique_id=1957556259]
@@ -297,9 +315,12 @@ script = ExtResource("12_8u34s")
 [node name="DepthBufferExplanation" type="Node" parent="Slides" index="5" unique_id=1460932531]
 script = ExtResource("7_ceemk")
 slide_name = "Depth Buffer I"
+comments = Array[String](["Quelle: Digvijaysinh Gohil", "Empfehlen sein Video anzuschauen"])
+use_cf_buttom_left = true
+cf_buttom_left = "Quelle: Digvijaysinh Gohil"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="Text" type="Control" parent="Slides/DepthBufferExplanation" index="0" unique_id=1085649706 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "white_backround")]
+[node name="Text" type="Control" parent="Slides/DepthBufferExplanation" index="0" unique_id=1085649706 node_paths=PackedStringArray("upper_header_box", "main_box", "main_text_box", "picture_container", "slider_header_label", "lower_header_label", "main_label", "bottom_label", "picture", "white_backround")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -310,13 +331,16 @@ grow_vertical = 2
 size_flags_vertical = 4
 script = ExtResource("8_s27kt")
 header = "Depth Buffer"
+picture_path = "res://assets/Screenshots/DepthBuffer.png"
 upper_header_box = NodePath("SmallerBox2")
 main_box = NodePath("VBoxContainer/SmallerBox")
 main_text_box = NodePath("VBoxContainer/SmallerBox/TextMarginBox")
+picture_container = NodePath("VBoxContainer/SmallerBox/TextMarginBox/PictureBox")
 slider_header_label = NodePath("../../ColorBufferExplanaition/Text/SmallerBox2/SlideHeader")
 lower_header_label = NodePath("VBoxContainer/SmallerBox/TextMarginBox/TextContainer/HeaderText")
 main_label = NodePath("VBoxContainer/SmallerBox/TextMarginBox/TextContainer/MainText")
 bottom_label = NodePath("VBoxContainer/SmallerBox/TextMarginBox/TextContainer/BottomText")
+picture = NodePath("VBoxContainer/SmallerBox/TextMarginBox/PictureBox/ColorRect")
 white_backround = NodePath("VBoxContainer/SmallerBox/WhiteBackround")
 
 [node name="SmallerBox2" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text" index="0" unique_id=942194729]
@@ -327,10 +351,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 31
-theme_override_constants/margin_top = 31
-theme_override_constants/margin_right = 31
-theme_override_constants/margin_bottom = 31
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 34
 
 [node name="SlideHeader" type="Label" parent="Slides/DepthBufferExplanation/Text/SmallerBox2" index="0" unique_id=1962900836]
 unique_name_in_owner = true
@@ -355,10 +379,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 63
-theme_override_constants/margin_top = 188
-theme_override_constants/margin_right = 63
-theme_override_constants/margin_bottom = 63
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 69
+theme_override_constants/margin_right = 69
+theme_override_constants/margin_bottom = 69
 
 [node name="WhiteBackround" type="ColorRect" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox" index="0" unique_id=700062465]
 unique_name_in_owner = true
@@ -369,9 +393,9 @@ color = Color(1, 1, 1, 0.64705884)
 [node name="TextMarginBox" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox" index="1" unique_id=1682510347]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 27
 theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 25
+theme_override_constants/margin_right = 27
 theme_override_constants/margin_bottom = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="0" unique_id=579490563]
@@ -380,6 +404,7 @@ size_flags_horizontal = 17
 size_flags_vertical = 17
 
 [node name="Graphic" type="TextureRect" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/MarginContainer" index="0" unique_id=364596876]
+visible = false
 custom_minimum_size = Vector2(100, 100)
 propagate_maximum_size = true
 layout_mode = 2
@@ -398,13 +423,28 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.6799758, 1, 0.43600002)
 
-[node name="TextContainer" type="VBoxContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="1" unique_id=939641654]
+[node name="PictureBox" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="1" unique_id=756432227]
+layout_mode = 2
+theme_override_constants/margin_left = 21
+theme_override_constants/margin_top = 73
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 73
+script = ExtResource("12_yt1pa")
+ratio = Vector2(1.3, 1)
+screen_margin = 0.07
+horizontal_offset = -0.8
+
+[node name="ColorRect" type="ColorRect" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/PictureBox" index="0" unique_id=698803263]
+material = SubResource("ShaderMaterial_yt1pa")
+layout_mode = 2
+
+[node name="TextContainer" type="VBoxContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="2" unique_id=939641654]
 unique_name_in_owner = true
 layout_mode = 2
 
 [node name="HeaderText" type="Label" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="0" unique_id=149221527]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 124.666664)
+custom_minimum_size = Vector2(0, 107.166664)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -423,9 +463,10 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("9_ispgc")
 theme_override_font_sizes/font_size = 64
 text = "Werte von 0 -1
-Nähere Objekte überschreiben den Wert
+Nähere Objekte überschreiben
+
 Ist ein Objekt nicht das näheste
--nicht rendern
+-Depthtest failed ->nicht rendern
 
 
 "
@@ -446,30 +487,66 @@ minimum_font_size = 15
 maximum_font_size = 112
 
 [node name="DepthBuffer_HowTo" parent="Slides" index="6" unique_id=808722060 instance=ExtResource("3_yh82q")]
-slide_name = "DepthBuffer How To?"
+slide_name = "DepthBuffer Howto ITo?"
 
 [node name="Text" parent="Slides/DepthBuffer_HowTo" index="0" unique_id=1480904480 instance=ExtResource("2_ry4wd")]
+visible = false
 slide_header = "Depth Buffer nutzen?"
 header = ""
-text = "DepthDraw -> Tiefe in den Depth Buffer zeichen?
-Depth test -> rendern wenn dahinter?"
-bottom_text = ""
+text = "Depth Draw Mode:
+ Tiefe in den Depth Buffer zeichen?
+Always | Opaque Only | Never
 
-[node name="DepthBuffer GrayScale" parent="Slides" index="7" unique_id=811273123 instance=ExtResource("3_yh82q")]
+No Depth Test:
+Tiefe überprüfen?
+
+Depth test:
+Rendern wenn dahinter oder davor?"
+bottom_text = ""
+picture_path = "res://assets/Screenshots/Material_Transperency.png"
+picture_screen_margin = 0.04
+picture_horizontal_offset = -0.9
+
+[node name="DepthBuffer_howto_perCode" type="Node" parent="Slides" index="7" unique_id=2124154671]
+script = ExtResource("7_ceemk")
+slide_name = "DepthBuffer Howto II"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/DepthBuffer_howto_perCode" index="0" unique_id=460072819 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "DepthBuffer per Code"
+header = ""
+text = "Uniform sampler 2D:
+DepthBuffer Texture
+
+Rendermode:
+depth_draw_always
+/ _opaque/ _never,
+depth_test_default
+/ _disabled/ _inverted
+
+DEPTH:
+Tiefe schreiben oder lesen."
+bottom_text = ""
+picture_path = "res://assets/Screenshots/DepthBuffer_howto_perCode.png"
+picture_ratio = Vector2(1.2, 1)
+picture_horizontal_offset = -0.8
+
+[node name="DepthBuffer GrayScale" parent="Slides" index="8" unique_id=811273123 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case I"
 comments = Array[String](["1 -> Stripes"])
 scene = "uid://coxue6rdjwetd"
 
-[node name="DepthBuffer DiffrentModes" parent="Slides" index="8" unique_id=23279040 instance=ExtResource("3_yh82q")]
+[node name="DepthBuffer DiffrentModes" parent="Slides" index="9" unique_id=23279040 instance=ExtResource("3_yh82q")]
 slide_name = "DepthBuffer show case II"
 scene = "uid://150tix107shr"
 
-[node name="DepthBuffer Transparant" type="Node" parent="Slides" index="9" unique_id=1829956431]
+[node name="DepthBuffer Transparant" type="Node" parent="Slides" index="10" unique_id=1829956431]
 script = ExtResource("7_ceemk")
-slide_name = "DepthBudder Transparenz"
+slide_name = "DepthBuffer Transparenz"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBufferExplanation" parent="Slides" index="10" unique_id=123178485 instance=ExtResource("3_yh82q")]
+[node name="StencilBufferExplanation" parent="Slides" index="11" unique_id=123178485 instance=ExtResource("3_yh82q")]
 slide_name = "StencilBuffer I"
 use_cf_buttom_left = true
 cf_buttom_left = "https://tenor.com/de/view/spincat-gif-4620048645392468202"
@@ -485,7 +562,14 @@ grow_vertical = 2
 size_flags_vertical = 4
 script = ExtResource("8_s27kt")
 slide_header = "Stencil Buffer?"
-text = "-Einfach ein Greenscreen"
+text = "-Fuktioniert ähnlich einem Greenscreen
+-Objekte schreiben einen Werte zwischen 0-255
+-Andere lesen diesen Wert
+-Vergleicht Wert mit eignem
+-Entscheiden dann sie Sichtbar sind
+-Passiert Pixel genau
+"
+picture_path = null
 upper_header_box = NodePath("SmallerBox2")
 main_box = NodePath("VBoxContainer/SmallerBox")
 main_text_box = NodePath("VBoxContainer/SmallerBox/TextMarginBox")
@@ -502,14 +586,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 31
-theme_override_constants/margin_top = 31
-theme_override_constants/margin_right = 31
-theme_override_constants/margin_bottom = 31
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 34
 
 [node name="SlideHeader" type="Label" parent="Slides/StencilBufferExplanation/Text/SmallerBox2" index="0" unique_id=1925180921]
-custom_minimum_size = Vector2(0, 124.666664)
-custom_maximum_size = Vector2(99999, 124.666664)
+custom_minimum_size = Vector2(0, 107.166664)
+custom_maximum_size = Vector2(99999, 107.166664)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("9_ispgc")
@@ -530,21 +614,37 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 63
-theme_override_constants/margin_top = 188
-theme_override_constants/margin_right = 63
-theme_override_constants/margin_bottom = 63
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 177
+theme_override_constants/margin_right = 69
+theme_override_constants/margin_bottom = 69
 
 [node name="WhiteBackround" type="ColorRect" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="0" unique_id=178308746]
 material = SubResource("ShaderMaterial_wmlrs")
 layout_mode = 2
 color = Color(1, 1, 1, 0.64705884)
 
-[node name="TextMarginBox" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="1" unique_id=1900082076]
+[node name="OiiaCat" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="1" unique_id=727297233]
 layout_mode = 2
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 101
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 101
+script = ExtResource("12_yt1pa")
+horizontal_offset = -0.7
+
+[node name="ColorRect" type="ColorRect" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/OiiaCat" index="0" unique_id=960549189]
+material = SubResource("ShaderMaterial_omgj7")
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 19
+size_flags_stretch_ratio = 1.25
+
+[node name="TextMarginBox" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="2" unique_id=1900082076]
+layout_mode = 2
+theme_override_constants/margin_left = 27
 theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 25
+theme_override_constants/margin_right = 27
 theme_override_constants/margin_bottom = 3
 
 [node name="TextContainer" type="VBoxContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="0" unique_id=759128592]
@@ -566,7 +666,13 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("9_ispgc")
 theme_override_font_sizes/font_size = 64
-text = "-Einfach ein Greenscreen"
+text = "-Fuktioniert ähnlich einem Greenscreen
+-Objekte schreiben einen Werte zwischen 0-255
+-Andere lesen diesen Wert
+-Vergleicht Wert mit eignem
+-Entscheiden dann sie Sichtbar sind
+-Passiert Pixel genau
+"
 resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112
@@ -582,18 +688,6 @@ resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112
 
-[node name="OiiaCat" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="2" unique_id=727297233]
-layout_mode = 2
-script = ExtResource("12_yt1pa")
-horizontal_offset = -0.7
-
-[node name="ColorRect" type="ColorRect" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/OiiaCat" index="0" unique_id=960549189]
-material = SubResource("ShaderMaterial_omgj7")
-layout_mode = 2
-size_flags_horizontal = 17
-size_flags_vertical = 19
-size_flags_stretch_ratio = 1.25
-
 [node name="OIIA_Cat_gif" type="Sprite2D" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="3" unique_id=1901629970]
 visible = false
 position = Vector2(665, 287)
@@ -602,56 +696,87 @@ texture = ExtResource("14_7vd5s")
 vframes = 32
 script = ExtResource("15_omgj7")
 
-[node name="StencilBuffer_HowTo" parent="Slides" index="11" unique_id=1789856615 instance=ExtResource("3_yh82q")]
+[node name="StencilBuffer_HowTo" parent="Slides" index="12" unique_id=1789856615 instance=ExtResource("3_yh82q")]
 slide_name = "StencilBuffer II"
 
 [node name="Text" parent="Slides/StencilBuffer_HowTo" index="0" unique_id=1245823599 instance=ExtResource("2_ry4wd")]
 visible = false
 slide_header = "Stencil Buffer wie?"
 header = ""
-text = "1. Immer Alpha aktivieren
-2. Stencil -> Custom
+text = "0. Standard Material anlegen
+1. Immer Alpha aktivieren
+2. Stencil -> 
+   Custom / Outline / X-Ray
 3. Select mode(Read  /Write)
 4. Refernce / Stencillayer
+    (256 Ebenen (0-255))
 5. Compare (==, !=, >=,<=)
 6. Render Priorität"
 bottom_text = ""
+picture_path = "res://assets/Screenshots/Material_Stencil.png"
+picture_horizontal_offset = -0.8
 
-[node name="Stencil_BasicExample" type="Node" parent="Slides" index="12" unique_id=848832614]
+[node name="StencilBuffer_Howto_Code" type="Node" parent="Slides" index="13" unique_id=2015583934]
+script = ExtResource("7_ceemk")
+slide_name = "StencilBuffer III"
+metadata/_custom_type_script = "uid://dw5nch1euelxo"
+
+[node name="Text" parent="Slides/StencilBuffer_Howto_Code" index="0" unique_id=1937771385 instance=ExtResource("2_ry4wd")]
+visible = false
+slide_header = "Stencil Buffer per Code"
+header = ""
+text = "Stencil_mode:
+-Read / Write
+-Stencillayer
+-compare_equal,compare_greater,
+compare_less, etc...
+
+rendermode: (empfohlen)
+depth_draw_always
+
+Problem:
+-Stencillayer nicht veränderbar :("
+bottom_text = ""
+picture_path = "res://assets/Screenshots/Stencil_ShaderCode.png"
+picture_ratio = Vector2(2, 1)
+picture_screen_margin = 0.1
+picture_horizontal_offset = -1.0
+
+[node name="Stencil_BasicExample" type="Node" parent="Slides" index="14" unique_id=848832614]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer III"
 scene = "uid://8vb6bvn1hgku"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer Boat" type="Node" parent="Slides" index="13" unique_id=896560601]
+[node name="StencilBuffer Boat" type="Node" parent="Slides" index="15" unique_id=896560601]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer Showcase I"
 comments = Array[String](["1 -> On/Off"])
 scene = "uid://clsxveo03tft6"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer Mirrow" type="Node" parent="Slides" index="14" unique_id=427331744]
+[node name="StencilBuffer Mirrow" type="Node" parent="Slides" index="16" unique_id=427331744]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer Showcase II"
 scene = "uid://oyg5yigg3bus"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer Hole" parent="Slides" index="15" unique_id=1460568131 instance=ExtResource("3_yh82q")]
+[node name="StencilBuffer Hole" parent="Slides" index="17" unique_id=1460568131 instance=ExtResource("3_yh82q")]
 slide_name = "StencilBuffer Showcase III"
 scene = "uid://1uim5ttf3kel"
 
-[node name="StencilBuffer Outline" parent="Slides" index="16" unique_id=1082524065 instance=ExtResource("3_yh82q")]
+[node name="StencilBuffer Outline" parent="Slides" index="18" unique_id=1082524065 instance=ExtResource("3_yh82q")]
 slide_name = "StencilBuffer Showcase IV"
 comments = Array[String](["X-Ray", "Wand hintergehung"])
 scene = "uid://0winjex0jdb5"
 
-[node name="StencilBuffer XRay" type="Node" parent="Slides" index="17" unique_id=10989928]
+[node name="StencilBuffer XRay" type="Node" parent="Slides" index="19" unique_id=10989928]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer Showcase V"
 scene = "uid://d3cvff46x0iv6"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="StencilBuffer_summery" type="Node" parent="Slides" index="18" unique_id=80035988]
+[node name="StencilBuffer_summery" type="Node" parent="Slides" index="20" unique_id=80035988]
 script = ExtResource("7_ceemk")
 slide_name = "StencilBuffer Summary"
 comments = Array[String]([""])
@@ -672,7 +797,7 @@ Cons:
 -Shader Script kann die Stencil Layer nicht ändern"
 bottom_text = ""
 
-[node name="ViewportExplanation" type="Node" parent="Slides" index="19" unique_id=1571947425]
+[node name="ViewportExplanation" type="Node" parent="Slides" index="21" unique_id=1571947425]
 script = ExtResource("7_ceemk")
 slide_name = "ViewportBuffer I"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -691,29 +816,24 @@ text = "-2x Viewports in Unteschiedliche Render Ebenen
 -Größe auf 1. Viewport übertragen"
 bottom_text = ""
 
-[node name="Viewport Example" type="Node" parent="Slides" index="20" unique_id=1087488895]
+[node name="Viewport Example" type="Node" parent="Slides" index="22" unique_id=1087488895]
 script = ExtResource("7_ceemk")
 slide_name = "ViewportBuffer  II"
 scene = "uid://ho8nk18r8lai"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="Viewport_delay" type="Node" parent="Slides" index="21" unique_id=856625693]
-script = ExtResource("7_ceemk")
-scene = "uid://b7v4r3xuj340e"
-metadata/_custom_type_script = "uid://dw5nch1euelxo"
-
-[node name="Viewport Outline" parent="Slides" index="22" unique_id=281215632 instance=ExtResource("3_yh82q")]
+[node name="Viewport Outline" parent="Slides" index="23" unique_id=281215632 instance=ExtResource("3_yh82q")]
 slide_name = "Viewport I"
 comments = Array[String](["Viewport Outline"])
 scene = "uid://db6ymwq5kkrbj"
 
-[node name="Viewport_Label" type="Node" parent="Slides" index="23" unique_id=1322215039]
+[node name="Viewport_Label" type="Node" parent="Slides" index="24" unique_id=1322215039]
 script = ExtResource("7_ceemk")
 slide_name = "ViewportBuffer"
 scene = "res://slides/scenes_for_slides/poster.tscn"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="Stencil_X_Viewport" type="Node" parent="Slides" index="24" unique_id=789998625]
+[node name="Stencil_X_Viewport" type="Node" parent="Slides" index="25" unique_id=789998625]
 script = ExtResource("7_ceemk")
 slide_name = "Stencil || Viewport?"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -733,7 +853,7 @@ Fazit:
 Stencil wenn möglich, Viewport wenn nötig"
 bottom_text = ""
 
-[node name="Portale" type="Node" parent="Slides" index="25" unique_id=2109680318]
+[node name="Portale" type="Node" parent="Slides" index="26" unique_id=2109680318]
 script = ExtResource("7_ceemk")
 slide_name = "Portale I"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -745,7 +865,7 @@ header = ""
 text = "Keine Wurmlöcher"
 bottom_text = ""
 
-[node name="Portale Klassisch" type="Node" parent="Slides" index="26" unique_id=205270232]
+[node name="Portale Klassisch" type="Node" parent="Slides" index="27" unique_id=205270232]
 script = ExtResource("7_ceemk")
 slide_name = "Portale II"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -763,7 +883,7 @@ Viewporttexture wird aud das Portal gerenderd
 Prey(2006) nur eien Kamera und Stencil für Hilfe"
 bottom_text = ""
 
-[node name="Portale_DepthProblem" type="Node" parent="Slides" index="27" unique_id=1607896104]
+[node name="Portale_DepthProblem" type="Node" parent="Slides" index="28" unique_id=1607896104]
 script = ExtResource("7_ceemk")
 slide_name = "Probleme"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -781,7 +901,7 @@ Depthtest Invertiert an Portal
 Restlichen Depthtests gehen kaputt"
 bottom_text = ""
 
-[node name="Portale_DepthSolution" type="Node" parent="Slides" index="28" unique_id=1445297227]
+[node name="Portale_DepthSolution" type="Node" parent="Slides" index="29" unique_id=1445297227]
 script = ExtResource("7_ceemk")
 slide_name = "Lösung a la Stencil"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -799,7 +919,7 @@ Neues Problem:
 Nur Ein Portal pro Ebene & \"unschöne\" Lösung"
 bottom_text = ""
 
-[node name="Portale_ViewPort_Solution" type="Node" parent="Slides" index="29" unique_id=1816766835]
+[node name="Portale_ViewPort_Solution" type="Node" parent="Slides" index="30" unique_id=1816766835]
 script = ExtResource("7_ceemk")
 slide_name = "Lösung a la Viewport"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -819,13 +939,13 @@ G = Preziese Tiefe
 	float fragment_depth = clip_pos.z / clip_pos.w;"
 bottom_text = ""
 
-[node name="Portale_ShowCase_I" type="Node" parent="Slides" index="30" unique_id=333795176]
+[node name="Portale_ShowCase_I" type="Node" parent="Slides" index="31" unique_id=333795176]
 script = ExtResource("7_ceemk")
 slide_name = "Endlich Portale"
 scene = "uid://c26wpn4puqq0f"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
-[node name="Portal Transition" type="Node" parent="Slides" index="31" unique_id=967069030]
+[node name="Portal Transition" type="Node" parent="Slides" index="32" unique_id=967069030]
 script = ExtResource("7_ceemk")
 slide_name = "Sandwich Portal"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -840,12 +960,12 @@ text = "-Zwei Seiten wie ein Sandwich
 -Spieler Kamera ändert Standard"
 bottom_text = ""
 
-[node name="100Portals" parent="Slides" index="32" unique_id=516392851 instance=ExtResource("3_yh82q")]
+[node name="100Portals" parent="Slides" index="33" unique_id=516392851 instance=ExtResource("3_yh82q")]
 slide_name = "100 Portale"
 comments = Array[String](["Bad Apple von Tobi vorgeschlagen"])
 scene = "uid://bg4f8h4yfbeqd"
 
-[node name="Portale Vergleich" type="Node" parent="Slides" index="33" unique_id=1771099179]
+[node name="Portale Vergleich" type="Node" parent="Slides" index="34" unique_id=1771099179]
 script = ExtResource("7_ceemk")
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
@@ -864,6 +984,7 @@ text = "Klassisch:
 -Im gleichen Raum
 -Environment
 -Portal in Portal"
+picture_path = null
 upper_header_box = NodePath("HeaderBox")
 main_box = NodePath("VBoxContainer/MainBox")
 main_text_box = NodePath("VBoxContainer/MainBox/MainTextBox")
@@ -881,14 +1002,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 31
-theme_override_constants/margin_top = 31
-theme_override_constants/margin_right = 31
-theme_override_constants/margin_bottom = 31
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 34
 
 [node name="SlideHeader" type="Label" parent="Slides/Portale Vergleich/Text/HeaderBox" index="0" unique_id=1079644395]
-custom_minimum_size = Vector2(0, 124.666664)
-custom_maximum_size = Vector2(99999, 124.666664)
+custom_minimum_size = Vector2(0, 107.166664)
+custom_maximum_size = Vector2(99999, 107.166664)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("9_ispgc")
@@ -910,10 +1031,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 63
-theme_override_constants/margin_top = 188
-theme_override_constants/margin_right = 63
-theme_override_constants/margin_bottom = 63
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 177
+theme_override_constants/margin_right = 69
+theme_override_constants/margin_bottom = 69
 
 [node name="WhiteBackround" type="ColorRect" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox" index="0" unique_id=1922861846]
 material = SubResource("ShaderMaterial_uq8jk")
@@ -923,9 +1044,9 @@ color = Color(1, 1, 1, 0.64705884)
 [node name="MainTextBox" type="MarginContainer" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox" index="1" unique_id=1396698318]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 27
 theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 25
+theme_override_constants/margin_right = 27
 theme_override_constants/margin_bottom = 3
 
 [node name="TextContainer" type="VBoxContainer" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox/MainTextBox" index="0" unique_id=2010788201]
@@ -987,7 +1108,7 @@ resize_font_to_fit = true
 minimum_font_size = 15
 maximum_font_size = 112
 
-[node name="Q&A" type="Node" parent="Slides" index="34" unique_id=457507216]
+[node name="Q&A" type="Node" parent="Slides" index="35" unique_id=457507216]
 script = ExtResource("7_ceemk")
 slide_name = "Q&A"
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
@@ -1002,14 +1123,14 @@ text = "Habt ihr noch Fragen?
 "
 bottom_text = ""
 
-[node name="Funny_Screenshots" type="Node" parent="Slides" index="35" unique_id=1446485996]
+[node name="Funny_Screenshots" type="Node" parent="Slides" index="36" unique_id=1446485996]
 script = ExtResource("7_ceemk")
 metadata/_custom_type_script = "uid://dw5nch1euelxo"
 
 [node name="Text" parent="Slides/Funny_Screenshots" index="0" unique_id=1223743819 instance=ExtResource("2_ry4wd")]
 visible = false
 
-[node name="EmptyEndSlide" parent="Slides" index="36" unique_id=1437317286 instance=ExtResource("3_yh82q")]
+[node name="EmptyEndSlide" parent="Slides" index="37" unique_id=1437317286 instance=ExtResource("3_yh82q")]
 slide_name = "Empty"
 comments = Array[String](["You made it !", ""])
 is_empty = true
@@ -1019,6 +1140,8 @@ use_cf_logo = false
 visible = false
 empty = true
 header = ""
+
+[node name="Laserpointer" parent="." index="3" unique_id=2049069564 instance=ExtResource("21_khgom")]
 
 [connection signal="visibility_changed" from="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/WhiteBackround" to="Slides/ColorBufferExplanaition/Text" method="_on_white_backround_visibility_changed"]
 [connection signal="visibility_changed" from="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/WhiteBackround" to="Slides/DepthBufferExplanation/Text" method="_on_white_backround_visibility_changed"]

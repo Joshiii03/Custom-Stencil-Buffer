@@ -77,8 +77,8 @@ slide_header = "StencilBuffer Example"
 header = ""
 text = "Pink:
 Schreibt Stencil 1
-Grün:
 
+Grün:
 Ließt Stencil 1
 Equal (==)"
 bottom_text = ""

@@ -62,6 +62,8 @@ func last_slide() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	update_UI()
 
+func _physics_process(delta):
+	$%FrameRate.text = "Framerate: " + str(floor(1.0/delta))
 
 func update_UI() -> void:
 	%TimerLabel.text = "%02d:%02d" % [ int(time_since_beginn / 60.), time_since_beginn % 60]

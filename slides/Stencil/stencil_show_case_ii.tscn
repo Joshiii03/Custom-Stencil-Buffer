@@ -1102,7 +1102,15 @@ layer = -1
 [node name="Text" parent="CamareaPivot/Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("4_ol2ta")]
 slide_header = "Mirror Mirror on the Wall"
 header = ""
-text = ""
+text = "Spiegel:
+schreibt 1
+
+Spiegel Welt:
+Stencil == 1
+
+Normale Welt:
+Stencil != 1
+"
 bottom_text = ""
 
 [node name="Backround" type="Control" parent="CamareaPivot/Camera3D/CanvasLayer" unique_id=372914648]

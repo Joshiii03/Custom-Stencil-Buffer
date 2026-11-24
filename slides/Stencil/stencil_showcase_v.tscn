@@ -154,7 +154,7 @@ material_override = SubResource("StandardMaterial3D_abwey")
 mesh = SubResource("SphereMesh_mnpdr")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=521594500]
-transform = Transform3D(1, 0, 0, 0, 0.9940638, 0.10879883, 0, -0.10879883, 0.9940638, 0, 1.2043159, 5.1510787)
+transform = Transform3D(1, 0, 0, 0, 0.9940638, 0.10879883, 0, -0.10879883, 0.9940638, -1.8986434, 1.2043159, 5.9140983)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=680598206]
 layer = -1
@@ -164,6 +164,10 @@ slide_header = "Ah Spooky!"
 header = ""
 text = ""
 bottom_text = ""
+picture_path = "res://assets/Screenshots/X-Ray_setup.png"
+picture_ratio = Vector2(0.8, 1)
+picture_screen_margin = 0.07
+picture_horizontal_offset = 0.8999999999999999
 
 [node name="Backround" type="Control" parent="Camera3D/CanvasLayer" unique_id=986728464]
 layout_mode = 3

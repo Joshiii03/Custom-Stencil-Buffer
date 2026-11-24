@@ -1,11 +1,21 @@
-
+@tool
 extends MarginContainer
 
-@export var ratio: Vector2 = Vector2(1, 1)
-@export_range(0.0, 0.2) var screen_margin: float = 0.05
+@export var ratio: Vector2 = Vector2(1, 1):
+	set(new_value):
+		ratio = new_value
+		_update_margins()
+
+@export_range(0.0, 0.2) var screen_margin: float = 0.05:
+	set(new_value):
+		screen_margin = new_value
+		_update_margins()
 
 # Positive values shift content to the right
-@export_range(-1.0, 1.0) var horizontal_offset: float = 0.0
+@export_range(-1.0, 1.0) var horizontal_offset: float = 0.0:
+	set(new_value):
+		horizontal_offset = new_value
+		_update_margins()
 
 func _ready():
 	resized.connect(_update_margins)
@@ -16,7 +26,7 @@ func _update_margins():
 	if ratio.x <= 0 or ratio.y <= 0:
 		return
 
-	var viewport_size: Vector2 = get_viewport_rect().size
+	var viewport_size: Vector2 = get_parent_area_size() #get_viewport_rect().size
 	var outer_margin: float = viewport_size.length() * screen_margin
 
 	var available_size: Vector2 = viewport_size - Vector2.ONE * outer_margin * 2.0
