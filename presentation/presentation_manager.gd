@@ -53,13 +53,13 @@ func _on_timer_timeout():
 
 func next_slide() -> void:
 	presentation.show_next_slide()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	update_UI()
 
 
 func last_slide() -> void:
 	presentation.show_prev_slide()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	update_UI()
 
 func _physics_process(delta):

@@ -4,3 +4,5 @@
 
 [node name="Slide" type="Node" unique_id=1215255879]
 script = ExtResource("1_3rhp3")
+mouse_visible = null
+laser_visible = null

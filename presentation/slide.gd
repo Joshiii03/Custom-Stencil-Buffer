@@ -25,6 +25,9 @@ extends Node
 @export var use_cf_buttom_right : bool = false
 @export var cf_buttom_right : String = ""
 
+@export_group("Mouse")
+@export var mouse_visible = false
+@export var laser_visible = true
 
 var new_scene: PackedScene = null
 var instance: Node = null

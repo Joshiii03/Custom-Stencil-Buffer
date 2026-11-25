@@ -5,6 +5,7 @@ extends Node
 var current_index: int = 0
 @onready var slides = $Slides
 @onready var backround = $Backround
+@onready var laserpointer = $CanvasLayer/Laserpointer
 
 @export var start_slide : int = 1
 
@@ -50,9 +51,19 @@ func show_slide(index: int) -> void:
 	if current is Slide:
 		current.activate()
 		backround.visible = not current.is_spawning_scene
+		if current.mouse_visible:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+		if current.laser_visible != null:
+			laserpointer.visible = current.laser_visible
+		else:
+			laserpointer.visible = true
 	else:
 		current.visible = true
 		backround.visible = true
+		laserpointer.visible = true
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 	# Prepare upcoming slides
 	for offset in range(1, 4):
