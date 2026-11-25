@@ -195,10 +195,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_top = 37
+theme_override_constants/margin_right = 37
+theme_override_constants/margin_bottom = 37
 
 [node name="SlideHeader" type="Label" parent="Slides/ColorBufferExplanaition/Text/SmallerBox2" index="0" unique_id=2048879931]
 custom_maximum_size = Vector2(99999, 107.166664)
@@ -221,10 +221,10 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 74
+theme_override_constants/margin_top = 74
+theme_override_constants/margin_right = 74
+theme_override_constants/margin_bottom = 74
 
 [node name="WhiteBackround" type="ColorRect" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox" index="0" unique_id=1352649206]
 material = SubResource("ShaderMaterial_wmlrs")
@@ -236,10 +236,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 17
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 29
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 29
+theme_override_constants/margin_bottom = 3
 
 [node name="TextContainer" type="VBoxContainer" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/SmallTextBox" index="0" unique_id=368231236]
 layout_mode = 2
@@ -285,12 +285,11 @@ maximum_font_size = 112
 
 [node name="ColorBuffer" type="MarginContainer" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox" index="2" unique_id=2050401459]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 35
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 35
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 55
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 55
 script = ExtResource("12_yt1pa")
-ratio = Vector2(1.3, 1)
 horizontal_offset = -0.6
 
 [node name="Frame" type="ColorRect" parent="Slides/ColorBufferExplanaition/Text/VBoxContainer/SmallerBox/ColorBuffer" index="0" unique_id=1957556259]
@@ -351,10 +350,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_top = 37
+theme_override_constants/margin_right = 37
+theme_override_constants/margin_bottom = 37
 
 [node name="SlideHeader" type="Label" parent="Slides/DepthBufferExplanation/Text/SmallerBox2" index="0" unique_id=1962900836]
 unique_name_in_owner = true
@@ -379,10 +378,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 74
+theme_override_constants/margin_top = 74
+theme_override_constants/margin_right = 74
+theme_override_constants/margin_bottom = 74
 
 [node name="WhiteBackround" type="ColorRect" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox" index="0" unique_id=700062465]
 unique_name_in_owner = true
@@ -393,10 +392,10 @@ color = Color(1, 1, 1, 0.64705884)
 [node name="TextMarginBox" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox" index="1" unique_id=1682510347]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 29
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 29
+theme_override_constants/margin_bottom = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="0" unique_id=579490563]
 layout_mode = 2
@@ -425,10 +424,10 @@ color = Color(1, 0.6799758, 1, 0.43600002)
 
 [node name="PictureBox" type="MarginContainer" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="1" unique_id=756432227]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 36
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 36
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 78
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 78
 script = ExtResource("12_yt1pa")
 ratio = Vector2(1.3, 1)
 screen_margin = 0.07
@@ -444,7 +443,7 @@ layout_mode = 2
 
 [node name="HeaderText" type="Label" parent="Slides/DepthBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox/TextContainer" index="0" unique_id=149221527]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 0.33333334)
+custom_minimum_size = Vector2(0, 122.166664)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -588,14 +587,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_top = 37
+theme_override_constants/margin_right = 37
+theme_override_constants/margin_bottom = 37
 
 [node name="SlideHeader" type="Label" parent="Slides/StencilBufferExplanation/Text/SmallerBox2" index="0" unique_id=1925180921]
-custom_minimum_size = Vector2(0, 0.33333334)
-custom_maximum_size = Vector2(99999, 0.33333334)
+custom_minimum_size = Vector2(0, 122.166664)
+custom_maximum_size = Vector2(99999, 122.166664)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("9_ispgc")
@@ -616,10 +615,10 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 74
+theme_override_constants/margin_top = 196
+theme_override_constants/margin_right = 74
+theme_override_constants/margin_bottom = 74
 
 [node name="WhiteBackround" type="ColorRect" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="0" unique_id=178308746]
 material = SubResource("ShaderMaterial_wmlrs")
@@ -628,10 +627,10 @@ color = Color(1, 1, 1, 0.64705884)
 
 [node name="OiiaCat" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="1" unique_id=727297233]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 35
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 35
+theme_override_constants/margin_left = 31
+theme_override_constants/margin_top = 111
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 111
 script = ExtResource("12_yt1pa")
 horizontal_offset = -0.7
 
@@ -644,10 +643,10 @@ size_flags_stretch_ratio = 1.25
 
 [node name="TextMarginBox" type="MarginContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox" index="2" unique_id=1900082076]
 layout_mode = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 29
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 29
+theme_override_constants/margin_bottom = 3
 
 [node name="TextContainer" type="VBoxContainer" parent="Slides/StencilBufferExplanation/Text/VBoxContainer/SmallerBox/TextMarginBox" index="0" unique_id=759128592]
 layout_mode = 2
@@ -1018,14 +1017,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_top = 37
+theme_override_constants/margin_right = 37
+theme_override_constants/margin_bottom = 37
 
 [node name="SlideHeader" type="Label" parent="Slides/Portale Vergleich/Text/HeaderBox" index="0" unique_id=1079644395]
-custom_minimum_size = Vector2(0, 0.33333334)
-custom_maximum_size = Vector2(99999, 0.33333334)
+custom_minimum_size = Vector2(0, 122.166664)
+custom_maximum_size = Vector2(99999, 122.166664)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("9_ispgc")
@@ -1047,10 +1046,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 74
+theme_override_constants/margin_top = 196
+theme_override_constants/margin_right = 74
+theme_override_constants/margin_bottom = 74
 
 [node name="WhiteBackround" type="ColorRect" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox" index="0" unique_id=1922861846]
 material = SubResource("ShaderMaterial_uq8jk")
@@ -1060,10 +1059,10 @@ color = Color(1, 1, 1, 0.64705884)
 [node name="MainTextBox" type="MarginContainer" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox" index="1" unique_id=1396698318]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 29
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 29
+theme_override_constants/margin_bottom = 3
 
 [node name="TextContainer" type="VBoxContainer" parent="Slides/Portale Vergleich/Text/VBoxContainer/MainBox/MainTextBox" index="0" unique_id=2010788201]
 layout_mode = 2

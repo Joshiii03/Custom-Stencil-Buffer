@@ -18,18 +18,21 @@ extends MarginContainer
 		_update_margins()
 
 func _ready():
-	resized.connect(_update_margins)
+	draw.connect(_update_margins)
+	
 	_update_margins()
 
 
+
 func _update_margins():
+	print("visibility changed", name)
 	if ratio.x <= 0 or ratio.y <= 0:
 		return
 
-	var viewport_size: Vector2 = get_parent_area_size() #get_viewport_rect().size
-	var outer_margin: float = viewport_size.length() * screen_margin
+	var parent_size: Vector2 = size
+	var outer_margin: float = parent_size.length() * screen_margin
 
-	var available_size: Vector2 = viewport_size - Vector2.ONE * outer_margin * 2.0
+	var available_size: Vector2 = parent_size - Vector2.ONE * outer_margin * 2.0
 
 	var target_ratio: float = ratio.x / ratio.y
 	var content_size: Vector2
@@ -42,8 +45,8 @@ func _update_margins():
 		content_size.y = content_size.x / target_ratio
 
 	# Calculate centered margins
-	var remaining_x: float = viewport_size.x - content_size.x
-	var remaining_y: float = viewport_size.y - content_size.y
+	var remaining_x: float = parent_size.x - content_size.x
+	var remaining_y: float = parent_size.y - content_size.y
 
 	# Apply horizontal offset
 	var offset: float = horizontal_offset * remaining_x / 2.0
@@ -58,8 +61,3 @@ func _update_margins():
 	add_theme_constant_override("margin_right", margin_right)
 	add_theme_constant_override("margin_top", margin_top)
 	add_theme_constant_override("margin_bottom", margin_bottom)
-
-
-func _notification(what):
-	if what == NOTIFICATION_RESIZED:
-		_update_margins()
