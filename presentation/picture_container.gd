@@ -25,7 +25,6 @@ func _ready():
 
 
 func _update_margins():
-	print("visibility changed", name)
 	if ratio.x <= 0 or ratio.y <= 0:
 		return
 
