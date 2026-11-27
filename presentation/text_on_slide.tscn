@@ -5,12 +5,12 @@
 [ext_resource type="Script" uid="uid://bs3qk05velsdl" path="res://presentation/picture_container.gd" id="3_xk7f3"]
 [ext_resource type="Shader" uid="uid://d0iub38d4hc0k" path="res://presentation/picture.gdshader" id="4_4g0ke"]
 [ext_resource type="FontFile" uid="uid://cqsvn2rkp4jwt" path="res://assets/LilitaOne-Regular.ttf" id="4_kwqw3"]
-[ext_resource type="Texture2D" uid="uid://burcbaco18d50" path="res://assets/Screenshots/X-Ray_setup.png" id="6_u3b6l"]
+[ext_resource type="Texture2D" uid="uid://y8moi7oweafi" path="res://assets/Screenshots/Stencil_ShaderCode.png" id="6_u3b6l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wmlrs"]
 resource_local_to_scene = true
 shader = ExtResource("3_u3b6l")
-shader_parameter/rect_size = Vector2(1024, 512)
+shader_parameter/rect_size = Vector2(894, 257)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3b6l"]
 resource_local_to_scene = true
@@ -30,6 +30,7 @@ slide_header = null
 header = null
 text = null
 bottom_text = null
+picture_scale = 0.0
 upper_header_box = NodePath("HeaderBox")
 main_box = NodePath("VBoxContainer/MainBox")
 main_text_box = NodePath("VBoxContainer/MainBox/MainTextBox")
@@ -49,15 +50,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="SlideHeader" type="Label" parent="HeaderBox" unique_id=2048879931]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 0.33333334)
-custom_maximum_size = Vector2(99999, 0.33333334)
+custom_minimum_size = Vector2(0, 124.833336)
+custom_maximum_size = Vector2(99999, 124.833336)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("4_kwqw3")
@@ -79,10 +80,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 17
 size_flags_vertical = 19
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 65
+theme_override_constants/margin_top = 190
+theme_override_constants/margin_right = 65
+theme_override_constants/margin_bottom = 65
 
 [node name="WhiteBackround" type="ColorRect" parent="VBoxContainer/MainBox" unique_id=1352649206]
 unique_name_in_owner = true
@@ -92,10 +93,10 @@ color = Color(1, 1, 1, 0.64705884)
 
 [node name="PictureContainer" type="MarginContainer" parent="VBoxContainer/MainBox" unique_id=371014278]
 layout_mode = 2
-theme_override_constants/margin_left = 313
-theme_override_constants/margin_top = 57
-theme_override_constants/margin_right = 313
-theme_override_constants/margin_bottom = 57
+theme_override_constants/margin_left = 365
+theme_override_constants/margin_top = 46
+theme_override_constants/margin_right = 365
+theme_override_constants/margin_bottom = 46
 script = ExtResource("3_xk7f3")
 
 [node name="Picture" type="ColorRect" parent="VBoxContainer/MainBox/PictureContainer" unique_id=1386437385]
@@ -106,10 +107,10 @@ layout_mode = 2
 [node name="MainTextBox" type="MarginContainer" parent="VBoxContainer/MainBox" unique_id=637698339]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 3
 
 [node name="TextContainer" type="VBoxContainer" parent="VBoxContainer/MainBox/MainTextBox" unique_id=368231236]
 unique_name_in_owner = true
@@ -117,7 +118,7 @@ layout_mode = 2
 
 [node name="HeaderText" type="Label" parent="VBoxContainer/MainBox/MainTextBox/TextContainer" unique_id=2113373313]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 0.33333334)
+custom_minimum_size = Vector2(0, 124.833336)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)

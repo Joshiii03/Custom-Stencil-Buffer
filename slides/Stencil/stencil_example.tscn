@@ -76,12 +76,14 @@ layer = -1
 slide_header = "StencilBuffer Example"
 header = ""
 text = "Pink:
-Schreibt Stencil 1
+Schreibt den Wert 1
+in den StencilBuffer
 
 Grün:
-Ließt Stencil 1
-Equal (==)"
+Ließt StencilBuffer und 
+vergleicht Equal (==) 1"
 bottom_text = ""
+picture_scale = 1.0
 
 [node name="Backround" type="Control" parent="Camera3D/CanvasLayer" unique_id=516951847]
 layout_mode = 3

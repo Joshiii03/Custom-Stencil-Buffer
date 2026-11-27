@@ -60,6 +60,12 @@ extends Control
 			picture_horizontal_offset = new_value
 			picture_container.horizontal_offset = picture_horizontal_offset
 
+@export_range(-1.0, 1.0) var picture_scale : float = 1.0:
+	set(new_value):
+		if picture_container:
+			picture_scale = new_value
+			picture_container.max_size_usage = picture_scale
+
 @export_category("Node References")
 @export var upper_header_box : MarginContainer
 @export var main_box : MarginContainer

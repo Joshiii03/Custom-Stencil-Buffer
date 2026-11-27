@@ -17,6 +17,13 @@ extends MarginContainer
 		horizontal_offset = new_value
 		_update_margins()
 
+
+@export var max_size_usage : float = 1.0 :
+	get():
+		if max_size_usage < 0  or max_size_usage > 1:
+			return 1.
+		return max_size_usage
+
 func _ready():
 	draw.connect(_update_margins)
 	
@@ -42,7 +49,10 @@ func _update_margins():
 	else:
 		content_size.x = available_size.x
 		content_size.y = content_size.x / target_ratio
-
+	
+	content_size = content_size * max_size_usage
+	if max_size_usage != 1:
+		print("siasid",max_size_usage, " ", content_size, " ", content_size * max_size_usage)
 	# Calculate centered margins
 	var remaining_x: float = parent_size.x - content_size.x
 	var remaining_y: float = parent_size.y - content_size.y
