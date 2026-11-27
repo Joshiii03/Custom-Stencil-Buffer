@@ -30,6 +30,10 @@ func get_slide() -> Node:
 	var slide = slides.get_children()[current_index]
 	return slide
 
+func get_nextSlide_info() -> String:
+	if slides.get_child_count() > current_index +1:
+		return slides.get_child(current_index +1).name
+	return ""
 
 func show_slide(index: int) -> void:
 	if index < 0 or index >= slide_count:

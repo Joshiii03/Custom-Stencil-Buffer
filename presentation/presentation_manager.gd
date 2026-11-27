@@ -76,3 +76,4 @@ func update_UI() -> void:
 		if slide.slide_name != "" and slide.slide_name !=  "New Slide":
 			%SlideName.text = "Title: " + slide.slide_name
 	%SlideCount.text = "Slide: " + str(presentation.current_index +1) + " / " + str(presentation.slide_count)
+	%NextSlide.text = presentation.get_nextSlide_info()

@@ -20,13 +20,13 @@ func _input(event):
 		#get_parent()._ready()
 	if event.is_action_pressed("4"):
 		stencil_camera_with_text.use_debug_screen = true
-		buffer.text = "Aurum Est."
-		portale.text = "Potestas"
+		buffer.text = "We will be right back"
+		portale.text = ""
 	if event.is_action_pressed("5"):
 		stencil_camera_with_text.use_debug_screen = true
 		buffer.text = "I'll take a potato chip... "
 		portale.text = "and eat it!"
-	if event.is_action_pressed("6"):
+	if event.is_action_pressed("4"):
 		stencil_camera_with_text.use_debug_screen = true
 		buffer.text = "We will be right back"
 		portale.text = ""

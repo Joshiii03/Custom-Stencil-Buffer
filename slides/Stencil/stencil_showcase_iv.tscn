@@ -120,12 +120,13 @@ transform = Transform3D(1, 0, 0, 0, 0.81163275, 0.584168, 0, -0.584168, 0.811632
 layer = -1
 
 [node name="Text" parent="Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("3_l0fth")]
-slide_header = "Outline Stencil Buffer"
+slide_header = "Outline Stencilbuffer"
 header = ""
 text = ""
 bottom_text = ""
 picture_path = "res://assets/Screenshots/Outline_howto.png"
 picture_horizontal_offset = 0.8
+picture_scale = 1.0
 
 [node name="Backround" type="Control" parent="Camera3D/CanvasLayer" unique_id=443771123]
 layout_mode = 3

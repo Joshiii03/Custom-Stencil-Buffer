@@ -438,6 +438,7 @@ slide_header = ""
 header = "DepthBuffer "
 text = ""
 bottom_text = ""
+picture_scale = 1.0
 
 [node name="Backround" type="Control" parent="StencilCameraWithText/ScrrenSubViewport/ScreenViewport/Camera3D" unique_id=453931749]
 layout_mode = 3

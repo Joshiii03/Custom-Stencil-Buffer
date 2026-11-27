@@ -102,9 +102,10 @@ layer = -1
 
 [node name="Text" parent="Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("1_n6iaa")]
 slide_header = ""
-header = "DepthBuffer "
+header = "Depthbuffer "
 text = ""
 bottom_text = ""
+picture_scale = 1.0
 
 [node name="Backround" type="Control" parent="Camera3D/CanvasLayer" unique_id=288644725]
 layout_mode = 3

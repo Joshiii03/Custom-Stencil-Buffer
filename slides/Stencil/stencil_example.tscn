@@ -73,14 +73,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9385319, 0.4342873, 4.1038
 layer = -1
 
 [node name="Text" parent="Camera3D/CanvasLayer" unique_id=1809041724 instance=ExtResource("3_p5ec3")]
-slide_header = "StencilBuffer Example"
+slide_header = "Stencilbuffer Example"
 header = ""
 text = "Pink:
 Schreibt den Wert 1
-in den StencilBuffer
+in den Stencilbuffer
 
 Grün:
-Ließt StencilBuffer und 
+Ließt Stencilbuffer und 
 vergleicht Equal (==) 1"
 bottom_text = ""
 picture_scale = 1.0
